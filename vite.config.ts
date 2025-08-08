@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: ["builtbyrudraksh.onrender.com"], // ✅ Add this line
     fs: {
       allow: ["./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
@@ -24,6 +25,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+
 
 function expressPlugin(): Plugin {
   return {
