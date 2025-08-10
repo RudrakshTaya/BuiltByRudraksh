@@ -299,7 +299,7 @@ const ExplosiveStats = () => {
       transition={{ delay: 2.5, duration: 1 }}
       className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
     >
-      {stats.hero.map((stat, index) => (
+      {stats?.hero?.map((stat, index) => (
         <motion.div
           key={index}
           className="relative group"
