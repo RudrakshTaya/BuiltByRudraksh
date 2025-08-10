@@ -199,8 +199,7 @@ const DataStructures3D = () => {
   ];
 
   const renderStructure = (structure: any, index: number) => {
-    const baseProps = {
-      key: structure.name,
+    const motionProps = {
       className: "absolute",
       style: {
         left: `${structure.x}%`,
@@ -220,7 +219,7 @@ const DataStructures3D = () => {
     switch (structure.type) {
       case 'tree':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="relative">
               {/* Tree nodes */}
               <div className="w-4 h-4 bg-blue-500 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
