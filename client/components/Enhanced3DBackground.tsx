@@ -241,7 +241,7 @@ const EnhancedAlgorithmNodes = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 opacity-70" style={{ perspective: '1500px' }}>
+    <div className="absolute inset-0 opacity-50" style={{ perspective: '1500px' }}>
       {nodes.map((node) => (
         <motion.div
           key={node.id}
