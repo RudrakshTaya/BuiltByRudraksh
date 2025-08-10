@@ -174,7 +174,13 @@ const MatrixRoles = () => {
             animate={{ scale: [1, 1.5, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <span className={`text-xl md:text-2xl font-bold font-mono ${roles[currentRole].color}`}>
+          <span
+            className="text-xl md:text-2xl font-bold font-mono"
+            style={{ color: roles[currentRole].color.includes('neon-blue') ? '#3b82f6' :
+                           roles[currentRole].color.includes('neon-purple') ? '#8b5cf6' :
+                           roles[currentRole].color.includes('neon-cyan') ? '#06b6d4' :
+                           roles[currentRole].color.includes('neon-green') ? '#10b981' : '#3b82f6' }}
+          >
             {roles[currentRole].text}
           </span>
           <motion.div
