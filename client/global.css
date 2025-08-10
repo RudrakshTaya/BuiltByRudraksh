@@ -151,6 +151,31 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }
+
+  /* Performance mode optimizations */
+  .performance-mode * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  .performance-mode .preserve-3d {
+    transform-style: flat !important;
+  }
+
+  .performance-mode .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    background: rgba(var(--background), 0.85) !important;
+  }
+
+  /* Device-specific optimizations */
+  .is-mobile .preserve-3d {
+    transform-style: flat;
+  }
+
+  .is-low-end * {
+    animation-duration: 0.2s !important;
+    will-change: auto !important;
+  }
 }
 
 @layer components {
