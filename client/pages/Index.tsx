@@ -86,37 +86,37 @@ export default function Index() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative z-20 bg-background/30 backdrop-blur-sm">
+        <section id="about" className="relative z-20 bg-background/10 backdrop-blur-sm">
           <About />
         </section>
 
         {/* Computer Science Strengths */}
-        <section id="cs-strengths" className="relative z-20 bg-background/20 backdrop-blur-sm">
+        <section id="cs-strengths" className="relative z-20 bg-background/5 backdrop-blur-sm">
           <CSStrengths />
         </section>
 
         {/* Project-Based Learning Experience */}
-        <section id="experience" className="relative z-20 bg-background/30 backdrop-blur-sm">
+        <section id="experience" className="relative z-20 bg-background/10 backdrop-blur-sm">
           <ProjectExperience />
         </section>
 
         {/* Projects Section - Core Focus */}
-        <section id="projects" className="relative z-20 bg-background/20 backdrop-blur-sm">
+        <section id="projects" className="relative z-20 bg-background/5 backdrop-blur-sm">
           <Projects />
         </section>
 
         {/* GitHub Stats, LeetCode & Blogs */}
-        <section id="github-stats" className="relative z-20 bg-background/30 backdrop-blur-sm">
+        <section id="github-stats" className="relative z-20 bg-background/10 backdrop-blur-sm">
           <GitHubStats />
         </section>
 
         {/* Certifications & Achievements */}
-        <section id="certifications" className="relative z-20 bg-background/20 backdrop-blur-sm">
+        <section id="certifications" className="relative z-20 bg-background/5 backdrop-blur-sm">
           <Certifications />
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative z-20 bg-background/30 backdrop-blur-sm">
+        <section id="contact" className="relative z-20 bg-background/10 backdrop-blur-sm">
           <Contact />
         </section>
       </motion.main>
