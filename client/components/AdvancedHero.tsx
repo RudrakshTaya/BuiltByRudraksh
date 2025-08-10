@@ -332,8 +332,12 @@ const AnimatedStats = () => {
           />
           
           <div className="relative z-10 text-center">
-            <motion.div 
-              className={`text-${stat.color} font-bold text-2xl font-mono mb-2`}
+            <motion.div
+              className="font-bold text-2xl font-mono mb-2"
+              style={{ color: stat.color === 'neon-green' ? '#10b981' :
+                             stat.color === 'neon-blue' ? '#3b82f6' :
+                             stat.color === 'neon-purple' ? '#8b5cf6' :
+                             stat.color === 'neon-cyan' ? '#06b6d4' : '#10b981' }}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 2.9 + index * 0.1, type: "spring" }}
