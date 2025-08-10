@@ -601,7 +601,7 @@ a, button, [role="button"], input, textarea, select {
   animation: shimmer 2s infinite;
 }
 
-/* Responsive typography and 3D optimizations */
+/* Enhanced responsive typography and 3D optimizations */
 @media (max-width: 768px) {
   .gradient-text {
     background-size: 200% 200%;
@@ -610,6 +610,12 @@ a, button, [role="button"], input, textarea, select {
   /* Reduce 3D effects on mobile for better performance */
   .preserve-3d {
     transform-style: flat;
+  }
+
+  /* Optimize parallax for mobile */
+  .parallax-element {
+    transform: translateZ(0) !important;
+    will-change: transform;
   }
 
   /* Simplify animations on mobile */
@@ -621,6 +627,17 @@ a, button, [role="button"], input, textarea, select {
   body {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
+  }
+
+  /* Optimize section spacing for mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Reduce backdrop blur on mobile for performance */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(2px) !important;
   }
 }
 
