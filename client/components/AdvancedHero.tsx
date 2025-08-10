@@ -449,6 +449,19 @@ export const AdvancedHero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  if (!isLoaded) {
+    return (
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+        <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
+          <div className="animate-pulse">
+            <div className="h-16 bg-gray-600 rounded mb-6 w-96 mx-auto"></div>
+            <div className="h-8 bg-gray-700 rounded w-64 mx-auto"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <motion.section
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-20"
