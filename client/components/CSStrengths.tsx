@@ -238,7 +238,7 @@ export const CSStrengths = () => {
               key={topic.id}
               topic={topic}
               isActive={activeTopicId === topic.id}
-              onClick={() => setActiveTopicId(topic.id)}
+              onClick={() => handleTopicClick(topic.id)}
             />
           ))}
         </motion.div>
