@@ -59,7 +59,7 @@ const StatCard = ({ stat, index }: { stat: typeof stats.about[0]; index: number 
       >
         {stat.value}
       </motion.h3>
-      <p className="text-muted-foreground">{stat.label}</p>
+      <p className="text-muted-foreground text-sm md:text-base">{stat.label}</p>
     </motion.div>
   );
 };
