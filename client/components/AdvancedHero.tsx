@@ -322,8 +322,12 @@ const AnimatedStats = () => {
       {heroStats.map((stat, index) => (
         <motion.div
           key={index}
-          className="glass p-6 rounded-2xl border border-white/20 hover:border-neon-blue/50 transition-all duration-300 group relative overflow-hidden"
-          whileHover={{ scale: 1.05, y: -5 }}
+          className="glass p-6 rounded-2xl border border-white/20 group relative overflow-hidden"
+          whileHover={{
+            scale: 1.05,
+            y: -5,
+            borderColor: 'rgba(59, 130, 246, 0.5)'
+          }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.7 + index * 0.1, duration: 0.5 }}
