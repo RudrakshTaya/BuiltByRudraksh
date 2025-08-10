@@ -192,14 +192,28 @@ const DramaticRoles = () => {
 const MegaTechStack = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Fallback tech stack
+  const fallbackTechStack = [
+    { name: "React", icon: "⚛️", color: "bg-blue-500" },
+    { name: "JavaScript", icon: "JS", color: "bg-yellow-500" },
+    { name: "TypeScript", icon: "TS", color: "bg-blue-600" },
+    { name: "Node.js", icon: "📗", color: "bg-green-500" },
+    { name: "Python", icon: "🐍", color: "bg-green-600" },
+    { name: "Java", icon: "☕", color: "bg-orange-500" },
+    { name: "Git", icon: "🔧", color: "bg-red-500" },
+    { name: "Docker", icon: "🐳", color: "bg-blue-400" },
+  ];
+
+  const techStackToRender = skills?.techStack && Array.isArray(skills.techStack) && skills.techStack.length > 0
+    ? skills.techStack
+    : fallbackTechStack;
+
   useEffect(() => {
-    if (skills?.techStack?.length > 0) {
-      const interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % skills.techStack.length);
-      }, 1500);
-      return () => clearInterval(interval);
-    }
-  }, []);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % techStackToRender.length);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [techStackToRender.length]);
 
   return (
     <motion.div 
