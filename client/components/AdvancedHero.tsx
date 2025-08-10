@@ -231,27 +231,27 @@ const CircuitTechStack = () => {
     >
       {/* Circuit board background */}
       <div className="absolute inset-0 opacity-20">
-        <svg className="w-full h-full" viewBox="0 0 400 200">
-          {/* Circuit paths */}
-          <motion.path
-            d="M50,100 L150,100 L150,50 L250,50 L250,150 L350,150"
-            stroke="#00bcd4"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-          <motion.path
-            d="M50,150 L100,150 L100,100 L200,100 L200,50 L350,50"
-            stroke="#8b5cf6"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-          />
-        </svg>
+        <motion.div
+          className="absolute inset-0"
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <svg className="w-full h-full" viewBox="0 0 400 200">
+            {/* Circuit paths */}
+            <path
+              d="M50,100 L150,100 L150,50 L250,50 L250,150 L350,150"
+              stroke="#00bcd4"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M50,150 L100,150 L100,100 L200,100 L200,50 L350,50"
+              stroke="#8b5cf6"
+              strokeWidth="2"
+              fill="none"
+            />
+          </svg>
+        </motion.div>
       </div>
 
       {/* Tech stack grid */}
