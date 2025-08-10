@@ -218,7 +218,7 @@ const MegaTechStack = () => {
       
       {/* Hexagonal grid */}
       <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 max-w-6xl mx-auto">
-        {skills.techStack.map((tech, index) => (
+        {skills?.techStack?.map((tech, index) => (
           <motion.div
             key={tech.name}
             className="relative group cursor-pointer"
