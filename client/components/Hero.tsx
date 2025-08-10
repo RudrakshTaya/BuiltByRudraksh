@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, Download, ExternalLink, Code2, Trophy, ArrowDow
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
 import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
-import { Premium3DBackground } from './Premium3DBackground';
+import { SmoothParallaxBackground } from './SmoothParallaxBackground';
 
 // Enhanced Particle System
 const ParticleField = () => {
