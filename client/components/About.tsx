@@ -121,14 +121,14 @@ export const About = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="glass p-8 rounded-2xl mb-16 max-w-5xl mx-auto border border-white/10"
         >
-          <div className="flex items-start gap-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-neon-blue via-neon-purple to-neon-cyan rounded-xl flex items-center justify-center flex-shrink-0">
-              <Brain className="h-10 w-10 text-white" />
+          <div className="flex flex-col md:flex-row items-start gap-6">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-neon-blue via-neon-purple to-neon-cyan rounded-xl flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
+              <Brain className="h-8 w-8 md:h-10 md:w-10 text-white" />
             </div>
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                {personalInfo.title} & CS Student
-                <span className="text-sm bg-neon-blue/20 text-neon-blue px-3 py-1 rounded-full border border-neon-blue/30">
+            <div className="text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+                <span>{personalInfo.title} & CS Student</span>
+                <span className="text-xs md:text-sm bg-neon-blue/20 text-neon-blue px-3 py-1 rounded-full border border-neon-blue/30 self-center md:self-auto">
                   {personalInfo.university.name}
                 </span>
               </h3>
