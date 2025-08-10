@@ -217,9 +217,9 @@ export const About = () => {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <h3 className="text-3xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
-            <Award className="h-8 w-8 text-neon-green" />
-            Academic Strengths & CS Knowledge
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
+            <Award className="h-6 w-6 md:h-8 md:w-8 text-neon-green" />
+            <span>Academic Strengths & CS Knowledge</span>
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {academicHighlights.map((highlight, index) => (
