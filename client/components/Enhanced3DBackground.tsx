@@ -244,10 +244,18 @@ const EnhancedAlgorithmNodes = () => {
 
     const colors = ['#3B82F6', '#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444'];
 
-    const algorithmNodes = Array.from({ length: 16 }, (_, i) => ({
+    // Responsive algorithm nodes based on screen size
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1024;
+
+    const nodeCount = isMobile ? 8 : isTablet ? 12 : 16;
+    const columns = isMobile ? 2 : isTablet ? 3 : 4;
+    const spacing = isMobile ? 45 : isTablet ? 35 : 30;
+
+    const algorithmNodes = Array.from({ length: nodeCount }, (_, i) => ({
       id: i,
-      x: (i % 4) * 30 + 10,
-      y: Math.floor(i / 4) * 25 + 10,
+      x: (i % columns) * spacing + 10,
+      y: Math.floor(i / columns) * 25 + 10,
       z: Math.random() * 100 - 50,
       algorithm: algorithms[i % algorithms.length],
       color: colors[Math.floor(Math.random() * colors.length)],
