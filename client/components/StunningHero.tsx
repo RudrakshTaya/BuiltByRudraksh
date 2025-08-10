@@ -204,9 +204,26 @@ const MegaTechStack = () => {
     { name: "Docker", icon: "🐳", color: "bg-blue-400" },
   ];
 
-  const techStackToRender = skills?.techStack && Array.isArray(skills.techStack) && skills.techStack.length > 0
-    ? skills.techStack
-    : fallbackTechStack;
+  // Enhanced validation for tech stack
+  let techStackToRender = fallbackTechStack;
+
+  try {
+    if (skills?.techStack && Array.isArray(skills.techStack) && skills.techStack.length > 0) {
+      const validTechStack = skills.techStack.filter(tech =>
+        tech &&
+        typeof tech === 'object' &&
+        tech.name &&
+        typeof tech.name === 'string'
+      );
+
+      if (validTechStack.length > 0) {
+        techStackToRender = validTechStack;
+      }
+    }
+  } catch (error) {
+    console.warn('Error processing techStack, using fallback:', error);
+    techStackToRender = fallbackTechStack;
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
