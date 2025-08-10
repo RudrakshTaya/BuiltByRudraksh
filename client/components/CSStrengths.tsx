@@ -245,11 +245,21 @@ export const CSStrengths = () => {
 
         {/* Detailed Topic View */}
         <motion.div
+          ref={detailsSectionRef}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="glass p-8 rounded-2xl border border-white/10"
+          className="glass p-6 md:p-8 rounded-2xl border border-white/10 relative"
+          id="topic-details"
         >
+          {/* Visual indicator that content has changed */}
+          <motion.div
+            className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-neon-blue to-transparent"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            key={activeTopicId}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
           <div className="flex items-center gap-4 mb-8">
             <div className={`w-16 h-16 ${activeTopic.bgColor} rounded-xl flex items-center justify-center`}>
               {React.createElement(iconMap[activeTopic.icon as string] || Code2, { className: "h-8 w-8 text-black" })}
