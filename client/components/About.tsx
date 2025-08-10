@@ -96,7 +96,7 @@ const AcademicCard = ({ highlight, index }: { highlight: typeof academicHighligh
 
 export const About = () => {
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-40 left-10 w-64 h-64 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-40 right-10 w-80 h-80 bg-neon-cyan/10 rounded-full blur-3xl animate-pulse-slow" />
