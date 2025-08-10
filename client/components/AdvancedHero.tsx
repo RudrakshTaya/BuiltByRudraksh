@@ -20,7 +20,7 @@ const TypingName = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 150);
+    }, 120);
 
     return () => clearInterval(typingInterval);
   }, [currentIndex, name]);
