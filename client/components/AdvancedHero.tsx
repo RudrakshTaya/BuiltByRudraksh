@@ -259,11 +259,10 @@ const CircuitTechStack = () => {
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className={`relative cursor-pointer transition-all duration-300 ${
-              index === activeIndex ? 'scale-110' : ''
-            }`}
-            whileHover={{ scale: 1.15, rotateY: 10 }}
-            style={{ perspective: '1000px' }}
+            className="relative cursor-pointer"
+            initial={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.15 }}
+            transition={{ type: "tween", duration: 0.2 }}
           >
             <motion.div
               className={`w-16 h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
