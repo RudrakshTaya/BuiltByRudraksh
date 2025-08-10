@@ -119,7 +119,7 @@ export const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="glass p-8 rounded-2xl mb-16 max-w-5xl mx-auto border border-white/10"
+          className="glass p-4 md:p-8 rounded-2xl mb-12 md:mb-16 max-w-5xl mx-auto border border-white/10"
         >
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-neon-blue via-neon-purple to-neon-cyan rounded-xl flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
