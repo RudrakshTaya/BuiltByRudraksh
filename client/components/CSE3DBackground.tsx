@@ -38,7 +38,7 @@ const AlgorithmNodes = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 opacity-60" style={{ perspective: '1500px' }}>
+    <div className="absolute inset-0 opacity-80" style={{ perspective: '1500px' }}>
       {/* Algorithm Nodes */}
       {nodes.map((node) => (
         <motion.div
