@@ -4,7 +4,7 @@ import { Enhanced3DBackground } from "../components/Enhanced3DBackground";
 import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
 import { ScrollIndicator } from "../components/ScrollIndicator";
 import { Navbar } from "../components/Navbar";
-import { EnhancedHero } from "../components/EnhancedHero";
+import { AdvancedHero } from "../components/AdvancedHero";
 import { About } from "../components/About";
 import { CSStrengths } from "../components/CSStrengths";
 import { Projects } from "../components/Projects";
