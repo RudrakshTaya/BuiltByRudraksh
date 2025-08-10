@@ -513,10 +513,11 @@ export const AdvancedHero = () => {
                   whileHover={{ y: -10, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <motion.div 
-                    className={`${link.color} p-4 rounded-2xl glass border border-white/20 hover:border-neon-cyan/50 transition-all duration-300 relative overflow-hidden`}
-                    whileHover={{ 
+                  <motion.div
+                    className={`${link.color} p-4 rounded-2xl glass border border-white/20 relative overflow-hidden`}
+                    whileHover={{
                       boxShadow: "0 20px 40px rgba(6, 182, 212, 0.3)",
+                      borderColor: "rgba(6, 182, 212, 0.5)"
                     }}
                   >
                     <Icon className="h-7 w-7 relative z-10" />
