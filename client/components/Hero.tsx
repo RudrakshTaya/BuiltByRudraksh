@@ -207,8 +207,8 @@ const InteractiveTechStack = () => {
 export const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const scale = useTransform(scrollY, [0, 500], [1, 0.8]);
+  // Remove problematic opacity transform that's causing visibility issues
+  const y = useTransform(scrollY, [0, 500], [0, -100]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
