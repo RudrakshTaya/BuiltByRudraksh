@@ -379,8 +379,8 @@ const TechGrid3D = () => {
   const rotateY = useTransform(scrollY, [0, 1000], [0, 15]);
 
   return (
-    <motion.div 
-      className="absolute inset-0 opacity-30"
+    <motion.div
+      className="absolute inset-0 opacity-50"
       style={{
         perspective: '1000px',
         rotateX,
