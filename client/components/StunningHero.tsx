@@ -193,10 +193,12 @@ const MegaTechStack = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % skills.techStack.length);
-    }, 1500);
-    return () => clearInterval(interval);
+    if (skills?.techStack?.length > 0) {
+      const interval = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % skills.techStack.length);
+      }, 1500);
+      return () => clearInterval(interval);
+    }
   }, []);
 
   return (
