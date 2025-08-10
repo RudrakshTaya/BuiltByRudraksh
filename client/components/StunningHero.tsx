@@ -359,7 +359,7 @@ const ExplosiveStats = () => {
       transition={{ delay: 2.5, duration: 1 }}
       className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
     >
-      {statsToRender.map((stat, index) => (
+      {Array.isArray(statsToRender) && statsToRender.map((stat, index) => (
         <motion.div
           key={index}
           className="relative group"
