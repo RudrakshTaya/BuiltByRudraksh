@@ -374,11 +374,11 @@ const HolographicButtons = () => {
         whileTap={{ scale: 0.95 }}
         className="relative"
       >
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           variant="outline"
           onClick={scrollToContact}
-          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-12 py-6 rounded-2xl font-bold text-lg font-mono relative overflow-hidden"
+          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-sm sm:text-base md:text-lg font-mono relative overflow-hidden w-full sm:w-auto"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent w-full"
