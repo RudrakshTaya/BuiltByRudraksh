@@ -95,7 +95,7 @@ const TerminalSubtitle = () => {
         } else {
           clearInterval(typingInterval);
         }
-      }, 50);
+      }, 30);
       return () => clearInterval(typingInterval);
     }, 2000); // Start after name typing
 
