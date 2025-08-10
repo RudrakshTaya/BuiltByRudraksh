@@ -149,7 +149,7 @@ const FloatingCodeSnippets = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-40">
+    <div className="absolute inset-0 overflow-hidden opacity-60">
       {codeBlocks.map((block) => (
         <motion.div
           key={block.id}
