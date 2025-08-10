@@ -89,7 +89,8 @@ const CertificationCard = ({ cert, index }: { cert: (typeof certifications)[0]; 
             </div>
             <div className="flex items-center gap-2 text-cyan-400 text-sm">
               <Award className="h-4 w-4" />
-              <span>Hover to view details</span>
+              <span className="hidden md:inline">Hover to view details</span>
+              <span className="md:hidden">Tap to view details</span>
             </div>
           </div>
         </div>
