@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Enhanced3DBackground } from "../components/Enhanced3DBackground";
+import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
+import { ScrollIndicator } from "../components/ScrollIndicator";
 import { Navbar } from "../components/Navbar";
-import { Hero } from "../components/Hero";
+import { AdvancedHero } from "../components/AdvancedHero";
 import { About } from "../components/About";
 import { CSStrengths } from "../components/CSStrengths";
 import { Projects } from "../components/Projects";
@@ -16,7 +19,8 @@ const ScrollProgressBar = () => {
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (window.scrollY / scrollHeight) * 100;
       setScrollProgress(scrolled);
     };
@@ -58,57 +62,84 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Enhanced 3D Background with Strong Parallax */}
+      <Enhanced3DBackground />
+
+      {/* Performance Optimizer */}
+      <PerformanceOptimizer />
+
       {/* Navbar */}
       <Navbar />
 
-      {/* Scroll Progress Bar */}
-      <ScrollProgressBar />
+      {/* Enhanced Scroll Indicator */}
+      <ScrollIndicator />
 
       {/* Main Content */}
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16"
+        className="pt-16 relative z-10"
       >
         {/* Hero Section */}
-        <section id="home" className="relative">
-          <Hero />
+        <section id="home" className="relative z-20">
+          <AdvancedHero />
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative">
+        <section
+          id="about"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <About />
         </section>
 
         {/* Computer Science Strengths */}
-        <section id="cs-strengths" className="relative">
+        <section
+          id="cs-strengths"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <CSStrengths />
         </section>
 
         {/* Project-Based Learning Experience */}
-        <section id="experience" className="relative">
+        <section
+          id="experience"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <ProjectExperience />
         </section>
 
         {/* Projects Section - Core Focus */}
-        <section id="projects" className="relative">
+        <section
+          id="projects"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <Projects />
         </section>
 
         {/* GitHub Stats, LeetCode & Blogs */}
-        <section id="github-stats" className="relative">
+        <section
+          id="github-stats"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <GitHubStats />
         </section>
 
         {/* Certifications & Achievements */}
-        <section id="certifications" className="relative">
+        <section
+          id="certifications"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <Certifications />
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative">
+        <section
+          id="contact"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <Contact />
         </section>
       </motion.main>
@@ -134,16 +165,14 @@ export default function Index() {
           animate={{ y: [0, -2, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          />
         </motion.svg>
       </motion.button>
-
-      {/* Background Effects */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue/5 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-cyan/3 rounded-full blur-3xl animate-pulse-slow" />
-      </div>
     </div>
   );
 }
