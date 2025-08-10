@@ -437,11 +437,8 @@ export const Hero = () => {
         transformStyle: 'preserve-3d'
       }}
     >
-      {/* Premium 3D Background System */}
-      <div className="absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
-        <Premium3DBackground />
-        <ParallaxBackground />
-      </div>
+      {/* Smooth Parallax Background System */}
+      <SmoothParallaxBackground />
 
       {/* Simplified Tech Sphere */}
       <TechSphere />
