@@ -494,7 +494,7 @@ export const CSE3DBackground = () => {
       </motion.div>
 
       {/* Base gradient overlay for better contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/60" />
       
       {/* Ambient lighting effects */}
       <div className="absolute inset-0">
