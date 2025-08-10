@@ -236,8 +236,6 @@ export const Hero = () => {
         transformStyle: 'preserve-3d'
       }}
     >
-      {/* Smooth Parallax Background System */}
-      <SmoothParallaxBackground />
 
       {/* Simplified Tech Sphere */}
       <TechSphere />
