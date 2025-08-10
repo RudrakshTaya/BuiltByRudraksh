@@ -300,7 +300,7 @@ const DataStructures3D = () => {
   };
 
   return (
-    <div className="absolute inset-0 opacity-50">
+    <div className="absolute inset-0 opacity-70">
       {structures.map((structure, index) => renderStructure(structure, index))}
     </div>
   );
