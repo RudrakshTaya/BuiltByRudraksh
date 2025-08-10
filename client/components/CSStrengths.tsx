@@ -190,7 +190,7 @@ export const CSStrengths = () => {
   };
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section className="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-cyan/10 rounded-full blur-3xl animate-pulse-slow" />
