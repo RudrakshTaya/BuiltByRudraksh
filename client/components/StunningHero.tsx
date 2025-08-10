@@ -306,6 +306,18 @@ const MegaTechStack = () => {
 
 // Explosive stats display
 const ExplosiveStats = () => {
+  // Fallback stats
+  const fallbackStats = [
+    { label: "250+ Problems", color: "neon-blue" },
+    { label: "15+ Projects", color: "neon-purple" },
+    { label: "3+ Years", color: "neon-cyan" },
+    { label: "8.7 CGPA", color: "neon-green" }
+  ];
+
+  const statsToRender = stats?.hero && Array.isArray(stats.hero) && stats.hero.length > 0
+    ? stats.hero
+    : fallbackStats;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -313,7 +325,7 @@ const ExplosiveStats = () => {
       transition={{ delay: 2.5, duration: 1 }}
       className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
     >
-      {stats?.hero?.map((stat, index) => (
+      {statsToRender.map((stat, index) => (
         <motion.div
           key={index}
           className="relative group"
