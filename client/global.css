@@ -99,7 +99,7 @@
     scroll-padding-top: 100px;
   }
 
-  /* Performance optimizations for smooth parallax */
+  /* Enhanced performance optimizations for 3D and parallax */
   * {
     will-change: auto;
   }
@@ -111,9 +111,45 @@
     perspective: 1000px;
   }
 
+  /* 3D performance optimizations */
+  .preserve-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Smooth scrolling optimizations */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
   /* Smooth transitions for all elements */
   .smooth-transition {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Section visibility improvements */
+  section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Better backdrop blur performance */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 }
 
