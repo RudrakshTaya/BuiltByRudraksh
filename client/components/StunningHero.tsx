@@ -422,10 +422,32 @@ const EpicButtons = () => {
 
 // Social links with explosion effects
 const ExplosiveSocials = () => {
-  // Add safety check for socialLinks
-  if (!socialLinks || !Array.isArray(socialLinks)) {
-    return null;
-  }
+  // Create fallback social links to prevent errors
+  const fallbackSocialLinks = [
+    {
+      name: "GitHub",
+      icon: "Github",
+      url: "https://github.com/rudrakshtaya",
+      color: "text-white"
+    },
+    {
+      name: "LinkedIn",
+      icon: "Linkedin",
+      url: "https://linkedin.com/in/rudrakshtaya",
+      color: "text-neon-blue"
+    },
+    {
+      name: "LeetCode",
+      icon: "Code2",
+      url: "https://leetcode.com/rudrakshtaya",
+      color: "text-neon-cyan"
+    }
+  ];
+
+  // Use socialLinks if available, otherwise use fallback
+  const linksToRender = socialLinks && Array.isArray(socialLinks) && socialLinks.length > 0
+    ? socialLinks
+    : fallbackSocialLinks;
 
   return (
     <motion.div
@@ -434,7 +456,7 @@ const ExplosiveSocials = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 4, duration: 1 }}
     >
-      {socialLinks.map((link, index) => {
+      {linksToRender.map((link, index) => {
         const iconMap: { [key: string]: any } = {
           'Github': Github,
           'Linkedin': Linkedin,
@@ -443,14 +465,14 @@ const ExplosiveSocials = () => {
         };
         const Icon = iconMap[link.icon] || Code2; // Fallback to Code2 if icon not found
 
-        // Add safety checks for link properties
+        // Skip if link is invalid
         if (!link || !link.name || !link.url) {
           return null;
         }
 
         return (
           <motion.a
-            key={link.name}
+            key={`${link.name}-${index}`}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
