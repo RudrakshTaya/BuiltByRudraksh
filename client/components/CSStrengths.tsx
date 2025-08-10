@@ -204,8 +204,8 @@ export const CSStrengths = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold gradient-text mb-6">Computer Science Strengths</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Computer Science Strengths</h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Deep understanding of fundamental CS concepts, backed by hands-on projects and real-world applications. 
             These skills form the foundation for solving complex software engineering challenges.
           </p>
