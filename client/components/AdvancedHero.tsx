@@ -40,7 +40,7 @@ const TypingName = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="gradient-text relative inline-block">
+        <span className="gradient-text relative inline-block drop-shadow-lg">
           {displayedText}
           <motion.span
             className="text-neon-cyan"
