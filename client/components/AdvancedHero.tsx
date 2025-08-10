@@ -538,13 +538,12 @@ export const AdvancedHero = () => {
                   </motion.div>
                   
                   {/* Platform Label with glitch effect */}
-                  <motion.div 
-                    className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white px-3 py-1 rounded-lg text-sm font-mono backdrop-blur-sm border border-neon-cyan/20"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
+                  <motion.div
+                    className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"
+                    whileHover={{ y: -2, scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    /{link.name.toLowerCase()}
+                    {link.name}
                   </motion.div>
                 </motion.a>
               );
