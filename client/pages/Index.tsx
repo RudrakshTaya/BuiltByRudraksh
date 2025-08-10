@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CSE3DBackground } from "../components/CSE3DBackground";
 import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
+import { ParallaxTest } from "../components/ParallaxTest";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
