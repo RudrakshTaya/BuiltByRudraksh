@@ -452,7 +452,7 @@ export const CSE3DBackground = () => {
   const smoothLayer5Y = useSpring(layer5Y, { damping: 20, stiffness: 60 });
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Layer 1: Matrix Rain (Deepest) */}
       <motion.div
         className="absolute inset-0"
