@@ -52,26 +52,27 @@ const TypingName = () => {
         </span>
         
         {/* Matrix-style background effects */}
-        <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20">
+        <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20 pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute text-green-400 text-xs font-mono"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 27) % 100}%`,
+                top: `${(i * 17) % 100}%`,
               }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{
                 opacity: [0, 1, 0],
                 y: [0, -20, 0],
               }}
               transition={{
                 duration: 2,
-                delay: Math.random() * 2,
+                delay: i * 0.1,
                 repeat: Infinity,
               }}
             >
-              {Math.random() > 0.5 ? '1' : '0'}
+              {i % 2 === 0 ? '1' : '0'}
             </motion.div>
           ))}
         </div>
