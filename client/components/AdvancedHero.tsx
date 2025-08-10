@@ -277,12 +277,7 @@ const CircuitTechStack = () => {
               
               {/* Circuit connections */}
               {index === activeIndex && (
-                <motion.div
-                  className="absolute inset-0 border-2 border-neon-cyan rounded-xl"
-                  initial={{ scale: 1, opacity: 1 }}
-                  animate={{ scale: 1.5, opacity: 0 }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
+                <div className="absolute inset-0 border-2 border-neon-cyan rounded-xl animate-pulse" />
               )}
             </motion.div>
             
