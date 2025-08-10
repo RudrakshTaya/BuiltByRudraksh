@@ -255,7 +255,7 @@ const CircuitTechStack = () => {
       </div>
 
       {/* Tech stack grid */}
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 relative z-10">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 relative z-10 max-w-6xl mx-auto px-4">
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
