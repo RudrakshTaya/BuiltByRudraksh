@@ -71,7 +71,7 @@ export default function Index() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16"
+        className="pt-16 relative z-10"
       >
         {/* Hero Section */}
         <section id="home" className="relative">
