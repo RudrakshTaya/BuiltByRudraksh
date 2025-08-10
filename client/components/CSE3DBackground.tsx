@@ -236,7 +236,7 @@ const DataStructures3D = () => {
       
       case 'list':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="flex gap-1">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="w-3 h-3 bg-green-500 rounded border border-green-400" />
@@ -244,10 +244,10 @@ const DataStructures3D = () => {
             </div>
           </motion.div>
         );
-      
+
       case 'hash':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="grid grid-cols-2 gap-1">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="w-3 h-3 bg-purple-500 rounded border border-purple-400" />
