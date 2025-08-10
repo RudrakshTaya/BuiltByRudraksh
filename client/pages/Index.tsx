@@ -74,42 +74,42 @@ export default function Index() {
         className="pt-16 relative z-10"
       >
         {/* Hero Section */}
-        <section id="home" className="relative">
+        <section id="home" className="relative z-20">
           <Hero />
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative">
+        <section id="about" className="relative z-20 bg-background/60 backdrop-blur-sm">
           <About />
         </section>
 
         {/* Computer Science Strengths */}
-        <section id="cs-strengths" className="relative">
+        <section id="cs-strengths" className="relative z-20 bg-background/40 backdrop-blur-sm">
           <CSStrengths />
         </section>
 
         {/* Project-Based Learning Experience */}
-        <section id="experience" className="relative">
+        <section id="experience" className="relative z-20 bg-background/60 backdrop-blur-sm">
           <ProjectExperience />
         </section>
 
         {/* Projects Section - Core Focus */}
-        <section id="projects" className="relative">
+        <section id="projects" className="relative z-20 bg-background/40 backdrop-blur-sm">
           <Projects />
         </section>
 
         {/* GitHub Stats, LeetCode & Blogs */}
-        <section id="github-stats" className="relative">
+        <section id="github-stats" className="relative z-20 bg-background/60 backdrop-blur-sm">
           <GitHubStats />
         </section>
 
         {/* Certifications & Achievements */}
-        <section id="certifications" className="relative">
+        <section id="certifications" className="relative z-20 bg-background/40 backdrop-blur-sm">
           <Certifications />
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative">
+        <section id="contact" className="relative z-20 bg-background/60 backdrop-blur-sm">
           <Contact />
         </section>
       </motion.main>
