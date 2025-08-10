@@ -182,7 +182,7 @@ export const About = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass p-6 rounded-2xl border border-white/10"
+            className="glass p-4 md:p-6 rounded-2xl border border-white/10"
           >
             <div className="flex items-center gap-3 mb-6">
               <Zap className="h-5 w-5 md:h-6 md:w-6 text-neon-blue" />
