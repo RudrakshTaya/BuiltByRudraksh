@@ -62,8 +62,8 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Global CSE 3D Background with Parallax */}
-      <CSE3DBackground />
+      {/* Enhanced 3D Background with Strong Parallax */}
+      <Enhanced3DBackground />
 
       {/* Parallax Test - Remove after testing */}
       <ParallaxTest />
