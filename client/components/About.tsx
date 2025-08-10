@@ -48,11 +48,11 @@ const StatCard = ({ stat, index }: { stat: typeof stats.about[0]; index: number 
       {/* Background glow effect */}
       <div className={`absolute inset-0 ${stat.bgColor}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
       
-      <div className={`relative z-10 w-16 h-16 ${stat.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-        <stat.icon className="h-8 w-8 text-black" />
+      <div className={`relative z-10 w-12 h-12 md:w-16 md:h-16 ${stat.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+        <stat.icon className="h-6 w-6 md:h-8 md:w-8 text-black" />
       </div>
-      <motion.h3 
-        className="text-3xl font-bold text-white mb-2"
+      <motion.h3
+        className="text-2xl md:text-3xl font-bold text-white mb-2"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         transition={{ delay: index * 0.2 + 0.3, duration: 0.5, type: "spring" }}
