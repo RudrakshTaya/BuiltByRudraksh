@@ -363,8 +363,8 @@ const HolographicButtons = () => {
   };
 
   return (
-    <motion.div 
-      className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+    <motion.div
+      className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-4xl mx-auto px-4"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 3.5, duration: 0.8 }}
