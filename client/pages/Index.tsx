@@ -60,7 +60,10 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Global CSE 3D Background with Parallax */}
+      <CSE3DBackground />
+
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
