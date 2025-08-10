@@ -420,8 +420,13 @@ const EpicButtons = () => {
 
 // Social links with explosion effects
 const ExplosiveSocials = () => {
+  // Add safety check for socialLinks
+  if (!socialLinks || !Array.isArray(socialLinks)) {
+    return null;
+  }
+
   return (
-    <motion.div 
+    <motion.div
       className="flex justify-center space-x-12"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -434,7 +439,12 @@ const ExplosiveSocials = () => {
           'Code2': Code2,
           'Trophy': Trophy
         };
-        const Icon = iconMap[link.icon];
+        const Icon = iconMap[link.icon] || Code2; // Fallback to Code2 if icon not found
+
+        // Add safety checks for link properties
+        if (!link || !link.name || !link.url) {
+          return null;
+        }
 
         return (
           <motion.a
@@ -445,28 +455,28 @@ const ExplosiveSocials = () => {
             className="group relative"
             initial={{ opacity: 0, scale: 0, rotateZ: -180 }}
             animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
-            transition={{ 
-              delay: 4.2 + index * 0.2, 
-              duration: 0.8, 
+            transition={{
+              delay: 4.2 + index * 0.2,
+              duration: 0.8,
               type: "spring",
-              stiffness: 200 
+              stiffness: 200
             }}
-            whileHover={{ 
-              scale: 1.3, 
+            whileHover={{
+              scale: 1.3,
               rotateZ: 360,
               y: -20
             }}
             whileTap={{ scale: 0.9 }}
           >
-            <motion.div 
-              className={`${link.color} p-6 rounded-3xl border-4 border-white/20 relative overflow-hidden backdrop-blur-xl`}
-              whileHover={{ 
+            <motion.div
+              className={`${link.color || 'text-white'} p-6 rounded-3xl border-4 border-white/20 relative overflow-hidden backdrop-blur-xl`}
+              whileHover={{
                 borderColor: 'rgba(6, 182, 212, 1)',
                 boxShadow: "0 0 50px rgba(6, 182, 212, 0.8)",
               }}
             >
-              <Icon className="h-10 w-10 relative z-10" />
-              
+              {Icon && <Icon className="h-10 w-10 relative z-10" />}
+
               {/* Explosion effect on hover */}
               <motion.div
                 className="absolute inset-0 bg-gradient-radial from-cyan-400/50 to-transparent"
@@ -474,7 +484,7 @@ const ExplosiveSocials = () => {
                 whileHover={{ scale: 3, opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              
+
               {/* Orbital rings */}
               <motion.div
                 className="absolute inset-0 border-2 border-cyan-400/50 rounded-3xl"
@@ -482,9 +492,9 @@ const ExplosiveSocials = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
             </motion.div>
-            
+
             {/* Platform label */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-4 py-2 rounded-xl text-lg font-bold border-2 border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xl"
               whileHover={{ y: -5, scale: 1.1 }}
             >
