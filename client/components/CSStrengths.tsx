@@ -237,12 +237,25 @@ export const CSStrengths = () => {
           </div>
         </motion.div>
 
+        {/* Topic Selection Instructions */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-8"
+        >
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-neon-cyan/10 to-neon-green/10 px-6 py-3 rounded-full border border-neon-cyan/20">
+            <Target className="h-4 w-4 text-neon-cyan" />
+            <span className="text-neon-cyan font-medium text-sm md:text-base">Click any topic below to explore detailed concepts and projects ↓</span>
+          </div>
+        </motion.div>
+
         {/* Topic Selection Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12"
         >
           {csTopicsData.map((topic) => (
             <TopicCard
