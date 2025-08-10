@@ -185,8 +185,8 @@ export const About = () => {
             className="glass p-6 rounded-2xl border border-white/10"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Zap className="h-6 w-6 text-neon-blue" />
-              <h3 className="text-xl font-bold text-white">Web Technologies</h3>
+              <Zap className="h-5 w-5 md:h-6 md:w-6 text-neon-blue" />
+              <h3 className="text-lg md:text-xl font-bold text-white">Web Technologies</h3>
             </div>
             {skills.webTech.map((skill, index) => (
               <SkillBar key={skill.name} skill={skill} index={index} delay={0.4} />
