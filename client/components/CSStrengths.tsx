@@ -162,6 +162,21 @@ const DetailedView = ({ topic }: { topic: typeof csTopics[0] }) => {
 export const CSStrengths = () => {
   const [activeTopicId, setActiveTopicId] = useState("dsa");
   const activeTopic = csTopicsData.find(t => t.id === activeTopicId) || csTopicsData[0];
+  const detailsSectionRef = React.useRef<HTMLDivElement>(null);
+
+  const handleTopicClick = (topicId: string) => {
+    setActiveTopicId(topicId);
+
+    // Auto-scroll to details section with a slight delay to allow state to update
+    setTimeout(() => {
+      if (detailsSectionRef.current) {
+        detailsSectionRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
+  };
 
   return (
     <section className="py-20 px-6 relative overflow-hidden">
