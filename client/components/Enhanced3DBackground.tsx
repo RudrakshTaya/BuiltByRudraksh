@@ -75,7 +75,7 @@ const GeometricPatterns = () => {
 
   return (
     <motion.div
-      className="absolute inset-0 overflow-hidden opacity-60"
+      className="absolute inset-0 overflow-hidden opacity-40"
       style={{ y }}
     >
       {/* Rotating hexagons */}
