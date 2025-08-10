@@ -139,8 +139,8 @@ export default function Index() {
         </motion.svg>
       </motion.button>
 
-      {/* Global Smooth Parallax Background */}
-      <SmoothParallaxBackground />
+      {/* Global CSE 3D Background with Parallax */}
+      <CSE3DBackground />
     </div>
   );
 }
