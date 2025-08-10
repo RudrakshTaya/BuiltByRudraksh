@@ -160,7 +160,7 @@ export const About = () => {
         </div>
 
         {/* Skills Sections */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-12 md:mb-16">
           {/* Programming Languages */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
