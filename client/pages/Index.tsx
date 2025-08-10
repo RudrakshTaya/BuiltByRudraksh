@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { SmoothParallaxBackground } from "../components/SmoothParallaxBackground";
+import { CSE3DBackground } from "../components/CSE3DBackground";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
