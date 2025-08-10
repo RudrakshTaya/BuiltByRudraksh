@@ -271,13 +271,53 @@ export const CSStrengths = () => {
             key={activeTopicId}
             transition={{ duration: 0.8, ease: "easeOut" }}
           />
-          <div className="flex items-center gap-4 mb-8">
-            <div className={`w-16 h-16 ${activeTopic.bgColor} rounded-xl flex items-center justify-center`}>
-              {React.createElement(iconMap[activeTopic.icon as string] || Code2, { className: "h-8 w-8 text-black" })}
+          {/* Section header with clear indication */}
+          <motion.div
+            className="text-center mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            key={`header-${activeTopicId}`}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 px-4 py-2 rounded-full border border-neon-blue/30 mb-4">
+              <span className="text-sm text-neon-blue font-medium">Currently Viewing</span>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 0.5 }}
+                className="w-2 h-2 bg-neon-blue rounded-full"
+              />
             </div>
+          </motion.div>
+
+          <div className="flex flex-col md:flex-row items-center gap-4 mb-8 text-center md:text-left">
+            <motion.div
+              className={`w-16 h-16 ${activeTopic.bgColor} rounded-xl flex items-center justify-center`}
+              initial={{ scale: 0.8, rotate: -10 }}
+              animate={{ scale: 1, rotate: 0 }}
+              key={`icon-${activeTopicId}`}
+              transition={{ duration: 0.5, type: "spring" }}
+            >
+              {React.createElement(iconMap[activeTopic.icon as string] || Code2, { className: "h-8 w-8 text-black" })}
+            </motion.div>
             <div>
-              <h3 className={`text-3xl font-bold ${activeTopic.color} mb-2`}>{activeTopic.title}</h3>
-              <p className="text-muted-foreground text-lg">{activeTopic.description}</p>
+              <motion.h3
+                className={`text-2xl md:text-3xl font-bold ${activeTopic.color} mb-2`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                key={`title-${activeTopicId}`}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                {activeTopic.title}
+              </motion.h3>
+              <motion.p
+                className="text-muted-foreground text-base md:text-lg"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                key={`desc-${activeTopicId}`}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                {activeTopic.description}
+              </motion.p>
             </div>
           </div>
 
