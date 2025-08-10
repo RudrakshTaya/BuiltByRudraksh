@@ -1,13 +1,30 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Github, Linkedin, Mail, Download, Code2, Trophy, Terminal, Cpu, Brain, Zap, Database } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  Code2,
+  Trophy,
+  Terminal,
+  Cpu,
+  Brain,
+  Zap,
+  Database,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
-import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
+import {
+  personalInfo,
+  skills,
+  stats,
+  socialLinks,
+} from "../data/portfolioData";
 
 // Enhanced typing effect for name with glitch
 const EnhancedTypingName = () => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isGlitching, setIsGlitching] = useState(false);
@@ -16,8 +33,8 @@ const EnhancedTypingName = () => {
   useEffect(() => {
     const typingInterval = setInterval(() => {
       if (currentIndex < name.length) {
-        setDisplayedText(prev => prev + name[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
+        setDisplayedText((prev) => prev + name[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
       } else {
         clearInterval(typingInterval);
         // Add glitch effect after typing
@@ -33,29 +50,33 @@ const EnhancedTypingName = () => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
     return () => clearInterval(cursorInterval);
   }, []);
 
   return (
     <div className="relative mb-8">
-      <motion.h1 
+      <motion.h1
         className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold relative text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.span 
+        <motion.span
           className="relative inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg"
-          animate={isGlitching ? {
-            x: [0, -2, 2, -1, 1, 0],
-            textShadow: [
-              "0 0 0 transparent",
-              "2px 0 0 #ff0000, -2px 0 0 #00ffff",
-              "0 0 0 transparent"
-            ]
-          } : {}}
+          animate={
+            isGlitching
+              ? {
+                  x: [0, -2, 2, -1, 1, 0],
+                  textShadow: [
+                    "0 0 0 transparent",
+                    "2px 0 0 #ff0000, -2px 0 0 #00ffff",
+                    "0 0 0 transparent",
+                  ],
+                }
+              : {}
+          }
           transition={{ duration: 0.5 }}
         >
           {displayedText}
@@ -67,7 +88,7 @@ const EnhancedTypingName = () => {
             |
           </motion.span>
         </motion.span>
-        
+
         {/* High-tech particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {Array.from({ length: 15 }).map((_, i) => (
@@ -99,7 +120,7 @@ const EnhancedTypingName = () => {
 
 // Fixed terminal subtitle with proper responsive design
 const FixedTerminalSubtitle = () => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const subtitle = "Computer Science Student & Full Stack Developer";
 
@@ -107,8 +128,8 @@ const FixedTerminalSubtitle = () => {
     const timer = setTimeout(() => {
       const typingInterval = setInterval(() => {
         if (currentIndex < subtitle.length) {
-          setDisplayedText(prev => prev + subtitle[currentIndex]);
-          setCurrentIndex(prev => prev + 1);
+          setDisplayedText((prev) => prev + subtitle[currentIndex]);
+          setCurrentIndex((prev) => prev + 1);
         } else {
           clearInterval(typingInterval);
         }
@@ -132,11 +153,15 @@ const FixedTerminalSubtitle = () => {
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">~/portfolio/about</span>
+        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">
+          ~/portfolio/about
+        </span>
       </div>
       <div className="font-mono text-left overflow-hidden">
         <span className="text-cyan-400">$ </span>
-        <span className="text-white text-sm sm:text-base break-words">{displayedText}</span>
+        <span className="text-white text-sm sm:text-base break-words">
+          {displayedText}
+        </span>
         <motion.span
           className="text-cyan-400"
           animate={{ opacity: [1, 0, 1] }}
@@ -152,12 +177,24 @@ const FixedTerminalSubtitle = () => {
 // Enhanced role display with better layout
 const HighTechRoles = () => {
   const roles = [
-    { text: "Full Stack Developer", color: "from-blue-400 to-cyan-400", icon: Code2 },
-    { text: "Algorithm Expert", color: "from-purple-400 to-pink-400", icon: Brain },
-    { text: "Problem Solver", color: "from-green-400 to-emerald-400", icon: Cpu },
+    {
+      text: "Full Stack Developer",
+      color: "from-blue-400 to-cyan-400",
+      icon: Code2,
+    },
+    {
+      text: "Algorithm Expert",
+      color: "from-purple-400 to-pink-400",
+      icon: Brain,
+    },
+    {
+      text: "Problem Solver",
+      color: "from-green-400 to-emerald-400",
+      icon: Cpu,
+    },
     { text: "CS Student", color: "from-orange-400 to-red-400", icon: Zap },
   ];
-  
+
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -168,10 +205,7 @@ const HighTechRoles = () => {
   }, []);
 
   return (
-    <motion.div 
-      className="mb-12"
-      key={currentRole}
-    >
+    <motion.div className="mb-12" key={currentRole}>
       <motion.div
         className="glass p-6 sm:p-8 rounded-3xl border-2 border-white/20 backdrop-blur-xl relative overflow-hidden max-w-5xl mx-auto"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -197,10 +231,12 @@ const HighTechRoles = () => {
             }}
             transition={{ duration: 3, ease: "easeInOut" }}
           >
-            {React.createElement(roles[currentRole].icon, { className: "w-8 h-8 text-black" })}
+            {React.createElement(roles[currentRole].icon, {
+              className: "w-8 h-8 text-black",
+            })}
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r ${roles[currentRole].color} bg-clip-text text-transparent text-center`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -213,11 +249,11 @@ const HighTechRoles = () => {
         {/* Scan lines */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent h-full"
-          animate={{ x: ['-100%', '100%'] }}
+          animate={{ x: ["-100%", "100%"] }}
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
       </motion.div>
@@ -231,7 +267,7 @@ const ResponsiveStats = () => {
     { label: "250+ DSA Problems", color: "#10b981" },
     { label: "15+ Full Stack Projects", color: "#3b82f6" },
     { label: "3+ Years Learning", color: "#8b5cf6" },
-    { label: "8.7 CGPA", color: "#06b6d4" }
+    { label: "8.7 CGPA", color: "#06b6d4" },
   ];
 
   const heroStats = stats?.hero || fallbackStats;
@@ -247,10 +283,10 @@ const ResponsiveStats = () => {
         <motion.div
           key={index}
           className="glass p-4 sm:p-6 rounded-2xl border border-white/20 text-center relative overflow-hidden group"
-          whileHover={{ 
-            scale: 1.05, 
+          whileHover={{
+            scale: 1.05,
             y: -5,
-            borderColor: 'rgba(6, 182, 212, 0.5)'
+            borderColor: "rgba(6, 182, 212, 0.5)",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -258,22 +294,24 @@ const ResponsiveStats = () => {
         >
           {/* High-tech background effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          
+
           <div className="relative z-10">
-            <motion.div 
+            <motion.div
               className="font-bold text-xl sm:text-2xl font-mono mb-2"
-              style={{ color: typeof stat.color === 'string' ? stat.color : '#10b981' }}
+              style={{
+                color: typeof stat.color === "string" ? stat.color : "#10b981",
+              }}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 2.9 + index * 0.1, type: "spring" }}
             >
-              {stat.label.split(' ')[0]}
+              {stat.label.split(" ")[0]}
             </motion.div>
             <div className="text-gray-400 text-sm font-mono">
-              {stat.label.split(' ').slice(1).join(' ')}
+              {stat.label.split(" ").slice(1).join(" ")}
             </div>
           </div>
-          
+
           {/* Corner decorations */}
           <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-cyan-400/50"></div>
           <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-cyan-400/50"></div>
@@ -286,7 +324,7 @@ const ResponsiveStats = () => {
 // Enhanced tech stack with better responsive layout
 const ResponsiveTechStack = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   const fallbackTechStack = [
     { name: "React", icon: "⚛️", color: "bg-blue-500" },
     { name: "JavaScript", icon: "JS", color: "bg-yellow-500" },
@@ -295,7 +333,7 @@ const ResponsiveTechStack = () => {
     { name: "Python", icon: "🐍", color: "bg-green-500" },
     { name: "Java", icon: "☕", color: "bg-orange-500" },
     { name: "MongoDB", icon: "🍃", color: "bg-green-400" },
-    { name: "MySQL", icon: "🗄️", color: "bg-blue-500" }
+    { name: "MySQL", icon: "🗄️", color: "bg-blue-500" },
   ];
 
   const techStack = skills?.techStack || fallbackTechStack;
@@ -308,13 +346,13 @@ const ResponsiveTechStack = () => {
   }, [techStack.length]);
 
   return (
-    <motion.div 
+    <motion.div
       className="mb-16 max-w-6xl mx-auto"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 3, duration: 1 }}
     >
-      <motion.h3 
+      <motion.h3
         className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
         animate={{ y: [0, -3, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
@@ -330,38 +368,44 @@ const ResponsiveTechStack = () => {
             className="relative group cursor-pointer"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: 3.2 + index * 0.05, 
+            transition={{
+              delay: 3.2 + index * 0.05,
               duration: 0.8,
               type: "spring",
             }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.2,
-              y: -5
+              y: -5,
             }}
           >
             <motion.div
               className={`w-12 h-12 sm:w-16 sm:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
-                index === activeIndex ? 'border-cyan-400 shadow-lg shadow-cyan-400/50' : 'border-white/20'
+                index === activeIndex
+                  ? "border-cyan-400 shadow-lg shadow-cyan-400/50"
+                  : "border-white/20"
               }`}
-              animate={index === activeIndex ? {
-                scale: [1, 1.1, 1],
-                boxShadow: [
-                  '0 0 20px rgba(6, 182, 212, 0.5)',
-                  '0 0 30px rgba(6, 182, 212, 0.8)',
-                  '0 0 20px rgba(6, 182, 212, 0.5)'
-                ]
-              } : {}}
+              animate={
+                index === activeIndex
+                  ? {
+                      scale: [1, 1.1, 1],
+                      boxShadow: [
+                        "0 0 20px rgba(6, 182, 212, 0.5)",
+                        "0 0 30px rgba(6, 182, 212, 0.8)",
+                        "0 0 20px rgba(6, 182, 212, 0.5)",
+                      ],
+                    }
+                  : {}
+              }
               transition={{ duration: 1.5 }}
             >
               <span className="text-lg sm:text-xl">{tech.icon}</span>
-              
+
               {/* Active glow */}
               {index === activeIndex && (
                 <div className="absolute inset-0 border-2 border-cyan-400 rounded-xl animate-pulse" />
               )}
             </motion.div>
-            
+
             {/* Tech name tooltip */}
             <motion.div
               className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-2 py-1 rounded-lg text-xs font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10"
@@ -379,11 +423,11 @@ const ResponsiveTechStack = () => {
 // Enhanced action buttons
 const HighTechButtons = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center mb-16"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -394,8 +438,8 @@ const HighTechButtons = () => {
         whileTap={{ scale: 0.95 }}
         className="relative w-full sm:w-auto"
       >
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           onClick={scrollToContact}
           className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-full font-black text-lg relative overflow-hidden border-0 shadow-xl"
         >
@@ -416,8 +460,8 @@ const HighTechButtons = () => {
         whileTap={{ scale: 0.95 }}
         className="relative w-full sm:w-auto"
       >
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           variant="outline"
           onClick={downloadResume}
           className="w-full sm:w-auto border-2 border-cyan-400 text-cyan-400 bg-black/50 hover:bg-cyan-400/10 px-8 sm:px-12 py-4 sm:py-6 rounded-full font-black text-lg relative overflow-hidden backdrop-blur-xl"
@@ -439,28 +483,29 @@ const FixedSocialLinks = () => {
       name: "GitHub",
       icon: "Github",
       url: "https://github.com/rudrakshtaya",
-      color: "text-white"
+      color: "text-white",
     },
     {
       name: "LinkedIn",
       icon: "Linkedin",
       url: "https://linkedin.com/in/rudrakshtaya",
-      color: "text-blue-400"
+      color: "text-blue-400",
     },
     {
       name: "LeetCode",
       icon: "Code2",
       url: "https://leetcode.com/rudrakshtaya",
-      color: "text-cyan-400"
-    }
+      color: "text-cyan-400",
+    },
   ];
 
-  const linksToRender = (socialLinks && Array.isArray(socialLinks) && socialLinks.length > 0) 
-    ? socialLinks 
-    : fallbackSocialLinks;
+  const linksToRender =
+    socialLinks && Array.isArray(socialLinks) && socialLinks.length > 0
+      ? socialLinks
+      : fallbackSocialLinks;
 
   return (
-    <motion.div 
+    <motion.div
       className="flex justify-center space-x-6 sm:space-x-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -468,11 +513,11 @@ const FixedSocialLinks = () => {
     >
       {linksToRender.map((link, index) => {
         const iconMap: { [key: string]: any } = {
-          'Github': Github,
-          'Linkedin': Linkedin,
-          'Code2': Code2,
-          'Trophy': Trophy,
-          'Mail': Mail
+          Github: Github,
+          Linkedin: Linkedin,
+          Code2: Code2,
+          Trophy: Trophy,
+          Mail: Mail,
         };
         const Icon = iconMap[link.icon] || Code2;
 
@@ -485,29 +530,37 @@ const FixedSocialLinks = () => {
             className="group relative"
             initial={{ opacity: 0, y: 30, scale: 0 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 4.2 + index * 0.1, duration: 0.5, type: "spring" }}
+            transition={{
+              delay: 4.2 + index * 0.1,
+              duration: 0.5,
+              type: "spring",
+            }}
             whileHover={{ y: -10, scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <motion.div 
-              className={`${link.color || 'text-white'} p-4 sm:p-6 rounded-2xl glass border border-white/20 relative overflow-hidden backdrop-blur-xl`}
-              whileHover={{ 
-                borderColor: 'rgba(6, 182, 212, 1)',
+            <motion.div
+              className={`${link.color || "text-white"} p-4 sm:p-6 rounded-2xl glass border border-white/20 relative overflow-hidden backdrop-blur-xl`}
+              whileHover={{
+                borderColor: "rgba(6, 182, 212, 1)",
                 boxShadow: "0 20px 40px rgba(6, 182, 212, 0.3)",
               }}
             >
               <Icon className="h-6 w-6 sm:h-8 sm:w-8 relative z-10" />
-              
+
               {/* Scan line effect */}
               <motion.div
                 className="absolute inset-x-0 h-0.5 bg-cyan-400 top-0"
                 animate={{ y: [0, 60] }}
-                transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: index * 0.5,
+                }}
               />
             </motion.div>
-            
+
             {/* Fixed platform label */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-3 py-2 rounded-xl text-sm font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-xl whitespace-nowrap z-20"
               whileHover={{ y: -2, scale: 1.05 }}
             >
@@ -538,8 +591,8 @@ export const EnhancedHero = () => {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   if (!isLoaded) {
@@ -548,7 +601,9 @@ export const EnhancedHero = () => {
         <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
           <div className="animate-pulse space-y-4">
             <div className="h-16 bg-gradient-to-r from-cyan-400 to-purple-600 rounded mx-auto w-3/4 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">Loading Portfolio...</span>
+              <span className="text-white font-bold text-xl">
+                Loading Portfolio...
+              </span>
             </div>
           </div>
         </div>
@@ -566,13 +621,16 @@ export const EnhancedHero = () => {
     >
       {/* High-tech grid background */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
             linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px),
             linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: '30px 30px'
-        }} />
+            backgroundSize: "30px 30px",
+          }}
+        />
       </div>
 
       {/* Main Content */}

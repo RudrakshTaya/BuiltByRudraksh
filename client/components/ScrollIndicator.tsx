@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export const ScrollIndicator = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
       const progress = (scrolled / scrollHeight) * 100;
       setScrollProgress(Math.min(progress, 100));
     };
 
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
     updateScrollProgress(); // Initial calculation
 
-    return () => window.removeEventListener('scroll', updateScrollProgress);
+    return () => window.removeEventListener("scroll", updateScrollProgress);
   }, []);
 
   return (

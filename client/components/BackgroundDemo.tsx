@@ -16,25 +16,28 @@ export const BackgroundDemo = () => {
             Smooth & Elegant
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12">
-            Experience the new smooth parallax background with subtle animations 
+            Experience the new smooth parallax background with subtle animations
             and perfect performance across all sections.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {[
               {
                 title: "Smooth Parallax",
-                description: "Multiple layers move at different speeds creating depth",
+                description:
+                  "Multiple layers move at different speeds creating depth",
                 icon: "🌊",
               },
               {
-                title: "Optimized Performance", 
-                description: "Hardware-accelerated animations with spring physics",
+                title: "Optimized Performance",
+                description:
+                  "Hardware-accelerated animations with spring physics",
                 icon: "⚡",
               },
               {
                 title: "Elegant Design",
-                description: "Clean, minimal effects that enhance without distraction",
+                description:
+                  "Clean, minimal effects that enhance without distraction",
                 icon: "✨",
               },
             ].map((feature, index) => (
@@ -48,7 +51,9 @@ export const BackgroundDemo = () => {
                 whileHover={{ y: -10, scale: 1.02 }}
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
+                <h3 className="text-xl font-bold mb-4 text-white">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-400">{feature.description}</p>
               </motion.div>
             ))}

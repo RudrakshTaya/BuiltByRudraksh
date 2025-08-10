@@ -1,13 +1,37 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Github, Linkedin, Mail, Download, ExternalLink, Code2, Trophy, ArrowDown, Sparkles, Zap, Cpu, Brain, Terminal, Binary, Wifi, Database, Cloud, Layers } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  ExternalLink,
+  Code2,
+  Trophy,
+  ArrowDown,
+  Sparkles,
+  Zap,
+  Cpu,
+  Brain,
+  Terminal,
+  Binary,
+  Wifi,
+  Database,
+  Cloud,
+  Layers,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
-import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
+import {
+  personalInfo,
+  skills,
+  stats,
+  socialLinks,
+} from "../data/portfolioData";
 
 // High-tech typing effect for name
 const TypingName = () => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const name = personalInfo.name;
@@ -15,8 +39,8 @@ const TypingName = () => {
   useEffect(() => {
     const typingInterval = setInterval(() => {
       if (currentIndex < name.length) {
-        setDisplayedText(prev => prev + name[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
+        setDisplayedText((prev) => prev + name[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
       } else {
         clearInterval(typingInterval);
       }
@@ -27,7 +51,7 @@ const TypingName = () => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
     return () => clearInterval(cursorInterval);
   }, []);
@@ -50,7 +74,7 @@ const TypingName = () => {
             |
           </motion.span>
         </span>
-        
+
         {/* Matrix-style background effects */}
         <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20 pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
@@ -72,7 +96,7 @@ const TypingName = () => {
                 repeat: Infinity,
               }}
             >
-              {i % 2 === 0 ? '1' : '0'}
+              {i % 2 === 0 ? "1" : "0"}
             </motion.div>
           ))}
         </div>
@@ -83,7 +107,7 @@ const TypingName = () => {
 
 // Advanced terminal-style subtitle
 const TerminalSubtitle = () => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const subtitle = "echo 'CS Student & Full Stack Developer'";
 
@@ -91,8 +115,8 @@ const TerminalSubtitle = () => {
     const timer = setTimeout(() => {
       const typingInterval = setInterval(() => {
         if (currentIndex < subtitle.length) {
-          setDisplayedText(prev => prev + subtitle[currentIndex]);
-          setCurrentIndex(prev => prev + 1);
+          setDisplayedText((prev) => prev + subtitle[currentIndex]);
+          setCurrentIndex((prev) => prev + 1);
         } else {
           clearInterval(typingInterval);
         }
@@ -116,7 +140,9 @@ const TerminalSubtitle = () => {
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">~/portfolio</span>
+        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">
+          ~/portfolio
+        </span>
       </div>
       <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden">
         <span className="text-neon-green">$ </span>
@@ -136,12 +162,32 @@ const TerminalSubtitle = () => {
 // High-tech role display with matrix effect
 const MatrixRoles = () => {
   const roles = [
-    { text: "Full Stack Developer", color: "text-neon-blue", prefix: "class", suffix: "extends Developer" },
-    { text: "Algorithm Expert", color: "text-neon-purple", prefix: "function", suffix: "{ return optimal; }" },
-    { text: "Problem Solver", color: "text-neon-cyan", prefix: "const", suffix: "= true;" },
-    { text: "CS Student", color: "text-neon-green", prefix: "while", suffix: "{ learn(); }" },
+    {
+      text: "Full Stack Developer",
+      color: "text-neon-blue",
+      prefix: "class",
+      suffix: "extends Developer",
+    },
+    {
+      text: "Algorithm Expert",
+      color: "text-neon-purple",
+      prefix: "function",
+      suffix: "{ return optimal; }",
+    },
+    {
+      text: "Problem Solver",
+      color: "text-neon-cyan",
+      prefix: "const",
+      suffix: "= true;",
+    },
+    {
+      text: "CS Student",
+      color: "text-neon-green",
+      prefix: "while",
+      suffix: "{ learn(); }",
+    },
   ];
-  
+
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -152,7 +198,7 @@ const MatrixRoles = () => {
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       className="glass p-6 rounded-2xl border border-white/20 max-w-4xl mx-auto"
       key={currentRole}
     >
@@ -164,7 +210,7 @@ const MatrixRoles = () => {
         >
           {roles[currentRole].prefix}
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -177,10 +223,17 @@ const MatrixRoles = () => {
           />
           <span
             className="text-xl md:text-2xl font-bold font-mono"
-            style={{ color: roles[currentRole].color.includes('neon-blue') ? '#3b82f6' :
-                           roles[currentRole].color.includes('neon-purple') ? '#8b5cf6' :
-                           roles[currentRole].color.includes('neon-cyan') ? '#06b6d4' :
-                           roles[currentRole].color.includes('neon-green') ? '#10b981' : '#3b82f6' }}
+            style={{
+              color: roles[currentRole].color.includes("neon-blue")
+                ? "#3b82f6"
+                : roles[currentRole].color.includes("neon-purple")
+                  ? "#8b5cf6"
+                  : roles[currentRole].color.includes("neon-cyan")
+                    ? "#06b6d4"
+                    : roles[currentRole].color.includes("neon-green")
+                      ? "#10b981"
+                      : "#3b82f6",
+            }}
           >
             {roles[currentRole].text}
           </span>
@@ -190,7 +243,7 @@ const MatrixRoles = () => {
             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
           />
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -212,7 +265,7 @@ const CircuitTechStack = () => {
     { name: "React", icon: "⚛️", color: "bg-blue-500" },
     { name: "JavaScript", icon: "JS", color: "bg-yellow-500" },
     { name: "TypeScript", icon: "TS", color: "bg-blue-600" },
-    { name: "Node.js", icon: "🟢", color: "bg-green-600" }
+    { name: "Node.js", icon: "🟢", color: "bg-green-600" },
   ];
 
   useEffect(() => {
@@ -223,7 +276,7 @@ const CircuitTechStack = () => {
   }, [techStack.length]);
 
   return (
-    <motion.div 
+    <motion.div
       className="relative max-w-6xl mx-auto"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -266,21 +319,29 @@ const CircuitTechStack = () => {
           >
             <motion.div
               className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
-                index === activeIndex ? 'border-neon-cyan' : 'border-white/20'
+                index === activeIndex ? "border-neon-cyan" : "border-white/20"
               }`}
-              animate={index === activeIndex ? {
-                boxShadow: ['0 0 20px rgba(6, 182, 212, 0.5)', '0 0 40px rgba(6, 182, 212, 0.8)', '0 0 20px rgba(6, 182, 212, 0.5)']
-              } : {}}
+              animate={
+                index === activeIndex
+                  ? {
+                      boxShadow: [
+                        "0 0 20px rgba(6, 182, 212, 0.5)",
+                        "0 0 40px rgba(6, 182, 212, 0.8)",
+                        "0 0 20px rgba(6, 182, 212, 0.5)",
+                      ],
+                    }
+                  : {}
+              }
               transition={{ duration: 2 }}
             >
               {tech.icon}
-              
+
               {/* Circuit connections */}
               {index === activeIndex && (
                 <div className="absolute inset-0 border-2 border-neon-cyan rounded-xl animate-pulse" />
               )}
             </motion.div>
-            
+
             {/* Tech name */}
             <motion.div
               className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-mono text-white whitespace-nowrap"
@@ -303,7 +364,7 @@ const AnimatedStats = () => {
     { label: "250+ Problems", color: "neon-green" },
     { label: "15+ Projects", color: "neon-blue" },
     { label: "3+ Years Learning", color: "neon-purple" },
-    { label: "8.7 CGPA", color: "neon-cyan" }
+    { label: "8.7 CGPA", color: "neon-cyan" },
   ];
 
   return (
@@ -320,7 +381,7 @@ const AnimatedStats = () => {
           whileHover={{
             scale: 1.05,
             y: -5,
-            borderColor: 'rgba(59, 130, 246, 0.5)'
+            borderColor: "rgba(59, 130, 246, 0.5)",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -328,25 +389,33 @@ const AnimatedStats = () => {
         >
           {/* Animated background */}
           <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          
+
           <div className="relative z-10 text-center">
             <motion.div
               className="font-bold text-2xl font-mono mb-2"
-              style={{ color: stat.color === 'neon-green' ? '#10b981' :
-                             stat.color === 'neon-blue' ? '#3b82f6' :
-                             stat.color === 'neon-purple' ? '#8b5cf6' :
-                             stat.color === 'neon-cyan' ? '#06b6d4' : '#10b981' }}
+              style={{
+                color:
+                  stat.color === "neon-green"
+                    ? "#10b981"
+                    : stat.color === "neon-blue"
+                      ? "#3b82f6"
+                      : stat.color === "neon-purple"
+                        ? "#8b5cf6"
+                        : stat.color === "neon-cyan"
+                          ? "#06b6d4"
+                          : "#10b981",
+              }}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 2.9 + index * 0.1, type: "spring" }}
             >
-              {stat.label.split(' ')[0]}
+              {stat.label.split(" ")[0]}
             </motion.div>
             <div className="text-gray-400 text-sm font-mono">
-              {stat.label.split(' ').slice(1).join(' ')}
+              {stat.label.split(" ").slice(1).join(" ")}
             </div>
           </div>
-          
+
           {/* Circuit corner decoration */}
           <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-neon-cyan/30"></div>
           <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-neon-cyan/30"></div>
@@ -359,7 +428,7 @@ const AnimatedStats = () => {
 // Advanced action buttons with holographic effect
 const HolographicButtons = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -432,8 +501,8 @@ export const AdvancedHero = () => {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   if (!isLoaded) {
@@ -500,10 +569,10 @@ export const AdvancedHero = () => {
           >
             {(socialLinks || []).map((link, index) => {
               const iconMap: { [key: string]: any } = {
-                'Github': Github,
-                'Linkedin': Linkedin,
-                'Code2': Code2,
-                'Trophy': Trophy
+                Github: Github,
+                Linkedin: Linkedin,
+                Code2: Code2,
+                Trophy: Trophy,
               };
               const Icon = iconMap[link.icon];
 
@@ -516,7 +585,11 @@ export const AdvancedHero = () => {
                   className="group relative"
                   initial={{ opacity: 0, y: 30, scale: 0 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: 4.2 + index * 0.1, duration: 0.5, type: "spring" }}
+                  transition={{
+                    delay: 4.2 + index * 0.1,
+                    duration: 0.5,
+                    type: "spring",
+                  }}
                   whileHover={{ y: -10, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -524,19 +597,23 @@ export const AdvancedHero = () => {
                     className={`${link.color} p-3 sm:p-4 md:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden`}
                     whileHover={{
                       boxShadow: "0 20px 40px rgba(6, 182, 212, 0.3)",
-                      borderColor: "rgba(6, 182, 212, 0.5)"
+                      borderColor: "rgba(6, 182, 212, 0.5)",
                     }}
                   >
                     <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 relative z-10" />
-                    
+
                     {/* Holographic scan line */}
                     <motion.div
                       className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
-                      animate={{ y: ['-4px', '60px'] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                      animate={{ y: ["-4px", "60px"] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5,
+                      }}
                     />
                   </motion.div>
-                  
+
                   {/* Platform Label with glitch effect */}
                   <motion.div
                     className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"

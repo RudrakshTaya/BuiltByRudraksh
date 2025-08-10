@@ -1,11 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Github, Linkedin, Mail, Download, ExternalLink, Code2, Trophy, ArrowDown, Sparkles, Zap, Cpu, Brain } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  ExternalLink,
+  Code2,
+  Trophy,
+  ArrowDown,
+  Sparkles,
+  Zap,
+  Cpu,
+  Brain,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
-import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
-import { SmoothParallaxBackground } from './SmoothParallaxBackground';
-
+import {
+  personalInfo,
+  skills,
+  stats,
+  socialLinks,
+} from "../data/portfolioData";
+import { SmoothParallaxBackground } from "./SmoothParallaxBackground";
 
 // Simplified Tech Sphere
 const TechSphere = () => {
@@ -33,10 +50,10 @@ const TechSphere = () => {
               className="absolute w-10 h-10 flex items-center justify-center"
               style={{
                 transform: `translate(${x}px, ${y}px)`,
-                left: '50%',
-                top: '50%',
-                marginLeft: '-20px',
-                marginTop: '-20px',
+                left: "50%",
+                top: "50%",
+                marginLeft: "-20px",
+                marginTop: "-20px",
               }}
               animate={{
                 rotate: -360,
@@ -44,11 +61,18 @@ const TechSphere = () => {
               }}
               transition={{
                 rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-                scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 },
+                scale: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.3,
+                },
               }}
               whileHover={{ scale: 1.3 }}
             >
-              <div className={`w-full h-full ${tech.color} rounded-lg flex items-center justify-center text-black text-sm font-bold shadow-md backdrop-blur-sm border border-white/20`}>
+              <div
+                className={`w-full h-full ${tech.color} rounded-lg flex items-center justify-center text-black text-sm font-bold shadow-md backdrop-blur-sm border border-white/20`}
+              >
                 {tech.icon}
               </div>
             </motion.div>
@@ -67,7 +91,7 @@ const RoleAnimator = () => {
     { text: "Software Engineer", color: "text-cyan-400", icon: Cpu },
     { text: "Tech Enthusiast", color: "text-green-400", icon: Zap },
   ];
-  
+
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -78,7 +102,7 @@ const RoleAnimator = () => {
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       className="flex items-center justify-center gap-4 h-16"
       key={currentRole}
     >
@@ -94,9 +118,11 @@ const RoleAnimator = () => {
           transition={{ duration: 0.6 }}
           className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"
         >
-          {React.createElement(roles[currentRole].icon, { className: "w-6 h-6 text-white" })}
+          {React.createElement(roles[currentRole].icon, {
+            className: "w-6 h-6 text-white",
+          })}
         </motion.div>
-        <motion.span 
+        <motion.span
           className={`text-2xl md:text-4xl font-bold ${roles[currentRole].color}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,7 +140,7 @@ const InteractiveTechStack = () => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
   return (
-    <motion.div 
+    <motion.div
       className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 justify-items-center max-w-5xl mx-auto"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -126,47 +152,58 @@ const InteractiveTechStack = () => {
           className="relative group cursor-pointer"
           initial={{ opacity: 0, scale: 0, rotateY: -180 }}
           animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ 
-            delay: 2 + index * 0.1, 
+          transition={{
+            delay: 2 + index * 0.1,
             duration: 0.6,
             type: "spring",
-            stiffness: 120
+            stiffness: 120,
           }}
-          whileHover={{ 
-            scale: 1.2, 
+          whileHover={{
+            scale: 1.2,
             rotateY: 180,
-            z: 50
+            z: 50,
           }}
           onHoverStart={() => setHoveredTech(tech.name)}
           onHoverEnd={() => setHoveredTech(null)}
-          style={{ perspective: '1000px' }}
+          style={{ perspective: "1000px" }}
         >
           {/* Front Face */}
           <motion.div
             className={`w-16 h-16 ${tech.color} rounded-2xl flex items-center justify-center text-black text-xl font-bold shadow-premium relative`}
-            
-            style={{ 
-              backfaceVisibility: 'hidden',
-              transformStyle: 'preserve-3d'
+            style={{
+              backfaceVisibility: "hidden",
+              transformStyle: "preserve-3d",
             }}
           >
-            
             <motion.div
               animate={hoveredTech === tech.name ? { rotate: 360 } : {}}
               transition={{ duration: 0.6 }}
             >
               {tech.icon}
             </motion.div>
-            <div className="text-[8px] leading-none font-semibold">{tech.name}</div>
+            <div className="text-[8px] leading-none font-semibold">
+              {tech.name}
+            </div>
             {/* Glow Effect */}
             <motion.div
               className="absolute inset-0 rounded-2xl"
-              animate={hoveredTech === tech.name ? { 
-                boxShadow: `0 0 30px ${tech.color.includes('blue') ? '#3B82F6' : 
-                                       tech.color.includes('purple') ? '#8B5CF6' :
-                                       tech.color.includes('green') ? '#10B981' :
-                                       tech.color.includes('yellow') ? '#F59E0B' : '#06B6D4'}` 
-              } : {}}
+              animate={
+                hoveredTech === tech.name
+                  ? {
+                      boxShadow: `0 0 30px ${
+                        tech.color.includes("blue")
+                          ? "#3B82F6"
+                          : tech.color.includes("purple")
+                            ? "#8B5CF6"
+                            : tech.color.includes("green")
+                              ? "#10B981"
+                              : tech.color.includes("yellow")
+                                ? "#F59E0B"
+                                : "#06B6D4"
+                      }`,
+                    }
+                  : {}
+              }
               transition={{ duration: 0.3 }}
             />
           </motion.div>
@@ -174,10 +211,10 @@ const InteractiveTechStack = () => {
           {/* Back Face */}
           <motion.div
             className="absolute inset-0 w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-600"
-            style={{ 
-              backfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)',
-              transformStyle: 'preserve-3d'
+            style={{
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+              transformStyle: "preserve-3d",
             }}
           >
             <span className="text-white text-xs font-semibold text-center leading-tight">
@@ -189,9 +226,9 @@ const InteractiveTechStack = () => {
           <motion.div
             className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white px-2 py-1 rounded-lg text-xs font-medium backdrop-blur-sm border border-white/10"
             initial={{ opacity: 0, y: 10 }}
-            animate={{ 
+            animate={{
               opacity: hoveredTech === tech.name ? 1 : 0,
-              y: hoveredTech === tech.name ? 0 : 10
+              y: hoveredTech === tech.name ? 0 : 10,
             }}
             transition={{ duration: 0.2 }}
           >
@@ -202,7 +239,6 @@ const InteractiveTechStack = () => {
     </motion.div>
   );
 };
-
 
 export const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -218,12 +254,12 @@ export const Hero = () => {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -236,7 +272,6 @@ export const Hero = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-
       {/* Simplified Tech Sphere */}
       <TechSphere />
 
@@ -256,19 +291,19 @@ export const Hero = () => {
             transition={{ duration: 1, type: "spring", stiffness: 100 }}
             className="relative"
           >
-            <motion.h1 
+            <motion.h1
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 relative"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.span 
+              <motion.span
                 className="gradient-text relative inline-block"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
                 {personalInfo.name}
-                
+
                 {/* Sparkle Effects */}
                 <motion.div
                   className="absolute -top-4 -right-4"
@@ -323,13 +358,13 @@ export const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.2 + index * 0.1, duration: 0.5 }}
               >
-                <motion.span 
+                <motion.span
                   className={`text-${stat.color} font-bold text-lg block group-hover:scale-110 transition-transform`}
                 >
-                  {stat.label.split(' ')[0]}
+                  {stat.label.split(" ")[0]}
                 </motion.span>
                 <span className="text-gray-400 text-sm">
-                  {stat.label.split(' ').slice(1).join(' ')}
+                  {stat.label.split(" ").slice(1).join(" ")}
                 </span>
               </motion.div>
             ))}
@@ -345,20 +380,15 @@ export const Hero = () => {
           </motion.div>
 
           {/* Enhanced Action Buttons */}
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3, duration: 0.8 }}
           >
-            
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
-                size="lg" 
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
                 variant="outline"
                 onClick={scrollToContact}
                 className="glass border-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-400 px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-glow-lg transition-all duration-300"
@@ -370,7 +400,7 @@ export const Hero = () => {
           </motion.div>
 
           {/* Social Links with Enhanced Animation */}
-          <motion.div 
+          <motion.div
             className="flex justify-center space-x-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -378,10 +408,10 @@ export const Hero = () => {
           >
             {socialLinks.map((link, index) => {
               const iconMap: { [key: string]: any } = {
-                'Github': Github,
-                'Linkedin': Linkedin,
-                'Code2': Code2,
-                'Trophy': Trophy
+                Github: Github,
+                Linkedin: Linkedin,
+                Code2: Code2,
+                Trophy: Trophy,
               };
               const Icon = iconMap[link.icon];
 
@@ -394,19 +424,23 @@ export const Hero = () => {
                   className="group relative"
                   initial={{ opacity: 0, y: 30, scale: 0 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: 3.7 + index * 0.1, duration: 0.5, type: "spring" }}
+                  transition={{
+                    delay: 3.7 + index * 0.1,
+                    duration: 0.5,
+                    type: "spring",
+                  }}
                   whileHover={{ y: -10, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <motion.div 
+                  <motion.div
                     className={`${link.color} p-4 rounded-2xl glass border border-white/20 hover:border-white/40 transition-all duration-300 relative overflow-hidden`}
-                    whileHover={{ 
+                    whileHover={{
                       boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
-                      backgroundColor: "rgba(59, 130, 246, 0.1)"
+                      backgroundColor: "rgba(59, 130, 246, 0.1)",
                     }}
                   >
                     <Icon className="h-7 w-7 relative z-10" />
-                    
+
                     {/* Ripple Effect */}
                     <motion.div
                       className="absolute inset-0 bg-white/10 rounded-2xl"
@@ -415,9 +449,9 @@ export const Hero = () => {
                       transition={{ duration: 0.3 }}
                     />
                   </motion.div>
-                  
+
                   {/* Platform Label */}
-                  <motion.div 
+                  <motion.div
                     className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white px-3 py-1 rounded-lg text-sm font-medium backdrop-blur-sm border border-white/20"
                     initial={{ opacity: 0, y: 10 }}
                     whileHover={{ opacity: 1, y: 0 }}
@@ -438,24 +472,24 @@ export const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 4, duration: 0.8 }}
         > */}
-          {/* <motion.div 
+        {/* <motion.div 
             className="flex flex-col items-center gap-3 cursor-pointer group"
             onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
             whileHover={{ scale: 1.1 }}
           > */}
-            {/* <motion.div 
+        {/* <motion.div 
               className="w-8 h-12 border-2 border-cyan-400 rounded-full flex justify-center relative group-hover:border-cyan-300 transition-colors"
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
             > */}
-              {/* <motion.div 
+        {/* <motion.div 
                 className="w-1.5 h-4 bg-cyan-400 rounded-full mt-2 group-hover:bg-cyan-300 transition-colors"
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               />
             </motion.div> */}
-            
-            {/* <motion.div
+
+        {/* <motion.div
               className="flex items-center gap-2 text-cyan-400 text-sm font-medium group-hover:text-cyan-300 transition-colors"
               animate={{ y: [0, 4, 0] }}
               transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}

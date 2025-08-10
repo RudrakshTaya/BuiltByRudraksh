@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download, Mail, Github, Linkedin, Code2, ChevronDown, MoreHorizontal, Trophy } from "lucide-react";
+import {
+  Menu,
+  X,
+  Download,
+  Mail,
+  Github,
+  Linkedin,
+  Code2,
+  ChevronDown,
+  MoreHorizontal,
+  Trophy,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
-import { navigation, socialLinks } from '../data/portfolioData';
+import { navigation, socialLinks } from "../data/portfolioData";
 
 // All nav items for mobile menu
 const allNavItems = [...navigation.core, ...navigation.more];
@@ -19,7 +30,7 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = allNavItems.map(item => item.href.replace('#', ''));
+      const sections = allNavItems.map((item) => item.href.replace("#", ""));
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -32,7 +43,10 @@ export const Navbar = () => {
     };
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (isMoreDropdownOpen && !(event.target as Element).closest('.relative')) {
+      if (
+        isMoreDropdownOpen &&
+        !(event.target as Element).closest(".relative")
+      ) {
         setIsMoreDropdownOpen(false);
       }
     };
@@ -93,7 +107,7 @@ export const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    activeSection === item.href.replace('#', '')
+                    activeSection === item.href.replace("#", "")
                       ? "bg-blue-600/80 text-white border border-blue-500/60 shadow-lg"
                       : "text-gray-300 hover:text-white hover:bg-white/10"
                   }`}
@@ -110,14 +124,18 @@ export const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                    navigation.more.some(item => activeSection === item.href.replace('#', '')) || isMoreDropdownOpen
+                    navigation.more.some(
+                      (item) => activeSection === item.href.replace("#", ""),
+                    ) || isMoreDropdownOpen
                       ? "bg-purple-600/80 text-white border border-purple-500/60 shadow-lg"
                       : "text-gray-300 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   <MoreHorizontal className="h-4 w-4" />
                   More
-                  <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isMoreDropdownOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-3 w-3 transition-transform duration-300 ${isMoreDropdownOpen ? "rotate-180" : ""}`}
+                  />
                 </motion.button>
 
                 {/* Dropdown Menu */}
@@ -142,7 +160,7 @@ export const Navbar = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
                           className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg mx-2 transition-all duration-300 ${
-                            activeSection === item.href.replace('#', '')
+                            activeSection === item.href.replace("#", "")
                               ? "bg-blue-600/80 text-white shadow-lg"
                               : "text-gray-300 hover:text-white hover:bg-white/10 hover:shadow-md"
                           }`}
@@ -157,14 +175,16 @@ export const Navbar = () => {
 
                       {/* Social Links */}
                       <div className="px-4 py-2">
-                        <p className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wider">Connect</p>
+                        <p className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wider">
+                          Connect
+                        </p>
                         <div className="flex gap-2">
                           {socialLinks.map((link, index) => {
                             const iconMap: { [key: string]: any } = {
-                              'Github': Github,
-                              'Linkedin': Linkedin,
-                              'Code2': Code2,
-                              'Trophy': Trophy
+                              Github: Github,
+                              Linkedin: Linkedin,
+                              Code2: Code2,
+                              Trophy: Trophy,
                             };
                             const Icon = iconMap[link.icon] || Mail;
 
@@ -208,7 +228,11 @@ export const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden w-10 h-10 bg-gray-800/50 rounded-lg flex items-center justify-center text-white hover:bg-gray-700/50 transition-all duration-300"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </motion.button>
           </div>
         </div>
@@ -235,7 +259,7 @@ export const Navbar = () => {
                     transition={{ delay: index * 0.1 }}
                     onClick={() => scrollToSection(item.href)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-300 ${
-                      activeSection === item.href.replace('#', '')
+                      activeSection === item.href.replace("#", "")
                         ? "bg-blue-600/80 text-white border border-blue-500/60 shadow-lg"
                         : "text-gray-300 hover:text-white hover:bg-white/10"
                     }`}
@@ -255,10 +279,10 @@ export const Navbar = () => {
               >
                 {socialLinks.map((link, index) => {
                   const iconMap: { [key: string]: any } = {
-                    'Github': Github,
-                    'Linkedin': Linkedin,
-                    'Code2': Code2,
-                    'Trophy': Trophy
+                    Github: Github,
+                    Linkedin: Linkedin,
+                    Code2: Code2,
+                    Trophy: Trophy,
                   };
                   const Icon = iconMap[link.icon] || Mail;
 

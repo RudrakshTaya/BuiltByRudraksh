@@ -19,7 +19,8 @@ const ScrollProgressBar = () => {
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (window.scrollY / scrollHeight) * 100;
       setScrollProgress(scrolled);
     };
@@ -87,37 +88,58 @@ export default function Index() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative z-20 bg-background/10 backdrop-blur-sm">
+        <section
+          id="about"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <About />
         </section>
 
         {/* Computer Science Strengths */}
-        <section id="cs-strengths" className="relative z-20 bg-background/5 backdrop-blur-sm">
+        <section
+          id="cs-strengths"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <CSStrengths />
         </section>
 
         {/* Project-Based Learning Experience */}
-        <section id="experience" className="relative z-20 bg-background/10 backdrop-blur-sm">
+        <section
+          id="experience"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <ProjectExperience />
         </section>
 
         {/* Projects Section - Core Focus */}
-        <section id="projects" className="relative z-20 bg-background/5 backdrop-blur-sm">
+        <section
+          id="projects"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <Projects />
         </section>
 
         {/* GitHub Stats, LeetCode & Blogs */}
-        <section id="github-stats" className="relative z-20 bg-background/10 backdrop-blur-sm">
+        <section
+          id="github-stats"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <GitHubStats />
         </section>
 
         {/* Certifications & Achievements */}
-        <section id="certifications" className="relative z-20 bg-background/5 backdrop-blur-sm">
+        <section
+          id="certifications"
+          className="relative z-20 bg-background/5 backdrop-blur-sm"
+        >
           <Certifications />
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative z-20 bg-background/10 backdrop-blur-sm">
+        <section
+          id="contact"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
           <Contact />
         </section>
       </motion.main>
@@ -143,10 +165,14 @@ export default function Index() {
           animate={{ y: [0, -2, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          />
         </motion.svg>
       </motion.button>
-
     </div>
   );
 }

@@ -3,24 +3,26 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 // Enhanced Floating Orbs with stronger glow
 const EnhancedFloatingOrbs = () => {
-  const [orbs, setOrbs] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    size: number;
-    color: string;
-    delay: number;
-    duration: number;
-  }>>([]);
+  const [orbs, setOrbs] = useState<
+    Array<{
+      id: number;
+      x: number;
+      y: number;
+      size: number;
+      color: string;
+      delay: number;
+      duration: number;
+    }>
+  >([]);
 
   useEffect(() => {
     const colors = [
-      '#3B82F6',  // blue
-      '#8B5CF6',  // purple
-      '#06B6D4',  // cyan
-      '#10B981',  // green
-      '#F59E0B',  // yellow
-      '#EF4444',  // red
+      "#3B82F6", // blue
+      "#8B5CF6", // purple
+      "#06B6D4", // cyan
+      "#10B981", // green
+      "#F59E0B", // yellow
+      "#EF4444", // red
     ];
 
     // Responsive orb count and size based on screen size
@@ -101,15 +103,22 @@ const GeometricPatterns = () => {
           }}
           transition={{
             rotate: { duration: 15 + i, repeat: Infinity, ease: "linear" },
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
+            scale: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            },
           }}
         >
           <div
             className="w-12 h-12 border-2 border-cyan-400/40 relative"
             style={{
-              clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
-              background: 'linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1))',
-              boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)',
+              clipPath:
+                "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)",
+              background:
+                "linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1))",
+              boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)",
             }}
           >
             {/* Subtle pulsing center dot */}
@@ -136,8 +145,8 @@ const GeometricPatterns = () => {
           className="absolute h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"
           style={{
             top: `${i * 12.5}%`,
-            width: '100%',
-            transformOrigin: 'center',
+            width: "100%",
+            transformOrigin: "center",
           }}
           animate={{
             rotate: [0, 360],
@@ -145,7 +154,12 @@ const GeometricPatterns = () => {
           }}
           transition={{
             rotate: { duration: 20 + i * 2, repeat: Infinity, ease: "linear" },
-            scaleX: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+            scaleX: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            },
           }}
         />
       ))}
@@ -155,25 +169,69 @@ const GeometricPatterns = () => {
 
 // Enhanced Code Rain
 const EnhancedCodeRain = () => {
-  const [streams, setStreams] = useState<Array<{
-    id: number;
-    x: number;
-    chars: string[];
-    speed: number;
-    color: string;
-  }>>([]);
+  const [streams, setStreams] = useState<
+    Array<{
+      id: number;
+      x: number;
+      chars: string[];
+      speed: number;
+      color: string;
+    }>
+  >([]);
 
   useEffect(() => {
     const codeChars = [
-      'class', 'function', 'const', 'let', 'var', 'if', 'else', 'for', 'while',
-      'return', 'import', 'export', 'async', 'await', 'try', 'catch',
-      '{', '}', '(', ')', '[', ']', '=>', '===', '!==', '&&', '||',
-      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
+      "class",
+      "function",
+      "const",
+      "let",
+      "var",
+      "if",
+      "else",
+      "for",
+      "while",
+      "return",
+      "import",
+      "export",
+      "async",
+      "await",
+      "try",
+      "catch",
+      "{",
+      "}",
+      "(",
+      ")",
+      "[",
+      "]",
+      "=>",
+      "===",
+      "!==",
+      "&&",
+      "||",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
     ];
-    
-    const colors = ['#3B82F6', '#8B5CF6', '#06B6D4', '#10B981'];
-    
+
+    const colors = ["#3B82F6", "#8B5CF6", "#06B6D4", "#10B981"];
+
     // Responsive stream count and density
     const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth < 1024;
@@ -184,9 +242,10 @@ const EnhancedCodeRain = () => {
 
     const newStreams = Array.from({ length: streamCount }, (_, i) => ({
       id: i,
-      x: (i * streamSpacing),
-      chars: Array.from({ length: charsPerStream }, () =>
-        codeChars[Math.floor(Math.random() * codeChars.length)]
+      x: i * streamSpacing,
+      chars: Array.from(
+        { length: charsPerStream },
+        () => codeChars[Math.floor(Math.random() * codeChars.length)],
       ),
       speed: 2 + Math.random() * 3,
       color: colors[Math.floor(Math.random() * colors.length)],
@@ -201,13 +260,13 @@ const EnhancedCodeRain = () => {
         <motion.div
           key={stream.id}
           className="absolute font-mono text-sm font-bold"
-          style={{ 
+          style={{
             left: `${stream.x}%`,
             color: stream.color,
             textShadow: `0 0 10px ${stream.color}`,
           }}
-          initial={{ y: '-20vh' }}
-          animate={{ y: '120vh' }}
+          initial={{ y: "-20vh" }}
+          animate={{ y: "120vh" }}
           transition={{
             duration: 20 / stream.speed,
             repeat: Infinity,
@@ -222,7 +281,11 @@ const EnhancedCodeRain = () => {
                 opacity: Math.max(0.2, 1 - index * 0.06),
               }}
               animate={{
-                opacity: [1 - index * 0.06, 0.3 - index * 0.06, 1 - index * 0.06],
+                opacity: [
+                  1 - index * 0.06,
+                  0.3 - index * 0.06,
+                  1 - index * 0.06,
+                ],
               }}
               transition={{
                 duration: 2,
@@ -241,22 +304,45 @@ const EnhancedCodeRain = () => {
 
 // Enhanced Algorithm Visualizer
 const EnhancedAlgorithmNodes = () => {
-  const [nodes, setNodes] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    z: number;
-    algorithm: string;
-    color: string;
-  }>>([]);
+  const [nodes, setNodes] = useState<
+    Array<{
+      id: number;
+      x: number;
+      y: number;
+      z: number;
+      algorithm: string;
+      color: string;
+    }>
+  >([]);
 
   useEffect(() => {
     const algorithms = [
-      'BFS', 'DFS', 'A*', 'Sort', 'Hash', 'Tree', 'Graph', 'Stack',
-      'Queue', 'Heap', 'DP', 'ML', 'AI', 'API', 'DB', 'React'
+      "BFS",
+      "DFS",
+      "A*",
+      "Sort",
+      "Hash",
+      "Tree",
+      "Graph",
+      "Stack",
+      "Queue",
+      "Heap",
+      "DP",
+      "ML",
+      "AI",
+      "API",
+      "DB",
+      "React",
     ];
 
-    const colors = ['#3B82F6', '#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444'];
+    const colors = [
+      "#3B82F6",
+      "#8B5CF6",
+      "#06B6D4",
+      "#10B981",
+      "#F59E0B",
+      "#EF4444",
+    ];
 
     // Responsive algorithm nodes based on screen size
     const isMobile = window.innerWidth < 768;
@@ -279,7 +365,10 @@ const EnhancedAlgorithmNodes = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 opacity-50" style={{ perspective: '1500px' }}>
+    <div
+      className="absolute inset-0 opacity-50"
+      style={{ perspective: "1500px" }}
+    >
       {nodes.map((node) => (
         <motion.div
           key={node.id}
@@ -296,10 +385,28 @@ const EnhancedAlgorithmNodes = () => {
             y: [0, -30, 0],
           }}
           transition={{
-            rotateY: { duration: 12 + node.id, repeat: Infinity, ease: "linear" },
-            rotateX: { duration: 8 + node.id * 0.5, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: node.id * 0.2 },
-            y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: node.id * 0.1 },
+            rotateY: {
+              duration: 12 + node.id,
+              repeat: Infinity,
+              ease: "linear",
+            },
+            rotateX: {
+              duration: 8 + node.id * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+            scale: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: node.id * 0.2,
+            },
+            y: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: node.id * 0.1,
+            },
           }}
           whileHover={{ scale: 1.5, z: 100 }}
         >
@@ -309,7 +416,7 @@ const EnhancedAlgorithmNodes = () => {
               background: `linear-gradient(45deg, ${node.color}60, ${node.color}30)`,
               borderColor: `${node.color}80`,
               boxShadow: `0 0 30px ${node.color}50, inset 0 0 20px ${node.color}20`,
-              transformStyle: 'preserve-3d',
+              transformStyle: "preserve-3d",
             }}
           >
             {/* Subtle inner glow effect */}
@@ -319,7 +426,9 @@ const EnhancedAlgorithmNodes = () => {
                 background: `linear-gradient(135deg, ${node.color}40, transparent, ${node.color}20)`,
               }}
             />
-            <span className="text-center leading-none font-bold">{node.algorithm}</span>
+            <span className="text-center leading-none font-bold">
+              {node.algorithm}
+            </span>
           </div>
         </motion.div>
       ))}
@@ -330,13 +439,13 @@ const EnhancedAlgorithmNodes = () => {
 // Main Enhanced 3D Background Component
 export const Enhanced3DBackground = () => {
   const { scrollY } = useScroll();
-  
+
   // Enhanced parallax transforms with more dramatic movement
   const layer1Y = useTransform(scrollY, [0, 2000], [0, -400]);
   const layer2Y = useTransform(scrollY, [0, 2000], [0, -600]);
   const layer3Y = useTransform(scrollY, [0, 2000], [0, -300]);
   const layer4Y = useTransform(scrollY, [0, 2000], [0, -150]);
-  
+
   // Smooth spring physics
   const smoothLayer1Y = useSpring(layer1Y, { damping: 50, stiffness: 100 });
   const smoothLayer2Y = useSpring(layer2Y, { damping: 40, stiffness: 80 });
@@ -346,40 +455,28 @@ export const Enhanced3DBackground = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Layer 1: Floating Orbs (Deepest) */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: smoothLayer1Y }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: smoothLayer1Y }}>
         <EnhancedFloatingOrbs />
       </motion.div>
 
       {/* Layer 2: Code Rain */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: smoothLayer2Y }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: smoothLayer2Y }}>
         <EnhancedCodeRain />
       </motion.div>
 
       {/* Layer 3: Geometric Patterns */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: smoothLayer3Y }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: smoothLayer3Y }}>
         <GeometricPatterns />
       </motion.div>
 
       {/* Layer 4: Algorithm Nodes (Closest) */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: smoothLayer4Y }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: smoothLayer4Y }}>
         <EnhancedAlgorithmNodes />
       </motion.div>
 
       {/* Subtle overlay for better contrast */}
       <div className="absolute inset-0 bg-gradient-to-br from-background/40 via-transparent to-background/40" />
-      
+
       {/* Ambient lighting effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />

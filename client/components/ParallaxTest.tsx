@@ -17,7 +17,7 @@ export const ParallaxTest = () => {
           y: y1,
         }}
       />
-      
+
       {/* Test Circle 2 - Slower parallax */}
       <motion.div
         className="absolute w-24 h-24 bg-purple-500/20 rounded-full"
@@ -27,7 +27,7 @@ export const ParallaxTest = () => {
           y: y2,
         }}
       />
-      
+
       {/* Static reference */}
       <div className="absolute w-16 h-16 bg-green-500/30 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
     </div>
