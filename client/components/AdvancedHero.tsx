@@ -265,7 +265,7 @@ const CircuitTechStack = () => {
             transition={{ type: "tween", duration: 0.2 }}
           >
             <motion.div
-              className={`w-16 h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
+              className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
                 index === activeIndex ? 'border-neon-cyan' : 'border-white/20'
               }`}
               animate={index === activeIndex ? {
