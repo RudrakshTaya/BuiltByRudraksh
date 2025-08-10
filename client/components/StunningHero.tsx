@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, Download, Code2, Sparkles, Zap, Cpu, Brain, Terminal, Play, Pause, Volume2 } from "lucide-react";
+import { Github, Linkedin, Mail, Download, Code2, Sparkles, Zap, Cpu, Brain, Terminal, Play, Pause, Volume2, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
 import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
