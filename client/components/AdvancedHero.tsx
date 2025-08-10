@@ -508,8 +508,8 @@ export const AdvancedHero = () => {
                     
                     {/* Holographic scan line */}
                     <motion.div
-                      className="absolute inset-x-0 h-0.5 bg-neon-cyan"
-                      animate={{ y: ['-100%', '100%'] }}
+                      className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
+                      animate={{ y: ['-4px', '60px'] }}
                       transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
                     />
                   </motion.div>
