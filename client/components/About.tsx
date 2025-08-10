@@ -73,11 +73,11 @@ const AcademicCard = ({ highlight, index }: { highlight: typeof academicHighligh
       whileHover={{ scale: 1.02, y: -5 }}
       className={`glass p-6 rounded-xl border transition-all duration-300 ${highlight.color} hover:border-opacity-50`}
     >
-      <div className="flex items-start gap-4">
-        <div className="text-3xl">{highlight.icon}</div>
-        <div className="flex-1">
-          <h4 className="text-lg font-bold text-white mb-2">{highlight.title}</h4>
-          <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{highlight.detail}</p>
+      <div className="flex flex-col md:flex-row items-start gap-4">
+        <div className="text-2xl md:text-3xl self-center md:self-start">{highlight.icon}</div>
+        <div className="flex-1 text-center md:text-left">
+          <h4 className="text-base md:text-lg font-bold text-white mb-2">{highlight.title}</h4>
+          <p className="text-muted-foreground text-xs md:text-sm mb-3 leading-relaxed">{highlight.detail}</p>
           <div className="flex flex-wrap gap-2">
             {highlight.technologies.map((tech) => (
               <span 
