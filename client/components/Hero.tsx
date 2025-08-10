@@ -230,9 +230,11 @@ export const Hero = () => {
     <motion.section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        opacity,
-        scale,
+        y,
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
 
       {/* Simplified Tech Sphere */}
