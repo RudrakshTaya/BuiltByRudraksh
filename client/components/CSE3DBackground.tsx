@@ -331,7 +331,7 @@ const MatrixRain = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-20">
+    <div className="absolute inset-0 overflow-hidden opacity-40">
       {streams.map((stream) => (
         <motion.div
           key={stream.id}
