@@ -160,10 +160,18 @@ const EnhancedCodeRain = () => {
     
     const colors = ['#3B82F6', '#8B5CF6', '#06B6D4', '#10B981'];
     
-    const newStreams = Array.from({ length: 25 }, (_, i) => ({
+    // Responsive stream count and density
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1024;
+
+    const streamCount = isMobile ? 15 : isTablet ? 20 : 25;
+    const streamSpacing = isMobile ? 6.67 : isTablet ? 5 : 4;
+    const charsPerStream = isMobile ? 10 : isTablet ? 12 : 15;
+
+    const newStreams = Array.from({ length: streamCount }, (_, i) => ({
       id: i,
-      x: (i * 4),
-      chars: Array.from({ length: 15 }, () => 
+      x: (i * streamSpacing),
+      chars: Array.from({ length: charsPerStream }, () =>
         codeChars[Math.floor(Math.random() * codeChars.length)]
       ),
       speed: 2 + Math.random() * 3,
