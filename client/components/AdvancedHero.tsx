@@ -468,13 +468,13 @@ export const AdvancedHero = () => {
           <HolographicButtons />
 
           {/* Enhanced Social Links */}
-          <motion.div 
+          <motion.div
             className="flex justify-center space-x-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4, duration: 0.8 }}
           >
-            {socialLinks.map((link, index) => {
+            {(socialLinks || []).map((link, index) => {
               const iconMap: { [key: string]: any } = {
                 'Github': Github,
                 'Linkedin': Linkedin,
