@@ -217,7 +217,7 @@ export const CSStrengths = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <div className="text-center glass p-6 rounded-xl border border-neon-purple/30">
             <div className="text-3xl font-bold text-neon-purple mb-2">250+</div>
