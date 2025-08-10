@@ -8,7 +8,7 @@ import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData'
 // Glitch effect for name
 const GlitchName = () => {
   const [isGlitching, setIsGlitching] = useState(false);
-  const name = personalInfo.name;
+  const name = personalInfo?.name || "Developer";
 
   useEffect(() => {
     const glitchInterval = setInterval(() => {
