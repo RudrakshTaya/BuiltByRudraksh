@@ -470,10 +470,29 @@ const ExplosiveSocials = () => {
     }
   ];
 
-  // Use socialLinks if available, otherwise use fallback
-  const linksToRender = socialLinks && Array.isArray(socialLinks) && socialLinks.length > 0
-    ? socialLinks
-    : fallbackSocialLinks;
+  // Enhanced validation and fallback handling
+  let linksToRender = fallbackSocialLinks;
+
+  try {
+    if (socialLinks && Array.isArray(socialLinks) && socialLinks.length > 0) {
+      // Filter out any invalid links
+      const validLinks = socialLinks.filter(link =>
+        link &&
+        typeof link === 'object' &&
+        link.name &&
+        link.url &&
+        typeof link.name === 'string' &&
+        typeof link.url === 'string'
+      );
+
+      if (validLinks.length > 0) {
+        linksToRender = validLinks;
+      }
+    }
+  } catch (error) {
+    console.warn('Error processing socialLinks, using fallback:', error);
+    linksToRender = fallbackSocialLinks;
+  }
 
   return (
     <motion.div
@@ -482,7 +501,7 @@ const ExplosiveSocials = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 4, duration: 1 }}
     >
-      {linksToRender.map((link, index) => {
+      {Array.isArray(linksToRender) && linksToRender.map((link, index) => {
         const iconMap: { [key: string]: any } = {
           'Github': Github,
           'Linkedin': Linkedin,
