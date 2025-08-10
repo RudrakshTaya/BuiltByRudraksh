@@ -64,9 +64,6 @@ export default function Index() {
       {/* Enhanced 3D Background with Strong Parallax */}
       <Enhanced3DBackground />
 
-      {/* Parallax Test - Remove after testing */}
-      <ParallaxTest />
-
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
