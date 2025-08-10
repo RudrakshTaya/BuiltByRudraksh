@@ -200,12 +200,20 @@ const MatrixRoles = () => {
 const CircuitTechStack = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Safe fallback for tech stack
+  const techStack = skills?.techStack || [
+    { name: "React", icon: "⚛️", color: "bg-blue-500" },
+    { name: "JavaScript", icon: "JS", color: "bg-yellow-500" },
+    { name: "TypeScript", icon: "TS", color: "bg-blue-600" },
+    { name: "Node.js", icon: "🟢", color: "bg-green-600" }
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % skills.techStack.length);
+      setActiveIndex((prev) => (prev + 1) % techStack.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [techStack.length]);
 
   return (
     <motion.div 
