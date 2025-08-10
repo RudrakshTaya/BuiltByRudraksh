@@ -85,7 +85,7 @@ const TypingName = () => {
 const TerminalSubtitle = () => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const subtitle = "Computer Science Student & Full Stack Developer";
+  const subtitle = "echo 'CS Student & Full Stack Developer'";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -96,7 +96,7 @@ const TerminalSubtitle = () => {
         } else {
           clearInterval(typingInterval);
         }
-      }, 30);
+      }, 50);
       return () => clearInterval(typingInterval);
     }, 2000); // Start after name typing
 
@@ -105,22 +105,22 @@ const TerminalSubtitle = () => {
 
   return (
     <motion.div
-      className="glass p-4 rounded-2xl border border-neon-blue/30 max-w-2xl mx-auto mb-8"
+      className="glass p-3 sm:p-4 md:p-6 rounded-2xl border border-neon-blue/30 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto mb-8 overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2, duration: 0.8 }}
     >
-      <div className="flex items-center gap-3 mb-2">
-        <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+      <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+        <div className="flex gap-1 sm:gap-2">
+          <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+          <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+          <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-gray-400 text-sm font-mono">~/portfolio/about</span>
+        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">~/portfolio</span>
       </div>
-      <div className="font-mono text-left">
+      <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden">
         <span className="text-neon-green">$ </span>
-        <span className="text-white">{displayedText}</span>
+        <span className="text-white break-words">{displayedText}</span>
         <motion.span
           className="text-neon-cyan"
           animate={{ opacity: [1, 0, 1] }}
