@@ -236,13 +236,13 @@ export const About = () => {
           className="text-center"
         >
           <div className="glass p-8 rounded-2xl border border-neon-blue/30 hover:border-neon-blue/50 transition-all duration-300 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Cpu className="h-8 w-8 text-neon-blue" />
-              <h3 className="text-2xl font-bold text-white">Ready for Software Engineering Challenges</h3>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 mb-4">
+              <Cpu className="h-6 w-6 md:h-8 md:w-8 text-neon-blue" />
+              <h3 className="text-lg md:text-2xl font-bold text-white text-center">Ready for Software Engineering Challenges</h3>
             </div>
-            <p className="text-muted-foreground mb-6 text-lg">
-              With strong foundations in computer science theory and hands-on experience in full-stack development, 
-              I'm prepared to tackle complex software engineering problems. From optimizing algorithms to building 
+            <p className="text-muted-foreground mb-6 text-sm md:text-lg">
+              With strong foundations in computer science theory and hands-on experience in full-stack development,
+              I'm prepared to tackle complex software engineering problems. From optimizing algorithms to building
               scalable web applications, I bring both academic rigor and practical skills to every project.
             </p>
             {/* <motion.button
