@@ -394,8 +394,8 @@ const HolographicButtons = () => {
           className="glass border-2 border-neon-cyan/50 text-neon-cyan px-12 py-6 rounded-2xl font-bold text-lg font-mono relative overflow-hidden"
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent"
-            animate={{ x: ['-100%', '100%'] }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent w-full"
+            animate={{ x: [-300, 300] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <Terminal className="mr-3 h-6 w-6" />
