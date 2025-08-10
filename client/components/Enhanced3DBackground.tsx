@@ -105,13 +105,27 @@ const GeometricPatterns = () => {
           }}
         >
           <div
-            className="w-12 h-12 border-2 border-cyan-400/40"
+            className="w-12 h-12 border-2 border-cyan-400/40 relative"
             style={{
               clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
               background: 'linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1))',
               boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)',
             }}
-          />
+          >
+            {/* Subtle pulsing center dot */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 w-2 h-2 bg-cyan-400/60 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+              animate={{
+                scale: [1, 1.5, 1],
+                opacity: [0.6, 1, 0.6],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          </div>
         </motion.div>
       ))}
 
