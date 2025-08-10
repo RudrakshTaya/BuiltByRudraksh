@@ -83,7 +83,7 @@ export default function Index() {
       >
         {/* Hero Section */}
         <section id="home" className="relative z-20">
-          <AdvancedHero />
+          <StunningHero />
         </section>
 
         {/* About Section */}
