@@ -23,11 +23,19 @@ const EnhancedFloatingOrbs = () => {
       '#EF4444',  // red
     ];
 
-    const newOrbs = Array.from({ length: 12 }, (_, i) => ({
+    // Responsive orb count and size based on screen size
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1024;
+
+    const orbCount = isMobile ? 6 : isTablet ? 9 : 12;
+    const baseSize = isMobile ? 100 : isTablet ? 125 : 150;
+    const sizeVariation = isMobile ? 100 : isTablet ? 150 : 200;
+
+    const newOrbs = Array.from({ length: orbCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: 150 + Math.random() * 200,
+      size: baseSize + Math.random() * sizeVariation,
       color: colors[Math.floor(Math.random() * colors.length)],
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 10,
