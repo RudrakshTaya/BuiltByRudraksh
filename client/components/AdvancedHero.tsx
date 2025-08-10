@@ -428,8 +428,14 @@ const HolographicButtons = () => {
 
 export const AdvancedHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, -100]);
+
+  useEffect(() => {
+    // Ensure DOM is ready before starting animations
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
