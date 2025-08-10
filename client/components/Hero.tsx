@@ -232,8 +232,6 @@ export const Hero = () => {
       style={{
         opacity,
         scale,
-        perspective: '2000px',
-        transformStyle: 'preserve-3d'
       }}
     >
 
