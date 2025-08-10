@@ -333,14 +333,7 @@ const AnimatedStats = () => {
           transition={{ delay: 2.7 + index * 0.1, duration: 0.5 }}
         >
           {/* Animated background */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            animate={{
-              scale: [1, 1.02, 1],
-              rotate: [0, 1, 0],
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           <div className="relative z-10 text-center">
             <motion.div
