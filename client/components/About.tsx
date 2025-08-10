@@ -143,7 +143,7 @@ export const About = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
           {stats.about.map((stat, index) => {
             const iconMap: { [key: string]: any } = {
               'Code2': Code2,
