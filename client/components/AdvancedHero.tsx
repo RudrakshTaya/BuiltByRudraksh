@@ -493,7 +493,7 @@ export const AdvancedHero = () => {
 
           {/* Enhanced Social Links */}
           <motion.div
-            className="flex justify-center space-x-8"
+            className="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 max-w-lg mx-auto px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4, duration: 0.8 }}
