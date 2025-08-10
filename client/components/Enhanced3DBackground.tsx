@@ -166,7 +166,7 @@ const EnhancedCodeRain = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-50">
+    <div className="absolute inset-0 overflow-hidden opacity-35">
       {streams.map((stream) => (
         <motion.div
           key={stream.id}
