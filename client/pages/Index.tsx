@@ -65,6 +65,9 @@ export default function Index() {
       {/* Global CSE 3D Background with Parallax */}
       <CSE3DBackground />
 
+      {/* Parallax Test - Remove after testing */}
+      <ParallaxTest />
+
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
