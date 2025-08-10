@@ -1150,23 +1150,47 @@ a, button, [role="button"], input, textarea, select {
     0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Reduced motion support */
+/* Enhanced reduced motion support for accessibility and performance */
 @media (prefers-reduced-motion: reduce) {
-  .hero-float,
-  .tech-orbit,
-  .glow-pulse,
-  .matrix-rain,
-  .gradient-text-animated,
-  .cs-term-float,
-  .code-rain-drop,
-  .neural-activity-pulse,
-  .enhanced-glow {
-    animation: none !important;
-  }
-
+  /* Disable all complex animations */
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.1s !important;
+    transform: none !important;
+  }
+
+  /* Disable 3D transforms */
+  .preserve-3d {
+    transform-style: flat !important;
+  }
+
+  /* Disable parallax */
+  .parallax-element {
+    transform: translateZ(0) !important;
+  }
+
+  /* Keep essential transitions but make them fast */
+  .smooth-transition {
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* High performance mode for low-end devices */
+@media (max-width: 480px) {
+  /* Simplify all 3D effects */
+  .preserve-3d {
+    transform-style: flat;
+  }
+
+  /* Disable expensive effects */
+  .backdrop-blur-sm {
+    backdrop-filter: none;
+    background: rgba(var(--background), 0.8);
+  }
+
+  /* Reduce animation complexity */
+  * {
+    animation-duration: 0.3s !important;
   }
 }
