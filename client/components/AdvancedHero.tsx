@@ -146,7 +146,7 @@ const TerminalSubtitle = () => {
       </div>
       <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden">
         <span className="text-neon-green">$ </span>
-        <span className="text-white break-words">{displayedText}</span>
+        {/* <span className="text-white break-words">{displayedText}</span> */}
         <motion.span
           className="text-neon-cyan"
           animate={{ opacity: [1, 0, 1] }}
