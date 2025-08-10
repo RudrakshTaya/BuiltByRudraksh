@@ -290,7 +290,7 @@ const EnhancedAlgorithmNodes = () => {
           whileHover={{ scale: 1.5, z: 100 }}
         >
           <div
-            className="w-20 h-20 rounded-2xl flex items-center justify-center text-white text-xs font-bold border-2 glass backdrop-blur-sm"
+            className="w-20 h-20 rounded-2xl flex items-center justify-center text-white text-xs font-bold border-2 glass backdrop-blur-sm relative overflow-hidden"
             style={{
               background: `linear-gradient(45deg, ${node.color}60, ${node.color}30)`,
               borderColor: `${node.color}80`,
@@ -298,6 +298,13 @@ const EnhancedAlgorithmNodes = () => {
               transformStyle: 'preserve-3d',
             }}
           >
+            {/* Subtle inner glow effect */}
+            <div
+              className="absolute inset-0 rounded-2xl opacity-30"
+              style={{
+                background: `linear-gradient(135deg, ${node.color}40, transparent, ${node.color}20)`,
+              }}
+            />
             <span className="text-center leading-none font-bold">{node.algorithm}</span>
           </div>
         </motion.div>
