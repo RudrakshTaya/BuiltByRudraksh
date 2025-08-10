@@ -25,15 +25,21 @@ const CertificationCard = ({ cert, index }: { cert: (typeof certifications)[0]; 
     }
   };
 
+  const handleCardInteraction = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="relative w-full h-80"
+      className="relative w-full h-80 cursor-pointer"
       style={{ perspective: "1000px" }}
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
+      onHoverStart={() => window.innerWidth >= 768 && setIsFlipped(true)}
+      onHoverEnd={() => window.innerWidth >= 768 && setIsFlipped(false)}
+      onClick={handleCardInteraction}
+      onTouchStart={handleCardInteraction}
     >
       <motion.div
         className="relative w-full h-full"
