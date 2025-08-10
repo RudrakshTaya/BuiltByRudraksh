@@ -12,15 +12,15 @@ const SkillBar = ({ skill, index, delay = 0 }: { skill: typeof skills.programmin
       transition={{ delay: delay + index * 0.1, duration: 0.5 }}
       className="relative"
     >
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2 gap-2">
         <div className="flex items-center gap-2">
-          <div className={`w-3 h-3 ${skill.color} rounded-full`} />
-          <span className="text-white font-medium">{skill.name}</span>
-          <span className="text-xs text-muted-foreground bg-gray-800/50 px-2 py-1 rounded">
+          <div className={`w-3 h-3 ${skill.color} rounded-full flex-shrink-0`} />
+          <span className="text-white font-medium text-sm md:text-base">{skill.name}</span>
+          <span className="text-xs text-muted-foreground bg-gray-800/50 px-2 py-1 rounded hidden md:inline">
             {skill.category}
           </span>
         </div>
-        <span className="text-muted-foreground text-sm font-mono">{skill.level}%</span>
+        <span className="text-muted-foreground text-sm font-mono self-start md:self-auto">{skill.level}%</span>
       </div>
       <div className="w-full bg-gray-800/50 rounded-full h-2.5 mb-3">
         <motion.div
