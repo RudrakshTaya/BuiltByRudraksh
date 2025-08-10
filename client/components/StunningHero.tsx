@@ -331,9 +331,26 @@ const ExplosiveStats = () => {
     { label: "8.7 CGPA", color: "neon-green" }
   ];
 
-  const statsToRender = stats?.hero && Array.isArray(stats.hero) && stats.hero.length > 0
-    ? stats.hero
-    : fallbackStats;
+  // Enhanced validation for stats
+  let statsToRender = fallbackStats;
+
+  try {
+    if (stats?.hero && Array.isArray(stats.hero) && stats.hero.length > 0) {
+      const validStats = stats.hero.filter(stat =>
+        stat &&
+        typeof stat === 'object' &&
+        stat.label &&
+        typeof stat.label === 'string'
+      );
+
+      if (validStats.length > 0) {
+        statsToRender = validStats;
+      }
+    }
+  } catch (error) {
+    console.warn('Error processing stats, using fallback:', error);
+    statsToRender = fallbackStats;
+  }
 
   return (
     <motion.div
