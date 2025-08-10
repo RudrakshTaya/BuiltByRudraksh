@@ -282,8 +282,9 @@ const CircuitTechStack = () => {
             
             {/* Tech name */}
             <motion.div
-              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity"
-              animate={index === activeIndex ? { opacity: 1 } : {}}
+              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-mono text-white whitespace-nowrap"
+              animate={index === activeIndex ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
               {tech.name}
             </motion.div>
