@@ -258,7 +258,7 @@ const DataStructures3D = () => {
       
       case 'stack':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="flex flex-col-reverse gap-1">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="w-6 h-2 bg-orange-500 rounded border border-orange-400" />
@@ -266,10 +266,10 @@ const DataStructures3D = () => {
             </div>
           </motion.div>
         );
-      
+
       case 'queue':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="flex gap-1">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="w-2 h-6 bg-cyan-500 rounded border border-cyan-400" />
@@ -277,10 +277,10 @@ const DataStructures3D = () => {
             </div>
           </motion.div>
         );
-      
+
       case 'graph':
         return (
-          <motion.div {...baseProps}>
+          <motion.div key={structure.name} {...motionProps}>
             <div className="relative w-8 h-8">
               <div className="w-2 h-2 bg-red-500 rounded-full absolute top-0 left-0" />
               <div className="w-2 h-2 bg-red-500 rounded-full absolute top-0 right-0" />
