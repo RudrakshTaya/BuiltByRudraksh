@@ -56,21 +56,21 @@ const TopicCard = ({ topic, isActive, onClick }: {
       onClick={onClick}
       whileHover={{ scale: 1.02, y: -5 }}
       whileTap={{ scale: 0.98 }}
-      className={`glass p-6 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
+      className={`glass p-4 md:p-6 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
         isActive
           ? `${topic.borderColor}/50 bg-gradient-to-br from-${topic.bgColor}/10 to-transparent`
           : 'border-white/10 hover:border-white/20'
       }`}
     >
-      <div className="flex items-center gap-4 mb-4">
-        <div className={`w-12 h-12 ${topic.bgColor} rounded-xl flex items-center justify-center`}>
-          <IconComponent className="h-6 w-6 text-black" />
+      <div className="flex items-center gap-3 md:gap-4 mb-4">
+        <div className={`w-10 h-10 md:w-12 md:h-12 ${topic.bgColor} rounded-xl flex items-center justify-center flex-shrink-0`}>
+          <IconComponent className="h-5 w-5 md:h-6 md:w-6 text-black" />
         </div>
-        <div className="flex-1">
-          <h3 className={`text-lg font-bold ${isActive ? topic.color : 'text-white'} transition-colors`}>
+        <div className="flex-1 min-w-0">
+          <h3 className={`text-base md:text-lg font-bold ${isActive ? topic.color : 'text-white'} transition-colors`}>
             {topic.title}
           </h3>
-          <p className="text-muted-foreground text-sm">{topic.description}</p>
+          <p className="text-muted-foreground text-xs md:text-sm">{topic.description}</p>
         </div>
         <div className="flex flex-col items-center gap-1">
           <ChevronRight className={`h-5 w-5 transition-transform ${isActive ? 'rotate-90' : ''} ${topic.color}`} />
