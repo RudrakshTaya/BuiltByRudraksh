@@ -110,7 +110,7 @@ export const About = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold gradient-text mb-6">About Me</h2>
+          <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">About Me</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full" />
         </motion.div>
 
