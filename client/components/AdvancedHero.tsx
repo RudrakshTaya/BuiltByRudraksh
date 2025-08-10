@@ -249,7 +249,7 @@ const CircuitTechStack = () => {
 
       {/* Tech stack grid */}
       <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 relative z-10">
-        {skills.techStack.map((tech, index) => (
+        {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
             className={`relative cursor-pointer transition-all duration-300 ${
