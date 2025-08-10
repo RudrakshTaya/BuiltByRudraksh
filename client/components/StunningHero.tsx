@@ -502,13 +502,20 @@ const ExplosiveSocials = () => {
       transition={{ delay: 4, duration: 1 }}
     >
       {Array.isArray(linksToRender) && linksToRender.map((link, index) => {
+        // Enhanced icon mapping with more options
         const iconMap: { [key: string]: any } = {
           'Github': Github,
           'Linkedin': Linkedin,
           'Code2': Code2,
-          'Trophy': Trophy
+          'Trophy': Trophy,
+          'Mail': Mail
         };
-        const Icon = iconMap[link.icon] || Code2; // Fallback to Code2 if icon not found
+
+        // Safe icon selection with fallback
+        let Icon = Code2; // Default fallback
+        if (link && link.icon && typeof link.icon === 'string' && iconMap[link.icon]) {
+          Icon = iconMap[link.icon];
+        }
 
         // Skip if link is invalid
         if (!link || !link.name || !link.url) {
