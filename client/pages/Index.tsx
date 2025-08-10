@@ -146,8 +146,6 @@ export default function Index() {
         </motion.svg>
       </motion.button>
 
-      {/* Global CSE 3D Background with Parallax */}
-      <CSE3DBackground />
     </div>
   );
 }
