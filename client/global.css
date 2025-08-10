@@ -576,10 +576,45 @@ a, button, [role="button"], input, textarea, select {
   animation: shimmer 2s infinite;
 }
 
-/* Responsive typography */
+/* Responsive typography and 3D optimizations */
 @media (max-width: 768px) {
   .gradient-text {
     background-size: 200% 200%;
+  }
+
+  /* Reduce 3D effects on mobile for better performance */
+  .preserve-3d {
+    transform-style: flat;
+  }
+
+  /* Simplify animations on mobile */
+  .mobile-reduce-motion {
+    animation-duration: 0.5s !important;
+  }
+
+  /* Better touch scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Desktop full 3D experience */
+@media (min-width: 1025px) {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Enable advanced 3D effects on desktop */
+  .desktop-3d-enhanced {
+    perspective: 2000px;
   }
 }
 
