@@ -132,10 +132,10 @@ export const About = () => {
                   {personalInfo.university.name}
                 </span>
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed mb-4">
                 {personalInfo.bio.short}
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
                 {personalInfo.bio.detailed}
               </p>
             </div>
