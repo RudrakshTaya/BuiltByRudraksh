@@ -296,6 +296,14 @@ const CircuitTechStack = () => {
 
 // Advanced stats with animated counters
 const AnimatedStats = () => {
+  // Safe fallback for stats
+  const heroStats = stats?.hero || [
+    { label: "250+ Problems", color: "neon-green" },
+    { label: "15+ Projects", color: "neon-blue" },
+    { label: "3+ Years Learning", color: "neon-purple" },
+    { label: "8.7 CGPA", color: "neon-cyan" }
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -303,7 +311,7 @@ const AnimatedStats = () => {
       transition={{ delay: 2.5, duration: 0.8 }}
       className="grid grid-cols-2 md:grid-cols-4 gap-6"
     >
-      {stats.hero.map((stat, index) => (
+      {heroStats.map((stat, index) => (
         <motion.div
           key={index}
           className="glass p-6 rounded-2xl border border-white/20 hover:border-neon-blue/50 transition-all duration-300 group relative overflow-hidden"
