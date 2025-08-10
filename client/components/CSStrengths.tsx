@@ -72,7 +72,18 @@ const TopicCard = ({ topic, isActive, onClick }: {
           </h3>
           <p className="text-muted-foreground text-sm">{topic.description}</p>
         </div>
-        <ChevronRight className={`h-5 w-5 transition-transform ${isActive ? 'rotate-90' : ''} ${topic.color}`} />
+        <div className="flex flex-col items-center gap-1">
+          <ChevronRight className={`h-5 w-5 transition-transform ${isActive ? 'rotate-90' : ''} ${topic.color}`} />
+          {!isActive && (
+            <motion.div
+              animate={{ y: [0, 3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="text-xs text-muted-foreground opacity-70"
+            >
+              Click
+            </motion.div>
+          )}
+        </div>
       </div>
       
       {/* Quick Stats */}
