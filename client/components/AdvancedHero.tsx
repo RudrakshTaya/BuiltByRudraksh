@@ -391,7 +391,7 @@ const HolographicButtons = () => {
           size="lg" 
           variant="outline"
           onClick={scrollToContact}
-          className="glass border-2 border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan px-12 py-6 rounded-2xl font-bold text-lg hover:shadow-glow-lg transition-all duration-300 font-mono relative overflow-hidden"
+          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-12 py-6 rounded-2xl font-bold text-lg font-mono relative overflow-hidden"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent"
