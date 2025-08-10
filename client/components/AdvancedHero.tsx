@@ -34,8 +34,8 @@ const TypingName = () => {
 
   return (
     <div className="relative">
-      <motion.h1 
-        className="text-4xl md:text-6xl lg:text-7xl font-mono font-bold mb-6 relative"
+      <motion.h1
+        className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-mono font-bold mb-6 relative text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
