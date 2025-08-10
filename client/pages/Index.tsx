@@ -71,8 +71,8 @@ export default function Index() {
       {/* Navbar */}
       <Navbar />
 
-      {/* Scroll Progress Bar */}
-      <ScrollProgressBar />
+      {/* Enhanced Scroll Indicator */}
+      <ScrollIndicator />
 
       {/* Main Content */}
       <motion.main
