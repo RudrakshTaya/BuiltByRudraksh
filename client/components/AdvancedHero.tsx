@@ -324,7 +324,8 @@ const AnimatedStats = () => {
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             animate={{
-              backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+              scale: [1, 1.02, 1],
+              rotate: [0, 1, 0],
             }}
             transition={{ duration: 3, repeat: Infinity }}
           />
