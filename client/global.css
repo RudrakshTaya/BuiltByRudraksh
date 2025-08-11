@@ -1093,6 +1093,15 @@ select {
   backface-visibility: hidden;
 }
 
+/* MacBook 3D effect utilities */
+.rotateX-2 {
+  transform: rotateX(2deg);
+}
+
+.rotateX-3 {
+  transform: rotateX(3deg);
+}
+
 /* Premium 3D effects */
 .crystal-facet {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
