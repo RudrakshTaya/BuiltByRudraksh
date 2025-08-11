@@ -72,6 +72,7 @@ export const navigation = {
     { name: "Home", href: "#home", icon: "🏠" },
     { name: "About", href: "#about", icon: "👨‍💻" },
    // { name: "CS Skills", href: "#cs-strengths", icon: "🧠" },
+    { name: "High-Tech CSE", href: "#high-tech-cse", icon: "⚡" },
     { name: "Experience", href: "#experience", icon: "🎯" },
     { name: "GitHub Stats", href: "#github-stats", icon: "📊" },
     { name: "Certifications", href: "#certifications", icon: "🏆" }
