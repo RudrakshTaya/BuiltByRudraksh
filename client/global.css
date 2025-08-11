@@ -1352,31 +1352,32 @@ select {
     0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* MacBook keyboard-style button */
+/* Enhanced MacBook keyboard-style button */
 .macbook-key-button {
   position: relative;
   display: inline-block;
   cursor: pointer;
   user-select: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
 }
 
 .macbook-key-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .macbook-key-button:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Key press animation */
+/* Enhanced key press animation */
 @keyframes keyPress {
   0% {
     transform: translateY(0px) scale(1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   50% {
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px) scale(0.96);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
   100% {
@@ -1387,6 +1388,45 @@ select {
 
 .macbook-key-button:active > div:first-child {
   animation: keyPress 0.15s ease-out;
+}
+
+/* Keyboard container enhancements */
+.keyboard-container {
+  background: linear-gradient(145deg, #2d3748, #1a202c);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive keyboard adjustments */
+@media (max-width: 640px) {
+  .macbook-key-button:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  .keyboard-container {
+    padding: 0.75rem;
+  }
+}
+
+/* Accessibility enhancements */
+.macbook-key-button:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Disabled state */
+.macbook-key-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.macbook-key-button:disabled:hover {
+  transform: none !important;
 }
 
 /* Enhanced reduced motion support for accessibility and performance */
