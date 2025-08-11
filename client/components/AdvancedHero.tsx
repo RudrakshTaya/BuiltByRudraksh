@@ -455,23 +455,47 @@ const HolographicButtons = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center items-center max-w-2xl mx-auto px-4">
-      <Button
-        variant="outline"
-        onClick={scrollToContact}
-        className="glass border border-neon-cyan/50 text-neon-cyan px-6 py-3 rounded-xl font-bold text-sm font-mono hover:bg-neon-cyan/10"
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-3xl mx-auto px-4">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="relative w-full sm:w-auto"
       >
-        <Terminal className="mr-2 h-4 w-4" />
-        Contact Me
-      </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          onClick={scrollToContact}
+          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-8 py-4 rounded-2xl font-bold text-base font-mono relative overflow-hidden w-full sm:w-auto hover:bg-neon-cyan/10"
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent w-full"
+            animate={{ x: [-300, 300] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <Terminal className="mr-3 h-5 w-5" />
+          <span className="relative z-10">Initialize Contact</span>
+        </Button>
+      </motion.div>
 
-      <Button
-        onClick={downloadResume}
-        className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-6 py-3 rounded-xl font-bold text-sm font-mono hover:opacity-90"
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="relative w-full sm:w-auto"
       >
-        <Download className="mr-2 h-4 w-4" />
-        Resume
-      </Button>
+        <Button
+          size="lg"
+          onClick={downloadResume}
+          className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-8 py-4 rounded-2xl font-bold text-base font-mono relative overflow-hidden w-full sm:w-auto hover:shadow-glow"
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full"
+            animate={{ x: [-300, 300] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+          />
+          <Download className="mr-3 h-5 w-5" />
+          <span className="relative z-10">Download.exe</span>
+        </Button>
+      </motion.div>
     </div>
   );
 };
