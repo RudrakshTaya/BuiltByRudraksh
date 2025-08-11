@@ -738,6 +738,9 @@ export const Projects = () => {
           <div className="w-32 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full" />
         </motion.div>
 
+        {/* MacBook-style Featured Projects */}
+        <ProjectsMacBook />
+
         {/* Enhanced Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
