@@ -852,6 +852,24 @@ select {
     background-color: hsl(var(--background)) !important;
     backdrop-filter: none !important;
   }
+
+  /* Mobile-safe heading wrapper */
+  .mobile-safe-heading {
+    position: relative;
+    z-index: 10;
+    background-color: hsl(var(--background));
+    padding: 0.5rem 0;
+    isolation: isolate;
+  }
+
+  .mobile-safe-heading .gradient-text {
+    background: none !important;
+    color: hsl(var(--foreground)) !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    animation: none !important;
+    position: relative;
+    z-index: 11;
+  }
 }
 
 /* Hero-specific animations */
