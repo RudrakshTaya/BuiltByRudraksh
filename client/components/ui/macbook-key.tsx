@@ -112,15 +112,15 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
         {/* Content */}
         <div className={cn("relative z-10 drop-shadow-sm flex items-center justify-center", style.text)}>
           {Icon && (
-            <Icon 
+            <Icon
               className={cn(
                 "drop-shadow-sm",
-                size === "xs" && "w-3 h-3",
-                size === "sm" && "w-4 h-4", 
-                size === "md" && "w-5 h-5",
-                size === "lg" && "w-6 h-6",
-                size === "xl" && "w-7 h-7"
-              )} 
+                size === "xs" && "w-2.5 h-2.5 sm:w-3 sm:h-3",
+                size === "sm" && "w-3 h-3 sm:w-4 sm:h-4",
+                size === "md" && "w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6",
+                size === "lg" && "w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7",
+                size === "xl" && "w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
+              )}
             />
           )}
           {label && !Icon && (
