@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { contactInfo } from "@/data/portfolioData";
+import { ContactMacBook } from "./ContactMacBook";
 export const Contact = () => {
   const [formState, setFormState] = useState({
     name: "",
