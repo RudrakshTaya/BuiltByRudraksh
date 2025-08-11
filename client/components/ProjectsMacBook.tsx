@@ -131,26 +131,26 @@ const ProjectTerminal = ({ project }: { project: any }) => {
   }, [commands.length]);
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl overflow-hidden">
       {/* Terminal header */}
-      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-2 sm:px-3 py-1.5 bg-gray-800 rounded-t-lg border-b border-gray-700 flex-shrink-0">
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+          <span className="text-gray-400 text-xs font-mono">
             Terminal
           </span>
         </div>
-        <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
+        <Terminal className="w-3 h-3 text-gray-400" />
       </div>
 
-      {/* Terminal content */}
-      <div className="flex-1 p-3 sm:p-4 font-mono text-xs sm:text-sm overflow-hidden">
-        <div className="space-y-2">
-          <div className="text-gray-400">~/projects</div>
+      {/* Terminal content with proper scrolling */}
+      <div className="flex-1 p-2 sm:p-3 font-mono text-xs overflow-hidden">
+        <div className="space-y-1">
+          <div className="text-gray-400 text-xs">~/projects</div>
           {commands.slice(0, currentCommand + 1).map((cmd, index) => (
             <motion.div
               key={index}
@@ -158,18 +158,18 @@ const ProjectTerminal = ({ project }: { project: any }) => {
               animate={{ opacity: 1 }}
               className="space-y-1"
             >
-              <div>
+              <div className="break-words">
                 <span className="text-green-400">$ </span>
-                <span className="text-white">{cmd}</span>
+                <span className="text-white break-all text-xs">{cmd}</span>
               </div>
               {index === 4 && currentCommand >= 4 && (
-                <div className="text-cyan-400 pl-2">
-                  ✓ Project started successfully!
+                <div className="text-cyan-400 pl-2 text-xs">
+                  ✓ Started!
                 </div>
               )}
               {index === 2 && currentCommand >= 2 && (
-                <div className="text-cyan-400 pl-2">
-                  ✓ Dependencies installed
+                <div className="text-cyan-400 pl-2 text-xs">
+                  ✓ Installed
                 </div>
               )}
             </motion.div>
