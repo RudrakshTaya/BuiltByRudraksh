@@ -705,7 +705,51 @@ select {
 /* Enhanced responsive typography and 3D optimizations */
 @media (max-width: 768px) {
   .gradient-text {
-    background-size: 200% 200%;
+    /* Disable gradient animations on mobile to prevent bleeding */
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    color: hsl(var(--foreground)) !important;
+    animation: none !important;
+    /* Add a subtle gradient as text shadow instead */
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    ) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    /* Ensure it doesn't animate */
+    background-size: 100% 100% !important;
+    background-attachment: fixed;
+  }
+
+  /* Alternative: Use solid color for headings on very small screens */
+  @media (max-width: 480px) {
+    .gradient-text {
+      background: none !important;
+      background-image: none !important;
+      -webkit-background-clip: unset !important;
+      background-clip: unset !important;
+      -webkit-text-fill-color: hsl(var(--foreground)) !important;
+      color: hsl(var(--foreground)) !important;
+      animation: none !important;
+      text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  /* Force clean text rendering on all mobile devices */
+  .gradient-text,
+  .gradient-text-animated {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Prevent any background bleeding */
+    background-attachment: local !important;
+    will-change: auto !important;
   }
 
   /* Reduce 3D effects on mobile for better performance */
@@ -739,6 +783,40 @@ select {
   /* Reduce backdrop blur on mobile for performance */
   .backdrop-blur-sm {
     backdrop-filter: blur(2px) !important;
+  }
+
+  /* Fix any background bleeding on mobile */
+  .bg-background {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  /* Ensure no gradient animations leak through */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Fix animated backgrounds on mobile */
+  body::before,
+  .enhanced-3d-background,
+  .tech-grid,
+  .particles,
+  .particle {
+    opacity: 0.3 !important;
+    filter: blur(1px) !important;
+  }
+
+  /* Ensure headings are always on top */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .gradient-text {
+    position: relative !important;
+    z-index: 100 !important;
+    isolation: isolate !important;
   }
 }
 
@@ -780,6 +858,60 @@ select {
 
   .gradient-text {
     -webkit-text-fill-color: hsl(var(--foreground));
+  }
+}
+
+/* Additional mobile fixes for gradient bleeding */
+@media (max-width: 768px) {
+  /* Fix section backgrounds */
+  section {
+    background-color: hsl(var(--background));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Ensure text is always readable */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Prevent background animations from affecting text */
+  .gradient-text-animated {
+    background: none !important;
+    color: hsl(var(--foreground)) !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    animation: none !important;
+  }
+
+  /* Fix for any lingering background effects */
+  .bg-background\/10,
+  .bg-background\/5 {
+    background-color: hsl(var(--background)) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Mobile-safe heading wrapper */
+  .mobile-safe-heading {
+    position: relative;
+    z-index: 10;
+    background-color: hsl(var(--background));
+    padding: 0.5rem 0;
+    isolation: isolate;
+  }
+
+  .mobile-safe-heading .gradient-text {
+    background: none !important;
+    color: hsl(var(--foreground)) !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    animation: none !important;
+    position: relative;
+    z-index: 11;
   }
 }
 
@@ -1352,31 +1484,32 @@ select {
     0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* MacBook keyboard-style button */
+/* Enhanced MacBook keyboard-style button */
 .macbook-key-button {
   position: relative;
   display: inline-block;
   cursor: pointer;
   user-select: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
 }
 
 .macbook-key-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .macbook-key-button:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Key press animation */
+/* Enhanced key press animation */
 @keyframes keyPress {
   0% {
     transform: translateY(0px) scale(1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   50% {
-    transform: translateY(1px) scale(0.98);
+    transform: translateY(2px) scale(0.96);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
   100% {
@@ -1387,6 +1520,45 @@ select {
 
 .macbook-key-button:active > div:first-child {
   animation: keyPress 0.15s ease-out;
+}
+
+/* Keyboard container enhancements */
+.keyboard-container {
+  background: linear-gradient(145deg, #2d3748, #1a202c);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive keyboard adjustments */
+@media (max-width: 640px) {
+  .macbook-key-button:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  .keyboard-container {
+    padding: 0.75rem;
+  }
+}
+
+/* Accessibility enhancements */
+.macbook-key-button:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Disabled state */
+.macbook-key-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.macbook-key-button:disabled:hover {
+  transform: none !important;
 }
 
 /* Enhanced reduced motion support for accessibility and performance */
