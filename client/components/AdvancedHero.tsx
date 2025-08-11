@@ -565,7 +565,7 @@ export const AdvancedHero = () => {
 
   return (
     <motion.section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-12"
       style={{ y }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
