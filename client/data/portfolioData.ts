@@ -15,6 +15,11 @@ export const personalInfo = {
   title: "Software Engineer",
   subtitle: "Full Stack Developer",
   tagline: "Building Scalable Systems & Solving Real-World Problems with Code.",
+  philosophy: {
+    main: "Transforming complex problems into elegant solutions, one line of code at a time.",
+    secondary: "Passionate about bridging the gap between theoretical computer science and real-world applications. Every algorithm tells a story, every project solves a problem, and every line of code brings ideas to life.",
+    values: ["Innovation through Code", "Problem Solving Mindset", "Continuous Learning", "Quality over Quantity"]
+  },
   bio: {
     short: "A passionate B.Tech Computer Science student from Chitkara University (2022–2026), combining full-stack development skills with strong computer science fundamentals.",
     detailed: "I excel in problem-solving through programming, having solved 250+ DSA problems in Java and C++, while also building modern web applications with React, Node.js, and databases. My approach bridges theoretical CS knowledge with practical software development experience."
