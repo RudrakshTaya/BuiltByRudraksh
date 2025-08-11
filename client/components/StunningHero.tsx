@@ -331,6 +331,7 @@ const MegaTechStack = () => {
                 <motion.div
                   animate={index === activeIndex ? { rotate: 360 } : {}}
                   transition={{ duration: 2, ease: "linear" }}
+                  className="text-lg sm:text-xl md:text-2xl"
                 >
                   {tech.icon}
                 </motion.div>
@@ -339,9 +340,9 @@ const MegaTechStack = () => {
                 {index === activeIndex && (
                   <>
                     <motion.div
-                      className="absolute inset-0 border-4 border-cyan-400 rounded-2xl"
+                      className="absolute inset-0 border-2 md:border-4 border-cyan-400 rounded-2xl"
                       animate={{
-                        scale: [1, 1.5, 1],
+                        scale: [1, 1.2, 1],
                         opacity: [1, 0, 1],
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
@@ -355,12 +356,19 @@ const MegaTechStack = () => {
                 )}
               </motion.div>
 
-              {/* Tech name popup */}
+              {/* Tech name - Always visible on mobile */}
+              <div className="text-center w-full">
+                <span className="text-xs sm:text-sm font-mono text-cyan-400 block leading-tight px-1">
+                  {tech.name}
+                </span>
+              </div>
+
+              {/* Desktop hover popup */}
               <motion.div
-                className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-3 py-2 rounded-lg text-sm font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-3 py-2 rounded-lg text-sm font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block"
                 whileHover={{ y: -5 }}
               >
-                {tech.name}
+                {tech.name} • Advanced
               </motion.div>
             </motion.div>
           ))}
