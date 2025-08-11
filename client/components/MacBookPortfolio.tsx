@@ -326,18 +326,18 @@ export const MacBookPortfolio = () => {
           {/* Camera dot */}
           <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 translate-x-8 w-1 h-1 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
 
-          {/* Screen content */}
-          <div className="relative z-10 p-2 sm:p-4 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
+          {/* Screen content with enhanced visibility */}
+          <div className="relative z-10 p-3 sm:p-6 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-gradient-to-br from-gray-900/95 via-black/98 to-gray-950/95 rounded-lg backdrop-blur-sm">
             {/* macOS Menu Bar */}
-            <div className="flex items-center justify-between mb-2 sm:mb-4 px-2 sm:px-3 py-1 sm:py-2 bg-gray-800/60 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-2 sm:gap-4">
-                <div className="text-white text-xs sm:text-sm font-medium truncate">Rudraksh Portfolio</div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <div className="text-gray-400 text-xs">Terminal</div>
-                  <div className="text-gray-400 text-xs">VS Code</div>
+            <div className="flex items-center justify-between mb-3 sm:mb-4 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/90 rounded-lg backdrop-blur-sm border border-gray-700/50 shadow-lg">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="text-white text-sm sm:text-base font-medium truncate">💻 Rudraksh Portfolio</div>
+                <div className="hidden sm:flex items-center gap-3">
+                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">Terminal</div>
+                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">VS Code</div>
                 </div>
               </div>
-              <div className="text-gray-400 text-xs">
+              <div className="text-gray-300 text-xs sm:text-sm font-mono bg-gray-700/50 px-2 py-1 rounded-md">
                 {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </div>
             </div>
