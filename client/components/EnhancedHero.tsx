@@ -361,11 +361,11 @@ const ResponsiveTechStack = () => {
       </motion.h3>
 
       {/* Responsive grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className="relative group cursor-pointer"
+            className="relative group cursor-pointer flex flex-col items-center"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -374,16 +374,16 @@ const ResponsiveTechStack = () => {
               type: "spring",
             }}
             whileHover={{
-              scale: 1.2,
-              y: -5,
+              scale: 1.05,
+              y: -3,
             }}
           >
             <motion.div
-              className={`w-12 h-12 sm:w-16 sm:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
+              className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
                 index === activeIndex
                   ? "border-cyan-400 shadow-lg shadow-cyan-400/50"
                   : "border-white/20"
-              }`}
+              } mb-2`}
               animate={
                 index === activeIndex
                   ? {
