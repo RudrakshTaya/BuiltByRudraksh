@@ -413,16 +413,19 @@ const AnimatedStats = () => {
 
   return (
     <motion.div
-      className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-4xl mx-auto px-4"
+      className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto px-4"
     >
       {heroStats.map((stat, index) => (
         <motion.div
           key={index}
-          className="glass px-4 py-3 rounded-xl border border-white/20 group relative text-center min-w-[120px]"
+          className="glass px-6 py-4 rounded-2xl border border-white/20 group relative text-center min-w-[140px] hover:shadow-glow transition-all duration-300"
           whileHover={{
-            scale: 1.05,
-            borderColor: "rgba(59, 130, 246, 0.5)",
+            scale: 1.08,
+            borderColor: "rgba(59, 130, 246, 0.6)",
           }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
         >
           <motion.div
             className="font-bold text-lg font-mono text-white mb-1"
