@@ -791,6 +791,24 @@ select {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
+
+  /* Fix animated backgrounds on mobile */
+  body::before,
+  .enhanced-3d-background,
+  .tech-grid,
+  .particles,
+  .particle {
+    opacity: 0.3 !important;
+    filter: blur(1px) !important;
+  }
+
+  /* Ensure headings are always on top */
+  h1, h2, h3, h4, h5, h6,
+  .gradient-text {
+    position: relative !important;
+    z-index: 100 !important;
+    isolation: isolate !important;
+  }
 }
 
 /* Tablet optimizations */
