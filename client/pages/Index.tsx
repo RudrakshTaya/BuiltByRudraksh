@@ -65,26 +65,32 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background relative">
       {/* Enhanced 3D Background with Strong Parallax */}
-      <Enhanced3DBackground />
+      <div className="fixed inset-0 z-0">
+        <Enhanced3DBackground />
+      </div>
 
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
       {/* Navbar */}
-      <Navbar />
+      <div className="relative z-50">
+        <Navbar />
+      </div>
 
       {/* Enhanced Scroll Indicator */}
-      <ScrollIndicator />
+      <div className="relative z-50">
+        <ScrollIndicator />
+      </div>
 
       {/* Main Content */}
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16 relative z-10"
+        className="pt-16 relative z-30"
       >
         {/* Hero Section */}
-        <section id="home" className="relative z-20">
+        <section id="home" className="relative z-40">
           <MacBookPortfolio />
         </section>
 
