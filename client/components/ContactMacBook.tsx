@@ -9,8 +9,11 @@ import {
   Code2,
   User,
   MessageSquare,
+  Copy,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { MacBookKey, MacBookKeyboardRow } from "./ui/macbook-key";
 import { contactInfo } from "../data/portfolioData";
 
 // Contact terminal component
@@ -163,13 +166,23 @@ const ContactForm = () => {
             />
           </div>
 
-          <Button
-            type="submit"
-            className="w-full bg-gradient-to-r from-green-600 to-cyan-600 text-white hover:opacity-90 font-mono"
-          >
-            <Send className="mr-2 h-4 w-4" />
-            submit()
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              type="submit"
+              className="flex-1 bg-gradient-to-r from-green-600 to-cyan-600 text-white hover:opacity-90 font-mono"
+            >
+              <Send className="mr-2 h-4 w-4" />
+              submit()
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setFormData({ name: '', email: '', message: '' })}
+              className="border-gray-600 text-gray-400 hover:bg-gray-800 font-mono"
+            >
+              clear()
+            </Button>
+          </div>
         </form>
 
         {/* Contact info display */}
@@ -259,6 +272,96 @@ export const ContactMacBook = () => {
           </div>
           <div className="h-1 sm:h-2 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-b-xl mx-8 sm:mx-16 shadow-lg opacity-60"></div>
         </div>
+
+        {/* Contact Action Keyboard */}
+        <motion.div
+          className="mt-6 sm:mt-8"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          <div className="relative mx-auto max-w-sm px-4">
+            {/* Keyboard base */}
+            <div className="relative bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-xl p-3 sm:p-4 shadow-2xl border border-gray-700">
+              <div className="text-center mb-3">
+                <span className="text-gray-400 text-xs font-mono uppercase tracking-wider">
+                  Contact Actions
+                </span>
+              </div>
+
+              {/* Contact method shortcuts */}
+              <MacBookKeyboardRow gap="sm" className="justify-center mb-3">
+                <MacBookKey
+                  icon={Mail}
+                  tooltip="Copy Email"
+                  onClick={() => navigator.clipboard.writeText(contactInfo.find(info => info.icon === 'Mail')?.value || '')}
+                  size="md"
+                  variant="function"
+                  className="hover:shadow-xl hover:shadow-blue-500/20"
+                />
+                <MacBookKey
+                  icon={Phone}
+                  tooltip="Copy Phone"
+                  onClick={() => navigator.clipboard.writeText(contactInfo.find(info => info.icon === 'Phone')?.value || '')}
+                  size="md"
+                  variant="modifier"
+                  className="hover:shadow-xl hover:shadow-purple-500/20"
+                />
+                <MacBookKey
+                  icon={MapPin}
+                  tooltip="View Location"
+                  onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(contactInfo.find(info => info.icon === 'MapPin')?.value || '')}`, '_blank')}
+                  size="md"
+                  variant="default"
+                  className="hover:shadow-xl hover:shadow-gray-500/20"
+                />
+              </MacBookKeyboardRow>
+
+              {/* Quick action row */}
+              <MacBookKeyboardRow gap="md" className="justify-center">
+                <MacBookKey
+                  icon={Copy}
+                  tooltip="Copy All Info"
+                  onClick={() => {
+                    const allInfo = contactInfo.map(info => `${info.label}: ${info.value}`).join('\n');
+                    navigator.clipboard.writeText(allInfo);
+                  }}
+                  size="sm"
+                  variant="function"
+                  className="hover:shadow-xl hover:shadow-cyan-500/20"
+                />
+                <MacBookKey
+                  label="⌘"
+                  tooltip="Quick Connect"
+                  onClick={() => {
+                    const email = contactInfo.find(info => info.icon === 'Mail')?.value;
+                    if (email) window.open(`mailto:${email}`, '_blank');
+                  }}
+                  size="sm"
+                  variant="return"
+                  className="hover:shadow-xl hover:shadow-green-500/20"
+                />
+                <MacBookKey
+                  icon={ExternalLink}
+                  tooltip="Social Links"
+                  onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
+                  size="sm"
+                  variant="modifier"
+                  className="hover:shadow-xl hover:shadow-purple-500/20"
+                />
+              </MacBookKeyboardRow>
+
+              <div className="mt-3 text-center">
+                <div className="text-gray-500 text-xs font-mono">
+                  Click to copy or connect
+                </div>
+              </div>
+            </div>
+
+            {/* Keyboard shadow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-xl -z-10 translate-y-1"></div>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
