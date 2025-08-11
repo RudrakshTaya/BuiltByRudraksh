@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Play, Filter, Star, GitFork, Eye, ChevronLeft, ChevronRight, X, Maximize2, Code2, Database, Globe, Terminal } from "lucide-react";
 import { Button } from "./ui/button";
 import { projects } from '../data/portfolioData';
+import { ProjectsMacBook } from './ProjectsMacBook';
 
 
 const categories = ["All", "Full Stack", "Backend", "Java/C++", "Python/CLI"];
