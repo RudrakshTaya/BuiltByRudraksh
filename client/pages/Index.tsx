@@ -104,6 +104,14 @@ export default function Index() {
           <CSStrengths />
         </section>
 
+        {/* High-Tech CSE Domains */}
+        <section
+          id="high-tech-cse"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
+          <HighTechCSE />
+        </section>
+
         {/* Project-Based Learning Experience */}
         <section
           id="experience"
