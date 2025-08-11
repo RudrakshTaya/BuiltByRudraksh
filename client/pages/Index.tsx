@@ -65,7 +65,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background relative">
       {/* Enhanced 3D Background with Strong Parallax */}
-      <div className="fixed inset-0 z-0 opacity-30">
+      <div className="fixed inset-0 z-0">
         <Enhanced3DBackground />
       </div>
 
@@ -87,10 +87,10 @@ export default function Index() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative z-20"
+        className="pt-16 relative z-30"
       >
         {/* Hero Section */}
-        <section id="home" className="relative z-30 pt-16">
+        <section id="home" className="relative z-40">
           <MacBookPortfolio />
         </section>
 
