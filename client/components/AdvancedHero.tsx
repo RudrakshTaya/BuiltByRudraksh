@@ -614,8 +614,8 @@ export const AdvancedHero = () => {
           >
             <HolographicButtons />
 
-            {/* Social Links */}
-            <div className="flex justify-center space-x-4 max-w-lg mx-auto px-4">
+            {/* Enhanced Social Links */}
+            <div className="flex justify-center space-x-5 sm:space-x-6 max-w-lg mx-auto px-4">
             {(socialLinks || []).map((link, index) => {
               const iconMap: { [key: string]: any } = {
                 Github: Github,
