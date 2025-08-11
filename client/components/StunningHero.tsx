@@ -289,13 +289,13 @@ const MegaTechStack = () => {
         TECHNOLOGIES & SKILLS
       </motion.h3>
 
-      {/* Hexagonal grid */}
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 max-w-6xl mx-auto">
+      {/* Responsive tech grid */}
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto px-4">
         {Array.isArray(techStackToRender) &&
           techStackToRender.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className="relative group cursor-pointer"
+              className="relative group cursor-pointer flex flex-col items-center"
               initial={{ opacity: 0, scale: 0, rotateY: -180 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}
               transition={{
@@ -304,17 +304,16 @@ const MegaTechStack = () => {
                 type: "spring",
               }}
               whileHover={{
-                scale: 1.3,
-                rotateZ: 360,
-                y: -10,
+                scale: 1.1,
+                y: -5,
               }}
             >
               <motion.div
-                className={`w-20 h-20 ${tech.color} rounded-2xl flex items-center justify-center relative overflow-hidden border-4 ${
+                className={`w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 ${tech.color} rounded-2xl flex items-center justify-center relative overflow-hidden border-2 md:border-4 ${
                   index === activeIndex
                     ? "border-cyan-400 shadow-2xl shadow-cyan-400/50"
                     : "border-white/20"
-                }`}
+                } mb-2`}
                 animate={
                   index === activeIndex
                     ? {
