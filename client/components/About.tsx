@@ -11,7 +11,11 @@ import {
   Brain,
   Database,
   Cpu,
+  FolderOpen,
+  User,
+  Mail,
 } from "lucide-react";
+import { MacBookKey, MacBookKeyboardRow } from "./ui/macbook-key";
 import {
   personalInfo,
   skills,
@@ -353,26 +357,59 @@ export const About = () => {
               to building scalable web applications, I bring both academic rigor
               and practical skills to every project.
             </p>
-            {/* <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('cs-strengths')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-8 py-3 rounded-xl font-semibold hover:shadow-glow transition-all duration-300 mr-4"
+            {/* Navigation Keyboard */}
+            <motion.div
+              className="inline-block"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Explore CS Skills
-            </motion.button> */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="glass border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 px-8 py-3 rounded-xl font-semibold transition-all duration-300"
-            >
-              View Projects
-            </motion.button>
+              <div className="relative">
+                <div className="bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-2xl p-4 sm:p-6 shadow-2xl border border-gray-700">
+                  <div className="text-center mb-4">
+                    <span className="text-gray-400 text-sm font-mono uppercase tracking-wider">
+                      Navigation Shortcuts
+                    </span>
+                  </div>
+
+                  <MacBookKeyboardRow gap="md" className="justify-center mb-4">
+                    <MacBookKey
+                      icon={Brain}
+                      tooltip="CS Strengths"
+                      onClick={() => document.getElementById('cs-strengths')?.scrollIntoView({ behavior: 'smooth' })}
+                      size="md"
+                      variant="function"
+                      className="hover:shadow-xl hover:shadow-blue-500/20"
+                    />
+                    <MacBookKey
+                      icon={FolderOpen}
+                      tooltip="View Projects"
+                      onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                      size="md"
+                      variant="return"
+                      className="hover:shadow-xl hover:shadow-green-500/20"
+                    />
+                    <MacBookKey
+                      icon={Mail}
+                      tooltip="Contact Me"
+                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                      size="md"
+                      variant="modifier"
+                      className="hover:shadow-xl hover:shadow-purple-500/20"
+                    />
+                  </MacBookKeyboardRow>
+
+                  <div className="text-center">
+                    <div className="text-gray-500 text-xs font-mono">
+                      Click to navigate or explore
+                    </div>
+                  </div>
+                </div>
+
+                {/* Keyboard shadow */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-2xl -z-10 translate-y-1"></div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
