@@ -139,43 +139,44 @@ const VSCodePortfolio = () => {
   ];
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
       {/* VS Code header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-sm font-mono ml-2">VS Code</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">VS Code</span>
         </div>
-        <Code2 className="w-4 h-4 text-gray-400" />
+        <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
 
       {/* Tabs */}
-      <div className="flex bg-gray-800 border-b border-gray-700">
+      <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 text-sm border-r border-gray-700 transition-colors ${
+              className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border-r border-gray-700 transition-colors whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-gray-900 text-white'
                   : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-750'
               }`}
             >
-              <Icon className="w-4 h-4" />
-              {tab.name}
+              <Icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <span className="hidden sm:inline">{tab.name}</span>
+              <span className="sm:hidden">{tab.name.split('.')[0]}</span>
             </button>
           );
         })}
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-6 overflow-auto">
+      <div className="flex-1 p-3 sm:p-6 overflow-auto">
         <AnimatePresence mode="wait">
           {activeTab === 'portfolio.md' && (
             <motion.div
