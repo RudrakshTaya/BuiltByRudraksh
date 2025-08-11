@@ -13,10 +13,12 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormState((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -24,7 +26,11 @@ export const Contact = () => {
     e.preventDefault();
 
     // Basic form validation
-    if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
+    if (
+      !formState.name.trim() ||
+      !formState.email.trim() ||
+      !formState.message.trim()
+    ) {
       alert("Please fill in all fields");
       return;
     }
@@ -38,7 +44,7 @@ export const Contact = () => {
 
     try {
       // Simulate form submission - in real app, this would be an API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -54,14 +60,12 @@ export const Contact = () => {
     }
   };
 
-  
-
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-40 left-20 w-96 h-96 bg-neon-blue/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow" />
-      
+
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -70,9 +74,12 @@ export const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold gradient-text mb-6">Get In Touch</h2>
+          <h2 className="text-5xl font-bold gradient-text mb-6">
+            Get In Touch
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-            Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
+            Ready to bring your ideas to life? Let's discuss your next project
+            and create something amazing together.
           </p>
           <motion.p
             className="text-sm text-neon-cyan/80 max-w-xl mx-auto italic"
@@ -80,7 +87,8 @@ export const Contact = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            "Every great project starts with a conversation. Let's make yours extraordinary."
+            "Every great project starts with a conversation. Let's make yours
+            extraordinary."
           </motion.p>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mt-6" />
         </motion.div>
@@ -97,15 +105,19 @@ export const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-3xl font-bold text-white mb-6">Let's Connect</h3>
+              <h3 className="text-3xl font-bold text-white mb-6">
+                Let's Connect
+              </h3>
               <p className="text-muted-foreground mb-6">
-                I'm always interested in new opportunities and exciting projects.
-                Whether you're a company looking to hire or have a project in mind,
-                I'd love to hear from you.
+                I'm always interested in new opportunities and exciting
+                projects. Whether you're a company looking to hire or have a
+                project in mind, I'd love to hear from you.
               </p>
               <div className="border-l-4 border-neon-purple/30 pl-4 mb-6">
                 <p className="text-white/90 italic text-sm leading-relaxed">
-                  "I believe in the power of collaboration and innovation. Together, we can turn challenges into opportunities and ideas into impactful solutions."
+                  "I believe in the power of collaboration and innovation.
+                  Together, we can turn challenges into opportunities and ideas
+                  into impactful solutions."
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 mb-6">
@@ -125,33 +137,39 @@ export const Contact = () => {
             <div className="space-y-4">
               {contactInfo.map((info, index) => {
                 const iconMap: { [key: string]: any } = {
-                  'Mail': Mail,
-                  'Phone': Phone,
-                  'MapPin': MapPin
+                  Mail: Mail,
+                  Phone: Phone,
+                  MapPin: MapPin,
                 };
                 const IconComponent = iconMap[info.icon] || Mail;
 
                 return (
-                <motion.a
-                  key={info.label}
-                  href={info.href}
-                  target={info.href.startsWith('http') ? '_blank' : undefined}
-                  rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-center gap-4 glass p-6 rounded-xl hover:border-neon-blue/50 transition-all duration-300 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
-                    <p className="text-white font-medium">{info.value}</p>
-                  </div>
-                </motion.a>
-              );
+                  <motion.a
+                    key={info.label}
+                    href={info.href}
+                    target={info.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      info.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    whileHover={{ scale: 1.02, x: 10 }}
+                    className="flex items-center gap-4 glass p-6 rounded-xl hover:border-neon-blue/50 transition-all duration-300 group"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        {info.label}
+                      </p>
+                      <p className="text-white font-medium">{info.value}</p>
+                    </div>
+                  </motion.a>
+                );
               })}
             </div>
 
@@ -175,7 +193,10 @@ export const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-white mb-2"
+                >
                   Full Name
                 </label>
                 <input
@@ -191,7 +212,10 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-white mb-2"
+                >
                   Email Address
                 </label>
                 <input
@@ -207,7 +231,10 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-white mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -271,8 +298,12 @@ export const Contact = () => {
                   >
                     <CheckCircle className="h-10 w-10 text-white" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
-                  <p className="text-muted-foreground">I'll get back to you within 24 hours.</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Thank You!
+                  </h3>
+                  <p className="text-muted-foreground">
+                    I'll get back to you within 24 hours.
+                  </p>
                 </div>
               </motion.div>
             )}

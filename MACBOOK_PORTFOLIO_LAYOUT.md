@@ -7,6 +7,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 💻 **Layout Structure**
 
 ### **MacBook Hardware Design**
+
 - **Realistic MacBook frame** with proper bezels and rounded corners
 - **Screen bezel** with gradient effects
 - **MacBook base** with metallic gradient
@@ -14,6 +15,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 - **Proper shadows** and depth for realism
 
 ### **Software Interface**
+
 - **macOS Menu Bar** showing portfolio name, time, and active apps
 - **Split-screen layout** (responsive: stacked on mobile, side-by-side on desktop)
 - **Terminal window** (left side)
@@ -22,6 +24,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 🖥️ **Terminal Section (Left Side)**
 
 ### **Features**
+
 - **Kept your `~/portfolio` exactly as you wanted**
 - **Same tech command cycling** with all 9 commands
 - **Authentic terminal styling** with macOS window controls
@@ -29,6 +32,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 - **Command outputs** showing success messages
 
 ### **Commands Include**
+
 1. `echo 'CS Student & Full Stack Developer'`
 2. `git status --porcelain | grep -c '^M' # 250+ DSA problems solved`
 3. `npm run build --production # Building scalable web applications`
@@ -37,6 +41,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 💼 **VS Code Section (Right Side)**
 
 ### **Tabbed Interface**
+
 - **portfolio.md** - Main portfolio overview
 - **stats.json** - Statistics in JSON format
 - **contact.js** - Social links as JavaScript code
@@ -44,6 +49,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ### **Content by Tab**
 
 #### **1. portfolio.md Tab**
+
 - **Markdown-style** portfolio presentation
 - **Your name** as main heading
 - **Title and subtitle** in code format
@@ -54,6 +60,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 - **Action buttons**: "Initialize Contact" and "Download.exe"
 
 #### **2. stats.json Tab**
+
 - **Code-style statistics** in JSON format
 - **Syntax highlighting** with proper colors
 - **Your achievements** as key-value pairs:
@@ -63,6 +70,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
   - CGPA: "8.7"
 
 #### **3. contact.js Tab**
+
 - **JavaScript-style** social links configuration
 - **Syntax-highlighted code** showing your links
 - **Realistic variable declaration** and array structure
@@ -70,12 +78,14 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 🎨 **Visual Design Features**
 
 ### **Authentic Styling**
+
 - **Window controls** (red, yellow, green buttons) on both Terminal and VS Code
 - **Proper app icons** in window headers
 - **Real VS Code color scheme** (dark theme)
 - **Authentic terminal colors** (green prompt, cyan output, etc.)
 
 ### **Animations**
+
 - **MacBook appears** with scale-up animation
 - **Terminal slides in** from left
 - **VS Code slides in** from right
@@ -83,6 +93,7 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 - **Social links** fade in below MacBook
 
 ### **Responsive Design**
+
 - **Desktop**: Side-by-side Terminal and VS Code
 - **Mobile**: Stacked layout with proper sizing
 - **Fixed height**: Consistent 600px screen content
@@ -98,12 +109,14 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 📱 **Responsive Features**
 
 ### **Desktop Experience**
+
 - **Full MacBook display** with realistic proportions
 - **Split-screen layout** showing both Terminal and VS Code
 - **Hover effects** and interactive elements
 - **Fixed size** for consistent presentation
 
 ### **Mobile Optimization**
+
 - **Stacked layout** (Terminal above, VS Code below)
 - **Touch-friendly tabs** in VS Code
 - **Proper scaling** of MacBook frame
@@ -112,18 +125,21 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 🎯 **User Experience Benefits**
 
 ### **Professional Appeal**
+
 - **Immediately recognizable** as a developer's workspace
 - **Shows familiarity** with professional tools
 - **Creative presentation** of traditional portfolio content
 - **Memorable visual impact**
 
 ### **Interactive Elements**
+
 - **Clickable tabs** in VS Code interface
 - **Working buttons** for contact and resume download
 - **Animated terminal** keeps visitors engaged
 - **Smooth transitions** between different views
 
 ### **Content Organization**
+
 - **Logical separation** of different types of content
 - **Easy navigation** through tabbed interface
 - **Code-style presentation** appeals to technical audience
@@ -132,17 +148,20 @@ Created a stunning MacBook-style portfolio layout that presents your content as 
 ## 🛠️ **Technical Implementation**
 
 ### **Component Structure**
+
 - **MacBookPortfolio** - Main container component
 - **PortfolioTerminal** - Terminal with cycling commands
 - **VSCodePortfolio** - Tabbed VS Code interface
 - **Proper state management** for active tabs and animations
 
 ### **Animation Libraries**
+
 - **Framer Motion** for smooth animations
 - **AnimatePresence** for tab transitions
 - **Staggered animations** for professional reveal sequence
 
 ### **Styling Approach**
+
 - **Tailwind CSS** for consistent styling
 - **Custom gradients** for realistic MacBook appearance
 - **Proper z-indexing** for layered elements

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Terminal, 
-  Download, 
-  Mail, 
-  Github, 
-  Linkedin, 
-  Code2, 
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Terminal,
+  Download,
+  Mail,
+  Github,
+  Linkedin,
+  Code2,
   Trophy,
   FileText,
   Folder,
@@ -15,11 +15,16 @@ import {
   Search,
   X,
   Minimize,
-  Maximize
-} from 'lucide-react';
-import { Button } from './ui/button';
-import { downloadResume } from '../utils/downloadResume';
-import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
+  Maximize,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import { downloadResume } from "../utils/downloadResume";
+import {
+  personalInfo,
+  skills,
+  stats,
+  socialLinks,
+} from "../data/portfolioData";
 
 // Enhanced terminal with cycling tech commands (keeping the same as before)
 const PortfolioTerminal = () => {
@@ -35,26 +40,31 @@ const PortfolioTerminal = () => {
     "docker ps | grep 'react\\|node\\|mongo' # Containerized MERN stack",
     "python -c \"print('ML + Data Structures = Innovation')\"",
     "javac Algorithm.java && java Problem --solve --optimize",
-    "curl -X POST /api/innovation -d '{\"passion\": \"unlimited\"}'",
+    'curl -X POST /api/innovation -d \'{"passion": "unlimited"}\'',
     "sudo systemctl enable continuous-learning.service",
-    "grep -r 'problem-solving' ~/mindset | wc -l # Always active"
+    "grep -r 'problem-solving' ~/mindset | wc -l # Always active",
   ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < techCommands[commandIndex].length) {
-        setDisplayedText((prev) => prev + techCommands[commandIndex][currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      } else if (!isCompleted) {
-        setIsCompleted(true);
-        setTimeout(() => {
-          setDisplayedText("");
-          setCurrentIndex(0);
-          setIsCompleted(false);
-          setCommandIndex((prev) => (prev + 1) % techCommands.length);
-        }, 3000);
-      }
-    }, currentIndex === 0 && commandIndex === 0 ? 2000 : 50);
+    const timer = setTimeout(
+      () => {
+        if (currentIndex < techCommands[commandIndex].length) {
+          setDisplayedText(
+            (prev) => prev + techCommands[commandIndex][currentIndex],
+          );
+          setCurrentIndex((prev) => prev + 1);
+        } else if (!isCompleted) {
+          setIsCompleted(true);
+          setTimeout(() => {
+            setDisplayedText("");
+            setCurrentIndex(0);
+            setIsCompleted(false);
+            setCommandIndex((prev) => (prev + 1) % techCommands.length);
+          }, 3000);
+        }
+      },
+      currentIndex === 0 && commandIndex === 0 ? 2000 : 50,
+    );
 
     return () => clearTimeout(timer);
   }, [currentIndex, commandIndex, isCompleted, techCommands]);
@@ -69,7 +79,9 @@ const PortfolioTerminal = () => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">Terminal</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            Terminal
+          </span>
         </div>
         <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -77,7 +89,7 @@ const PortfolioTerminal = () => {
       {/* Terminal content */}
       <div className="flex-1 p-2 sm:p-4 font-mono text-xs sm:text-sm overflow-hidden">
         <div className="text-gray-400 mb-2 text-xs sm:text-sm">~/portfolio</div>
-        
+
         <div className="space-y-2">
           <div className="min-h-[1.5rem]">
             <span className="text-green-400">$ </span>
@@ -92,7 +104,7 @@ const PortfolioTerminal = () => {
               </motion.span>
             )}
           </div>
-          
+
           {isCompleted && (
             <motion.div
               className="text-cyan-400/80 text-sm pl-2"
@@ -102,8 +114,10 @@ const PortfolioTerminal = () => {
             >
               {commandIndex === 0 && "✓ Ready to build amazing things"}
               {commandIndex === 1 && "✓ 250+ problems solved successfully"}
-              {commandIndex === 2 && "✓ Build successful - ready for production"}
-              {commandIndex === 3 && "✓ 3 containers running - full stack ready"}
+              {commandIndex === 2 &&
+                "✓ Build successful - ready for production"}
+              {commandIndex === 3 &&
+                "✓ 3 containers running - full stack ready"}
               {commandIndex === 4 && "ML + Data Structures = Innovation"}
               {commandIndex === 5 && "✓ Algorithm compiled and optimized"}
               {commandIndex === 6 && "✓ 200 OK - Innovation API active"}
@@ -119,12 +133,12 @@ const PortfolioTerminal = () => {
 
 // VS Code style portfolio content
 const VSCodePortfolio = () => {
-  const [activeTab, setActiveTab] = useState('portfolio.md');
+  const [activeTab, setActiveTab] = useState("portfolio.md");
 
   const tabs = [
-    { id: 'portfolio.md', name: 'portfolio.md', icon: FileText },
-    { id: 'stats.json', name: 'stats.json', icon: Code2 },
-    { id: 'contact.js', name: 'contact.js', icon: Settings }
+    { id: "portfolio.md", name: "portfolio.md", icon: FileText },
+    { id: "stats.json", name: "stats.json", icon: Code2 },
+    { id: "contact.js", name: "contact.js", icon: Settings },
   ];
 
   const scrollToContact = () => {
@@ -148,7 +162,9 @@ const VSCodePortfolio = () => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">VS Code</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            VS Code
+          </span>
         </div>
         <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -163,13 +179,13 @@ const VSCodePortfolio = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border-r border-gray-700 transition-colors whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-gray-900 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-750'
+                  ? "bg-gray-900 text-white"
+                  : "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-750"
               }`}
             >
               <Icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
               <span className="hidden sm:inline">{tab.name}</span>
-              <span className="sm:hidden">{tab.name.split('.')[0]}</span>
+              <span className="sm:hidden">{tab.name.split(".")[0]}</span>
             </button>
           );
         })}
@@ -178,7 +194,7 @@ const VSCodePortfolio = () => {
       {/* Content */}
       <div className="flex-1 p-3 sm:p-6 overflow-auto">
         <AnimatePresence mode="wait">
-          {activeTab === 'portfolio.md' && (
+          {activeTab === "portfolio.md" && (
             <motion.div
               key="portfolio"
               initial={{ opacity: 0, y: 20 }}
@@ -187,14 +203,20 @@ const VSCodePortfolio = () => {
               className="space-y-6"
             >
               <div>
-                <h1 className="text-2xl font-bold text-white mb-2"># {personalInfo.name}</h1>
-                <p className="text-cyan-400 font-mono">## {personalInfo.title} | {personalInfo.subtitle}</p>
+                <h1 className="text-2xl font-bold text-white mb-2">
+                  # {personalInfo.name}
+                </h1>
+                <p className="text-cyan-400 font-mono">
+                  ## {personalInfo.title} | {personalInfo.subtitle}
+                </p>
                 <p className="text-gray-300 mt-4">{personalInfo.bio.short}</p>
               </div>
 
               {/* Core Values */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">### Core Values</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  ### Core Values
+                </h3>
                 <div className="flex flex-wrap gap-3">
                   <span className="px-3 py-1 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-400 text-sm">
                     • Innovation through Code
@@ -210,7 +232,9 @@ const VSCodePortfolio = () => {
 
               {/* Action Buttons */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">### Quick Actions</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  ### Quick Actions
+                </h3>
                 <div className="flex flex-wrap gap-3">
                   <Button
                     variant="outline"
@@ -232,7 +256,7 @@ const VSCodePortfolio = () => {
             </motion.div>
           )}
 
-          {activeTab === 'stats.json' && (
+          {activeTab === "stats.json" && (
             <motion.div
               key="stats"
               initial={{ opacity: 0, y: 20 }}
@@ -247,10 +271,16 @@ const VSCodePortfolio = () => {
                 </div>
                 {heroStats.map((stat, index) => (
                   <div key={index} className="ml-4">
-                    <span className="text-cyan-400">"{stat.label.toLowerCase().replace(/\s+/g, '_')}"</span>
+                    <span className="text-cyan-400">
+                      "{stat.label.toLowerCase().replace(/\s+/g, "_")}"
+                    </span>
                     <span className="text-white">: </span>
-                    <span className="text-green-400">"{stat.label.split(' ')[0]}"</span>
-                    {index < heroStats.length - 1 && <span className="text-white">,</span>}
+                    <span className="text-green-400">
+                      "{stat.label.split(" ")[0]}"
+                    </span>
+                    {index < heroStats.length - 1 && (
+                      <span className="text-white">,</span>
+                    )}
                   </div>
                 ))}
                 <div className="text-purple-400">{`}`}</div>
@@ -258,7 +288,7 @@ const VSCodePortfolio = () => {
             </motion.div>
           )}
 
-          {activeTab === 'contact.js' && (
+          {activeTab === "contact.js" && (
             <motion.div
               key="contact"
               initial={{ opacity: 0, y: 20 }}
@@ -283,7 +313,9 @@ const VSCodePortfolio = () => {
                   <span className="text-white">: </span>
                   <span className="text-green-400">"{link.url}"</span>
                   <span className="text-white"> {`}`}</span>
-                  {index < socialLinks.length - 1 && <span className="text-white">,</span>}
+                  {index < socialLinks.length - 1 && (
+                    <span className="text-white">,</span>
+                  )}
                 </div>
               ))}
               <div className="text-white">];</div>
@@ -331,14 +363,23 @@ export const MacBookPortfolio = () => {
             {/* macOS Menu Bar */}
             <div className="flex items-center justify-between mb-3 sm:mb-4 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/90 rounded-lg backdrop-blur-sm border border-gray-700/50 shadow-lg">
               <div className="flex items-center gap-3 sm:gap-4">
-                <div className="text-white text-sm sm:text-base font-medium truncate">💻 Rudraksh Portfolio</div>
+                <div className="text-white text-sm sm:text-base font-medium truncate">
+                  💻 Rudraksh Portfolio
+                </div>
                 <div className="hidden sm:flex items-center gap-3">
-                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">Terminal</div>
-                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">VS Code</div>
+                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">
+                    Terminal
+                  </div>
+                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">
+                    VS Code
+                  </div>
                 </div>
               </div>
               <div className="text-gray-300 text-xs sm:text-sm font-mono bg-gray-700/50 px-2 py-1 rounded-md">
-                {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                {new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </div>
             </div>
 

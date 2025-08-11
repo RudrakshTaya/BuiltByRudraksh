@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Code2, 
-  Github, 
-  ExternalLink, 
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Code2,
+  Github,
+  ExternalLink,
   Terminal,
   Folder,
   Play,
   Star,
   GitFork,
-  Eye
-} from 'lucide-react';
-import { Button } from './ui/button';
-import { projects } from '../data/portfolioData';
+  Eye,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import { projects } from "../data/portfolioData";
 
 // Featured project display
 const ProjectCodeDisplay = ({ project }: { project: any }) => {
@@ -26,7 +26,9 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">project.json</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            project.json
+          </span>
         </div>
         <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -50,7 +52,9 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
             <div>
               <span className="text-cyan-400">"description"</span>
               <span className="text-white">: </span>
-              <span className="text-green-400">"{project.description.substring(0, 80)}..."</span>
+              <span className="text-green-400">
+                "{project.description.substring(0, 80)}..."
+              </span>
               <span className="text-white">,</span>
             </div>
             <div>
@@ -61,11 +65,15 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
               {project.tech.slice(0, 4).map((tech: string, index: number) => (
                 <div key={index}>
                   <span className="text-green-400">"{tech}"</span>
-                  {index < Math.min(project.tech.length - 1, 3) && <span className="text-white">,</span>}
+                  {index < Math.min(project.tech.length - 1, 3) && (
+                    <span className="text-white">,</span>
+                  )}
                 </div>
               ))}
               {project.tech.length > 4 && (
-                <div className="text-gray-400">// ... {project.tech.length - 4} more</div>
+                <div className="text-gray-400">
+                  // ... {project.tech.length - 4} more
+                </div>
               )}
             </div>
             <div>
@@ -86,7 +94,9 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
             <div>
               <span className="text-cyan-400">"featured"</span>
               <span className="text-white">: </span>
-              <span className="text-yellow-400">{project.featured ? 'true' : 'false'}</span>
+              <span className="text-yellow-400">
+                {project.featured ? "true" : "false"}
+              </span>
             </div>
           </div>
           <div className="text-purple-400">{`}`}</div>
@@ -99,13 +109,13 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
 // Project terminal display
 const ProjectTerminal = ({ project }: { project: any }) => {
   const [currentCommand, setCurrentCommand] = useState(0);
-  
+
   const commands = [
-    `git clone https://github.com/rudraksh/${project.title.toLowerCase().replace(/\s+/g, '-')}`,
-    `cd ${project.title.toLowerCase().replace(/\s+/g, '-')}`,
-    'npm install',
-    'npm start',
-    `echo "Project: ${project.title} is running!"`
+    `git clone https://github.com/rudraksh/${project.title.toLowerCase().replace(/\s+/g, "-")}`,
+    `cd ${project.title.toLowerCase().replace(/\s+/g, "-")}`,
+    "npm install",
+    "npm start",
+    `echo "Project: ${project.title} is running!"`,
   ];
 
   React.useEffect(() => {
@@ -125,7 +135,9 @@ const ProjectTerminal = ({ project }: { project: any }) => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">Terminal</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            Terminal
+          </span>
         </div>
         <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -146,10 +158,14 @@ const ProjectTerminal = ({ project }: { project: any }) => {
                 <span className="text-white">{cmd}</span>
               </div>
               {index === 4 && currentCommand >= 4 && (
-                <div className="text-cyan-400 pl-2">✓ Project started successfully!</div>
+                <div className="text-cyan-400 pl-2">
+                  ✓ Project started successfully!
+                </div>
               )}
               {index === 2 && currentCommand >= 2 && (
-                <div className="text-cyan-400 pl-2">✓ Dependencies installed</div>
+                <div className="text-cyan-400 pl-2">
+                  ✓ Dependencies installed
+                </div>
               )}
             </motion.div>
           ))}
@@ -160,7 +176,7 @@ const ProjectTerminal = ({ project }: { project: any }) => {
 };
 
 export const ProjectsMacBook = () => {
-  const featuredProjects = projects.filter(p => p.featured).slice(0, 3);
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
   const [currentProject, setCurrentProject] = useState(0);
 
   React.useEffect(() => {
@@ -201,7 +217,7 @@ export const ProjectsMacBook = () => {
         {/* MacBook Screen */}
         <div className="relative bg-black rounded-2xl sm:rounded-3xl border-3 sm:border-6 border-gray-800 shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black rounded-xl sm:rounded-2xl border border-gray-700"></div>
-          
+
           {/* Screen content */}
           <div className="relative z-10 p-2 sm:p-4 min-h-[300px] sm:min-h-[400px]">
             {/* macOS Menu Bar */}
@@ -213,7 +229,9 @@ export const ProjectsMacBook = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-3 h-3 text-yellow-400" />
-                <span className="text-yellow-400 text-xs">{project.stats?.stars || 0}</span>
+                <span className="text-yellow-400 text-xs">
+                  {project.stats?.stars || 0}
+                </span>
               </div>
             </div>
 
@@ -221,7 +239,7 @@ export const ProjectsMacBook = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-4 h-[250px] sm:h-[350px]">
               {/* Terminal Side */}
               <ProjectTerminal project={project} />
-              
+
               {/* VS Code Side */}
               <ProjectCodeDisplay project={project} />
             </div>
@@ -231,7 +249,7 @@ export const ProjectsMacBook = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open(project.githubUrl, '_blank')}
+                onClick={() => window.open(project.githubUrl, "_blank")}
                 className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs sm:text-sm"
               >
                 <Github className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
@@ -240,7 +258,7 @@ export const ProjectsMacBook = () => {
               {project.liveUrl && (
                 <Button
                   size="sm"
-                  onClick={() => window.open(project.liveUrl, '_blank')}
+                  onClick={() => window.open(project.liveUrl, "_blank")}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs sm:text-sm"
                 >
                   <ExternalLink className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
@@ -269,9 +287,9 @@ export const ProjectsMacBook = () => {
             key={index}
             onClick={() => setCurrentProject(index)}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              index === currentProject 
-                ? 'bg-cyan-400 scale-125' 
-                : 'bg-gray-600 hover:bg-gray-500'
+              index === currentProject
+                ? "bg-cyan-400 scale-125"
+                : "bg-gray-600 hover:bg-gray-500"
             }`}
           />
         ))}

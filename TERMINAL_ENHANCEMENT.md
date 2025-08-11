@@ -7,6 +7,7 @@ The terminal box in the home page hero section (`~/portfolio $`) has been transf
 ## 🚀 New Features
 
 ### Cycling Tech Commands
+
 The terminal now cycles through 9 different tech-related commands:
 
 1. **`echo 'CS Student & Full Stack Developer'`**
@@ -39,21 +40,24 @@ The terminal now cycles through 9 different tech-related commands:
 ## 🎯 Technical Implementation
 
 ### Interactive Typing Animation
+
 - **Real-time typing effect**: Each character appears with a realistic typing delay
 - **Blinking cursor**: Animated underscore cursor during typing
 - **Command completion**: Shows output after each command completes
 - **Auto-cycling**: Commands cycle every 3 seconds after completion
 
 ### Enhanced Visual Design
+
 - **Improved spacing**: Better layout with proper gaps
 - **Command output**: Each command shows relevant success messages
-- **Color coding**: 
+- **Color coding**:
   - Green `$` prompt
   - White command text
   - Cyan cursor and output
 - **Responsive design**: Adapts to all screen sizes
 
 ### State Management
+
 ```typescript
 const [displayedText, setDisplayedText] = useState("");
 const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,12 +68,14 @@ const [isCompleted, setIsCompleted] = useState(false);
 ## 🎨 Visual Features
 
 ### Terminal Window Design
+
 - **macOS-style controls**: Red, yellow, green circles
 - **Glass morphism**: Semi-transparent background with blur
 - **Professional styling**: Monospace font, proper terminal colors
 - **Neon accents**: Consistent with portfolio theme
 
 ### Animation Details
+
 - **Smooth typing**: 50ms delay between characters
 - **Cursor blink**: 0.8s cycle for natural feel
 - **Fade transitions**: Smooth output appearance
@@ -78,6 +84,7 @@ const [isCompleted, setIsCompleted] = useState(false);
 ## 💡 Tech Stack Showcased
 
 The commands demonstrate expertise in:
+
 - **Git/Version Control**: `git status --porcelain`
 - **Node.js/NPM**: `npm run build --production`
 - **Docker/Containerization**: `docker ps | grep`
@@ -90,12 +97,14 @@ The commands demonstrate expertise in:
 ## 🎯 User Experience Impact
 
 ### Professional Impression
+
 - **Demonstrates real terminal proficiency**
 - **Shows familiarity with developer tools**
 - **Highlights diverse technology stack**
 - **Creates engaging, dynamic experience**
 
 ### Educational Value
+
 - **Real command examples** that visitors can learn from
 - **Showcases practical development workflows**
 - **Demonstrates problem-solving approach**
@@ -104,12 +113,14 @@ The commands demonstrate expertise in:
 ## 📱 Mobile Optimization
 
 ### Responsive Design
+
 - **Text scaling**: Adapts font sizes for mobile screens
 - **Line breaking**: Handles long commands gracefully
 - **Touch-friendly**: Proper spacing for mobile viewing
 - **Performance**: Optimized animations for mobile devices
 
 ### Accessibility
+
 - **Screen reader friendly**: Proper semantic structure
 - **Reduced motion support**: Can be optimized for accessibility preferences
 - **High contrast**: Clear text visibility

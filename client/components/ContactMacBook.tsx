@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
   Terminal,
   Code2,
   User,
-  MessageSquare
-} from 'lucide-react';
-import { Button } from './ui/button';
-import { contactInfo } from '../data/portfolioData';
+  MessageSquare,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import { contactInfo } from "../data/portfolioData";
 
 // Contact terminal component
 const ContactTerminal = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [history, setHistory] = useState([
-    '~/contact $ whoami',
-    'rudraksh-taya',
-    '~/contact $ pwd',
-    '/home/rudraksh/portfolio/contact',
-    '~/contact $ ls -la',
-    'total 3',
-    'drwxr-xr-x email.txt',
-    'drwxr-xr-x phone.txt', 
-    'drwxr-xr-x location.txt',
+    "~/contact $ whoami",
+    "rudraksh-taya",
+    "~/contact $ pwd",
+    "/home/rudraksh/portfolio/contact",
+    "~/contact $ ls -la",
+    "total 3",
+    "drwxr-xr-x email.txt",
+    "drwxr-xr-x phone.txt",
+    "drwxr-xr-x location.txt",
     '~/contact $ echo "Ready to connect!"',
-    'Ready to connect!',
-    '~/contact $ _'
+    "Ready to connect!",
+    "~/contact $ _",
   ]);
 
   return (
@@ -41,7 +41,9 @@ const ContactTerminal = () => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">Terminal</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            Terminal
+          </span>
         </div>
         <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -50,11 +52,16 @@ const ContactTerminal = () => {
       <div className="flex-1 p-2 sm:p-4 font-mono text-xs sm:text-sm overflow-auto">
         <div className="space-y-1">
           {history.map((line, index) => (
-            <div key={index} className={
-              line.startsWith('~/contact $') ? 'text-green-400' :
-              line.includes('rudraksh') || line.includes('Ready') ? 'text-cyan-400' :
-              'text-gray-300'
-            }>
+            <div
+              key={index}
+              className={
+                line.startsWith("~/contact $")
+                  ? "text-green-400"
+                  : line.includes("rudraksh") || line.includes("Ready")
+                    ? "text-cyan-400"
+                    : "text-gray-300"
+              }
+            >
               {line}
             </div>
           ))}
@@ -74,15 +81,15 @@ const ContactTerminal = () => {
 // Contact form component styled like VS Code
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -95,7 +102,9 @@ const ContactForm = () => {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">contact.form</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+            contact.form
+          </span>
         </div>
         <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
@@ -111,7 +120,9 @@ const ContactForm = () => {
             <input
               type="text"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none"
               placeholder='"Your Name"'
               required
@@ -126,7 +137,9 @@ const ContactForm = () => {
             <input
               type="email"
               value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none"
               placeholder='"your.email@domain.com"'
               required
@@ -140,7 +153,9 @@ const ContactForm = () => {
             </label>
             <textarea
               value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
               rows={4}
               className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none resize-none"
               placeholder='"Your message here..."'
@@ -159,13 +174,22 @@ const ContactForm = () => {
 
         {/* Contact info display */}
         <div className="mt-6 pt-6 border-t border-gray-700">
-          <div className="text-gray-400 text-xs font-mono mb-3">// Contact Information</div>
+          <div className="text-gray-400 text-xs font-mono mb-3">
+            // Contact Information
+          </div>
           <div className="space-y-2 font-mono text-xs sm:text-sm">
             {contactInfo.map((info, index) => {
-              const IconComponent = info.icon === 'Mail' ? Mail : 
-                                 info.icon === 'Phone' ? Phone : MapPin;
+              const IconComponent =
+                info.icon === "Mail"
+                  ? Mail
+                  : info.icon === "Phone"
+                    ? Phone
+                    : MapPin;
               return (
-                <div key={index} className="flex items-center gap-2 text-gray-300">
+                <div
+                  key={index}
+                  className="flex items-center gap-2 text-gray-300"
+                >
                   <IconComponent className="w-3 h-3 text-cyan-400" />
                   <span className="text-cyan-400">{info.label}:</span>
                   <span>"{info.value}"</span>
@@ -192,7 +216,7 @@ export const ContactMacBook = () => {
         {/* MacBook Screen */}
         <div className="relative bg-black rounded-2xl sm:rounded-3xl border-3 sm:border-6 border-gray-800 shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black rounded-xl sm:rounded-2xl border border-gray-700"></div>
-          
+
           {/* Screen content */}
           <div className="relative z-10 p-2 sm:p-4 min-h-[300px] sm:min-h-[500px]">
             {/* macOS Menu Bar */}
@@ -202,9 +226,7 @@ export const ContactMacBook = () => {
                   Contact Interface
                 </div>
               </div>
-              <div className="text-gray-400 text-xs">
-                Ready to connect
-              </div>
+              <div className="text-gray-400 text-xs">Ready to connect</div>
             </div>
 
             {/* Split screen layout */}
@@ -217,7 +239,7 @@ export const ContactMacBook = () => {
               >
                 <ContactTerminal />
               </motion.div>
-              
+
               {/* Contact Form Side */}
               <motion.div
                 initial={{ x: 30, opacity: 0 }}

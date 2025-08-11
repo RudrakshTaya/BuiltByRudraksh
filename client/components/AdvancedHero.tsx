@@ -119,27 +119,32 @@ const TerminalSubtitle = () => {
     "docker ps | grep 'react\\|node\\|mongo' # Containerized MERN stack",
     "python -c \"print('ML + Data Structures = Innovation')\"",
     "javac Algorithm.java && java Problem --solve --optimize",
-    "curl -X POST /api/innovation -d '{\"passion\": \"unlimited\"}'",
+    'curl -X POST /api/innovation -d \'{"passion": "unlimited"}\'',
     "sudo systemctl enable continuous-learning.service",
-    "grep -r 'problem-solving' ~/mindset | wc -l # Always active"
+    "grep -r 'problem-solving' ~/mindset | wc -l # Always active",
   ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < techCommands[commandIndex].length) {
-        setDisplayedText((prev) => prev + techCommands[commandIndex][currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      } else if (!isCompleted) {
-        setIsCompleted(true);
-        // Start next command after a pause
-        setTimeout(() => {
-          setDisplayedText("");
-          setCurrentIndex(0);
-          setIsCompleted(false);
-          setCommandIndex((prev) => (prev + 1) % techCommands.length);
-        }, 3000);
-      }
-    }, currentIndex === 0 && commandIndex === 0 ? 2000 : 50); // First command starts after name typing
+    const timer = setTimeout(
+      () => {
+        if (currentIndex < techCommands[commandIndex].length) {
+          setDisplayedText(
+            (prev) => prev + techCommands[commandIndex][currentIndex],
+          );
+          setCurrentIndex((prev) => prev + 1);
+        } else if (!isCompleted) {
+          setIsCompleted(true);
+          // Start next command after a pause
+          setTimeout(() => {
+            setDisplayedText("");
+            setCurrentIndex(0);
+            setIsCompleted(false);
+            setCommandIndex((prev) => (prev + 1) % techCommands.length);
+          }, 3000);
+        }
+      },
+      currentIndex === 0 && commandIndex === 0 ? 2000 : 50,
+    ); // First command starts after name typing
 
     return () => clearTimeout(timer);
   }, [currentIndex, commandIndex, isCompleted, techCommands]);
@@ -376,7 +381,9 @@ const CircuitTechStack = () => {
               }
               transition={{ duration: 2 }}
             >
-              <span className="text-lg sm:text-xl md:text-2xl">{tech.icon}</span>
+              <span className="text-lg sm:text-xl md:text-2xl">
+                {tech.icon}
+              </span>
 
               {/* Circuit connections */}
               {index === activeIndex && (
@@ -387,7 +394,13 @@ const CircuitTechStack = () => {
             {/* Tech name - Always visible on mobile, animated on desktop */}
             <motion.div
               className="text-center w-full"
-              animate={typeof window !== 'undefined' && window.innerWidth < 768 ? { opacity: 1 } : (index === activeIndex ? { opacity: 1 } : { opacity: 0.6 })}
+              animate={
+                typeof window !== "undefined" && window.innerWidth < 768
+                  ? { opacity: 1 }
+                  : index === activeIndex
+                    ? { opacity: 1 }
+                    : { opacity: 0.6 }
+              }
               transition={{ duration: 0.3 }}
             >
               <span className="text-xs sm:text-sm font-mono text-white block leading-tight px-1">
@@ -412,9 +425,7 @@ const AnimatedStats = () => {
   ];
 
   return (
-    <motion.div
-      className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto px-4"
-    >
+    <motion.div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto px-4">
       {heroStats.map((stat, index) => (
         <motion.div
           key={index}
@@ -569,19 +580,28 @@ export const AdvancedHero = () => {
           >
             <motion.span
               className="px-6 py-3 bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue text-base sm:text-lg font-semibold"
-              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(59, 130, 246, 0.5)" }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(59, 130, 246, 0.5)",
+              }}
             >
               • Innovation through Code
             </motion.span>
             <motion.span
               className="px-6 py-3 bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple text-base sm:text-lg font-semibold"
-              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(139, 92, 246, 0.5)" }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(139, 92, 246, 0.5)",
+              }}
             >
               • Problem Solving Mindset
             </motion.span>
             <motion.span
               className="px-6 py-3 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan text-base sm:text-lg font-semibold"
-              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(6, 182, 212, 0.5)" }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(6, 182, 212, 0.5)",
+              }}
             >
               • Continuous Learning
             </motion.span>
@@ -616,64 +636,64 @@ export const AdvancedHero = () => {
 
             {/* Enhanced Social Links */}
             <div className="flex justify-center space-x-5 sm:space-x-6 max-w-lg mx-auto px-4">
-            {(socialLinks || []).map((link, index) => {
-              const iconMap: { [key: string]: any } = {
-                Github: Github,
-                Linkedin: Linkedin,
-                Code2: Code2,
-                Trophy: Trophy,
-              };
-              const Icon = iconMap[link.icon];
+              {(socialLinks || []).map((link, index) => {
+                const iconMap: { [key: string]: any } = {
+                  Github: Github,
+                  Linkedin: Linkedin,
+                  Code2: Code2,
+                  Trophy: Trophy,
+                };
+                const Icon = iconMap[link.icon];
 
-              return (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
-                  initial={{ opacity: 0, y: 30, scale: 0 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    delay: 0.1 + index * 0.1,
-                    duration: 0.4,
-                    type: "spring",
-                  }}
-                  whileHover={{ y: -10, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <motion.div
-                    className={`${link.color} p-4 sm:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden hover:shadow-glow transition-all duration-300`}
-                    whileHover={{
-                      boxShadow: "0 25px 50px rgba(6, 182, 212, 0.4)",
-                      borderColor: "rgba(6, 182, 212, 0.6)",
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative"
+                    initial={{ opacity: 0, y: 30, scale: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: 0.1 + index * 0.1,
+                      duration: 0.4,
+                      type: "spring",
                     }}
+                    whileHover={{ y: -10, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <Icon className="h-6 w-6 sm:h-7 sm:w-7 relative z-10" />
-
-                    {/* Holographic scan line */}
                     <motion.div
-                      className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
-                      animate={{ y: ["-4px", "60px"] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5,
+                      className={`${link.color} p-4 sm:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden hover:shadow-glow transition-all duration-300`}
+                      whileHover={{
+                        boxShadow: "0 25px 50px rgba(6, 182, 212, 0.4)",
+                        borderColor: "rgba(6, 182, 212, 0.6)",
                       }}
-                    />
-                  </motion.div>
+                    >
+                      <Icon className="h-6 w-6 sm:h-7 sm:w-7 relative z-10" />
 
-                  {/* Platform Label with glitch effect */}
-                  <motion.div
-                    className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"
-                    whileHover={{ y: -2, scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {link.name}
-                  </motion.div>
-                </motion.a>
-              );
-            })}
+                      {/* Holographic scan line */}
+                      <motion.div
+                        className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
+                        animate={{ y: ["-4px", "60px"] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.5,
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* Platform Label with glitch effect */}
+                    <motion.div
+                      className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"
+                      whileHover={{ y: -2, scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.div>
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         </motion.div>

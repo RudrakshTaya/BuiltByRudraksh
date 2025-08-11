@@ -398,7 +398,9 @@ const ResponsiveTechStack = () => {
               }
               transition={{ duration: 1.5 }}
             >
-              <span className="text-base xs:text-lg sm:text-xl md:text-2xl">{tech.icon}</span>
+              <span className="text-base xs:text-lg sm:text-xl md:text-2xl">
+                {tech.icon}
+              </span>
 
               {/* Active glow */}
               {index === activeIndex && (

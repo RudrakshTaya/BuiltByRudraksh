@@ -1,17 +1,38 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Play, Filter, Star, GitFork, Eye, ChevronLeft, ChevronRight, X, Maximize2, Code2, Database, Globe, Terminal } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Play,
+  Filter,
+  Star,
+  GitFork,
+  Eye,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Maximize2,
+  Code2,
+  Database,
+  Globe,
+  Terminal,
+} from "lucide-react";
 import { Button } from "./ui/button";
-import { projects } from '../data/portfolioData';
-import { ProjectsMacBook } from './ProjectsMacBook';
-
+import { projects } from "../data/portfolioData";
+import { ProjectsMacBook } from "./ProjectsMacBook";
 
 const categories = ["All", "Full Stack", "Backend", "Java/C++", "Python/CLI"];
 const types = ["All", "Major", "Minor"];
 const complexities = ["All", "High", "Medium", "Low"];
 
-const ImageCarousel = ({ images, projectTitle }: { images: string[]; projectTitle: string }) => {
+const ImageCarousel = ({
+  images,
+  projectTitle,
+}: {
+  images: string[];
+  projectTitle: string;
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -42,9 +63,9 @@ const ImageCarousel = ({ images, projectTitle }: { images: string[]; projectTitl
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
         />
-        
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-        
+
         {images.length > 1 && (
           <>
             <motion.button
@@ -94,7 +115,7 @@ const ImageCarousel = ({ images, projectTitle }: { images: string[]; projectTitl
                   setCurrentIndex(index);
                 }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-white' : 'bg-white/50'
+                  index === currentIndex ? "bg-white" : "bg-white/50"
                 }`}
               />
             ))}
@@ -124,7 +145,7 @@ const ImageCarousel = ({ images, projectTitle }: { images: string[]; projectTitl
                 alt={`${projectTitle} - Screenshot ${currentIndex + 1}`}
                 className="max-w-full max-h-full object-contain rounded-lg"
               />
-              
+
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
@@ -175,26 +196,40 @@ const ImageCarousel = ({ images, projectTitle }: { images: string[]; projectTitl
 
 const getCategoryIcon = (category: string) => {
   switch (category) {
-    case "Full Stack": return Globe;
-    case "Backend": return Database;
-    case "Java/C++": return Code2;
-    case "Python/CLI": return Terminal;
-    default: return Code2;
+    case "Full Stack":
+      return Globe;
+    case "Backend":
+      return Database;
+    case "Java/C++":
+      return Code2;
+    case "Python/CLI":
+      return Terminal;
+    default:
+      return Code2;
   }
 };
 
 const getCategoryColor = (category: string) => {
   switch (category) {
-    case "Full Stack": return "text-neon-blue border-neon-blue bg-neon-blue/10";
-    case "Backend": return "text-neon-green border-neon-green bg-neon-green/10";
-    case "Java/C++": return "text-neon-purple border-neon-purple bg-neon-purple/10";
-    case "Python/CLI": return "text-neon-cyan border-neon-cyan bg-neon-cyan/10";
-    default: return "text-neon-blue border-neon-blue bg-neon-blue/10";
+    case "Full Stack":
+      return "text-neon-blue border-neon-blue bg-neon-blue/10";
+    case "Backend":
+      return "text-neon-green border-neon-green bg-neon-green/10";
+    case "Java/C++":
+      return "text-neon-purple border-neon-purple bg-neon-purple/10";
+    case "Python/CLI":
+      return "text-neon-cyan border-neon-cyan bg-neon-cyan/10";
+    default:
+      return "text-neon-blue border-neon-blue bg-neon-blue/10";
   }
 };
 
-const ProjectDetailModal = ({ project, isOpen, onClose }: {
-  project: typeof projects[0];
+const ProjectDetailModal = ({
+  project,
+  isOpen,
+  onClose,
+}: {
+  project: (typeof projects)[0];
   isOpen: boolean;
   onClose: () => void;
 }) => {
@@ -243,13 +278,23 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                 {project.images.length > 1 && (
                   <>
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)}
+                      onClick={() =>
+                        setCurrentImageIndex(
+                          (prev) =>
+                            (prev - 1 + project.images.length) %
+                            project.images.length,
+                        )
+                      }
                       className="absolute left-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev + 1) % project.images.length)}
+                      onClick={() =>
+                        setCurrentImageIndex(
+                          (prev) => (prev + 1) % project.images.length,
+                        )
+                      }
                       className="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
                     >
                       <ChevronRight className="h-5 w-5" />
@@ -272,8 +317,8 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                       onClick={() => setCurrentImageIndex(index)}
                       className={`relative rounded-lg overflow-hidden border-2 transition-all ${
                         index === currentImageIndex
-                          ? 'border-neon-blue'
-                          : 'border-transparent hover:border-white/30'
+                          ? "border-neon-blue"
+                          : "border-transparent hover:border-white/30"
                       }`}
                     >
                       <img
@@ -293,9 +338,15 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                     asChild
                     className="flex-1 bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-cyan text-white border-0"
                   >
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
-                      {project.category === "Python/CLI" ? "View on PyPI" : "Live Demo"}
+                      {project.category === "Python/CLI"
+                        ? "View on PyPI"
+                        : "Live Demo"}
                     </a>
                   </Button>
                 )}
@@ -304,7 +355,11 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                   asChild
                   className="border-gray-600 text-gray-300 hover:bg-gray-800"
                 >
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github className="h-4 w-4 mr-2" />
                     GitHub
                   </a>
@@ -317,7 +372,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
               {/* Project Header */}
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium border ${categoryColors}`}>
+                  <div
+                    className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium border ${categoryColors}`}
+                  >
                     <CategoryIcon className="h-4 w-4" />
                     {project.category}
                   </div>
@@ -330,8 +387,12 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                     </div>
                   )}
                 </div>
-                <h1 className="text-3xl font-bold text-white mb-3">{project.title}</h1>
-                <p className="text-gray-300 leading-relaxed">{project.description}</p>
+                <h1 className="text-3xl font-bold text-white mb-3">
+                  {project.title}
+                </h1>
+                <p className="text-gray-300 leading-relaxed">
+                  {project.description}
+                </p>
               </div>
 
               {/* Project Stats */}
@@ -339,21 +400,27 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                 <div className="bg-gray-800/50 rounded-lg p-4 text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Star className="h-4 w-4 text-yellow-400" />
-                    <span className="text-yellow-400 font-semibold">{project.stats.stars}</span>
+                    <span className="text-yellow-400 font-semibold">
+                      {project.stats.stars}
+                    </span>
                   </div>
                   <div className="text-xs text-gray-400">Stars</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4 text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <GitFork className="h-4 w-4 text-blue-400" />
-                    <span className="text-blue-400 font-semibold">{project.stats.forks}</span>
+                    <span className="text-blue-400 font-semibold">
+                      {project.stats.forks}
+                    </span>
                   </div>
                   <div className="text-xs text-gray-400">Forks</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4 text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Eye className="h-4 w-4 text-green-400" />
-                    <span className="text-green-400 font-semibold">{project.stats.views}</span>
+                    <span className="text-green-400 font-semibold">
+                      {project.stats.views}
+                    </span>
                   </div>
                   <div className="text-xs text-gray-400">Views</div>
                 </div>
@@ -363,7 +430,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
               <div className="space-y-4">
                 {/* Programming Languages */}
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Programming Languages</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    Programming Languages
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.languages.map((lang) => (
                       <span
@@ -378,7 +447,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
 
                 {/* Tech Stack */}
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Technology Stack</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    Technology Stack
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
@@ -393,7 +464,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
 
                 {/* Key Features */}
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Key Features</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    Key Features
+                  </h3>
                   <div className="space-y-2">
                     {project.highlights.map((highlight, index) => (
                       <div key={index} className="flex items-center gap-2">
@@ -408,15 +481,21 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-700">
                   <div>
                     <div className="text-sm text-gray-400">Duration</div>
-                    <div className="text-white font-medium">{project.duration}</div>
+                    <div className="text-white font-medium">
+                      {project.duration}
+                    </div>
                   </div>
                   <div>
                     <div className="text-sm text-gray-400">Complexity</div>
-                    <div className={`font-medium ${
-                      project.complexity === "High" ? "text-red-400" :
-                      project.complexity === "Medium" ? "text-yellow-400" :
-                      "text-green-400"
-                    }`}>
+                    <div
+                      className={`font-medium ${
+                        project.complexity === "High"
+                          ? "text-red-400"
+                          : project.complexity === "Medium"
+                            ? "text-yellow-400"
+                            : "text-green-400"
+                      }`}
+                    >
                       {project.complexity}
                     </div>
                   </div>
@@ -427,11 +506,17 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: {
         </motion.div>
       </motion.div>
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const CategoryIcon = getCategoryIcon(project.category);
@@ -446,33 +531,36 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       transition={{
         duration: 0.4,
         delay: index * 0.05,
-        ease: "easeOut"
+        ease: "easeOut",
       }}
       whileHover={{
         y: -8,
-        transition: { duration: 0.2, ease: "easeOut" }
+        transition: { duration: 0.2, ease: "easeOut" },
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="group relative hover-lift"
       style={{ perspective: "1000px" }}
     >
-      <div className={`glass rounded-3xl overflow-hidden border transition-all duration-500 card-hover group-hover:shadow-premium ${
-        project.featured
-          ? 'border-neon-blue/50 hover:border-neon-blue bg-gradient-to-br from-neon-blue/8 via-neon-purple/4 to-transparent hover:shadow-glow-lg'
-          : 'border-white/15 hover:border-white/30 hover:shadow-glass'
-      }`}>
+      <div
+        className={`glass rounded-3xl overflow-hidden border transition-all duration-500 card-hover group-hover:shadow-premium ${
+          project.featured
+            ? "border-neon-blue/50 hover:border-neon-blue bg-gradient-to-br from-neon-blue/8 via-neon-purple/4 to-transparent hover:shadow-glow-lg"
+            : "border-white/15 hover:border-white/30 hover:shadow-glass"
+        }`}
+      >
         {/* Project Image Carousel */}
         <div className="relative">
           <ImageCarousel images={project.images} projectTitle={project.title} />
-          
+
           {/* Preview Overlay */}
-         
 
           {/* Enhanced Badges */}
           <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
             <div className="flex flex-col gap-2">
-              <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${categoryColors}`}>
+              <div
+                className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${categoryColors}`}
+              >
                 <CategoryIcon className="h-3 w-3" />
                 {project.category}
               </div>
@@ -541,26 +629,32 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               {project.title}
             </h3>
             <div className="flex items-center gap-2 ml-4">
-              <span className={`text-xs px-2 py-1 rounded-full border ${
-                project.complexity === "High" ? "text-red-400 border-red-400/30 bg-red-400/10" :
-                project.complexity === "Medium" ? "text-yellow-400 border-yellow-400/30 bg-yellow-400/10" :
-                "text-green-400 border-green-400/30 bg-green-400/10"
-              }`}>
+              <span
+                className={`text-xs px-2 py-1 rounded-full border ${
+                  project.complexity === "High"
+                    ? "text-red-400 border-red-400/30 bg-red-400/10"
+                    : project.complexity === "Medium"
+                      ? "text-yellow-400 border-yellow-400/30 bg-yellow-400/10"
+                      : "text-green-400 border-green-400/30 bg-green-400/10"
+                }`}
+              >
                 {project.complexity}
               </span>
             </div>
           </div>
-          
+
           <p className="text-muted-foreground text-sm mb-4 line-clamp-3 leading-relaxed">
             {project.description}
           </p>
 
           {/* Programming Languages */}
           <div className="mb-4">
-            <h4 className="text-xs font-semibold text-neon-cyan mb-2">Languages:</h4>
+            <h4 className="text-xs font-semibold text-neon-cyan mb-2">
+              Languages:
+            </h4>
             <div className="flex flex-wrap gap-1">
               {project.languages.map((lang) => (
-                <span 
+                <span
                   key={lang}
                   className="bg-neon-cyan/10 text-neon-cyan px-2 py-1 rounded text-xs border border-neon-cyan/20 font-mono"
                 >
@@ -572,7 +666,9 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
           {/* Key Highlights */}
           <div className="mb-4">
-            <h4 className="text-xs font-semibold text-white mb-2">Key Features:</h4>
+            <h4 className="text-xs font-semibold text-white mb-2">
+              Key Features:
+            </h4>
             <div className="flex flex-wrap gap-1">
               {project.highlights.slice(0, 2).map((highlight) => (
                 <motion.span
@@ -631,9 +727,13 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
                 size="sm"
                 onClick={() => {
                   // Find the image carousel and trigger its modal
-                  const img = document.querySelector(`[alt*="${project.title}"]`) as HTMLElement;
+                  const img = document.querySelector(
+                    `[alt*="${project.title}"]`,
+                  ) as HTMLElement;
                   if (img) {
-                    const maximizeBtn = img.parentElement?.querySelector('[title="View Image Gallery"]') as HTMLElement;
+                    const maximizeBtn = img.parentElement?.querySelector(
+                      '[title="View Image Gallery"]',
+                    ) as HTMLElement;
                     maximizeBtn?.click();
                   }
                 }}
@@ -652,7 +752,11 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
                   asChild
                   className="flex-1 bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-cyan text-white border-0"
                 >
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     {project.category === "Python/CLI" ? "PyPI" : "Live Demo"}
                   </a>
@@ -673,7 +777,11 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
                 asChild
                 className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500"
               >
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github className="h-4 w-4 mr-2" />
                   Code
                 </a>
@@ -700,14 +808,16 @@ export const Projects = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredProjects = projects.filter((project) => {
-    const categoryMatch = selectedCategory === "All" || project.category === selectedCategory;
+    const categoryMatch =
+      selectedCategory === "All" || project.category === selectedCategory;
     const typeMatch = selectedType === "All" || project.type === selectedType;
-    const complexityMatch = selectedComplexity === "All" || project.complexity === selectedComplexity;
+    const complexityMatch =
+      selectedComplexity === "All" || project.complexity === selectedComplexity;
     return categoryMatch && typeMatch && complexityMatch;
   });
 
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const otherProjects = filteredProjects.filter(p => !p.featured);
+  const featuredProjects = filteredProjects.filter((p) => p.featured);
+  const otherProjects = filteredProjects.filter((p) => !p.featured);
 
   return (
     <section className="py-20 px-6 relative overflow-hidden">
@@ -718,7 +828,7 @@ export const Projects = () => {
 
       {/* Animated grid pattern */}
       <div className="absolute inset-0 tech-grid opacity-30" />
-      
+
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -727,13 +837,31 @@ export const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-6xl font-bold gradient-text mb-6">Project Portfolio</h2>
+          <h2 className="text-6xl font-bold gradient-text mb-6">
+            Project Portfolio
+          </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-            A comprehensive showcase spanning <span className="text-neon-blue font-semibold">full-stack web applications</span>, 
-            <span className="text-neon-purple font-semibold"> backend systems</span>, 
-            <span className="text-neon-green font-semibold"> Java/C++ projects</span>, and 
-            <span className="text-neon-cyan font-semibold"> Python CLI tools</span>. 
-            Each project demonstrates different aspects of software engineering and computer science fundamentals.
+            A comprehensive showcase spanning{" "}
+            <span className="text-neon-blue font-semibold">
+              full-stack web applications
+            </span>
+            ,
+            <span className="text-neon-purple font-semibold">
+              {" "}
+              backend systems
+            </span>
+            ,
+            <span className="text-neon-green font-semibold">
+              {" "}
+              Java/C++ projects
+            </span>
+            , and
+            <span className="text-neon-cyan font-semibold">
+              {" "}
+              Python CLI tools
+            </span>
+            . Each project demonstrates different aspects of software
+            engineering and computer science fundamentals.
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full" />
         </motion.div>
@@ -758,7 +886,9 @@ export const Projects = () => {
               Filters & Categories
             </Button>
 
-            <div className={`${showFilters ? 'block' : 'hidden'} lg:block w-full lg:w-auto`}>
+            <div
+              className={`${showFilters ? "block" : "hidden"} lg:block w-full lg:w-auto`}
+            >
               <div className="flex flex-col lg:flex-row gap-6">
                 {/* Category Filter */}
                 <div className="flex flex-wrap gap-2">
@@ -830,7 +960,8 @@ export const Projects = () => {
             </div>
 
             <div className="text-muted-foreground text-sm bg-gray-800/50 px-4 py-2 rounded-lg border border-white/10">
-              {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+              {filteredProjects.length} project
+              {filteredProjects.length !== 1 ? "s" : ""} found
             </div>
           </div>
         </motion.div>
@@ -849,11 +980,18 @@ export const Projects = () => {
                 Best Work
               </span>
             </motion.h3>
-            
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8"
+            >
               <AnimatePresence mode="wait">
                 {featuredProjects.map((project, index) => (
-                  <ProjectCard key={project.id} project={project} index={index} />
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={index}
+                  />
                 ))}
               </AnimatePresence>
             </motion.div>
@@ -871,11 +1009,18 @@ export const Projects = () => {
             >
               More Projects
             </motion.h3>
-            
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               <AnimatePresence mode="wait">
                 {otherProjects.map((project, index) => (
-                  <ProjectCard key={project.id} project={project} index={index + featuredProjects.length} />
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={index + featuredProjects.length}
+                  />
                 ))}
               </AnimatePresence>
             </motion.div>
@@ -890,7 +1035,9 @@ export const Projects = () => {
             className="text-center py-20"
           >
             <div className="glass p-8 rounded-2xl max-w-md mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">No projects found</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                No projects found
+              </h3>
               <p className="text-muted-foreground mb-6">
                 Try adjusting your filters to see more projects.
               </p>
@@ -916,17 +1063,25 @@ export const Projects = () => {
           className="text-center mt-16"
         >
           <div className="glass p-8 rounded-2xl max-w-4xl mx-auto border border-neon-blue/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Full-Stack + CS Fundamentals = Complete Engineer</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Full-Stack + CS Fundamentals = Complete Engineer
+            </h3>
             <p className="text-muted-foreground mb-6 text-lg">
-              These projects showcase my ability to work across the entire technology stack while applying 
-              strong computer science principles. From algorithms and data structures to scalable web applications, 
-              I bring both theoretical knowledge and practical implementation skills to every challenge.
+              These projects showcase my ability to work across the entire
+              technology stack while applying strong computer science
+              principles. From algorithms and data structures to scalable web
+              applications, I bring both theoretical knowledge and practical
+              implementation skills to every challenge.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('cs-strengths')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document
+                    .getElementById("cs-strengths")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-8 py-3 rounded-xl font-semibold hover:shadow-glow transition-all duration-300"
               >
                 Explore CS Skills
@@ -934,7 +1089,9 @@ export const Projects = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.open('https://github.com/rudraksh', '_blank')}
+                onClick={() =>
+                  window.open("https://github.com/rudraksh", "_blank")
+                }
                 className="glass border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 px-8 py-3 rounded-xl font-semibold transition-all duration-300"
               >
                 <Github className="h-4 w-4 mr-2 inline" />
