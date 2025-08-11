@@ -29,35 +29,40 @@ const sizeStyles = {
 const variantStyles = {
   default: {
     surface: "bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300",
-    hoverSurface: "group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400",
+    hoverSurface:
+      "group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400",
     border: "border-gray-400/30",
     text: "text-gray-700",
     shadow: "bg-gray-600/30",
   },
   function: {
     surface: "bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300",
-    hoverSurface: "group-hover:from-blue-200 group-hover:via-blue-300 group-hover:to-blue-400",
+    hoverSurface:
+      "group-hover:from-blue-200 group-hover:via-blue-300 group-hover:to-blue-400",
     border: "border-blue-400/30",
     text: "text-blue-700",
     shadow: "bg-blue-600/30",
   },
   modifier: {
     surface: "bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300",
-    hoverSurface: "group-hover:from-purple-200 group-hover:via-purple-300 group-hover:to-purple-400",
+    hoverSurface:
+      "group-hover:from-purple-200 group-hover:via-purple-300 group-hover:to-purple-400",
     border: "border-purple-400/30",
     text: "text-purple-700",
     shadow: "bg-purple-600/30",
   },
   space: {
     surface: "bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300",
-    hoverSurface: "group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400",
+    hoverSurface:
+      "group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400",
     border: "border-gray-400/30",
     text: "text-gray-700",
     shadow: "bg-gray-600/30",
   },
   return: {
     surface: "bg-gradient-to-b from-green-100 via-green-200 to-green-300",
-    hoverSurface: "group-hover:from-green-200 group-hover:via-green-300 group-hover:to-green-400",
+    hoverSurface:
+      "group-hover:from-green-200 group-hover:via-green-300 group-hover:to-green-400",
     border: "border-green-400/30",
     text: "text-green-700",
     shadow: "bg-green-600/30",
@@ -86,7 +91,7 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
       className={cn(
         "relative macbook-key-button group cursor-pointer select-none",
         disabled && "opacity-50 cursor-not-allowed",
-        className
+        className,
       )}
       whileHover={!disabled ? { scale: 1.05, y: -2 } : {}}
       whileTap={!disabled ? { scale: 0.95, y: 1 } : {}}
@@ -100,7 +105,7 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
           style.surface,
           style.hoverSurface,
           style.border,
-          !disabled && "group-hover:shadow-xl"
+          !disabled && "group-hover:shadow-xl",
         )}
       >
         {/* Key highlight - glossy effect */}
@@ -110,7 +115,12 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/5 rounded-lg pointer-events-none"></div>
 
         {/* Content */}
-        <div className={cn("relative z-10 drop-shadow-sm flex items-center justify-center", style.text)}>
+        <div
+          className={cn(
+            "relative z-10 drop-shadow-sm flex items-center justify-center",
+            style.text,
+          )}
+        >
           {Icon && (
             <Icon
               className={cn(
@@ -119,19 +129,21 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
                 size === "sm" && "w-3 h-3 sm:w-4 sm:h-4",
                 size === "md" && "w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6",
                 size === "lg" && "w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7",
-                size === "xl" && "w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
+                size === "xl" && "w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8",
               )}
             />
           )}
           {label && !Icon && (
-            <span className={cn(
-              "font-mono font-medium",
-              size === "xs" && "text-xs",
-              size === "sm" && "text-sm",
-              size === "md" && "text-base",
-              size === "lg" && "text-lg",
-              size === "xl" && "text-xl"
-            )}>
+            <span
+              className={cn(
+                "font-mono font-medium",
+                size === "xs" && "text-xs",
+                size === "sm" && "text-sm",
+                size === "md" && "text-base",
+                size === "lg" && "text-lg",
+                size === "xl" && "text-xl",
+              )}
+            >
               {label}
             </span>
           )}
@@ -146,10 +158,10 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
       </div>
 
       {/* MacBook key base/shadow - creates the 3D depth effect */}
-      <div 
+      <div
         className={cn(
           "absolute top-1 left-0 w-full h-full rounded-lg -z-10 group-active:top-0.5 transition-all duration-100",
-          style.shadow
+          style.shadow,
         )}
       ></div>
 
@@ -181,21 +193,23 @@ export const MacBookKey: React.FC<MacBookKeyProps> = ({
 };
 
 // Specific variants for common MacBook keys
-export const MacBookFunctionKey: React.FC<Omit<MacBookKeyProps, 'variant'>> = (props) => (
-  <MacBookKey {...props} variant="function" />
-);
+export const MacBookFunctionKey: React.FC<Omit<MacBookKeyProps, "variant">> = (
+  props,
+) => <MacBookKey {...props} variant="function" />;
 
-export const MacBookModifierKey: React.FC<Omit<MacBookKeyProps, 'variant'>> = (props) => (
-  <MacBookKey {...props} variant="modifier" />
-);
+export const MacBookModifierKey: React.FC<Omit<MacBookKeyProps, "variant">> = (
+  props,
+) => <MacBookKey {...props} variant="modifier" />;
 
-export const MacBookSpaceKey: React.FC<Omit<MacBookKeyProps, 'variant' | 'size'>> = (props) => (
+export const MacBookSpaceKey: React.FC<
+  Omit<MacBookKeyProps, "variant" | "size">
+> = (props) => (
   <MacBookKey {...props} variant="space" size="xl" className="w-32 h-12" />
 );
 
-export const MacBookReturnKey: React.FC<Omit<MacBookKeyProps, 'variant'>> = (props) => (
-  <MacBookKey {...props} variant="return" />
-);
+export const MacBookReturnKey: React.FC<Omit<MacBookKeyProps, "variant">> = (
+  props,
+) => <MacBookKey {...props} variant="return" />;
 
 // Keyboard row component for organizing keys
 export const MacBookKeyboardRow: React.FC<{
@@ -210,7 +224,13 @@ export const MacBookKeyboardRow: React.FC<{
   };
 
   return (
-    <div className={cn("flex items-center justify-center", gapStyles[gap], className)}>
+    <div
+      className={cn(
+        "flex items-center justify-center",
+        gapStyles[gap],
+        className,
+      )}
+    >
       {children}
     </div>
   );

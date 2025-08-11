@@ -714,7 +714,11 @@ select {
     color: hsl(var(--foreground)) !important;
     animation: none !important;
     /* Add a subtle gradient as text shadow instead */
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))) !important;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    ) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -803,7 +807,12 @@ select {
   }
 
   /* Ensure headings are always on top */
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   .gradient-text {
     position: relative !important;
     z-index: 100 !important;
@@ -862,7 +871,12 @@ select {
   }
 
   /* Ensure text is always readable */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     position: relative;
     z-index: 2;
   }

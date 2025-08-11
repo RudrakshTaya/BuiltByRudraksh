@@ -103,7 +103,11 @@ const MobilePortfolioCard = () => {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:opacity-90"
           >
             <Mail className="mr-2 h-4 w-4" />
@@ -200,8 +204,9 @@ const MobilePortfolioCard = () => {
             >
               <h3 className="text-lg font-semibold text-white">About Me</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Passionate Computer Science student with expertise in full-stack development. 
-                Love solving complex problems and building innovative solutions.
+                Passionate Computer Science student with expertise in full-stack
+                development. Love solving complex problems and building
+                innovative solutions.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="px-2 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs">
@@ -228,16 +233,28 @@ const MobilePortfolioCard = () => {
               <h3 className="text-lg font-semibold text-white">Projects</h3>
               <div className="space-y-2">
                 <div className="p-3 bg-gray-700/50 rounded-lg">
-                  <div className="font-medium text-white text-sm">Featured Projects</div>
-                  <div className="text-gray-400 text-xs">MERN Stack Applications</div>
+                  <div className="font-medium text-white text-sm">
+                    Featured Projects
+                  </div>
+                  <div className="text-gray-400 text-xs">
+                    MERN Stack Applications
+                  </div>
                 </div>
                 <div className="p-3 bg-gray-700/50 rounded-lg">
-                  <div className="font-medium text-white text-sm">DSA Solutions</div>
-                  <div className="text-gray-400 text-xs">250+ Problems Solved</div>
+                  <div className="font-medium text-white text-sm">
+                    DSA Solutions
+                  </div>
+                  <div className="text-gray-400 text-xs">
+                    250+ Problems Solved
+                  </div>
                 </div>
               </div>
               <Button
-                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 variant="outline"
                 size="sm"
                 className="w-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10"
@@ -544,8 +561,12 @@ const DesktopMacBookDesign = () => {
             <div className="flex items-center gap-2">
               <div className="text-white text-sm font-medium">💻 Portfolio</div>
               <div className="flex items-center gap-2">
-                <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">Terminal</div>
-                <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">VS Code</div>
+                <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">
+                  Terminal
+                </div>
+                <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">
+                  VS Code
+                </div>
               </div>
             </div>
             <LiveClock />
@@ -562,7 +583,9 @@ const DesktopMacBookDesign = () => {
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-xs font-mono">Terminal</span>
+                  <span className="text-gray-400 text-xs font-mono">
+                    Terminal
+                  </span>
                 </div>
                 <Terminal className="w-3 h-3 text-gray-400" />
               </div>
@@ -604,7 +627,7 @@ const DesktopMacBookDesign = () => {
       {/* MacBook Base */}
       <div className="relative h-6 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-2xl mx-4 shadow-xl flex items-center justify-center">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-500/50 to-transparent"></div>
-        
+
         {/* Social Keys */}
         <div className="flex items-center gap-2">
           {socialLinks.map((link, index) => {
@@ -676,7 +699,9 @@ export const MacBookPortfolio = () => {
       >
         <p className="text-gray-400 text-xs sm:text-sm">
           <span className="lg:hidden">Swipe through sections to explore</span>
-          <span className="hidden lg:inline">Live portfolio experience • Press any key to connect</span>
+          <span className="hidden lg:inline">
+            Live portfolio experience • Press any key to connect
+          </span>
         </p>
       </motion.div>
     </motion.section>

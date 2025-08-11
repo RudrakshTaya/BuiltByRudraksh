@@ -16,7 +16,13 @@ import { Button } from "./ui/button";
 import { projects } from "../data/portfolioData";
 
 // Mobile Project Card Design
-const MobileProjectCard = ({ project, index }: { project: any; index: number }) => {
+const MobileProjectCard = ({
+  project,
+  index,
+}: {
+  project: any;
+  index: number;
+}) => {
   return (
     <motion.div
       className="bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-xl p-4 border border-gray-700 shadow-xl"
@@ -28,7 +34,9 @@ const MobileProjectCard = ({ project, index }: { project: any; index: number }) 
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
           <Folder className="w-5 h-5 text-blue-400" />
-          <h3 className="text-lg font-bold text-white truncate">{project.title}</h3>
+          <h3 className="text-lg font-bold text-white truncate">
+            {project.title}
+          </h3>
         </div>
         {project.featured && (
           <div className="flex items-center gap-1 px-2 py-1 bg-yellow-500/20 rounded-full">
@@ -40,10 +48,9 @@ const MobileProjectCard = ({ project, index }: { project: any; index: number }) 
 
       {/* Description */}
       <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-        {project.description.length > 100 
+        {project.description.length > 100
           ? `${project.description.substring(0, 100)}...`
-          : project.description
-        }
+          : project.description}
       </p>
 
       {/* Tech Stack */}
@@ -132,11 +139,15 @@ const DesktopProjectsMacBook = () => {
           {/* Menu Bar */}
           <div className="flex items-center justify-between mb-3 px-3 py-2 bg-gray-700/50 rounded-lg backdrop-blur-sm border border-gray-600/50">
             <div className="flex items-center gap-2">
-              <div className="text-white text-sm font-medium">{project.title} - Development</div>
+              <div className="text-white text-sm font-medium">
+                {project.title} - Development
+              </div>
             </div>
             <div className="flex items-center gap-2">
               <Star className="w-3 h-3 text-yellow-400" />
-              <span className="text-yellow-400 text-xs">{project.stats?.stars || 0}</span>
+              <span className="text-yellow-400 text-xs">
+                {project.stats?.stars || 0}
+              </span>
             </div>
           </div>
 
@@ -151,19 +162,41 @@ const DesktopProjectsMacBook = () => {
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-xs font-mono">Terminal</span>
+                  <span className="text-gray-400 text-xs font-mono">
+                    Terminal
+                  </span>
                 </div>
                 <Terminal className="w-3 h-3 text-gray-400" />
               </div>
               <div className="flex-1 p-3 font-mono text-xs">
                 <div className="text-gray-400 mb-2">~/projects</div>
                 <div className="space-y-1">
-                  <div><span className="text-green-400">$ </span><span className="text-white">git clone {project.githubUrl}</span></div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">cd {project.title.toLowerCase().replace(/\s+/g, "-")}</span></div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">npm install</span></div>
-                  <div className="text-cyan-400 pl-2">✓ Dependencies installed</div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">npm start</span></div>
-                  <div className="text-cyan-400 pl-2">✓ Project running on localhost:3000</div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">
+                      git clone {project.githubUrl}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">
+                      cd {project.title.toLowerCase().replace(/\s+/g, "-")}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">npm install</span>
+                  </div>
+                  <div className="text-cyan-400 pl-2">
+                    ✓ Dependencies installed
+                  </div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">npm start</span>
+                  </div>
+                  <div className="text-cyan-400 pl-2">
+                    ✓ Project running on localhost:3000
+                  </div>
                 </div>
               </div>
             </div>
@@ -177,7 +210,9 @@ const DesktopProjectsMacBook = () => {
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-xs font-mono">project.json</span>
+                  <span className="text-gray-400 text-xs font-mono">
+                    project.json
+                  </span>
                 </div>
                 <Code2 className="w-3 h-3 text-gray-400" />
               </div>
@@ -199,7 +234,9 @@ const DesktopProjectsMacBook = () => {
                     <div>
                       <span className="text-cyan-400">"description"</span>
                       <span className="text-white">: </span>
-                      <span className="text-green-400">"{project.description.substring(0, 40)}..."</span>
+                      <span className="text-green-400">
+                        "{project.description.substring(0, 40)}..."
+                      </span>
                       <span className="text-white">,</span>
                     </div>
                     <div>
@@ -207,14 +244,18 @@ const DesktopProjectsMacBook = () => {
                       <span className="text-white">: [</span>
                     </div>
                     <div className="ml-2">
-                      {project.tech.slice(0, 3).map((tech: string, index: number) => (
-                        <div key={index}>
-                          <span className="text-green-400">"{tech}"</span>
-                          {index < 2 && <span className="text-white">,</span>}
-                        </div>
-                      ))}
+                      {project.tech
+                        .slice(0, 3)
+                        .map((tech: string, index: number) => (
+                          <div key={index}>
+                            <span className="text-green-400">"{tech}"</span>
+                            {index < 2 && <span className="text-white">,</span>}
+                          </div>
+                        ))}
                       {project.tech.length > 3 && (
-                        <div className="text-gray-400">// +{project.tech.length - 3} more</div>
+                        <div className="text-gray-400">
+                          // +{project.tech.length - 3} more
+                        </div>
                       )}
                     </div>
                     <div>
@@ -223,7 +264,9 @@ const DesktopProjectsMacBook = () => {
                     <div>
                       <span className="text-cyan-400">"category"</span>
                       <span className="text-white">: </span>
-                      <span className="text-green-400">"{project.category}"</span>
+                      <span className="text-green-400">
+                        "{project.category}"
+                      </span>
                     </div>
                   </div>
                   <div className="text-purple-400">{`}`}</div>
@@ -260,30 +303,38 @@ const DesktopProjectsMacBook = () => {
       {/* MacBook Base with Navigation */}
       <div className="relative h-6 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-2xl mx-4 shadow-xl flex items-center justify-center">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-500/50 to-transparent"></div>
-        
+
         {/* Navigation Controls */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setCurrentProject(prev => prev > 0 ? prev - 1 : featuredProjects.length - 1)}
+            onClick={() =>
+              setCurrentProject((prev) =>
+                prev > 0 ? prev - 1 : featuredProjects.length - 1,
+              )
+            }
             className="w-6 h-6 bg-gradient-to-b from-gray-200 to-gray-300 rounded border border-gray-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200"
           >
             <ArrowLeft className="w-3 h-3 text-gray-700" />
           </button>
-          
+
           <div className="flex items-center gap-1">
             {featuredProjects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentProject(index)}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  index === currentProject ? "bg-cyan-400 scale-125" : "bg-gray-600"
+                  index === currentProject
+                    ? "bg-cyan-400 scale-125"
+                    : "bg-gray-600"
                 }`}
               />
             ))}
           </div>
-          
+
           <button
-            onClick={() => setCurrentProject(prev => (prev + 1) % featuredProjects.length)}
+            onClick={() =>
+              setCurrentProject((prev) => (prev + 1) % featuredProjects.length)
+            }
             className="w-6 h-6 bg-gradient-to-b from-gray-200 to-gray-300 rounded border border-gray-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200"
           >
             <ArrowRight className="w-3 h-3 text-gray-700" />
@@ -310,8 +361,12 @@ export const ProjectsMacBook = () => {
           Featured Projects
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          <span className="lg:hidden">Showcasing my best work and technical projects</span>
-          <span className="hidden lg:inline">Showcasing technical projects in a developer workspace</span>
+          <span className="lg:hidden">
+            Showcasing my best work and technical projects
+          </span>
+          <span className="hidden lg:inline">
+            Showcasing technical projects in a developer workspace
+          </span>
         </p>
       </motion.div>
 
@@ -319,10 +374,14 @@ export const ProjectsMacBook = () => {
       <div className="block lg:hidden px-4">
         <div className="space-y-6 max-w-md mx-auto">
           {featuredProjects.map((project, index) => (
-            <MobileProjectCard key={project.id} project={project} index={index} />
+            <MobileProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+            />
           ))}
         </div>
-        
+
         {/* View All Projects Button */}
         <motion.div
           className="text-center mt-8"
@@ -331,7 +390,11 @@ export const ProjectsMacBook = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           <Button
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              document
+                .getElementById("projects")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             variant="outline"
             className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
           >

@@ -50,16 +50,22 @@ const MobileContactCard = () => {
           <User className="w-5 h-5 text-blue-400" />
           Contact Information
         </h3>
-        
+
         <div className="space-y-3">
           {contactInfo.map((info, index) => {
-            const IconComponent = info.icon === "Mail" ? Mail : info.icon === "Phone" ? Phone : MapPin;
+            const IconComponent =
+              info.icon === "Mail"
+                ? Mail
+                : info.icon === "Phone"
+                  ? Phone
+                  : MapPin;
             const colors = {
               Mail: "text-blue-400 bg-blue-600/20 border-blue-500/30",
               Phone: "text-green-400 bg-green-600/20 border-green-500/30",
-              MapPin: "text-purple-400 bg-purple-600/20 border-purple-500/30"
+              MapPin: "text-purple-400 bg-purple-600/20 border-purple-500/30",
             };
-            const colorClass = colors[info.icon as keyof typeof colors] || colors.Mail;
+            const colorClass =
+              colors[info.icon as keyof typeof colors] || colors.Mail;
 
             return (
               <motion.div
@@ -74,7 +80,9 @@ const MobileContactCard = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-gray-400 text-xs">{info.label}</div>
-                  <div className="text-white text-sm font-medium truncate">{info.value}</div>
+                  <div className="text-white text-sm font-medium truncate">
+                    {info.value}
+                  </div>
                 </div>
                 <button
                   onClick={() => copyToClipboard(info.value, info.icon)}
@@ -112,7 +120,9 @@ const MobileContactCard = () => {
             <input
               type="text"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm focus:border-blue-400 focus:outline-none transition-colors"
               placeholder="Enter your name"
               required
@@ -126,7 +136,9 @@ const MobileContactCard = () => {
             <input
               type="email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm focus:border-blue-400 focus:outline-none transition-colors"
               placeholder="your.email@domain.com"
               required
@@ -139,7 +151,9 @@ const MobileContactCard = () => {
             </label>
             <textarea
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
               rows={4}
               className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm focus:border-blue-400 focus:outline-none resize-none transition-colors"
               placeholder="Your message here..."
@@ -158,7 +172,7 @@ const MobileContactCard = () => {
             <Button
               type="button"
               variant="outline"
-              onClick={() => setFormData({ name: '', email: '', message: '' })}
+              onClick={() => setFormData({ name: "", email: "", message: "" })}
               className="border-gray-600 text-gray-400 hover:bg-gray-800"
             >
               Clear
@@ -176,8 +190,10 @@ const MobileContactCard = () => {
       >
         <Button
           onClick={() => {
-            const email = contactInfo.find(info => info.icon === 'Mail')?.value;
-            if (email) window.open(`mailto:${email}`, '_blank');
+            const email = contactInfo.find(
+              (info) => info.icon === "Mail",
+            )?.value;
+            if (email) window.open(`mailto:${email}`, "_blank");
           }}
           variant="outline"
           className="flex-1 border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
@@ -186,7 +202,11 @@ const MobileContactCard = () => {
           Email Me
         </Button>
         <Button
-          onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() =>
+            document
+              .getElementById("home")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
           variant="outline"
           className="flex-1 border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
         >
@@ -223,7 +243,9 @@ const DesktopContactMacBook = () => {
           {/* Menu Bar */}
           <div className="flex items-center justify-between mb-3 px-3 py-2 bg-gray-700/50 rounded-lg backdrop-blur-sm border border-gray-600/50">
             <div className="flex items-center gap-2">
-              <div className="text-white text-sm font-medium">Contact Interface</div>
+              <div className="text-white text-sm font-medium">
+                Contact Interface
+              </div>
             </div>
             <div className="text-gray-400 text-xs">Ready to connect</div>
           </div>
@@ -239,22 +261,40 @@ const DesktopContactMacBook = () => {
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-xs font-mono">Terminal</span>
+                  <span className="text-gray-400 text-xs font-mono">
+                    Terminal
+                  </span>
                 </div>
                 <Terminal className="w-3 h-3 text-gray-400" />
               </div>
               <div className="flex-1 p-3 font-mono text-xs">
                 <div className="text-gray-400 mb-2">~/contact</div>
                 <div className="space-y-1">
-                  <div><span className="text-green-400">$ </span><span className="text-white">whoami</span></div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">whoami</span>
+                  </div>
                   <div className="text-cyan-400 pl-2">rudraksh-taya</div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">pwd</span></div>
-                  <div className="text-gray-300 pl-2">/home/rudraksh/portfolio/contact</div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">ls -la</span></div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">pwd</span>
+                  </div>
+                  <div className="text-gray-300 pl-2">
+                    /home/rudraksh/portfolio/contact
+                  </div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">ls -la</span>
+                  </div>
                   <div className="text-gray-300 pl-2">drwxr-xr-x email.txt</div>
                   <div className="text-gray-300 pl-2">drwxr-xr-x phone.txt</div>
-                  <div className="text-gray-300 pl-2">drwxr-xr-x location.txt</div>
-                  <div><span className="text-green-400">$ </span><span className="text-white">echo "Ready to connect!"</span></div>
+                  <div className="text-gray-300 pl-2">
+                    drwxr-xr-x location.txt
+                  </div>
+                  <div>
+                    <span className="text-green-400">$ </span>
+                    <span className="text-white">echo "Ready to connect!"</span>
+                  </div>
                   <div className="text-cyan-400 pl-2">Ready to connect!</div>
                 </div>
               </div>
@@ -269,7 +309,9 @@ const DesktopContactMacBook = () => {
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-xs font-mono">contact.form</span>
+                  <span className="text-gray-400 text-xs font-mono">
+                    contact.form
+                  </span>
                 </div>
                 <MessageSquare className="w-3 h-3 text-gray-400" />
               </div>
@@ -283,7 +325,9 @@ const DesktopContactMacBook = () => {
                     <input
                       type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       className="w-full bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white font-mono text-xs focus:border-cyan-400 focus:outline-none"
                       placeholder='"Your Name"'
                       required
@@ -297,7 +341,9 @@ const DesktopContactMacBook = () => {
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="w-full bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white font-mono text-xs focus:border-cyan-400 focus:outline-none"
                       placeholder='"your.email@domain.com"'
                       required
@@ -310,7 +356,9 @@ const DesktopContactMacBook = () => {
                     </label>
                     <textarea
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       rows={3}
                       className="w-full bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white font-mono text-xs focus:border-cyan-400 focus:outline-none resize-none"
                       placeholder='"Your message here..."'
@@ -330,7 +378,9 @@ const DesktopContactMacBook = () => {
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => setFormData({ name: '', email: '', message: '' })}
+                      onClick={() =>
+                        setFormData({ name: "", email: "", message: "" })
+                      }
                       className="border-gray-600 text-gray-400 hover:bg-gray-800 font-mono text-xs h-7"
                     >
                       clear()
@@ -345,9 +395,17 @@ const DesktopContactMacBook = () => {
                   </div>
                   <div className="space-y-1 font-mono text-xs">
                     {contactInfo.map((info, index) => {
-                      const IconComponent = info.icon === "Mail" ? Mail : info.icon === "Phone" ? Phone : MapPin;
+                      const IconComponent =
+                        info.icon === "Mail"
+                          ? Mail
+                          : info.icon === "Phone"
+                            ? Phone
+                            : MapPin;
                       return (
-                        <div key={index} className="flex items-center gap-2 text-gray-300">
+                        <div
+                          key={index}
+                          className="flex items-center gap-2 text-gray-300"
+                        >
                           <IconComponent className="w-3 h-3 text-cyan-400" />
                           <span className="text-cyan-400">{info.label}:</span>
                           <span>"{info.value}"</span>
@@ -365,12 +423,14 @@ const DesktopContactMacBook = () => {
       {/* MacBook Base */}
       <div className="relative h-6 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-2xl mx-4 shadow-xl flex items-center justify-center">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-500/50 to-transparent"></div>
-        
+
         {/* Contact Action Keys */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => {
-              const email = contactInfo.find(info => info.icon === 'Mail')?.value;
+              const email = contactInfo.find(
+                (info) => info.icon === "Mail",
+              )?.value;
               if (email) navigator.clipboard.writeText(email);
             }}
             className="w-6 h-6 bg-gradient-to-b from-blue-200 to-blue-300 rounded border border-blue-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200"
@@ -379,7 +439,9 @@ const DesktopContactMacBook = () => {
           </button>
           <button
             onClick={() => {
-              const phone = contactInfo.find(info => info.icon === 'Phone')?.value;
+              const phone = contactInfo.find(
+                (info) => info.icon === "Phone",
+              )?.value;
               if (phone) navigator.clipboard.writeText(phone);
             }}
             className="w-6 h-6 bg-gradient-to-b from-green-200 to-green-300 rounded border border-green-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200"
@@ -388,8 +450,14 @@ const DesktopContactMacBook = () => {
           </button>
           <button
             onClick={() => {
-              const location = contactInfo.find(info => info.icon === 'MapPin')?.value;
-              if (location) window.open(`https://maps.google.com/?q=${encodeURIComponent(location)}`, '_blank');
+              const location = contactInfo.find(
+                (info) => info.icon === "MapPin",
+              )?.value;
+              if (location)
+                window.open(
+                  `https://maps.google.com/?q=${encodeURIComponent(location)}`,
+                  "_blank",
+                );
             }}
             className="w-6 h-6 bg-gradient-to-b from-purple-200 to-purple-300 rounded border border-purple-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200"
           >
@@ -412,8 +480,12 @@ export const ContactMacBook = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold gradient-text mb-4">Get In Touch</h2>
-          <p className="text-gray-400 text-lg">Let's connect and build something amazing together</p>
+          <h2 className="text-3xl font-bold gradient-text mb-4">
+            Get In Touch
+          </h2>
+          <p className="text-gray-400 text-lg">
+            Let's connect and build something amazing together
+          </p>
         </motion.div>
         <MobileContactCard />
       </div>
@@ -426,12 +498,14 @@ export const ContactMacBook = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text mb-4">Contact Interface</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+            Contact Interface
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Professional contact interface in a developer workspace
           </p>
         </motion.div>
-        
+
         <motion.div
           initial={{ scale: 0.9, opacity: 0, y: 50 }}
           whileInView={{ scale: 1, opacity: 1, y: 0 }}

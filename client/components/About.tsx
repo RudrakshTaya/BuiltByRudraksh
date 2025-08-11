@@ -376,7 +376,11 @@ export const About = () => {
                     <MacBookKey
                       icon={Brain}
                       tooltip="CS Strengths"
-                      onClick={() => document.getElementById('cs-strengths')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() =>
+                        document
+                          .getElementById("cs-strengths")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
                       size="md"
                       variant="function"
                       className="hover:shadow-xl hover:shadow-blue-500/20"
@@ -384,7 +388,11 @@ export const About = () => {
                     <MacBookKey
                       icon={FolderOpen}
                       tooltip="View Projects"
-                      onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() =>
+                        document
+                          .getElementById("projects")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
                       size="md"
                       variant="return"
                       className="hover:shadow-xl hover:shadow-green-500/20"
@@ -392,7 +400,11 @@ export const About = () => {
                     <MacBookKey
                       icon={Mail}
                       tooltip="Contact Me"
-                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() =>
+                        document
+                          .getElementById("contact")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
                       size="md"
                       variant="modifier"
                       className="hover:shadow-xl hover:shadow-purple-500/20"
