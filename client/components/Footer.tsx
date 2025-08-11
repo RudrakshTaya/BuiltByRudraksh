@@ -29,9 +29,21 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold gradient-text mb-4">
               {personalInfo.name}
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-muted-foreground mb-4 max-w-md">
               {personalInfo.bio.short}
             </p>
+
+            {/* Inspiring Footer Quote */}
+            <motion.div
+              className="border-l-4 border-neon-cyan/20 pl-4 mb-6 max-w-md"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              <p className="text-white/80 italic text-sm leading-relaxed">
+                "Code is not just about syntax and logic—it's about creating solutions that make a difference in people's lives."
+              </p>
+            </motion.div>
             
             {/* Tech Stack */}
             <div className="mb-6">
