@@ -83,9 +83,9 @@ const PortfolioTerminal = () => {
   }, [currentIndex, commandIndex, isCompleted, techCommands]);
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col overflow-hidden">
       {/* Terminal header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-3 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700 flex-shrink-0">
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
             <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -103,7 +103,7 @@ const PortfolioTerminal = () => {
         <div className="space-y-1">
           <div className="min-h-[1rem]">
             <span className="text-green-400">$ </span>
-            <span className="text-white">{displayedText}</span>
+            <span className="text-white break-all">{displayedText}</span>
             {!isCompleted && (
               <motion.span
                 className="text-cyan-400 ml-1"
@@ -145,9 +145,9 @@ const VSCodePortfolio = () => {
   };
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col overflow-hidden">
       {/* VS Code header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-3 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700 flex-shrink-0">
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
             <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -160,7 +160,7 @@ const VSCodePortfolio = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex bg-gray-800 border-b border-gray-700">
+      <div className="flex bg-gray-800 border-b border-gray-700 flex-shrink-0">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
@@ -173,8 +173,8 @@ const VSCodePortfolio = () => {
                   : "bg-gray-800 text-gray-400 hover:text-white"
               }`}
             >
-              <Icon className="w-3 h-3" />
-              <span>{tab.name}</span>
+              <Icon className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">{tab.name}</span>
             </button>
           );
         })}
@@ -198,7 +198,7 @@ const VSCodePortfolio = () => {
                   {personalInfo.title}
                 </p>
                 <p className="text-gray-300 mt-2 leading-relaxed">
-                  {personalInfo.bio.short}
+                  CS Student passionate about full-stack development and problem solving.
                 </p>
               </div>
 
@@ -211,7 +211,7 @@ const VSCodePortfolio = () => {
                     variant="outline"
                     size="sm"
                     onClick={scrollToContact}
-                    className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs h-8"
+                    className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs h-7"
                   >
                     <Mail className="mr-1 h-3 w-3" />
                     Contact
@@ -219,7 +219,7 @@ const VSCodePortfolio = () => {
                   <Button
                     size="sm"
                     onClick={downloadResume}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs h-8"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs h-7"
                   >
                     <Download className="mr-1 h-3 w-3" />
                     Resume
@@ -280,44 +280,41 @@ const VSCodePortfolio = () => {
 export const MacBookPortfolio = () => {
   return (
     <motion.section
-      className="relative min-h-[90vh] flex flex-col items-center justify-center py-4 px-4 overflow-hidden z-20"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center py-4 px-2 sm:px-4 overflow-hidden z-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Simplified MacBook Design */}
+      {/* Single Clean MacBook Design */}
       <motion.div
-        className="relative w-full max-w-5xl mx-auto"
+        className="relative w-full max-w-[95vw] sm:max-w-4xl lg:max-w-5xl mx-auto"
         initial={{ scale: 0.9, opacity: 0, y: 30 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        {/* MacBook Screen - Single clean layer */}
-        <div className="relative bg-gray-800 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-gray-700 shadow-2xl overflow-hidden">
-          {/* Apple logo and camera */}
-          <div className="absolute top-2 sm:top-3 left-1/2 transform -translate-x-1/2 flex items-center gap-6">
-            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gray-600 rounded-full opacity-50"></div>
-            <div className="w-1 h-1 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
-          </div>
+        {/* MacBook Screen - Clean Single Layer */}
+        <div className="relative bg-gray-800 rounded-xl sm:rounded-2xl lg:rounded-3xl border-2 sm:border-3 lg:border-4 border-gray-700 shadow-2xl overflow-hidden">
+          {/* Simple top bar with camera */}
+          <div className="absolute top-2 sm:top-3 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
 
-          {/* Screen content */}
-          <div className="relative z-10 p-3 sm:p-4 lg:p-6">
+          {/* Screen content - proper mobile containment */}
+          <div className="relative z-10 p-2 sm:p-3 lg:p-4">
             {/* macOS Menu Bar */}
-            <div className="flex items-center justify-between mb-3 px-3 py-2 bg-gray-700/50 rounded-lg backdrop-blur-sm border border-gray-600/50">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-700/50 rounded-lg backdrop-blur-sm border border-gray-600/50">
               <div className="flex items-center gap-2">
-                <div className="text-white text-sm font-medium">
+                <div className="text-white text-xs sm:text-sm font-medium truncate">
                   💻 Portfolio
                 </div>
                 <div className="hidden sm:flex items-center gap-2">
-                  <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">Terminal</div>
-                  <div className="text-gray-300 text-xs px-2 py-0.5 bg-gray-600/50 rounded">VS Code</div>
+                  <div className="text-gray-300 text-xs px-1.5 py-0.5 bg-gray-600/50 rounded">Terminal</div>
+                  <div className="text-gray-300 text-xs px-1.5 py-0.5 bg-gray-600/50 rounded">VS Code</div>
                 </div>
               </div>
               <LiveClock />
             </div>
 
-            {/* Content area - responsive layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 h-[280px] sm:h-[350px] lg:h-[400px]">
+            {/* Content area - mobile-first responsive */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 h-[250px] sm:h-[320px] lg:h-[380px]">
               {/* Terminal */}
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
@@ -339,114 +336,110 @@ export const MacBookPortfolio = () => {
           </div>
         </div>
 
-        {/* Simplified MacBook Base */}
-        <div className="relative">
-          {/* Main base */}
-          <div className="h-3 sm:h-5 lg:h-6 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-2xl sm:rounded-b-3xl mx-3 sm:mx-4 lg:mx-6 shadow-xl">
-            <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600"></div>
-          </div>
+        {/* SINGLE Clean MacBook Base - No confusing layers */}
+        <div className="relative h-4 sm:h-6 lg:h-8 bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 rounded-b-xl sm:rounded-b-2xl lg:rounded-b-3xl mx-2 sm:mx-3 lg:mx-4 shadow-xl border-t border-gray-600/50 flex items-center justify-center">
+          {/* Clean surface highlight */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-500/50 to-transparent"></div>
+          
+          {/* Integrated keyboard keys - properly contained */}
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2 px-2"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            {/* Social Links */}
+            {socialLinks.map((link, index) => {
+              const iconMap = {
+                Github: Github,
+                Linkedin: Linkedin,
+                Code2: Code2,
+                Trophy: Trophy,
+              };
+              const Icon = iconMap[link.icon as keyof typeof iconMap];
 
-          {/* Keyboard area with integrated keys */}
-          <div className="relative h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-gray-800 to-gray-900 rounded-b-xl sm:rounded-b-2xl mx-6 sm:mx-8 lg:mx-12 shadow-lg -mt-1 flex items-center justify-center">
-            {/* Social Links as MacBook Keys */}
-            <motion.div
-              className="flex items-center gap-1 sm:gap-2"
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 1.4 + index * 0.1, duration: 0.4 }}
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Clean key design */}
+                  <div className="w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-b from-gray-200 to-gray-300 rounded border border-gray-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
+                    <Icon className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 text-gray-700" />
+                  </div>
+                  
+                  {/* Simple tooltip */}
+                  <div className="absolute -bottom-6 sm:-bottom-7 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                    <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
+                      {link.name}
+                    </div>
+                  </div>
+                </motion.a>
+              );
+            })}
+
+            {/* Action buttons */}
+            <motion.button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="group relative ml-1 sm:ml-2"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1.8, duration: 0.4 }}
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.98 }}
             >
-              {socialLinks.map((link, index) => {
-                const iconMap = {
-                  Github: Github,
-                  Linkedin: Linkedin,
-                  Code2: Code2,
-                  Trophy: Trophy,
-                };
-                const Icon = iconMap[link.icon as keyof typeof iconMap];
-
-                return (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1.4 + index * 0.1, duration: 0.4 }}
-                    whileHover={{ scale: 1.1, y: -1 }}
-                    whileTap={{ scale: 0.95, y: 0 }}
-                  >
-                    {/* Key */}
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-b from-gray-200 to-gray-300 rounded border border-gray-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
-                      <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700" />
-                    </div>
-                    
-                    {/* Tooltip */}
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                        {link.name}
-                      </div>
-                    </div>
-                  </motion.a>
-                );
-              })}
-
-              {/* Action buttons */}
-              <motion.button
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="group relative ml-2 sm:ml-3"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.8, duration: 0.4 }}
-                whileHover={{ scale: 1.1, y: -1 }}
-                whileTap={{ scale: 0.95, y: 0 }}
-              >
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-b from-green-200 to-green-300 rounded border border-green-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
-                  <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-green-700" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-b from-green-200 to-green-300 rounded border border-green-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
+                <Mail className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 text-green-700" />
+              </div>
+              <div className="absolute -bottom-6 sm:-bottom-7 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
+                  Contact
                 </div>
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                    Contact
-                  </div>
-                </div>
-              </motion.button>
+              </div>
+            </motion.button>
 
-              <motion.button
-                onClick={downloadResume}
-                className="group relative"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.9, duration: 0.4 }}
-                whileHover={{ scale: 1.1, y: -1 }}
-                whileTap={{ scale: 0.95, y: 0 }}
-              >
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-b from-blue-200 to-blue-300 rounded border border-blue-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
-                  <Download className="w-3 h-3 sm:w-4 sm:h-4 text-blue-700" />
+            <motion.button
+              onClick={downloadResume}
+              className="group relative"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1.9, duration: 0.4 }}
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-b from-blue-200 to-blue-300 rounded border border-blue-400/30 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
+                <Download className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 text-blue-700" />
+              </div>
+              <div className="absolute -bottom-6 sm:-bottom-7 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
+                  Resume
                 </div>
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="bg-gray-900 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                    Resume
-                  </div>
-                </div>
-              </motion.button>
-            </motion.div>
+              </div>
+            </motion.button>
 
-            {/* Trackpad */}
-            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-8 sm:w-10 h-1 sm:h-1.5 bg-gray-700 rounded-sm opacity-50"></div>
-          </div>
+            {/* Simple trackpad indicator */}
+            <div className="absolute bottom-0.5 sm:bottom-1 left-1/2 transform -translate-x-1/2 w-6 sm:w-8 lg:w-10 h-0.5 sm:h-1 bg-gray-600 rounded-sm opacity-40"></div>
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* Simple hint text */}
+      {/* Simple hint text - mobile contained */}
       <motion.div
-        className="mt-4 text-center"
+        className="mt-3 sm:mt-4 text-center px-4"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 2.2, duration: 0.6 }}
       >
         <p className="text-gray-400 text-xs sm:text-sm">
-          Live portfolio experience • Press any key to connect
+          Live portfolio • Press any key to connect
         </p>
       </motion.div>
     </motion.section>
