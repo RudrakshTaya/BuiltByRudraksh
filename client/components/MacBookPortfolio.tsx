@@ -281,7 +281,7 @@ const VSCodePortfolio = () => {
                   <span className="text-cyan-400">url</span>
                   <span className="text-white">: </span>
                   <span className="text-green-400">"{link.url}"</span>
-                  <span className="text-white"> }</span>
+                  <span className="text-white"> {`}`}</span>
                   {index < socialLinks.length - 1 && <span className="text-white">,</span>}
                 </div>
               ))}
