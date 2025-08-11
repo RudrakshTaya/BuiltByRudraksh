@@ -18,6 +18,7 @@ import {
   Maximize,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { MacBookKey, MacBookKeyboardRow } from "./ui/macbook-key";
 import { downloadResume } from "../utils/downloadResume";
 import {
   personalInfo,
@@ -444,56 +445,121 @@ export const MacBookPortfolio = () => {
         </div>
       </motion.div>
 
-      {/* MacBook Keyboard-Style Social Links */}
+      {/* Enhanced MacBook Keyboard-Style Social Links */}
       <motion.div
-        className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8"
+        className="mt-6 sm:mt-10 lg:mt-12"
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
-        {socialLinks.map((link, index) => {
-          const iconMap: { [key: string]: any } = {
-            Github: Github,
-            Linkedin: Linkedin,
-            Code2: Code2,
-            Trophy: Trophy,
-          };
-          const Icon = iconMap[link.icon];
+        {/* Keyboard Container with realistic styling */}
+        <div className="relative mx-auto max-w-md px-4">
+          {/* Keyboard base */}
+          <div className="relative bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-2xl p-4 sm:p-6 shadow-2xl border border-gray-700">
+            {/* Keyboard surface pattern */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 via-transparent to-gray-900/50 rounded-2xl"></div>
 
-          return (
-            <motion.a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative macbook-key-button group"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95, y: 1 }}
-            >
-              {/* MacBook key top surface */}
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-lg border border-gray-400/30 flex items-center justify-center transform transition-all duration-200 group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400 group-active:scale-95">
-                {/* Key highlight */}
-                <div className="absolute inset-0.5 bg-gradient-to-b from-white/60 to-transparent rounded-md opacity-80"></div>
+            {/* Function row label */}
+            <div className="text-center mb-3 sm:mb-4">
+              <span className="text-gray-400 text-xs sm:text-sm font-mono uppercase tracking-wider">
+                Quick Connect
+              </span>
+            </div>
 
-                {/* Icon */}
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 relative z-10 drop-shadow-sm" />
+            {/* Social links as keyboard keys */}
+            <MacBookKeyboardRow gap="md" className="justify-center">
+              {socialLinks.map((link, index) => {
+                const iconMap: { [key: string]: any } = {
+                  Github: Github,
+                  Linkedin: Linkedin,
+                  Code2: Code2,
+                  Trophy: Trophy,
+                };
+                const Icon = iconMap[link.icon];
 
-                {/* Key press shadow */}
-                <div className="absolute inset-0 bg-gray-600/20 rounded-lg opacity-0 group-active:opacity-100 transition-opacity duration-100"></div>
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1.7 + index * 0.1, duration: 0.5 }}
+                  >
+                    <MacBookKey
+                      icon={Icon}
+                      tooltip={`Connect on ${link.name}`}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      size="lg"
+                      variant={index === 0 ? "function" : index === 1 ? "modifier" : "default"}
+                      className="hover:shadow-xl hover:shadow-primary/20"
+                    />
+                  </motion.div>
+                );
+              })}
+            </MacBookKeyboardRow>
+
+            {/* Keyboard bottom row - Action keys */}
+            <div className="mt-4 sm:mt-6">
+              <MacBookKeyboardRow gap="sm" className="justify-center">
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 2.1, duration: 0.5 }}
+                >
+                  <MacBookKey
+                    icon={Mail}
+                    tooltip="Send Message"
+                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                    size="md"
+                    variant="return"
+                    className="hover:shadow-xl hover:shadow-green-500/20"
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 2.2, duration: 0.5 }}
+                >
+                  <MacBookKey
+                    label="⌘"
+                    tooltip="View Projects"
+                    onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                    size="md"
+                    variant="modifier"
+                    className="hover:shadow-xl hover:shadow-purple-500/20"
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 2.3, duration: 0.5 }}
+                >
+                  <MacBookKey
+                    icon={Download}
+                    tooltip="Download Resume"
+                    onClick={downloadResume}
+                    size="md"
+                    variant="function"
+                    className="hover:shadow-xl hover:shadow-blue-500/20"
+                  />
+                </motion.div>
+              </MacBookKeyboardRow>
+            </div>
+
+            {/* Keyboard branding */}
+            <div className="mt-4 text-center">
+              <div className="text-gray-500 text-xs font-mono">
+                Press any key to connect
               </div>
+            </div>
+          </div>
 
-              {/* MacBook key base/shadow */}
-              <div className="absolute top-1 left-0 w-full h-full bg-gray-600/30 rounded-lg -z-10 group-active:top-0.5"></div>
-
-              {/* Key label (platform name) */}
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-gray-900/95 text-white px-2 py-1 rounded text-xs font-mono whitespace-nowrap border border-gray-700">
-                  {link.name}
-                </div>
-              </div>
-            </motion.a>
-          );
-        })}
+          {/* Keyboard shadow/reflection */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-2xl -z-10 translate-y-1"></div>
+        </div>
       </motion.div>
     </motion.section>
   );
