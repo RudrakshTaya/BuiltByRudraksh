@@ -533,28 +533,28 @@ export const AdvancedHero = () => {
           {/* Terminal Subtitle */}
           <TerminalSubtitle />
 
-          {/* Core Values - Compact */}
+          {/* Core Values - Enhanced */}
           <motion.div
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-2xl mx-auto"
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2, duration: 0.8 }}
           >
             <motion.span
-              className="px-4 py-2 bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue text-sm font-medium"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+              className="px-6 py-3 bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue text-base sm:text-lg font-semibold"
+              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(59, 130, 246, 0.5)" }}
             >
               • Innovation through Code
             </motion.span>
             <motion.span
-              className="px-4 py-2 bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple text-sm font-medium"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)" }}
+              className="px-6 py-3 bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple text-base sm:text-lg font-semibold"
+              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(139, 92, 246, 0.5)" }}
             >
               • Problem Solving Mindset
             </motion.span>
             <motion.span
-              className="px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan text-sm font-medium"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)" }}
+              className="px-6 py-3 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan text-base sm:text-lg font-semibold"
+              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(6, 182, 212, 0.5)" }}
             >
               • Continuous Learning
             </motion.span>
@@ -569,15 +569,13 @@ export const AdvancedHero = () => {
             <MatrixRoles />
           </motion.div>
 
-          {/* Compact Stats and Tech Stack */}
+          {/* Enhanced Stats Display */}
           <motion.div
-            className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3, duration: 0.6 }}
           >
             <AnimatedStats />
-            <CircuitTechStack />
           </motion.div>
 
           {/* Action Buttons and Social Links */}
