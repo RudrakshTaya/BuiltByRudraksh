@@ -5,6 +5,8 @@
 // Simply modify the values here to update content across the entire site.
 // =============================================================================
 
+import { Code2, Zap, Target, GraduationCap } from "lucide-react";
+
 // PERSONAL INFORMATION
 // =============================================================================
 export const personalInfo = {
