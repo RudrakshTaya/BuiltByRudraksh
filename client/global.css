@@ -1352,6 +1352,43 @@ select {
     0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* MacBook keyboard-style button */
+.macbook-key-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.macbook-key-button:hover {
+  transform: translateY(-1px);
+}
+
+.macbook-key-button:active {
+  transform: translateY(1px);
+}
+
+/* Key press animation */
+@keyframes keyPress {
+  0% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.macbook-key-button:active > div:first-child {
+  animation: keyPress 0.15s ease-out;
+}
+
 /* Enhanced reduced motion support for accessibility and performance */
 @media (prefers-reduced-motion: reduce) {
   /* Disable all complex animations */
@@ -1375,6 +1412,11 @@ select {
   /* Keep essential transitions but make them fast */
   .smooth-transition {
     transition-duration: 0.1s !important;
+  }
+
+  /* Disable MacBook key animations */
+  .macbook-key-button {
+    animation: none !important;
   }
 }
 
