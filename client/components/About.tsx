@@ -192,9 +192,41 @@ export const About = () => {
               <p className="text-sm md:text-lg text-muted-foreground leading-relaxed mb-4">
                 {personalInfo.bio.short}
               </p>
-              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed mb-6">
                 {personalInfo.bio.detailed}
               </p>
+
+              {/* Philosophy Section */}
+              <motion.div
+                className="border-l-4 border-neon-cyan/30 pl-4 md:pl-6 mb-6"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                <blockquote className="text-sm md:text-base text-white/90 italic leading-relaxed mb-3">
+                  "{personalInfo.philosophy?.main}"
+                </blockquote>
+                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                  {personalInfo.philosophy?.secondary}
+                </p>
+              </motion.div>
+
+              {/* Core Values */}
+              <motion.div
+                className="flex flex-wrap gap-2 md:gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+              >
+                {personalInfo.philosophy?.values.map((value, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs md:text-sm bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan font-medium"
+                  >
+                    {value}
+                  </span>
+                ))}
+              </motion.div>
             </div>
           </div>
         </motion.div>
