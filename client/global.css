@@ -737,6 +737,17 @@ select {
     }
   }
 
+  /* Force clean text rendering on all mobile devices */
+  .gradient-text,
+  .gradient-text-animated {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Prevent any background bleeding */
+    background-attachment: local !important;
+    will-change: auto !important;
+  }
+
   /* Reduce 3D effects on mobile for better performance */
   .preserve-3d {
     transform-style: flat;
