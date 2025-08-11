@@ -151,26 +151,51 @@ const TerminalSubtitle = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2, duration: 0.8 }}
     >
-      <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+      <div className="flex items-center gap-2 sm:gap-3 mb-3 flex-wrap">
         <div className="flex gap-1 sm:gap-2">
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">
+        <span className="text-gray-400 text-xs sm:text-sm font-mono">
           ~/portfolio
         </span>
       </div>
-      <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden">
-        <span className="text-neon-green">$ </span>
-        {/* <span className="text-white break-words">{displayedText}</span> */}
-        <motion.span
-          className="text-neon-cyan"
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
-        >
-          _
-        </motion.span>
+
+      <div className="space-y-2">
+        <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden min-h-[1.5rem]">
+          <span className="text-neon-green">$ </span>
+          <span className="text-white break-words">{displayedText}</span>
+          {!isCompleted && (
+            <motion.span
+              className="text-neon-cyan ml-1"
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+            >
+              _
+            </motion.span>
+          )}
+        </div>
+
+        {/* Command output/result */}
+        {isCompleted && (
+          <motion.div
+            className="text-neon-cyan/80 text-xs sm:text-sm font-mono pl-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            {commandIndex === 0 && "✓ Ready to build amazing things"}
+            {commandIndex === 1 && "✓ 250+ problems solved successfully"}
+            {commandIndex === 2 && "✓ Build successful - ready for production"}
+            {commandIndex === 3 && "✓ 3 containers running - full stack ready"}
+            {commandIndex === 4 && "ML + Data Structures = Innovation"}
+            {commandIndex === 5 && "✓ Algorithm compiled and optimized"}
+            {commandIndex === 6 && "✓ 200 OK - Innovation API active"}
+            {commandIndex === 7 && "✓ Service enabled and running"}
+            {commandIndex === 8 && "∞ Always learning, always growing"}
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );
