@@ -204,7 +204,57 @@ export default {
         'glass': '0 12px 40px rgba(31, 38, 135, 0.4), 0 2px 8px rgba(31, 38, 135, 0.2)',
         'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
+      // 3D transform utilities
+      perspective: {
+        '500': '500px',
+        '1000': '1000px',
+        '1500': '1500px',
+        '2000': '2000px',
+        '2500': '2500px',
+      },
+      transformStyle: {
+        'preserve-3d': 'preserve-3d',
+        'flat': 'flat',
+      },
+      rotate: {
+        'x-1': 'rotateX(1deg)',
+        'x-2': 'rotateX(2deg)',
+        'x-3': 'rotateX(3deg)',
+        'x-5': 'rotateX(5deg)',
+        'y-1': 'rotateY(1deg)',
+        'y-2': 'rotateY(2deg)',
+        'y-3': 'rotateY(3deg)',
+        'y-5': 'rotateY(5deg)',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: any) {
+      const newUtilities = {
+        '.perspective-1000': {
+          perspective: '1000px',
+        },
+        '.perspective-1500': {
+          perspective: '1500px',
+        },
+        '.perspective-2000': {
+          perspective: '2000px',
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.rotateX-2': {
+          transform: 'rotateX(2deg)',
+        },
+        '.rotateX-3': {
+          transform: 'rotateX(3deg)',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } satisfies Config;
