@@ -1352,6 +1352,40 @@ select {
     0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* MacBook responsive design utilities */
+.macbook-container {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .macbook-container {
+    max-width: 95vw;
+    padding: 0 8px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .macbook-container {
+    max-width: 85vw;
+    padding: 0 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .macbook-container {
+    max-width: 80vw;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .macbook-container {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}
+
 /* MacBook keyboard-style button */
 .macbook-key-button {
   position: relative;
