@@ -19,11 +19,11 @@ interface MacBookKeyProps {
 }
 
 const sizeStyles = {
-  xs: "w-8 h-8 text-xs",
-  sm: "w-10 h-10 text-sm",
-  md: "w-12 h-12 text-base",
-  lg: "w-14 h-14 text-lg",
-  xl: "w-16 h-16 text-xl",
+  xs: "w-6 h-6 sm:w-8 sm:h-8 text-xs",
+  sm: "w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-sm",
+  md: "w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-sm sm:text-base",
+  lg: "w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 text-base sm:text-lg",
+  xl: "w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-lg sm:text-xl",
 };
 
 const variantStyles = {
