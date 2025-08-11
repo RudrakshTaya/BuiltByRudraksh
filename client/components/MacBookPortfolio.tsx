@@ -21,7 +21,7 @@ import { Button } from './ui/button';
 import { downloadResume } from '../utils/downloadResume';
 import { personalInfo, skills, stats, socialLinks } from '../data/portfolioData';
 
-// Enhanced terminal with cycling tech commands (keeping the same as before)
+// Enhanced terminal with cycling tech commands
 const PortfolioTerminal = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,23 +60,23 @@ const PortfolioTerminal = () => {
   }, [currentIndex, commandIndex, isCompleted, techCommands]);
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
+    <div className="bg-gray-900/95 rounded-lg border border-gray-600 h-full flex flex-col shadow-2xl backdrop-blur-sm">
       {/* Terminal header */}
-      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-3 py-2 bg-gray-800/90 rounded-t-lg border-b border-gray-600">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">Terminal</span>
+          <span className="text-gray-300 text-sm font-mono ml-2">Terminal</span>
         </div>
-        <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
+        <Terminal className="w-4 h-4 text-gray-400" />
       </div>
 
       {/* Terminal content */}
-      <div className="flex-1 p-2 sm:p-4 font-mono text-xs sm:text-sm overflow-hidden">
-        <div className="text-gray-400 mb-2 text-xs sm:text-sm">~/portfolio</div>
+      <div className="flex-1 p-4 font-mono text-sm overflow-hidden bg-black/50">
+        <div className="text-green-400 mb-3 text-sm">~/portfolio</div>
         
         <div className="space-y-2">
           <div className="min-h-[1.5rem]">
@@ -139,35 +139,35 @@ const VSCodePortfolio = () => {
   ];
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
+    <div className="bg-gray-900/95 rounded-lg border border-gray-600 h-full flex flex-col shadow-2xl backdrop-blur-sm">
       {/* VS Code header */}
-      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-3 py-2 bg-gray-800/90 rounded-t-lg border-b border-gray-600">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">VS Code</span>
+          <span className="text-gray-300 text-sm font-mono ml-2">VS Code</span>
         </div>
-        <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
+        <Code2 className="w-4 h-4 text-gray-400" />
       </div>
 
       {/* Tabs */}
-      <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
+      <div className="flex bg-gray-800/90 border-b border-gray-600 overflow-x-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border-r border-gray-700 transition-colors whitespace-nowrap ${
+              className={`flex items-center gap-2 px-4 py-2 text-sm border-r border-gray-600 transition-colors whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-gray-900 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-750'
+                  ? 'bg-gray-900/95 text-white'
+                  : 'bg-gray-800/90 text-gray-400 hover:text-white hover:bg-gray-750'
               }`}
             >
-              <Icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <Icon className="w-4 h-4 flex-shrink-0" />
               <span className="hidden sm:inline">{tab.name}</span>
               <span className="sm:hidden">{tab.name.split('.')[0]}</span>
             </button>
@@ -176,7 +176,7 @@ const VSCodePortfolio = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-3 sm:p-6 overflow-auto">
+      <div className="flex-1 p-4 overflow-auto bg-black/50">
         <AnimatePresence mode="wait">
           {activeTab === 'portfolio.md' && (
             <motion.div
@@ -298,162 +298,161 @@ const VSCodePortfolio = () => {
 export const MacBookPortfolio = () => {
   return (
     <motion.section
-      className="relative min-h-[95vh] flex items-center justify-center py-8 px-4 overflow-hidden z-20"
+      className="relative min-h-screen flex items-center justify-center py-8 px-4 overflow-hidden"
+      style={{ backgroundColor: 'transparent' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* MacBook Frame */}
-      <motion.div
-        className="relative w-full max-w-6xl mx-auto z-30"
-        initial={{ scale: 0.8, opacity: 0, y: 50 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      >
-        {/* Enhanced MacBook Screen with Realistic Bezels */}
-        <div className="relative bg-black rounded-3xl border-4 sm:border-8 border-gray-800 shadow-2xl overflow-hidden">
-          {/* Realistic screen bezel with multiple layers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl sm:rounded-3xl border border-gray-700"></div>
-
-          {/* Inner bezel */}
-          <div className="absolute inset-2 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-xl sm:rounded-2xl border border-gray-800"></div>
-
-          {/* Apple logo (top center of bezel) */}
-          <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 opacity-30">
-            <div className="w-full h-full bg-gradient-to-b from-gray-300 to-gray-500 rounded-full shadow-inner"></div>
-          </div>
-
-          {/* Camera dot */}
-          <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 translate-x-8 w-1 h-1 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
-
-          {/* Screen content with enhanced visibility */}
-          <div className="relative z-10 p-3 sm:p-6 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-gradient-to-br from-gray-900/95 via-black/98 to-gray-950/95 rounded-lg backdrop-blur-sm">
-            {/* macOS Menu Bar */}
-            <div className="flex items-center justify-between mb-3 sm:mb-4 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/90 rounded-lg backdrop-blur-sm border border-gray-700/50 shadow-lg">
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="text-white text-sm sm:text-base font-medium truncate">💻 Rudraksh Portfolio</div>
-                <div className="hidden sm:flex items-center gap-3">
-                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">Terminal</div>
-                  <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded-md">VS Code</div>
-                </div>
-              </div>
-              <div className="text-gray-300 text-xs sm:text-sm font-mono bg-gray-700/50 px-2 py-1 rounded-md">
-                {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </div>
-            </div>
-
-            {/* Responsive layout */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 sm:gap-4 h-[350px] sm:h-[450px] lg:h-[550px]">
-              {/* Terminal Side */}
-              <motion.div
-                className="order-1 xl:order-1"
-                initial={{ x: -30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              >
-                <PortfolioTerminal />
-              </motion.div>
-
-              {/* VS Code Side */}
-              <motion.div
-                className="order-2 xl:order-2"
-                initial={{ x: 30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-              >
-                <VSCodePortfolio />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced MacBook Base with 3D Perspective */}
-        <div className="relative perspective-1000">
-          {/* Main MacBook base layer with enhanced styling */}
-          <div className="relative h-4 sm:h-8 bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 rounded-b-[2.5rem] sm:rounded-b-[4rem] mx-4 sm:mx-8 shadow-2xl transform rotateX-2 border-t border-gray-600">
-            {/* Realistic MacBook hinge */}
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 rounded-t-sm"></div>
-
-            {/* Apple logo on base */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4">
-              <div className="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600 rounded-full opacity-40 shadow-inner"></div>
-            </div>
-
-            {/* Base highlight */}
-            <div className="absolute inset-x-0 top-1 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
-          </div>
-
-          {/* Keyboard section */}
-          <div className="relative h-3 sm:h-6 bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-b-[2rem] sm:rounded-b-[3rem] mx-8 sm:mx-16 shadow-xl transform rotateX-3 -mt-0.5">
-            {/* Keyboard surface pattern */}
-            <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent"></div>
-
-            {/* Trackpad indication */}
-            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-6 sm:w-8 h-1 sm:h-1.5 bg-gray-700 rounded-sm opacity-60 border border-gray-600"></div>
-          </div>
-
-          {/* Bottom support pad */}
-          <div className="relative h-1.5 sm:h-3 bg-gradient-to-b from-gray-900 to-black rounded-b-xl mx-12 sm:mx-24 shadow-lg -mt-0.5">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-600/40 to-transparent"></div>
-
-            {/* Rubber feet */}
-            <div className="absolute bottom-0 left-4 w-2 h-0.5 bg-gray-800 rounded-full opacity-80"></div>
-            <div className="absolute bottom-0 right-4 w-2 h-0.5 bg-gray-800 rounded-full opacity-80"></div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* MacBook Keyboard-Style Social Links */}
-      <motion.div
-        className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8"
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-      >
-        {socialLinks.map((link, index) => {
-          const iconMap: { [key: string]: any } = {
-            Github: Github,
-            Linkedin: Linkedin,
-            Code2: Code2,
-            Trophy: Trophy,
-          };
-          const Icon = iconMap[link.icon];
-
-          return (
-            <motion.a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative macbook-key-button group"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95, y: 1 }}
+      <div className="relative w-full max-w-7xl mx-auto">
+        {/* MacBook Container */}
+        <motion.div
+          className="relative"
+          initial={{ scale: 0.8, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          {/* MacBook Screen */}
+          <div className="relative mx-auto" style={{ perspective: '2000px' }}>
+            {/* Screen with bezels */}
+            <div 
+              className="relative bg-black rounded-t-3xl border-8 border-gray-700 shadow-2xl mx-4 sm:mx-8"
+              style={{
+                background: 'linear-gradient(145deg, #1a1a1a, #0a0a0a)',
+                transform: 'rotateX(2deg)',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              {/* MacBook key top surface */}
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-lg border border-gray-400/30 flex items-center justify-center transform transition-all duration-200 group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400 group-active:scale-95">
-                {/* Key highlight */}
-                <div className="absolute inset-0.5 bg-gradient-to-b from-white/60 to-transparent rounded-md opacity-80"></div>
+              {/* Outer bezel */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 rounded-t-3xl p-2">
+                {/* Inner bezel */}
+                <div className="w-full h-full bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-t-2xl border border-gray-600">
+                  {/* Apple logo */}
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-b from-gray-300 to-gray-500 rounded-full opacity-40 shadow-inner"></div>
+                  
+                  {/* Camera */}
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 translate-x-10 w-2 h-2 bg-green-400 rounded-full opacity-70 animate-pulse shadow-lg"></div>
+                  
+                  {/* Screen content area */}
+                  <div className="p-4 pt-12 h-96 sm:h-[500px] lg:h-[600px]">
+                    {/* macOS Menu Bar */}
+                    <div className="flex items-center justify-between mb-4 px-4 py-3 bg-gray-800/90 rounded-lg border border-gray-600/50 shadow-lg backdrop-blur-sm">
+                      <div className="flex items-center gap-4">
+                        <div className="text-white text-base font-medium">🍎 Rudraksh Portfolio</div>
+                        <div className="hidden sm:flex items-center gap-3">
+                          <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded">Terminal</div>
+                          <div className="text-gray-300 text-xs px-2 py-1 bg-gray-700/50 rounded">VS Code</div>
+                        </div>
+                      </div>
+                      <div className="text-gray-300 text-sm font-mono bg-gray-700/50 px-3 py-1 rounded">
+                        {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </div>
+                    </div>
 
-                {/* Icon */}
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 relative z-10 drop-shadow-sm" />
+                    {/* Split screen layout */}
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 h-full">
+                      <motion.div
+                        initial={{ x: -30, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                      >
+                        <PortfolioTerminal />
+                      </motion.div>
 
-                {/* Key press shadow */}
-                <div className="absolute inset-0 bg-gray-600/20 rounded-lg opacity-0 group-active:opacity-100 transition-opacity duration-100"></div>
-              </div>
-
-              {/* MacBook key base/shadow */}
-              <div className="absolute top-1 left-0 w-full h-full bg-gray-600/30 rounded-lg -z-10 group-active:top-0.5"></div>
-
-              {/* Key label (platform name) */}
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-gray-900/95 text-white px-2 py-1 rounded text-xs font-mono whitespace-nowrap border border-gray-700">
-                  {link.name}
+                      <motion.div
+                        initial={{ x: 30, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.7, duration: 0.8 }}
+                      >
+                        <VSCodePortfolio />
+                      </motion.div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </motion.a>
-          );
-        })}
-      </motion.div>
+            </div>
+
+            {/* MacBook Base with Keyboard */}
+            <div className="relative">
+              {/* Main keyboard base */}
+              <div 
+                className="relative h-8 sm:h-12 bg-gradient-to-b from-gray-600 via-gray-700 to-gray-800 rounded-b-3xl mx-4 sm:mx-8 shadow-2xl border-t border-gray-500"
+                style={{
+                  transform: 'rotateX(5deg)',
+                  transformOrigin: 'top',
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                {/* Keyboard surface */}
+                <div className="absolute inset-2 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-2xl">
+                  {/* Trackpad */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 h-2 sm:h-3 bg-gray-600 rounded border border-gray-500 shadow-inner"></div>
+                  
+                  {/* MacBook Keyboard-Style Social Link Buttons */}
+                  <div className="absolute top-1 sm:top-2 right-4 sm:right-8 flex gap-2 sm:gap-3">
+                    {socialLinks.slice(0, 3).map((link, index) => {
+                      const iconMap: { [key: string]: any } = {
+                        Github: Github,
+                        Linkedin: Linkedin,
+                        Code2: Code2,
+                        Trophy: Trophy,
+                      };
+                      const Icon = iconMap[link.icon];
+
+                      return (
+                        <motion.a
+                          key={link.name}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative group cursor-pointer"
+                          whileHover={{ scale: 1.05, y: -1 }}
+                          whileTap={{ scale: 0.95, y: 0.5 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1.5 + index * 0.1 }}
+                        >
+                          {/* MacBook Key */}
+                          <div className="relative w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 rounded-md shadow-lg border border-gray-400/50 flex items-center justify-center transform transition-all duration-200 group-hover:from-gray-300 group-hover:via-gray-400 group-hover:to-gray-500 group-active:scale-95">
+                            {/* Key highlight */}
+                            <div className="absolute inset-0.5 bg-gradient-to-b from-white/60 to-transparent rounded-sm opacity-80"></div>
+                            
+                            {/* Icon */}
+                            <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 relative z-10 drop-shadow-sm" />
+                            
+                            {/* Key press shadow */}
+                            <div className="absolute inset-0 bg-gray-600/30 rounded-md opacity-0 group-active:opacity-100 transition-opacity duration-100"></div>
+                          </div>
+                          
+                          {/* Key base shadow */}
+                          <div className="absolute top-0.5 left-0 w-full h-full bg-gray-600/40 rounded-md -z-10 group-active:top-0.25"></div>
+                          
+                          {/* Tooltip */}
+                          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <div className="bg-gray-900/95 text-white px-2 py-1 rounded text-xs font-mono whitespace-nowrap border border-gray-600 shadow-lg">
+                              {link.name}
+                            </div>
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-px w-0 h-0 border-l-2 border-r-2 border-t-2 border-l-transparent border-r-transparent border-t-gray-600"></div>
+                          </div>
+                        </motion.a>
+                      );
+                    })}
+                  </div>
+                </div>
+                
+                {/* Apple logo on keyboard base */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gradient-to-b from-gray-400 to-gray-600 rounded-full opacity-30 shadow-inner"></div>
+              </div>
+
+              {/* Bottom MacBook feet */}
+              <div className="relative h-2 sm:h-3 bg-gradient-to-b from-gray-800 to-black rounded-b-2xl mx-12 sm:mx-20 shadow-lg -mt-1">
+                <div className="absolute bottom-0 left-6 w-3 h-1 bg-gray-700 rounded-full"></div>
+                <div className="absolute bottom-0 right-6 w-3 h-1 bg-gray-700 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </motion.section>
   );
 };
