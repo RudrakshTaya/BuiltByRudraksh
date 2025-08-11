@@ -298,14 +298,14 @@ const VSCodePortfolio = () => {
 export const MacBookPortfolio = () => {
   return (
     <motion.section
-      className="relative min-h-[95vh] flex items-center justify-center py-8 px-4 overflow-hidden"
+      className="relative min-h-[95vh] flex items-center justify-center py-8 px-4 overflow-hidden z-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {/* MacBook Frame */}
       <motion.div
-        className="relative w-full max-w-6xl mx-auto"
+        className="relative w-full max-w-6xl mx-auto z-30"
         initial={{ scale: 0.8, opacity: 0, y: 50 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
