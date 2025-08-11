@@ -85,6 +85,9 @@ export const Contact = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mt-6" />
         </motion.div>
 
+        {/* MacBook-style Contact Interface */}
+        <ContactMacBook />
+
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
