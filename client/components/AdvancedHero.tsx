@@ -574,7 +574,7 @@ export const AdvancedHero = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
         <motion.div
-          className="space-y-8"
+          className="space-y-6"
           style={{
             transform: `translateY(${mousePosition.y * 0.3}px) translateX(${mousePosition.x * 0.2}px)`,
           }}
