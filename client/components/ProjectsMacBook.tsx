@@ -22,32 +22,32 @@ import { projects } from "../data/portfolioData";
 // Featured project display
 const ProjectCodeDisplay = ({ project }: { project: any }) => {
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl overflow-hidden">
       {/* VS Code header */}
-      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-2 sm:px-3 py-1.5 bg-gray-800 rounded-t-lg border-b border-gray-700 flex-shrink-0">
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">
+          <span className="text-gray-400 text-xs font-mono">
             project.json
           </span>
         </div>
-        <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
+        <Code2 className="w-3 h-3 text-gray-400" />
       </div>
 
-      {/* Content */}
-      <div className="flex-1 p-3 sm:p-4 overflow-auto font-mono text-xs sm:text-sm">
-        <div className="space-y-3">
-          <div className="text-gray-400">// Featured Project</div>
+      {/* Content with proper scrolling */}
+      <div className="flex-1 p-2 sm:p-3 overflow-auto font-mono text-xs">
+        <div className="space-y-2">
+          <div className="text-gray-400 text-xs">// Featured Project</div>
           <div>
             <span className="text-purple-400">const </span>
             <span className="text-cyan-400">project </span>
             <span className="text-white">= {`{`}</span>
           </div>
-          <div className="ml-4 space-y-2">
+          <div className="ml-2 space-y-1">
             <div>
               <span className="text-cyan-400">"title"</span>
               <span className="text-white">: </span>
@@ -58,26 +58,26 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
               <span className="text-cyan-400">"description"</span>
               <span className="text-white">: </span>
               <span className="text-green-400">
-                "{project.description.substring(0, 80)}..."
+                "{project.description.substring(0, 50)}..."
               </span>
               <span className="text-white">,</span>
             </div>
             <div>
-              <span className="text-cyan-400">"technologies"</span>
+              <span className="text-cyan-400">"tech"</span>
               <span className="text-white">: [</span>
             </div>
-            <div className="ml-4 space-y-1">
-              {project.tech.slice(0, 4).map((tech: string, index: number) => (
+            <div className="ml-2 space-y-0.5">
+              {project.tech.slice(0, 3).map((tech: string, index: number) => (
                 <div key={index}>
                   <span className="text-green-400">"{tech}"</span>
-                  {index < Math.min(project.tech.length - 1, 3) && (
+                  {index < 2 && index < project.tech.length - 1 && (
                     <span className="text-white">,</span>
                   )}
                 </div>
               ))}
-              {project.tech.length > 4 && (
-                <div className="text-gray-400">
-                  // ... {project.tech.length - 4} more
+              {project.tech.length > 3 && (
+                <div className="text-gray-400 text-xs">
+                  // +{project.tech.length - 3} more
                 </div>
               )}
             </div>
@@ -88,20 +88,6 @@ const ProjectCodeDisplay = ({ project }: { project: any }) => {
               <span className="text-cyan-400">"category"</span>
               <span className="text-white">: </span>
               <span className="text-green-400">"{project.category}"</span>
-              <span className="text-white">,</span>
-            </div>
-            <div>
-              <span className="text-cyan-400">"complexity"</span>
-              <span className="text-white">: </span>
-              <span className="text-green-400">"{project.complexity}"</span>
-              <span className="text-white">,</span>
-            </div>
-            <div>
-              <span className="text-cyan-400">"featured"</span>
-              <span className="text-white">: </span>
-              <span className="text-yellow-400">
-                {project.featured ? "true" : "false"}
-              </span>
             </div>
           </div>
           <div className="text-purple-400">{`}`}</div>
