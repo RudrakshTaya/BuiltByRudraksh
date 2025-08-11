@@ -10,8 +10,13 @@ import {
   Star,
   GitFork,
   Eye,
+  ArrowLeft,
+  ArrowRight,
+  SkipBack,
+  SkipForward,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { MacBookKey, MacBookKeyboardRow } from "./ui/macbook-key";
 import { projects } from "../data/portfolioData";
 
 // Featured project display
@@ -244,27 +249,44 @@ export const ProjectsMacBook = () => {
               <ProjectCodeDisplay project={project} />
             </div>
 
-            {/* Project Actions */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => window.open(project.githubUrl, "_blank")}
-                className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs sm:text-sm"
-              >
-                <Github className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                Source Code
-              </Button>
-              {project.liveUrl && (
-                <Button
-                  size="sm"
-                  onClick={() => window.open(project.liveUrl, "_blank")}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs sm:text-sm"
-                >
-                  <ExternalLink className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                  Live Demo
-                </Button>
-              )}
+            {/* Project Actions - Keyboard Style */}
+            <div className="mt-4">
+              <div className="relative mx-auto max-w-xs">
+                <div className="bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-lg p-2 sm:p-3 border border-gray-700">
+                  <MacBookKeyboardRow gap="sm" className="justify-center">
+                    <MacBookKey
+                      icon={Github}
+                      tooltip="View Source"
+                      onClick={() => window.open(project.githubUrl, "_blank")}
+                      size="sm"
+                      variant="function"
+                      className="hover:shadow-xl hover:shadow-blue-500/20"
+                    />
+                    {project.liveUrl && (
+                      <MacBookKey
+                        icon={ExternalLink}
+                        tooltip="Live Demo"
+                        onClick={() => window.open(project.liveUrl, "_blank")}
+                        size="sm"
+                        variant="return"
+                        className="hover:shadow-xl hover:shadow-green-500/20"
+                      />
+                    )}
+                    <MacBookKey
+                      icon={Play}
+                      tooltip="Run Project"
+                      onClick={() => {
+                        // Scroll to the specific project or show more details
+                        const projectElement = document.getElementById('projects');
+                        projectElement?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      size="sm"
+                      variant="modifier"
+                      className="hover:shadow-xl hover:shadow-purple-500/20"
+                    />
+                  </MacBookKeyboardRow>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -280,20 +302,89 @@ export const ProjectsMacBook = () => {
         </div>
       </motion.div>
 
-      {/* Project Navigation */}
-      <div className="flex justify-center mt-6 sm:mt-8 gap-2">
-        {featuredProjects.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentProject(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              index === currentProject
-                ? "bg-cyan-400 scale-125"
-                : "bg-gray-600 hover:bg-gray-500"
-            }`}
-          />
-        ))}
-      </div>
+      {/* Project Navigation - Keyboard Style */}
+      <motion.div
+        className="flex justify-center mt-6 sm:mt-8"
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+      >
+        <div className="relative">
+          <div className="bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-xl p-3 sm:p-4 shadow-2xl border border-gray-700">
+            <div className="text-center mb-2">
+              <span className="text-gray-400 text-xs font-mono uppercase tracking-wider">
+                Project Navigation
+              </span>
+            </div>
+
+            <MacBookKeyboardRow gap="sm" className="justify-center mb-3">
+              <MacBookKey
+                icon={SkipBack}
+                tooltip="First Project"
+                onClick={() => setCurrentProject(0)}
+                size="xs"
+                variant="function"
+                disabled={currentProject === 0}
+                className="hover:shadow-xl hover:shadow-blue-500/20"
+              />
+              <MacBookKey
+                icon={ArrowLeft}
+                tooltip="Previous"
+                onClick={() => setCurrentProject(prev => prev > 0 ? prev - 1 : featuredProjects.length - 1)}
+                size="sm"
+                variant="modifier"
+                className="hover:shadow-xl hover:shadow-purple-500/20"
+              />
+              <div className="flex items-center px-3 py-2 bg-gray-700 rounded-lg border border-gray-600">
+                <span className="text-white text-sm font-mono">
+                  {currentProject + 1}/{featuredProjects.length}
+                </span>
+              </div>
+              <MacBookKey
+                icon={ArrowRight}
+                tooltip="Next"
+                onClick={() => setCurrentProject(prev => (prev + 1) % featuredProjects.length)}
+                size="sm"
+                variant="modifier"
+                className="hover:shadow-xl hover:shadow-purple-500/20"
+              />
+              <MacBookKey
+                icon={SkipForward}
+                tooltip="Last Project"
+                onClick={() => setCurrentProject(featuredProjects.length - 1)}
+                size="xs"
+                variant="function"
+                disabled={currentProject === featuredProjects.length - 1}
+                className="hover:shadow-xl hover:shadow-blue-500/20"
+              />
+            </MacBookKeyboardRow>
+
+            {/* Project indicators */}
+            <div className="flex justify-center gap-1">
+              {featuredProjects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentProject(index)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    index === currentProject
+                      ? "bg-cyan-400 scale-125"
+                      : "bg-gray-600 hover:bg-gray-500"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <div className="mt-2 text-center">
+              <div className="text-gray-500 text-xs font-mono">
+                {project.title}
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation shadow */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-xl -z-10 translate-y-1"></div>
+        </div>
+      </motion.div>
     </div>
   );
 };
