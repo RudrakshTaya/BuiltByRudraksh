@@ -310,15 +310,21 @@ export const MacBookPortfolio = () => {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        {/* MacBook Screen */}
-        <div className="relative bg-black rounded-3xl border-4 sm:border-8 border-gray-800 shadow-2xl overflow-hidden perspective-1000">
-          {/* Screen bezel with realistic curve */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black rounded-2xl sm:rounded-3xl border border-gray-700"></div>
+        {/* Enhanced MacBook Screen with Realistic Bezels */}
+        <div className="relative bg-black rounded-3xl border-4 sm:border-8 border-gray-800 shadow-2xl overflow-hidden">
+          {/* Realistic screen bezel with multiple layers */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl sm:rounded-3xl border border-gray-700"></div>
 
-          {/* Apple logo (top center) */}
-          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 opacity-20">
-            <div className="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600 rounded-full"></div>
+          {/* Inner bezel */}
+          <div className="absolute inset-2 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-xl sm:rounded-2xl border border-gray-800"></div>
+
+          {/* Apple logo (top center of bezel) */}
+          <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 opacity-30">
+            <div className="w-full h-full bg-gradient-to-b from-gray-300 to-gray-500 rounded-full shadow-inner"></div>
           </div>
+
+          {/* Camera dot */}
+          <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 translate-x-8 w-1 h-1 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
 
           {/* Screen content */}
           <div className="relative z-10 p-2 sm:p-4 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
@@ -361,29 +367,43 @@ export const MacBookPortfolio = () => {
           </div>
         </div>
 
-        {/* MacBook Base - Improved design */}
-        <div className="relative">
-          {/* Main base */}
-          <div className="h-3 sm:h-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 rounded-b-[2rem] sm:rounded-b-[3rem] mx-4 sm:mx-8 shadow-2xl transform perspective-1000 rotateX-2">
-            {/* Top highlight */}
-            <div className="absolute inset-x-0 top-0 h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+        {/* Enhanced MacBook Base with 3D Perspective */}
+        <div className="relative perspective-1000">
+          {/* Main MacBook base layer with enhanced styling */}
+          <div className="relative h-4 sm:h-8 bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 rounded-b-[2.5rem] sm:rounded-b-[4rem] mx-4 sm:mx-8 shadow-2xl transform rotateX-2 border-t border-gray-600">
+            {/* Realistic MacBook hinge */}
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 rounded-t-sm"></div>
+
             {/* Apple logo on base */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 sm:w-3 h-2 sm:h-3 bg-gray-600 rounded-full opacity-30"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4">
+              <div className="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600 rounded-full opacity-40 shadow-inner"></div>
+            </div>
+
+            {/* Base highlight */}
+            <div className="absolute inset-x-0 top-1 h-0.5 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
           </div>
 
-          {/* Keyboard base */}
-          <div className="h-2 sm:h-4 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-b-[1.5rem] sm:rounded-b-[2rem] mx-8 sm:mx-16 shadow-xl transform perspective-1000 rotateX-3">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+          {/* Keyboard section */}
+          <div className="relative h-3 sm:h-6 bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-b-[2rem] sm:rounded-b-[3rem] mx-8 sm:mx-16 shadow-xl transform rotateX-3 -mt-0.5">
+            {/* Keyboard surface pattern */}
+            <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent"></div>
+
+            {/* Trackpad indication */}
+            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-6 sm:w-8 h-1 sm:h-1.5 bg-gray-700 rounded-sm opacity-60 border border-gray-600"></div>
           </div>
 
-          {/* Bottom pad */}
-          <div className="h-1 sm:h-2 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 rounded-b-xl mx-12 sm:mx-24 shadow-lg opacity-60">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50"></div>
+          {/* Bottom support pad */}
+          <div className="relative h-1.5 sm:h-3 bg-gradient-to-b from-gray-900 to-black rounded-b-xl mx-12 sm:mx-24 shadow-lg -mt-0.5">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-600/40 to-transparent"></div>
+
+            {/* Rubber feet */}
+            <div className="absolute bottom-0 left-4 w-2 h-0.5 bg-gray-800 rounded-full opacity-80"></div>
+            <div className="absolute bottom-0 right-4 w-2 h-0.5 bg-gray-800 rounded-full opacity-80"></div>
           </div>
         </div>
       </motion.div>
 
-      {/* Social Links Below MacBook */}
+      {/* MacBook Keyboard-Style Social Links */}
       <motion.div
         className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8"
         initial={{ y: 30, opacity: 0 }}
@@ -405,11 +425,31 @@ export const MacBookPortfolio = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 sm:p-3 bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-cyan-500/50 transition-all duration-300 group shadow-lg"
-              whileHover={{ scale: 1.1, y: -3 }}
-              whileTap={{ scale: 0.95 }}
+              className="relative macbook-key-button group"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95, y: 1 }}
             >
-              <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+              {/* MacBook key top surface */}
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-lg border border-gray-400/30 flex items-center justify-center transform transition-all duration-200 group-hover:from-gray-200 group-hover:via-gray-300 group-hover:to-gray-400 group-active:scale-95">
+                {/* Key highlight */}
+                <div className="absolute inset-0.5 bg-gradient-to-b from-white/60 to-transparent rounded-md opacity-80"></div>
+
+                {/* Icon */}
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 relative z-10 drop-shadow-sm" />
+
+                {/* Key press shadow */}
+                <div className="absolute inset-0 bg-gray-600/20 rounded-lg opacity-0 group-active:opacity-100 transition-opacity duration-100"></div>
+              </div>
+
+              {/* MacBook key base/shadow */}
+              <div className="absolute top-1 left-0 w-full h-full bg-gray-600/30 rounded-lg -z-10 group-active:top-0.5"></div>
+
+              {/* Key label (platform name) */}
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-gray-900/95 text-white px-2 py-1 rounded text-xs font-mono whitespace-nowrap border border-gray-700">
+                  {link.name}
+                </div>
+              </div>
             </motion.a>
           );
         })}
