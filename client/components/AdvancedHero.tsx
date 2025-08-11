@@ -544,11 +544,54 @@ export const AdvancedHero = () => {
           {/* Terminal Subtitle */}
           <TerminalSubtitle />
 
+          {/* Inspiring Lines */}
+          <motion.div
+            className="space-y-6 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+          >
+            <motion.h3
+              className="text-lg sm:text-xl md:text-2xl font-semibold text-white/90 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.4, duration: 1 }}
+            >
+              <span className="text-neon-cyan">"</span>
+              Transforming complex problems into elegant solutions,
+              <br className="hidden sm:block" />
+              one line of code at a time.
+              <span className="text-neon-cyan">"</span>
+            </motion.h3>
+
+            <motion.p
+              className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.8, duration: 1 }}
+            >
+              Passionate about bridging the gap between theoretical computer science
+              and real-world applications. Every algorithm tells a story, every project
+              solves a problem, and every line of code brings ideas to life.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap justify-center gap-4 text-xs sm:text-sm text-neon-purple/80 font-mono"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 3.2, duration: 1 }}
+            >
+              <span>• Innovation through Code</span>
+              <span>• Problem Solving Mindset</span>
+              <span>• Continuous Learning</span>
+            </motion.div>
+          </motion.div>
+
           {/* Matrix Role Display */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.5, duration: 0.8 }}
+            transition={{ delay: 3.5, duration: 0.8 }}
           >
             <MatrixRoles />
           </motion.div>
