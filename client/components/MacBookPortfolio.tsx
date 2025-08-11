@@ -385,8 +385,8 @@ export const MacBookPortfolio = () => {
 
       {/* Social Links Below MacBook */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4"
-        initial={{ y: 50, opacity: 0 }}
+        className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8"
+        initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
