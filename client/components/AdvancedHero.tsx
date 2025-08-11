@@ -345,14 +345,11 @@ const CircuitTechStack = () => {
             {/* Tech name - Always visible on mobile, animated on desktop */}
             <motion.div
               className="text-center w-full"
-              animate={window.innerWidth < 768 ? { opacity: 1 } : (index === activeIndex ? { opacity: 1 } : { opacity: 0.6 })}
+              animate={typeof window !== 'undefined' && window.innerWidth < 768 ? { opacity: 1 } : (index === activeIndex ? { opacity: 1 } : { opacity: 0.6 })}
               transition={{ duration: 0.3 }}
             >
               <span className="text-xs sm:text-sm font-mono text-white block leading-tight px-1">
                 {tech.name}
-              </span>
-              <span className="text-xs text-muted-foreground hidden sm:block mt-1">
-                {tech.category}
               </span>
             </motion.div>
           </motion.div>
