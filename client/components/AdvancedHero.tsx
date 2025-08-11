@@ -424,33 +424,16 @@ const AnimatedStats = () => {
             borderColor: "rgba(59, 130, 246, 0.5)",
           }}
         >
-          {/* Animated background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          <div className="relative z-10 text-center">
-            <motion.div
-              className="font-bold text-2xl font-mono mb-2"
-              style={{
-                color:
-                  stat.color === "neon-green"
-                    ? "#10b981"
-                    : stat.color === "neon-blue"
-                      ? "#3b82f6"
-                      : stat.color === "neon-purple"
-                        ? "#8b5cf6"
-                        : stat.color === "neon-cyan"
-                          ? "#06b6d4"
-                          : "#10b981",
-              }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 2.9 + index * 0.1, type: "spring" }}
-            >
-              {stat.label.split(" ")[0]}
-            </motion.div>
-            <div className="text-gray-400 text-sm font-mono">
-              {stat.label.split(" ").slice(1).join(" ")}
-            </div>
+          <motion.div
+            className="font-bold text-lg font-mono text-white mb-1"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.1 + index * 0.05, type: "spring" }}
+          >
+            {stat.label.split(" ")[0]}
+          </motion.div>
+          <div className="text-gray-400 text-xs font-mono">
+            {stat.label.split(" ").slice(1).join(" ")}
           </div>
 
           {/* Circuit corner decoration */}
