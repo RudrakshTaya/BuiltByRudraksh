@@ -94,11 +94,27 @@ export const Contact = () => {
           >
             <div>
               <h3 className="text-3xl font-bold text-white mb-6">Let's Connect</h3>
-              <p className="text-muted-foreground mb-8">
-                I'm always interested in new opportunities and exciting projects. 
-                Whether you're a company looking to hire or have a project in mind, 
+              <p className="text-muted-foreground mb-6">
+                I'm always interested in new opportunities and exciting projects.
+                Whether you're a company looking to hire or have a project in mind,
                 I'd love to hear from you.
               </p>
+              <div className="border-l-4 border-neon-purple/30 pl-4 mb-6">
+                <p className="text-white/90 italic text-sm leading-relaxed">
+                  "I believe in the power of collaboration and innovation. Together, we can turn challenges into opportunities and ideas into impactful solutions."
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="px-3 py-1 text-xs bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue">
+                  Open to Opportunities
+                </span>
+                <span className="px-3 py-1 text-xs bg-neon-green/10 border border-neon-green/30 rounded-full text-neon-green">
+                  Collaborative Mindset
+                </span>
+                <span className="px-3 py-1 text-xs bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple">
+                  Innovation Focused
+                </span>
+              </div>
             </div>
 
             {/* Contact Info Cards */}
