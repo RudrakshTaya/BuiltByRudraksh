@@ -398,7 +398,7 @@ const ResponsiveTechStack = () => {
               }
               transition={{ duration: 1.5 }}
             >
-              <span className="text-lg sm:text-xl">{tech.icon}</span>
+              <span className="text-base xs:text-lg sm:text-xl md:text-2xl">{tech.icon}</span>
 
               {/* Active glow */}
               {index === activeIndex && (
@@ -406,12 +406,22 @@ const ResponsiveTechStack = () => {
               )}
             </motion.div>
 
-            {/* Tech name tooltip */}
+            {/* Tech name - Always visible on mobile, tooltip on desktop */}
+            <div className="text-center w-full">
+              <span className="text-xs sm:text-sm font-mono text-cyan-400 block leading-tight px-1">
+                {tech.name}
+              </span>
+              <span className="text-xs text-muted-foreground hidden md:block mt-1">
+                {tech.category}
+              </span>
+            </div>
+
+            {/* Desktop hover tooltip */}
             <motion.div
-              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-2 py-1 rounded-lg text-xs font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10"
+              className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-3 py-2 rounded-lg text-xs font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 hidden lg:block"
               whileHover={{ y: -2 }}
             >
-              {tech.name}
+              {tech.name} • {tech.category}
             </motion.div>
           </motion.div>
         ))}
