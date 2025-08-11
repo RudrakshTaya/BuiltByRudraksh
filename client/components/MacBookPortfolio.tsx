@@ -60,23 +60,23 @@ const PortfolioTerminal = () => {
   }, [currentIndex, commandIndex, isCompleted, techCommands]);
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col">
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl">
       {/* Terminal header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="flex items-center justify-between px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-gray-400 text-sm font-mono ml-2">Terminal</span>
+          <span className="text-gray-400 text-xs sm:text-sm font-mono ml-1 sm:ml-2">Terminal</span>
         </div>
-        <Terminal className="w-4 h-4 text-gray-400" />
+        <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
       </div>
 
       {/* Terminal content */}
-      <div className="flex-1 p-4 font-mono text-sm overflow-hidden">
-        <div className="text-gray-400 mb-2">~/portfolio</div>
+      <div className="flex-1 p-2 sm:p-4 font-mono text-xs sm:text-sm overflow-hidden">
+        <div className="text-gray-400 mb-2 text-xs sm:text-sm">~/portfolio</div>
         
         <div className="space-y-2">
           <div className="min-h-[1.5rem]">
