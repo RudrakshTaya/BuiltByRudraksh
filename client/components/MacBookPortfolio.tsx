@@ -397,50 +397,8 @@ const DesktopMacBookDesign = () => {
               </div>
             </div>
 
-            {/* Portfolio Info */}
-            <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col">
-              <div className="flex items-center justify-between px-3 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  </div>
-                  <span className="text-gray-400 text-xs font-mono">Portfolio</span>
-                </div>
-                <Code2 className="w-3 h-3 text-gray-400" />
-              </div>
-              <div className="flex-1 p-3 text-xs">
-                <div className="space-y-3">
-                  <div>
-                    <h1 className="text-lg font-bold text-white mb-1">
-                      {personalInfo.name}
-                    </h1>
-                    <p className="text-cyan-400 font-mono">{personalInfo.title}</p>
-                    <p className="text-gray-300 mt-2">CS Student & Full Stack Developer</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                      className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs h-7"
-                    >
-                      <Mail className="mr-1 h-3 w-3" />
-                      Contact
-                    </Button>
-                    <Button
-                      size="sm"
-                      onClick={downloadResume}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs h-7"
-                    >
-                      <Download className="mr-1 h-3 w-3" />
-                      Resume
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* VS Code Portfolio */}
+            <VSCodePortfolio />
           </div>
         </div>
       </div>
