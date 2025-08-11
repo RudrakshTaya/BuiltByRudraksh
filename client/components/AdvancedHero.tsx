@@ -574,7 +574,7 @@ export const AdvancedHero = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
         <motion.div
-          className="space-y-12"
+          className="space-y-8"
           style={{
             transform: `translateY(${mousePosition.y * 0.3}px) translateX(${mousePosition.x * 0.2}px)`,
           }}
@@ -586,54 +586,38 @@ export const AdvancedHero = () => {
           {/* Terminal Subtitle */}
           <TerminalSubtitle />
 
-          {/* Inspiring Lines */}
+          {/* Core Values - Compact */}
           <motion.div
-            className="space-y-6 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2, duration: 0.8 }}
           >
-            <motion.h3
-              className="text-lg sm:text-xl md:text-2xl font-semibold text-white/90 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.4, duration: 1 }}
+            <motion.span
+              className="px-4 py-2 bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue text-sm font-medium"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
             >
-              <span className="text-neon-cyan">"</span>
-              Transforming complex problems into elegant solutions,
-              <br className="hidden sm:block" />
-              one line of code at a time.
-              <span className="text-neon-cyan">"</span>
-            </motion.h3>
-
-            <motion.p
-              className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.8, duration: 1 }}
+              • Innovation through Code
+            </motion.span>
+            <motion.span
+              className="px-4 py-2 bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple text-sm font-medium"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)" }}
             >
-              Passionate about bridging the gap between theoretical computer science
-              and real-world applications. Every algorithm tells a story, every project
-              solves a problem, and every line of code brings ideas to life.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-wrap justify-center gap-4 text-xs sm:text-sm text-neon-purple/80 font-mono"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 3.2, duration: 1 }}
+              • Problem Solving Mindset
+            </motion.span>
+            <motion.span
+              className="px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan text-sm font-medium"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)" }}
             >
-              <span>• Innovation through Code</span>
-              <span>• Problem Solving Mindset</span>
-              <span>• Continuous Learning</span>
-            </motion.div>
+              • Continuous Learning
+            </motion.span>
           </motion.div>
 
           {/* Matrix Role Display */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.5, duration: 0.8 }}
+            transition={{ delay: 2.6, duration: 0.8 }}
           >
             <MatrixRoles />
           </motion.div>
