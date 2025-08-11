@@ -315,7 +315,7 @@ const DesktopContactMacBook = () => {
                 </div>
                 <MessageSquare className="w-3 h-3 text-gray-400" />
               </div>
-              <div className="flex-1 p-3 overflow-auto">
+              <div className="flex-1 p-3 overflow-y-auto max-h-[300px]">
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div>
                     <label className="text-cyan-400 text-xs font-mono flex items-center gap-1 mb-1">
