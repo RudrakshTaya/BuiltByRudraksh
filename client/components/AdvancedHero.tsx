@@ -452,53 +452,24 @@ const HolographicButtons = () => {
   };
 
   return (
-    <motion.div
-      className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-4xl mx-auto px-4"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 3.5, duration: 0.8 }}
-    >
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="relative"
+    <div className="flex flex-wrap gap-3 justify-center items-center max-w-2xl mx-auto px-4">
+      <Button
+        variant="outline"
+        onClick={scrollToContact}
+        className="glass border border-neon-cyan/50 text-neon-cyan px-6 py-3 rounded-xl font-bold text-sm font-mono hover:bg-neon-cyan/10"
       >
-        <Button
-          size="lg"
-          variant="outline"
-          onClick={scrollToContact}
-          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-sm sm:text-base md:text-lg font-mono relative overflow-hidden w-full sm:w-auto"
-        >
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent w-full"
-            animate={{ x: [-300, 300] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <Terminal className="mr-3 h-6 w-6" />
-          <span className="relative z-10">Initialize Contact</span>
-        </Button>
-      </motion.div>
+        <Terminal className="mr-2 h-4 w-4" />
+        Contact Me
+      </Button>
 
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="relative"
+      <Button
+        onClick={downloadResume}
+        className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-6 py-3 rounded-xl font-bold text-sm font-mono hover:opacity-90"
       >
-        <Button
-          size="lg"
-          onClick={downloadResume}
-          className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-sm sm:text-base md:text-lg font-mono relative overflow-hidden w-full sm:w-auto"
-        >
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full"
-            animate={{ x: [-300, 300] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-          />
-          <Download className="mr-3 h-6 w-6" />
-          <span className="relative z-10">Download.exe</span>
-        </Button>
-      </motion.div>
-    </motion.div>
+        <Download className="mr-2 h-4 w-4" />
+        Resume
+      </Button>
+    </div>
   );
 };
 
