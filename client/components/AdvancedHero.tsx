@@ -622,22 +622,28 @@ export const AdvancedHero = () => {
             <MatrixRoles />
           </motion.div>
 
-          {/* Animated Stats */}
-          <AnimatedStats />
-
-          {/* Circuit Tech Stack */}
-          <CircuitTechStack />
-
-          {/* Holographic Buttons */}
-          <HolographicButtons />
-
-          {/* Enhanced Social Links */}
+          {/* Compact Stats and Tech Stack */}
           <motion.div
-            className="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 max-w-lg mx-auto px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 0.8 }}
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 0.6 }}
           >
+            <AnimatedStats />
+            <CircuitTechStack />
+          </motion.div>
+
+          {/* Action Buttons and Social Links */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.4, duration: 0.6 }}
+          >
+            <HolographicButtons />
+
+            {/* Social Links */}
+            <div className="flex justify-center space-x-4 max-w-lg mx-auto px-4">
             {(socialLinks || []).map((link, index) => {
               const iconMap: { [key: string]: any } = {
                 Github: Github,
@@ -657,8 +663,8 @@ export const AdvancedHero = () => {
                   initial={{ opacity: 0, y: 30, scale: 0 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{
-                    delay: 4.2 + index * 0.1,
-                    duration: 0.5,
+                    delay: 0.1 + index * 0.1,
+                    duration: 0.4,
                     type: "spring",
                   }}
                   whileHover={{ y: -10, scale: 1.1 }}
@@ -696,6 +702,7 @@ export const AdvancedHero = () => {
                 </motion.a>
               );
             })}
+            </div>
           </motion.div>
         </motion.div>
       </div>
