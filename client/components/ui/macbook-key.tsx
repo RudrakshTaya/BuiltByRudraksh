@@ -204,9 +204,9 @@ export const MacBookKeyboardRow: React.FC<{
   gap?: "sm" | "md" | "lg";
 }> = ({ children, className, gap = "md" }) => {
   const gapStyles = {
-    sm: "gap-1",
-    md: "gap-2 sm:gap-3",
-    lg: "gap-3 sm:gap-4",
+    sm: "gap-1 sm:gap-2",
+    md: "gap-2 sm:gap-3 lg:gap-4",
+    lg: "gap-3 sm:gap-4 lg:gap-6",
   };
 
   return (
