@@ -643,13 +643,13 @@ export const AdvancedHero = () => {
                   whileTap={{ scale: 0.9 }}
                 >
                   <motion.div
-                    className={`${link.color} p-3 sm:p-4 md:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden`}
+                    className={`${link.color} p-4 sm:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden hover:shadow-glow transition-all duration-300`}
                     whileHover={{
-                      boxShadow: "0 20px 40px rgba(6, 182, 212, 0.3)",
-                      borderColor: "rgba(6, 182, 212, 0.5)",
+                      boxShadow: "0 25px 50px rgba(6, 182, 212, 0.4)",
+                      borderColor: "rgba(6, 182, 212, 0.6)",
                     }}
                   >
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 relative z-10" />
+                    <Icon className="h-6 w-6 sm:h-7 sm:w-7 relative z-10" />
 
                     {/* Holographic scan line */}
                     <motion.div
