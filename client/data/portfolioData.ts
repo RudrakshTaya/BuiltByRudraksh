@@ -87,10 +87,10 @@ export const stats = {
     { label: "Strong CS Fundamentals", color: "neon-purple" }
   ],
   about: [
-    { icon: "Code2", label: "DSA Problems", value: "250+", color: "text-neon-purple", bgColor: "bg-neon-purple" },
-    { icon: "Zap", label: "Full Stack Projects", value: "10+", color: "text-neon-blue", bgColor: "bg-neon-blue" },
-    { icon: "Target", label: "Programming Languages", value: "6+", color: "text-neon-cyan", bgColor: "bg-neon-cyan" },
-    { icon: "GraduationCap", label: "Current CGPA", value: "8.2", color: "text-neon-green", bgColor: "bg-neon-green" }
+    { icon: Code2, label: "DSA Problems", value: "250+", color: "text-neon-purple", bgColor: "bg-neon-purple" },
+    { icon: Zap, label: "Full Stack Projects", value: "10+", color: "text-neon-blue", bgColor: "bg-neon-blue" },
+    { icon: Target, label: "Programming Languages", value: "6+", color: "text-neon-cyan", bgColor: "bg-neon-cyan" },
+    { icon: GraduationCap, label: "Current CGPA", value: "8.2", color: "text-neon-green", bgColor: "bg-neon-green" }
   ],
   csStrengths: [
     { label: "DSA Problems", value: "250+", color: "neon-purple" },
