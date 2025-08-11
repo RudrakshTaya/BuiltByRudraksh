@@ -308,19 +308,19 @@ const CircuitTechStack = () => {
       </div>
 
       {/* Tech stack grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 relative z-10 max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 relative z-10 max-w-6xl mx-auto px-4">
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className="relative cursor-pointer"
+            className="relative cursor-pointer flex flex-col items-center"
             initial={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.15 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "tween", duration: 0.2 }}
           >
             <motion.div
-              className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
+              className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
                 index === activeIndex ? "border-neon-cyan" : "border-white/20"
-              }`}
+              } mb-2`}
               animate={
                 index === activeIndex
                   ? {
@@ -334,7 +334,7 @@ const CircuitTechStack = () => {
               }
               transition={{ duration: 2 }}
             >
-              {tech.icon}
+              <span className="text-lg sm:text-xl md:text-2xl">{tech.icon}</span>
 
               {/* Circuit connections */}
               {index === activeIndex && (
@@ -342,13 +342,18 @@ const CircuitTechStack = () => {
               )}
             </motion.div>
 
-            {/* Tech name */}
+            {/* Tech name - Always visible on mobile, animated on desktop */}
             <motion.div
-              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-mono text-white whitespace-nowrap"
-              animate={index === activeIndex ? { opacity: 1 } : { opacity: 0 }}
+              className="text-center w-full"
+              animate={window.innerWidth < 768 ? { opacity: 1 } : (index === activeIndex ? { opacity: 1 } : { opacity: 0.6 })}
               transition={{ duration: 0.3 }}
             >
-              {tech.name}
+              <span className="text-xs sm:text-sm font-mono text-white block leading-tight px-1">
+                {tech.name}
+              </span>
+              <span className="text-xs text-muted-foreground hidden sm:block mt-1">
+                {tech.category}
+              </span>
             </motion.div>
           </motion.div>
         ))}
