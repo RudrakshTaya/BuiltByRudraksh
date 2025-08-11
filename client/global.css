@@ -823,6 +823,37 @@ select {
   }
 }
 
+/* Additional mobile fixes for gradient bleeding */
+@media (max-width: 768px) {
+  /* Fix section backgrounds */
+  section {
+    background-color: hsl(var(--background));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Ensure text is always readable */
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Prevent background animations from affecting text */
+  .gradient-text-animated {
+    background: none !important;
+    color: hsl(var(--foreground)) !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    animation: none !important;
+  }
+
+  /* Fix for any lingering background effects */
+  .bg-background\/10,
+  .bg-background\/5 {
+    background-color: hsl(var(--background)) !important;
+    backdrop-filter: none !important;
+  }
+}
+
 /* Hero-specific animations */
 @keyframes hero-float {
   0%,
