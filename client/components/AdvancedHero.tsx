@@ -105,27 +105,44 @@ const TypingName = () => {
   );
 };
 
-// Advanced terminal-style subtitle
+// Enhanced terminal with cycling tech commands
 const TerminalSubtitle = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const subtitle = "echo 'CS Student & Full Stack Developer'";
+  const [commandIndex, setCommandIndex] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const techCommands = [
+    "echo 'CS Student & Full Stack Developer'",
+    "git status --porcelain | grep -c '^M' # 250+ DSA problems solved",
+    "npm run build --production # Building scalable web applications",
+    "docker ps | grep 'react\\|node\\|mongo' # Containerized MERN stack",
+    "python -c \"print('ML + Data Structures = Innovation')\"",
+    "javac Algorithm.java && java Problem --solve --optimize",
+    "curl -X POST /api/innovation -d '{\"passion\": \"unlimited\"}'",
+    "sudo systemctl enable continuous-learning.service",
+    "grep -r 'problem-solving' ~/mindset | wc -l # Always active"
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const typingInterval = setInterval(() => {
-        if (currentIndex < subtitle.length) {
-          setDisplayedText((prev) => prev + subtitle[currentIndex]);
-          setCurrentIndex((prev) => prev + 1);
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 50);
-      return () => clearInterval(typingInterval);
-    }, 2000); // Start after name typing
+      if (currentIndex < techCommands[commandIndex].length) {
+        setDisplayedText((prev) => prev + techCommands[commandIndex][currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      } else if (!isCompleted) {
+        setIsCompleted(true);
+        // Start next command after a pause
+        setTimeout(() => {
+          setDisplayedText("");
+          setCurrentIndex(0);
+          setIsCompleted(false);
+          setCommandIndex((prev) => (prev + 1) % techCommands.length);
+        }, 3000);
+      }
+    }, currentIndex === 0 && commandIndex === 0 ? 2000 : 50); // First command starts after name typing
 
     return () => clearTimeout(timer);
-  }, [currentIndex, subtitle]);
+  }, [currentIndex, commandIndex, isCompleted, techCommands]);
 
   return (
     <motion.div
