@@ -607,7 +607,7 @@ export const AdvancedHero = () => {
 
           {/* Action Buttons and Social Links */}
           <motion.div
-            className="space-y-6"
+            className="space-y-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.4, duration: 0.6 }}
