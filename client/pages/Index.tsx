@@ -4,9 +4,10 @@ import { Enhanced3DBackground } from "../components/Enhanced3DBackground";
 import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
 import { ScrollIndicator } from "../components/ScrollIndicator";
 import { Navbar } from "../components/Navbar";
-import { AdvancedHero } from "../components/AdvancedHero";
+import { MacBookPortfolio } from "../components/MacBookPortfolio";
 import { About } from "../components/About";
 import { CSStrengths } from "../components/CSStrengths";
+import { HighTechCSE } from "../components/HighTechCSE";
 import { Projects } from "../components/Projects";
 import { ProjectExperience } from "../components/ProjectExperience";
 import { GitHubStats } from "../components/GitHubStats";
@@ -64,27 +65,33 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background relative">
       {/* Enhanced 3D Background with Strong Parallax */}
-      <Enhanced3DBackground />
+      <div className="fixed inset-0 z-0">
+        <Enhanced3DBackground />
+      </div>
 
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
       {/* Navbar */}
-      <Navbar />
+      <div className="relative z-50">
+        <Navbar />
+      </div>
 
       {/* Enhanced Scroll Indicator */}
-      <ScrollIndicator />
+      <div className="relative z-50">
+        <ScrollIndicator />
+      </div>
 
       {/* Main Content */}
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16 relative z-10"
+        className="pt-16 relative z-30"
       >
         {/* Hero Section */}
-        <section id="home" className="relative z-20">
-          <AdvancedHero />
+        <section id="home" className="relative z-40">
+          <MacBookPortfolio />
         </section>
 
         {/* About Section */}
@@ -101,6 +108,14 @@ export default function Index() {
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
           <CSStrengths />
+        </section>
+
+        {/* High-Tech CSE Domains */}
+        <section
+          id="high-tech-cse"
+          className="relative z-20 bg-background/10 backdrop-blur-sm"
+        >
+          <HighTechCSE />
         </section>
 
         {/* Project-Based Learning Experience */}

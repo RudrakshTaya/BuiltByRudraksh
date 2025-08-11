@@ -105,27 +105,49 @@ const TypingName = () => {
   );
 };
 
-// Advanced terminal-style subtitle
+// Enhanced terminal with cycling tech commands
 const TerminalSubtitle = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const subtitle = "echo 'CS Student & Full Stack Developer'";
+  const [commandIndex, setCommandIndex] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const techCommands = [
+    "echo 'CS Student & Full Stack Developer'",
+    "git status --porcelain | grep -c '^M' # 250+ DSA problems solved",
+    "npm run build --production # Building scalable web applications",
+    "docker ps | grep 'react\\|node\\|mongo' # Containerized MERN stack",
+    "python -c \"print('ML + Data Structures = Innovation')\"",
+    "javac Algorithm.java && java Problem --solve --optimize",
+    'curl -X POST /api/innovation -d \'{"passion": "unlimited"}\'',
+    "sudo systemctl enable continuous-learning.service",
+    "grep -r 'problem-solving' ~/mindset | wc -l # Always active",
+  ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const typingInterval = setInterval(() => {
-        if (currentIndex < subtitle.length) {
-          setDisplayedText((prev) => prev + subtitle[currentIndex]);
+    const timer = setTimeout(
+      () => {
+        if (currentIndex < techCommands[commandIndex].length) {
+          setDisplayedText(
+            (prev) => prev + techCommands[commandIndex][currentIndex],
+          );
           setCurrentIndex((prev) => prev + 1);
-        } else {
-          clearInterval(typingInterval);
+        } else if (!isCompleted) {
+          setIsCompleted(true);
+          // Start next command after a pause
+          setTimeout(() => {
+            setDisplayedText("");
+            setCurrentIndex(0);
+            setIsCompleted(false);
+            setCommandIndex((prev) => (prev + 1) % techCommands.length);
+          }, 3000);
         }
-      }, 50);
-      return () => clearInterval(typingInterval);
-    }, 2000); // Start after name typing
+      },
+      currentIndex === 0 && commandIndex === 0 ? 2000 : 50,
+    ); // First command starts after name typing
 
     return () => clearTimeout(timer);
-  }, [currentIndex, subtitle]);
+  }, [currentIndex, commandIndex, isCompleted, techCommands]);
 
   return (
     <motion.div
@@ -134,26 +156,51 @@ const TerminalSubtitle = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2, duration: 0.8 }}
     >
-      <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+      <div className="flex items-center gap-2 sm:gap-3 mb-3 flex-wrap">
         <div className="flex gap-1 sm:gap-2">
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-gray-400 text-xs sm:text-sm font-mono break-all">
+        <span className="text-gray-400 text-xs sm:text-sm font-mono">
           ~/portfolio
         </span>
       </div>
-      <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden">
-        <span className="text-neon-green">$ </span>
-        {/* <span className="text-white break-words">{displayedText}</span> */}
-        <motion.span
-          className="text-neon-cyan"
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
-        >
-          _
-        </motion.span>
+
+      <div className="space-y-2">
+        <div className="font-mono text-left text-xs sm:text-sm md:text-base overflow-hidden min-h-[1.5rem]">
+          <span className="text-neon-green">$ </span>
+          <span className="text-white break-words">{displayedText}</span>
+          {!isCompleted && (
+            <motion.span
+              className="text-neon-cyan ml-1"
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+            >
+              _
+            </motion.span>
+          )}
+        </div>
+
+        {/* Command output/result */}
+        {isCompleted && (
+          <motion.div
+            className="text-neon-cyan/80 text-xs sm:text-sm font-mono pl-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            {commandIndex === 0 && "✓ Ready to build amazing things"}
+            {commandIndex === 1 && "✓ 250+ problems solved successfully"}
+            {commandIndex === 2 && "✓ Build successful - ready for production"}
+            {commandIndex === 3 && "✓ 3 containers running - full stack ready"}
+            {commandIndex === 4 && "ML + Data Structures = Innovation"}
+            {commandIndex === 5 && "✓ Algorithm compiled and optimized"}
+            {commandIndex === 6 && "✓ 200 OK - Innovation API active"}
+            {commandIndex === 7 && "✓ Service enabled and running"}
+            {commandIndex === 8 && "∞ Always learning, always growing"}
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );
@@ -308,19 +355,19 @@ const CircuitTechStack = () => {
       </div>
 
       {/* Tech stack grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 relative z-10 max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 relative z-10 max-w-6xl mx-auto px-4">
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className="relative cursor-pointer"
+            className="relative cursor-pointer flex flex-col items-center"
             initial={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.15 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "tween", duration: 0.2 }}
           >
             <motion.div
-              className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
+              className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
                 index === activeIndex ? "border-neon-cyan" : "border-white/20"
-              }`}
+              } mb-2`}
               animate={
                 index === activeIndex
                   ? {
@@ -334,7 +381,9 @@ const CircuitTechStack = () => {
               }
               transition={{ duration: 2 }}
             >
-              {tech.icon}
+              <span className="text-lg sm:text-xl md:text-2xl">
+                {tech.icon}
+              </span>
 
               {/* Circuit connections */}
               {index === activeIndex && (
@@ -342,13 +391,21 @@ const CircuitTechStack = () => {
               )}
             </motion.div>
 
-            {/* Tech name */}
+            {/* Tech name - Always visible on mobile, animated on desktop */}
             <motion.div
-              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-mono text-white whitespace-nowrap"
-              animate={index === activeIndex ? { opacity: 1 } : { opacity: 0 }}
+              className="text-center w-full"
+              animate={
+                typeof window !== "undefined" && window.innerWidth < 768
+                  ? { opacity: 1 }
+                  : index === activeIndex
+                    ? { opacity: 1 }
+                    : { opacity: 0.6 }
+              }
               transition={{ duration: 0.3 }}
             >
-              {tech.name}
+              <span className="text-xs sm:text-sm font-mono text-white block leading-tight px-1">
+                {tech.name}
+              </span>
             </motion.div>
           </motion.div>
         ))}
@@ -368,52 +425,29 @@ const AnimatedStats = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2.5, duration: 0.8 }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto px-4"
-    >
+    <motion.div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-5xl mx-auto px-4">
       {heroStats.map((stat, index) => (
         <motion.div
           key={index}
-          className="glass p-6 rounded-2xl border border-white/20 group relative overflow-hidden"
+          className="glass px-6 py-4 rounded-2xl border border-white/20 group relative text-center min-w-[140px] hover:shadow-glow transition-all duration-300"
           whileHover={{
-            scale: 1.05,
-            y: -5,
-            borderColor: "rgba(59, 130, 246, 0.5)",
+            scale: 1.08,
+            borderColor: "rgba(59, 130, 246, 0.6)",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.7 + index * 0.1, duration: 0.5 }}
+          transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
         >
-          {/* Animated background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          <div className="relative z-10 text-center">
-            <motion.div
-              className="font-bold text-2xl font-mono mb-2"
-              style={{
-                color:
-                  stat.color === "neon-green"
-                    ? "#10b981"
-                    : stat.color === "neon-blue"
-                      ? "#3b82f6"
-                      : stat.color === "neon-purple"
-                        ? "#8b5cf6"
-                        : stat.color === "neon-cyan"
-                          ? "#06b6d4"
-                          : "#10b981",
-              }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 2.9 + index * 0.1, type: "spring" }}
-            >
-              {stat.label.split(" ")[0]}
-            </motion.div>
-            <div className="text-gray-400 text-sm font-mono">
-              {stat.label.split(" ").slice(1).join(" ")}
-            </div>
+          <motion.div
+            className="font-bold text-xl sm:text-2xl font-mono text-white mb-2"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
+          >
+            {stat.label.split(" ")[0]}
+          </motion.div>
+          <div className="text-gray-300 text-sm sm:text-base font-mono">
+            {stat.label.split(" ").slice(1).join(" ")}
           </div>
 
           {/* Circuit corner decoration */}
@@ -432,29 +466,24 @@ const HolographicButtons = () => {
   };
 
   return (
-    <motion.div
-      className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-4xl mx-auto px-4"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 3.5, duration: 0.8 }}
-    >
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-3xl mx-auto px-4">
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative"
+        className="relative w-full sm:w-auto"
       >
         <Button
           size="lg"
           variant="outline"
           onClick={scrollToContact}
-          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-sm sm:text-base md:text-lg font-mono relative overflow-hidden w-full sm:w-auto"
+          className="glass border-2 border-neon-cyan/50 text-neon-cyan px-8 py-4 rounded-2xl font-bold text-base font-mono relative overflow-hidden w-full sm:w-auto hover:bg-neon-cyan/10"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent w-full"
             animate={{ x: [-300, 300] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <Terminal className="mr-3 h-6 w-6" />
+          <Terminal className="mr-3 h-5 w-5" />
           <span className="relative z-10">Initialize Contact</span>
         </Button>
       </motion.div>
@@ -462,23 +491,23 @@ const HolographicButtons = () => {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative"
+        className="relative w-full sm:w-auto"
       >
         <Button
           size="lg"
           onClick={downloadResume}
-          className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-sm sm:text-base md:text-lg font-mono relative overflow-hidden w-full sm:w-auto"
+          className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-8 py-4 rounded-2xl font-bold text-base font-mono relative overflow-hidden w-full sm:w-auto hover:shadow-glow"
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full"
             animate={{ x: [-300, 300] }}
             transition={{ duration: 2, repeat: Infinity, delay: 1 }}
           />
-          <Download className="mr-3 h-6 w-6" />
+          <Download className="mr-3 h-5 w-5" />
           <span className="relative z-10">Download.exe</span>
         </Button>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -521,7 +550,7 @@ export const AdvancedHero = () => {
 
   return (
     <motion.section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-12"
       style={{ y }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -530,7 +559,7 @@ export const AdvancedHero = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
         <motion.div
-          className="space-y-12"
+          className="space-y-8 sm:space-y-10"
           style={{
             transform: `translateY(${mousePosition.y * 0.3}px) translateX(${mousePosition.x * 0.2}px)`,
           }}
@@ -542,89 +571,130 @@ export const AdvancedHero = () => {
           {/* Terminal Subtitle */}
           <TerminalSubtitle />
 
+          {/* Core Values - Enhanced */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+          >
+            <motion.span
+              className="px-6 py-3 bg-neon-blue/10 border border-neon-blue/30 rounded-full text-neon-blue text-base sm:text-lg font-semibold"
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(59, 130, 246, 0.5)",
+              }}
+            >
+              • Innovation through Code
+            </motion.span>
+            <motion.span
+              className="px-6 py-3 bg-neon-purple/10 border border-neon-purple/30 rounded-full text-neon-purple text-base sm:text-lg font-semibold"
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(139, 92, 246, 0.5)",
+              }}
+            >
+              • Problem Solving Mindset
+            </motion.span>
+            <motion.span
+              className="px-6 py-3 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-neon-cyan text-base sm:text-lg font-semibold"
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 0 25px rgba(6, 182, 212, 0.5)",
+              }}
+            >
+              • Continuous Learning
+            </motion.span>
+          </motion.div>
+
           {/* Matrix Role Display */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.5, duration: 0.8 }}
+            transition={{ delay: 2.6, duration: 0.8 }}
           >
             <MatrixRoles />
           </motion.div>
 
-          {/* Animated Stats */}
-          <AnimatedStats />
-
-          {/* Circuit Tech Stack */}
-          <CircuitTechStack />
-
-          {/* Holographic Buttons */}
-          <HolographicButtons />
-
-          {/* Enhanced Social Links */}
+          {/* Enhanced Stats Display */}
           <motion.div
-            className="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 max-w-lg mx-auto px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 0.6 }}
           >
-            {(socialLinks || []).map((link, index) => {
-              const iconMap: { [key: string]: any } = {
-                Github: Github,
-                Linkedin: Linkedin,
-                Code2: Code2,
-                Trophy: Trophy,
-              };
-              const Icon = iconMap[link.icon];
+            <AnimatedStats />
+          </motion.div>
 
-              return (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
-                  initial={{ opacity: 0, y: 30, scale: 0 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    delay: 4.2 + index * 0.1,
-                    duration: 0.5,
-                    type: "spring",
-                  }}
-                  whileHover={{ y: -10, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <motion.div
-                    className={`${link.color} p-3 sm:p-4 md:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden`}
-                    whileHover={{
-                      boxShadow: "0 20px 40px rgba(6, 182, 212, 0.3)",
-                      borderColor: "rgba(6, 182, 212, 0.5)",
+          {/* Action Buttons and Social Links */}
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.4, duration: 0.6 }}
+          >
+            <HolographicButtons />
+
+            {/* Enhanced Social Links */}
+            <div className="flex justify-center space-x-5 sm:space-x-6 max-w-lg mx-auto px-4">
+              {(socialLinks || []).map((link, index) => {
+                const iconMap: { [key: string]: any } = {
+                  Github: Github,
+                  Linkedin: Linkedin,
+                  Code2: Code2,
+                  Trophy: Trophy,
+                };
+                const Icon = iconMap[link.icon];
+
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative"
+                    initial={{ opacity: 0, y: 30, scale: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: 0.1 + index * 0.1,
+                      duration: 0.4,
+                      type: "spring",
                     }}
+                    whileHover={{ y: -10, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 relative z-10" />
-
-                    {/* Holographic scan line */}
                     <motion.div
-                      className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
-                      animate={{ y: ["-4px", "60px"] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5,
+                      className={`${link.color} p-4 sm:p-5 rounded-2xl glass border border-white/20 relative overflow-hidden hover:shadow-glow transition-all duration-300`}
+                      whileHover={{
+                        boxShadow: "0 25px 50px rgba(6, 182, 212, 0.4)",
+                        borderColor: "rgba(6, 182, 212, 0.6)",
                       }}
-                    />
-                  </motion.div>
+                    >
+                      <Icon className="h-6 w-6 sm:h-7 sm:w-7 relative z-10" />
 
-                  {/* Platform Label with glitch effect */}
-                  <motion.div
-                    className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"
-                    whileHover={{ y: -2, scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {link.name}
-                  </motion.div>
-                </motion.a>
-              );
-            })}
+                      {/* Holographic scan line */}
+                      <motion.div
+                        className="absolute inset-x-0 h-0.5 bg-neon-cyan top-0"
+                        animate={{ y: ["-4px", "60px"] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.5,
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* Platform Label with glitch effect */}
+                    <motion.div
+                      className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/95 text-cyan-400 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-mono backdrop-blur-sm border border-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30"
+                      whileHover={{ y: -2, scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.div>
+                  </motion.a>
+                );
+              })}
+            </div>
           </motion.div>
         </motion.div>
       </div>

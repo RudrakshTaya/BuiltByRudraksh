@@ -2,7 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Heart, Github, Linkedin, Twitter, Mail, ArrowUp } from "lucide-react";
 import { Button } from "./ui/button";
-import { personalInfo, socialLinks, navigation, techStack } from '../data/portfolioData';
+import {
+  personalInfo,
+  socialLinks,
+  navigation,
+  techStack,
+} from "../data/portfolioData";
 
 const quickLinks = [...navigation.core, ...navigation.more];
 
@@ -16,7 +21,7 @@ export const Footer = () => {
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent" />
-      
+
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
@@ -29,10 +34,23 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold gradient-text mb-4">
               {personalInfo.name}
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-muted-foreground mb-4 max-w-md">
               {personalInfo.bio.short}
             </p>
-            
+
+            {/* Inspiring Footer Quote */}
+            <motion.div
+              className="border-l-4 border-neon-cyan/20 pl-4 mb-6 max-w-md"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              <p className="text-white/80 italic text-sm leading-relaxed">
+                "Code is not just about syntax and logic—it's about creating
+                solutions that make a difference in people's lives."
+              </p>
+            </motion.div>
+
             {/* Tech Stack */}
             <div className="mb-6">
               <p className="text-sm font-medium text-white mb-3">Built with:</p>
@@ -55,10 +73,10 @@ export const Footer = () => {
             <div className="flex gap-4">
               {socialLinks.map((link, index) => {
                 const iconMap: { [key: string]: any } = {
-                  'Github': Github,
-                  'Linkedin': Linkedin,
-                  'Code2': Mail, // LeetCode, using Mail as fallback
-                  'Trophy': Twitter // HackerRank, using Twitter as fallback
+                  Github: Github,
+                  Linkedin: Linkedin,
+                  Code2: Mail, // LeetCode, using Mail as fallback
+                  Trophy: Twitter, // HackerRank, using Twitter as fallback
                 };
                 const Icon = iconMap[link.icon] || Mail;
 
@@ -87,7 +105,9 @@ export const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">
+              Quick Links
+            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -109,7 +129,9 @@ export const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Get In Touch</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">
+              Get In Touch
+            </h4>
             <div className="space-y-3">
               <a
                 href="mailto:hello@developer.com"
@@ -123,9 +145,7 @@ export const Footer = () => {
               >
                 {personalInfo.phone}
               </a>
-              <p className="text-muted-foreground">
-                {personalInfo.location}
-              </p>
+              <p className="text-muted-foreground">{personalInfo.location}</p>
             </div>
 
             {/* Scroll to Top Button */}
@@ -151,7 +171,7 @@ export const Footer = () => {
             <Heart className="h-4 w-4 text-red-500 animate-pulse" />
             <span>and lots of coffee.</span>
           </div>
-          
+
           <div className="text-muted-foreground text-sm">
             All rights reserved.
           </div>

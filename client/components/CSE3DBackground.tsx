@@ -287,11 +287,15 @@ const DataStructures3D = () => {
         scale: [1, 1.1, 1],
       },
       transition: {
-        rotateZ: { duration: 20 + index * 2, repeat: Infinity, ease: "linear" },
+        rotateZ: {
+          duration: 20 + index * 2,
+          repeat: Infinity,
+          ease: "linear" as any,
+        },
         scale: {
           duration: 3,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: "easeInOut" as any,
           delay: index * 0.5,
         },
       },

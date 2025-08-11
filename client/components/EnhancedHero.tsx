@@ -361,11 +361,11 @@ const ResponsiveTechStack = () => {
       </motion.h3>
 
       {/* Responsive grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
         {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className="relative group cursor-pointer"
+            className="relative group cursor-pointer flex flex-col items-center"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -374,16 +374,16 @@ const ResponsiveTechStack = () => {
               type: "spring",
             }}
             whileHover={{
-              scale: 1.2,
-              y: -5,
+              scale: 1.05,
+              y: -3,
             }}
           >
             <motion.div
-              className={`w-12 h-12 sm:w-16 sm:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
+              className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${tech.color} rounded-xl flex items-center justify-center relative overflow-hidden border-2 ${
                 index === activeIndex
                   ? "border-cyan-400 shadow-lg shadow-cyan-400/50"
                   : "border-white/20"
-              }`}
+              } mb-2`}
               animate={
                 index === activeIndex
                   ? {
@@ -398,7 +398,9 @@ const ResponsiveTechStack = () => {
               }
               transition={{ duration: 1.5 }}
             >
-              <span className="text-lg sm:text-xl">{tech.icon}</span>
+              <span className="text-base xs:text-lg sm:text-xl md:text-2xl">
+                {tech.icon}
+              </span>
 
               {/* Active glow */}
               {index === activeIndex && (
@@ -406,9 +408,16 @@ const ResponsiveTechStack = () => {
               )}
             </motion.div>
 
-            {/* Tech name tooltip */}
+            {/* Tech name - Always visible on mobile, tooltip on desktop */}
+            <div className="text-center w-full">
+              <span className="text-xs sm:text-sm font-mono text-cyan-400 block leading-tight px-1">
+                {tech.name}
+              </span>
+            </div>
+
+            {/* Desktop hover tooltip */}
             <motion.div
-              className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-2 py-1 rounded-lg text-xs font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10"
+              className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan-400 px-3 py-2 rounded-lg text-xs font-bold border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 hidden lg:block"
               whileHover={{ y: -2 }}
             >
               {tech.name}
