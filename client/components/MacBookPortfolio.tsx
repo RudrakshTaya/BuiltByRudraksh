@@ -297,42 +297,50 @@ const VSCodePortfolio = () => {
 export const MacBookPortfolio = () => {
   return (
     <motion.section
-      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4"
+      className="relative min-h-[95vh] flex items-center justify-center py-8 px-4 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {/* MacBook Frame */}
       <motion.div
-        className="relative max-w-7xl w-full"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        className="relative w-full max-w-6xl mx-auto"
+        initial={{ scale: 0.8, opacity: 0, y: 50 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         {/* MacBook Screen */}
-        <div className="relative bg-gray-950 rounded-2xl border-8 border-gray-800 shadow-2xl overflow-hidden">
-          {/* Screen bezel */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black rounded-xl"></div>
-          
+        <div className="relative bg-black rounded-3xl border-4 sm:border-8 border-gray-800 shadow-2xl overflow-hidden perspective-1000">
+          {/* Screen bezel with realistic curve */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black rounded-2xl sm:rounded-3xl border border-gray-700"></div>
+
+          {/* Apple logo (top center) */}
+          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 opacity-20">
+            <div className="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600 rounded-full"></div>
+          </div>
+
           {/* Screen content */}
-          <div className="relative z-10 p-4 min-h-[600px]">
+          <div className="relative z-10 p-2 sm:p-4 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
             {/* macOS Menu Bar */}
-            <div className="flex items-center justify-between mb-4 px-2 py-1 bg-gray-800/50 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-4">
-                <div className="text-white text-sm font-medium">Rudraksh Portfolio</div>
-                <div className="text-gray-400 text-xs">Terminal</div>
-                <div className="text-gray-400 text-xs">VS Code</div>
+            <div className="flex items-center justify-between mb-2 sm:mb-4 px-2 sm:px-3 py-1 sm:py-2 bg-gray-800/60 rounded-lg backdrop-blur-sm">
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="text-white text-xs sm:text-sm font-medium truncate">Rudraksh Portfolio</div>
+                <div className="hidden sm:flex items-center gap-2">
+                  <div className="text-gray-400 text-xs">Terminal</div>
+                  <div className="text-gray-400 text-xs">VS Code</div>
+                </div>
               </div>
               <div className="text-gray-400 text-xs">
                 {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </div>
             </div>
 
-            {/* Split screen layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[500px]">
+            {/* Responsive layout */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 sm:gap-4 h-[350px] sm:h-[450px] lg:h-[550px]">
               {/* Terminal Side */}
               <motion.div
-                initial={{ x: -50, opacity: 0 }}
+                className="order-1 xl:order-1"
+                initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
@@ -341,7 +349,8 @@ export const MacBookPortfolio = () => {
 
               {/* VS Code Side */}
               <motion.div
-                initial={{ x: 50, opacity: 0 }}
+                className="order-2 xl:order-2"
+                initial={{ x: 30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
               >
@@ -351,14 +360,25 @@ export const MacBookPortfolio = () => {
           </div>
         </div>
 
-        {/* MacBook Base */}
-        <div className="relative h-6 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-b-3xl mx-8 shadow-lg">
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
-        </div>
+        {/* MacBook Base - Improved design */}
+        <div className="relative">
+          {/* Main base */}
+          <div className="h-3 sm:h-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 rounded-b-[2rem] sm:rounded-b-[3rem] mx-4 sm:mx-8 shadow-2xl transform perspective-1000 rotateX-2">
+            {/* Top highlight */}
+            <div className="absolute inset-x-0 top-0 h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+            {/* Apple logo on base */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 sm:w-3 h-2 sm:h-3 bg-gray-600 rounded-full opacity-30"></div>
+          </div>
 
-        {/* MacBook Stand */}
-        <div className="relative h-4 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 rounded-b-2xl mx-16 shadow-md">
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+          {/* Keyboard base */}
+          <div className="h-2 sm:h-4 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-b-[1.5rem] sm:rounded-b-[2rem] mx-8 sm:mx-16 shadow-xl transform perspective-1000 rotateX-3">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+          </div>
+
+          {/* Bottom pad */}
+          <div className="h-1 sm:h-2 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 rounded-b-xl mx-12 sm:mx-24 shadow-lg opacity-60">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50"></div>
+          </div>
         </div>
       </motion.div>
 
