@@ -428,14 +428,14 @@ const AnimatedStats = () => {
           transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
         >
           <motion.div
-            className="font-bold text-lg font-mono text-white mb-1"
+            className="font-bold text-xl sm:text-2xl font-mono text-white mb-2"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.1 + index * 0.05, type: "spring" }}
+            transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
           >
             {stat.label.split(" ")[0]}
           </motion.div>
-          <div className="text-gray-400 text-xs font-mono">
+          <div className="text-gray-300 text-sm sm:text-base font-mono">
             {stat.label.split(" ").slice(1).join(" ")}
           </div>
 
