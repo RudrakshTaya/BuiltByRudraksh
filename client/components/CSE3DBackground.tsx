@@ -287,11 +287,11 @@ const DataStructures3D = () => {
         scale: [1, 1.1, 1],
       },
       transition: {
-        rotateZ: { duration: 20 + index * 2, repeat: Infinity, ease: [0, 0, 1, 1] },
+        rotateZ: { duration: 20 + index * 2, repeat: Infinity, ease: "linear" as any },
         scale: {
           duration: 3,
           repeat: Infinity,
-          ease: [0.4, 0, 0.6, 1],
+          ease: "easeInOut" as any,
           delay: index * 0.5,
         },
       },
@@ -433,7 +433,7 @@ const MatrixRain = () => {
 
   useEffect(() => {
     const characters =
-      "01アイウ����カキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+      "01アイウエ��カキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
 
     const newStreams = Array.from({ length: 30 }, (_, i) => ({
       id: i,
