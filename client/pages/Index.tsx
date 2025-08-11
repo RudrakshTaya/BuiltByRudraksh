@@ -7,6 +7,7 @@ import { Navbar } from "../components/Navbar";
 import { AdvancedHero } from "../components/AdvancedHero";
 import { About } from "../components/About";
 import { CSStrengths } from "../components/CSStrengths";
+import { HighTechCSE } from "../components/HighTechCSE";
 import { Projects } from "../components/Projects";
 import { ProjectExperience } from "../components/ProjectExperience";
 import { GitHubStats } from "../components/GitHubStats";
