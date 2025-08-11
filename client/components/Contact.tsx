@@ -70,9 +70,17 @@ export const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-5xl font-bold gradient-text mb-6">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
+          <motion.p
+            className="text-sm text-neon-cyan/80 max-w-xl mx-auto italic"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            "Every great project starts with a conversation. Let's make yours extraordinary."
+          </motion.p>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mt-6" />
         </motion.div>
 
