@@ -201,19 +201,9 @@ export const About = () => {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
-          {stats.about.map((stat, index) => {
-            const iconMap: { [key: string]: any } = {
-              Code2: Code2,
-              Zap: Zap,
-              Target: Target,
-              GraduationCap: GraduationCap,
-            };
-            const IconComponent = iconMap[stat.icon];
-            const statWithIcon = { ...stat, icon: IconComponent };
-            return (
-              <StatCard key={stat.label} stat={statWithIcon} index={index} />
-            );
-          })}
+          {stats.about.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
+          ))}
         </div>
 
         {/* Skills Sections */}
