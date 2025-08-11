@@ -293,6 +293,204 @@ const MobilePortfolioCard = () => {
   );
 };
 
+// VS Code style portfolio content with proper tabs
+const VSCodePortfolio = () => {
+  const [activeTab, setActiveTab] = useState("portfolio.md");
+
+  const tabs = [
+    { id: "portfolio.md", name: "portfolio.md", icon: FileText },
+    { id: "stats.json", name: "stats.json", icon: Code2 },
+    { id: "contact.js", name: "contact.js", icon: Settings },
+  ];
+
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const heroStats = stats?.hero || [
+    { label: "250+ Problems", color: "neon-green" },
+    { label: "15+ Projects", color: "neon-blue" },
+    { label: "3+ Years Learning", color: "neon-purple" },
+    { label: "8.7 CGPA", color: "neon-cyan" },
+  ];
+
+  return (
+    <div className="bg-gray-900 rounded-lg border border-gray-700 h-full flex flex-col shadow-xl overflow-hidden">
+      {/* VS Code header */}
+      <div className="flex items-center justify-between px-2 sm:px-3 py-1.5 bg-gray-800 rounded-t-lg border-b border-gray-700 flex-shrink-0">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          </div>
+          <span className="text-gray-400 text-xs font-mono">VS Code</span>
+        </div>
+        <Code2 className="w-3 h-3 text-gray-400" />
+      </div>
+
+      {/* Tabs */}
+      <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto flex-shrink-0">
+        {tabs.map((tab) => {
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 text-xs border-r border-gray-700 transition-colors whitespace-nowrap flex-shrink-0 ${
+                activeTab === tab.id
+                  ? "bg-gray-900 text-white"
+                  : "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-750"
+              }`}
+            >
+              <Icon className="w-3 h-3 flex-shrink-0" />
+              <span className="hidden sm:inline truncate">{tab.name}</span>
+              <span className="sm:hidden">{tab.name.split(".")[0]}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Content with proper scrolling */}
+      <div className="flex-1 p-2 sm:p-3 overflow-auto">
+        <AnimatePresence mode="wait">
+          {activeTab === "portfolio.md" && (
+            <motion.div
+              key="portfolio"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-3 text-xs sm:text-sm"
+            >
+              <div>
+                <h1 className="text-lg sm:text-xl font-bold text-white mb-1">
+                  # {personalInfo.name}
+                </h1>
+                <p className="text-cyan-400 font-mono text-xs sm:text-sm">
+                  ## {personalInfo.title} | {personalInfo.subtitle}
+                </p>
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm leading-relaxed">
+                  {personalInfo.bio.short}
+                </p>
+              </div>
+
+              {/* Core Values */}
+              <div>
+                <h3 className="text-sm sm:text-base font-semibold text-white mb-2">
+                  ### Core Values
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-400 text-xs">
+                    • Innovation through Code
+                  </span>
+                  <span className="px-2 py-1 bg-purple-600/20 border border-purple-500/30 rounded-full text-purple-400 text-xs">
+                    • Problem Solving Mindset
+                  </span>
+                  <span className="px-2 py-1 bg-cyan-600/20 border border-cyan-500/30 rounded-full text-cyan-400 text-xs">
+                    • Continuous Learning
+                  </span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div>
+                <h3 className="text-sm sm:text-base font-semibold text-white mb-2">
+                  ### Quick Actions
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={scrollToContact}
+                    className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 text-xs h-7"
+                  >
+                    <Mail className="mr-1 h-3 w-3" />
+                    Initialize Contact
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={downloadResume}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 text-xs h-7"
+                  >
+                    <Download className="mr-1 h-3 w-3" />
+                    Download.exe
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === "stats.json" && (
+            <motion.div
+              key="stats"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="font-mono text-xs"
+            >
+              <div className="text-gray-400 mb-2">// Portfolio Statistics</div>
+              <div className="space-y-2">
+                <div className="text-white">
+                  <span className="text-purple-400">{`{`}</span>
+                </div>
+                {heroStats.map((stat, index) => (
+                  <div key={index} className="ml-2">
+                    <span className="text-cyan-400">
+                      "{stat.label.toLowerCase().replace(/\s+/g, "_")}"
+                    </span>
+                    <span className="text-white">: </span>
+                    <span className="text-green-400">
+                      "{stat.label.split(" ")[0]}"
+                    </span>
+                    {index < heroStats.length - 1 && (
+                      <span className="text-white">,</span>
+                    )}
+                  </div>
+                ))}
+                <div className="text-purple-400">{`}`}</div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === "contact.js" && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="font-mono text-xs space-y-2"
+            >
+              <div className="text-gray-400">// Social Links Configuration</div>
+              <div>
+                <span className="text-purple-400">const </span>
+                <span className="text-cyan-400">socialLinks </span>
+                <span className="text-white">= [</span>
+              </div>
+              {socialLinks.map((link, index) => (
+                <div key={index} className="ml-2">
+                  <span className="text-white">{`{ `}</span>
+                  <span className="text-cyan-400">name</span>
+                  <span className="text-white">: </span>
+                  <span className="text-green-400">"{link.name}"</span>
+                  <span className="text-white">, </span>
+                  <span className="text-cyan-400">url</span>
+                  <span className="text-white">: </span>
+                  <span className="text-green-400">"{link.url}"</span>
+                  <span className="text-white"> {`}`}</span>
+                  {index < socialLinks.length - 1 && (
+                    <span className="text-white">,</span>
+                  )}
+                </div>
+              ))}
+              <div className="text-white">];</div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
+
 // Desktop MacBook Design - Simplified
 const DesktopMacBookDesign = () => {
   const [displayedText, setDisplayedText] = useState("");
