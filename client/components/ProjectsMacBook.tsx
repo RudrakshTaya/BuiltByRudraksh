@@ -371,7 +371,7 @@ export const ProjectsMacBook = () => {
       </motion.div>
 
       {/* Mobile View - Clean Cards */}
-      <div className="block lg:hidden px-4">
+      {/* <div className="block lg:hidden px-4">
         <div className="space-y-6 max-w-md mx-auto">
           {featuredProjects.map((project, index) => (
             <MobileProjectCard
@@ -380,10 +380,10 @@ export const ProjectsMacBook = () => {
               index={index}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* View All Projects Button */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -401,8 +401,8 @@ export const ProjectsMacBook = () => {
             <Folder className="mr-2 h-4 w-4" />
             View All Projects
           </Button>
-        </motion.div>
-      </div>
+        </motion.div> */}
+      {/* </div> */}
 
       {/* Desktop View - MacBook Design */}
       <div className="hidden lg:block px-4">

@@ -111,12 +111,12 @@ export default function Index() {
         </section>
 
         {/* High-Tech CSE Domains */}
-        <section
+        {/* <section
           id="high-tech-cse"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
           <HighTechCSE />
-        </section>
+        </section> */}
 
         {/* Project-Based Learning Experience */}
         <section
