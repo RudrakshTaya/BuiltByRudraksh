@@ -140,7 +140,7 @@ export const GitHubStats = () => {
           className="flex justify-center mb-12"
         >
           <div className="glass rounded-xl p-2 flex gap-2">
-            {['github', 'leetcode', 'blogs'].map((tab) => (
+            {['github', 'leetcode'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as any)}
@@ -152,7 +152,7 @@ export const GitHubStats = () => {
               >
                 {tab === 'github' && <Github className="h-4 w-4 inline mr-2" />}
                 {tab === 'leetcode' && <Code2 className="h-4 w-4 inline mr-2" />}
-                {tab === 'blogs' && <TrendingUp className="h-4 w-4 inline mr-2" />}
+                {/* {tab === 'blogs' && <TrendingUp className="h-4 w-4 inline mr-2" />} */}
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
@@ -318,7 +318,7 @@ export const GitHubStats = () => {
         )}
 
         {/* Blogs Tab */}
-        {activeTab === 'blogs' && (
+        {/* {activeTab === 'blogs' && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -335,7 +335,7 @@ export const GitHubStats = () => {
               ))}
             </div>
           </motion.div>
-        )}
+        )} */}
       </div>
     </section>
   );

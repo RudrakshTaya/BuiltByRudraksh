@@ -11,7 +11,7 @@ import { HighTechCSE } from "../components/HighTechCSE";
 import { Projects } from "../components/Projects";
 import { ProjectExperience } from "../components/ProjectExperience";
 import { GitHubStats } from "../components/GitHubStats";
-import { Certifications } from "../components/Certifications";
+//import { Certifications } from "../components/Certifications";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 
@@ -143,12 +143,12 @@ export default function Index() {
         </section>
 
         {/* Certifications & Achievements */}
-        <section
+        {/* <section
           id="certifications"
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
           <Certifications />
-        </section>
+        </section> */}
 
         {/* Contact Section */}
         <section
