@@ -43,8 +43,8 @@ export default function Index() {
         <LightweightTechBackground />
       </div>
 
-      {/* Lightweight Navbar */}
-      <LightweightNavbar />
+      {/* VS Code Themed Navbar */}
+      <VSCodeNavbar />
 
       {/* Main Content */}
       <motion.main
