@@ -63,68 +63,44 @@ export default function Index() {
           <LightweightTerminal />
         </section>
 
-        {/* About Section */}
+        {/* About Section - README.md Theme */}
         <section
           id="about"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <About />
+          <ReadmeAbout />
         </section>
 
-        {/* Computer Science Strengths */}
+        {/* Computer Science Strengths - OOP Theme */}
         <section
           id="cs-strengths"
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
-          <CSStrengths />
+          <OOPStrengths />
         </section>
 
-        {/* High-Tech CSE Domains */}
-        {/* <section
-          id="high-tech-cse"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
-        >
-          <HighTechCSE />
-        </section> */}
-
-        {/* Project-Based Learning Experience */}
-        <section
-          id="experience"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
-        >
-          <ProjectExperience />
-        </section>
-
-        {/* Projects Section - Core Focus */}
+        {/* Projects Section - GitHub Theme */}
         <section
           id="projects"
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
-          <Projects />
+          <GitHubProjects />
         </section>
 
-        {/* GitHub Stats, LeetCode & Blogs */}
+        {/* Database Stats & Analytics */}
         <section
-          id="github-stats"
+          id="stats"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <GitHubStats />
+          <DatabaseStats />
         </section>
 
-        {/* Certifications & Achievements */}
-        {/* <section
-          id="certifications"
-          className="relative z-20 bg-background/5 backdrop-blur-sm"
-        >
-          <Certifications />
-        </section> */}
-
-        {/* Contact Section */}
+        {/* Contact Section - API Documentation Theme */}
         <section
           id="contact"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <Contact />
+          <APIContact />
         </section>
       </motion.main>
 
