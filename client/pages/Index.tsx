@@ -68,10 +68,8 @@ export default function Index() {
         <LightweightTechBackground />
       </div>
 
-      {/* Navbar */}
-      <div className="relative z-50">
-        <Navbar />
-      </div>
+      {/* Lightweight Navbar */}
+      <LightweightNavbar />
 
       {/* Main Content */}
       <motion.main
