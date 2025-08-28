@@ -67,17 +67,9 @@ export default function Index() {
         <LightweightTechBackground />
       </div>
 
-      {/* Performance Optimizer */}
-      <PerformanceOptimizer />
-
       {/* Navbar */}
       <div className="relative z-50">
         <Navbar />
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="relative z-50">
-        <ScrollIndicator />
       </div>
 
       {/* Main Content */}
