@@ -89,7 +89,7 @@ export default function Index() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16 md:pt-24 relative z-30"
+        className="pt-20 md:pt-24 relative z-30"
       >
         {/* Hero Section */}
         <section id="home" className="relative z-40 px-2 md:px-4">
