@@ -1,43 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Enhanced3DBackground } from "../components/Enhanced3DBackground";
-import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
-import { ScrollIndicator } from "../components/ScrollIndicator";
-import { Navbar } from "../components/Navbar";
-import { MacBookPortfolio } from "../components/MacBookPortfolio";
-import { About } from "../components/About";
-import { CSStrengths } from "../components/CSStrengths";
-import { HighTechCSE } from "../components/HighTechCSE";
-import { Projects } from "../components/Projects";
+import { LightweightTechBackground } from "../components/LightweightTechBackground";
+import { VSCodeNavbar } from "../components/VSCodeNavbar";
+import { LightweightHero } from "../components/LightweightHero";
+import { LightweightTerminal } from "../components/LightweightTerminal";
+import { ReadmeAbout } from "../components/ReadmeAbout";
+import { OOPStrengths } from "../components/OOPStrengths";
+import { GitHubProjects } from "../components/GitHubProjects";
 import { ProjectExperience } from "../components/ProjectExperience";
-import { GitHubStats } from "../components/GitHubStats";
-//import { Certifications } from "../components/Certifications";
-import { Contact } from "../components/Contact";
-import { Footer } from "../components/Footer";
-
-const ScrollProgressBar = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / scrollHeight) * 100;
-      setScrollProgress(scrolled);
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-cyan z-50 origin-left"
-      style={{ scaleX: scrollProgress / 100 }}
-      initial={{ scaleX: 0 }}
-    />
-  );
-};
+import { DatabaseStats } from "../components/DatabaseStats";
+import { APIContact } from "../components/APIContact";
+import { SystemFooter } from "../components/SystemFooter";
 
 export default function Index() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,15 +21,37 @@ export default function Index() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-[#0d1117] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="w-16 h-16 border-4 border-neon-blue border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading portfolio...</p>
+          {/* Terminal Loading */}
+          <div className="bg-[#1e1e1e] border border-[#3c3c3c] rounded-lg p-6 max-w-md">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex gap-1">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#28ca42]"></div>
+              </div>
+              <span className="text-[#d4d4d4] text-sm font-mono ml-2">
+                Terminal
+              </span>
+            </div>
+            <div className="text-left font-mono text-sm space-y-2">
+              <div className="text-[#d4d4d4]">$ npm start</div>
+              <div className="text-[#6a9955]">
+                Starting development server...
+              </div>
+              <div className="text-[#6a9955]">Compiling components...</div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-[#4fc3f7] border-t-transparent rounded-full animate-spin" />
+                <span className="text-[#4fc3f7]">Loading portfolio...</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     );
@@ -64,130 +59,74 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Enhanced 3D Background with Strong Parallax */}
+      {/* Lightweight Tech Background */}
       <div className="fixed inset-0 z-0">
-        <Enhanced3DBackground />
+        <LightweightTechBackground />
       </div>
 
-      {/* Performance Optimizer */}
-      <PerformanceOptimizer />
-
-      {/* Navbar */}
-      <div className="relative z-50">
-        <Navbar />
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="relative z-50">
-        <ScrollIndicator />
-      </div>
+      {/* VS Code Themed Navbar */}
+      <VSCodeNavbar />
 
       {/* Main Content */}
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-16 relative z-30"
+        className="pt-24 relative z-30"
       >
         {/* Hero Section */}
         <section id="home" className="relative z-40">
-          <MacBookPortfolio />
+          <LightweightHero />
         </section>
 
-        {/* About Section */}
+        {/* Tech Terminal Section */}
+        <section id="tech-demo" className="relative z-30">
+          <LightweightTerminal />
+        </section>
+
+        {/* About Section - README.md Theme */}
         <section
           id="about"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <About />
+          <ReadmeAbout />
         </section>
 
-        {/* Computer Science Strengths */}
+        {/* Computer Science Strengths - OOP Theme */}
         <section
           id="cs-strengths"
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
-          <CSStrengths />
+          <OOPStrengths />
         </section>
 
-        {/* High-Tech CSE Domains */}
-        {/* <section
-          id="high-tech-cse"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
-        >
-          <HighTechCSE />
-        </section> */}
-
-        {/* Project-Based Learning Experience */}
-        <section
-          id="experience"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
-        >
-          <ProjectExperience />
-        </section>
-
-        {/* Projects Section - Core Focus */}
+        {/* Projects Section - GitHub Theme */}
         <section
           id="projects"
           className="relative z-20 bg-background/5 backdrop-blur-sm"
         >
-          <Projects />
+          <GitHubProjects />
         </section>
 
-        {/* GitHub Stats, LeetCode & Blogs */}
+        {/* Database Stats & Analytics */}
         <section
-          id="github-stats"
+          id="stats"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <GitHubStats />
+          <DatabaseStats />
         </section>
 
-        {/* Certifications & Achievements */}
-        {/* <section
-          id="certifications"
-          className="relative z-20 bg-background/5 backdrop-blur-sm"
-        >
-          <Certifications />
-        </section> */}
-
-        {/* Contact Section */}
+        {/* Contact Section - API Documentation Theme */}
         <section
           id="contact"
           className="relative z-20 bg-background/10 backdrop-blur-sm"
         >
-          <Contact />
+          <APIContact />
         </section>
       </motion.main>
 
-      {/* Footer */}
-      <Footer />
-
-      {/* Floating Action Button - Scroll to Top */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2, duration: 0.3 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-glow-lg transition-all duration-300 z-40 group"
-        whileHover={{ scale: 1.1, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <motion.svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          animate={{ y: [0, -2, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </motion.svg>
-      </motion.button>
+      {/* System Status Footer */}
+      <SystemFooter />
     </div>
   );
 }
