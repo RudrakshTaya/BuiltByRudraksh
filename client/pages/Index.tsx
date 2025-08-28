@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { LightweightTechBackground } from "../components/LightweightTechBackground";
-import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
-import { ScrollIndicator } from "../components/ScrollIndicator";
 import { Navbar } from "../components/Navbar";
 import { MacBookPortfolio } from "../components/MacBookPortfolio";
 import { About } from "../components/About";
