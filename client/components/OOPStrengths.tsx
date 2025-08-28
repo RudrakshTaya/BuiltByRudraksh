@@ -28,10 +28,30 @@ export const OOPStrengths = () => {
       extends: "Student",
       implements: ["ProblemSolver", "Innovator"],
       properties: [
-        { name: "name", type: "string", access: "public", value: "Rudraksh Taya" },
-        { name: "skills", type: "SkillSet[]", access: "private", value: "250+ DSA Problems" },
-        { name: "passion", type: "string", access: "protected", value: "Full Stack Development" },
-        { name: "experience", type: "number", access: "public", value: "3+ years" },
+        {
+          name: "name",
+          type: "string",
+          access: "public",
+          value: "Rudraksh Taya",
+        },
+        {
+          name: "skills",
+          type: "SkillSet[]",
+          access: "private",
+          value: "250+ DSA Problems",
+        },
+        {
+          name: "passion",
+          type: "string",
+          access: "protected",
+          value: "Full Stack Development",
+        },
+        {
+          name: "experience",
+          type: "number",
+          access: "public",
+          value: "3+ years",
+        },
       ],
       methods: [
         {
@@ -39,7 +59,8 @@ export const OOPStrengths = () => {
           returnType: "Solution",
           params: ["difficulty: Hard"],
           access: "public",
-          description: "Analyzes complex problems and provides optimal solutions",
+          description:
+            "Analyzes complex problems and provides optimal solutions",
         },
         {
           name: "buildApplication",
@@ -81,10 +102,30 @@ export const OOPStrengths = () => {
       extends: "Object",
       implements: ["Scalable", "Modern"],
       properties: [
-        { name: "frontend", type: "Framework[]", access: "public", value: "React, Next.js" },
-        { name: "backend", type: "Runtime[]", access: "public", value: "Node.js, Express" },
-        { name: "database", type: "DB[]", access: "public", value: "MongoDB, MySQL" },
-        { name: "languages", type: "Language[]", access: "public", value: "JS, TS, Python, Java" },
+        {
+          name: "frontend",
+          type: "Framework[]",
+          access: "public",
+          value: "React, Next.js",
+        },
+        {
+          name: "backend",
+          type: "Runtime[]",
+          access: "public",
+          value: "Node.js, Express",
+        },
+        {
+          name: "database",
+          type: "DB[]",
+          access: "public",
+          value: "MongoDB, MySQL",
+        },
+        {
+          name: "languages",
+          type: "Language[]",
+          access: "public",
+          value: "JS, TS, Python, Java",
+        },
       ],
       methods: [
         {
@@ -118,9 +159,24 @@ export const OOPStrengths = () => {
       extends: "Object",
       implements: ["Organized", "Efficient"],
       properties: [
-        { name: "projects", type: "Project[]", access: "private", value: "15+ completed" },
-        { name: "methodology", type: "string", access: "public", value: "Agile" },
-        { name: "tools", type: "Tool[]", access: "public", value: "Git, Docker, AWS" },
+        {
+          name: "projects",
+          type: "Project[]",
+          access: "private",
+          value: "15+ completed",
+        },
+        {
+          name: "methodology",
+          type: "string",
+          access: "public",
+          value: "Agile",
+        },
+        {
+          name: "tools",
+          type: "Tool[]",
+          access: "public",
+          value: "Git, Docker, AWS",
+        },
       ],
       methods: [
         {
@@ -156,7 +212,8 @@ export const OOPStrengths = () => {
     setTimeout(() => setIsRunning(false), 3000);
   };
 
-  const currentClass = classes.find(cls => cls.name === activeClass) || classes[0];
+  const currentClass =
+    classes.find((cls) => cls.name === activeClass) || classes[0];
 
   return (
     <motion.section
@@ -171,7 +228,9 @@ export const OOPStrengths = () => {
           <div className="flex items-center justify-between px-4 py-3 bg-[#2d2d2d] rounded-t-lg">
             <div className="flex items-center gap-3">
               <FileText className="w-5 h-5 text-[#569cd6]" />
-              <span className="text-[#d4d4d4] font-mono">ComputerScience.java</span>
+              <span className="text-[#d4d4d4] font-mono">
+                ComputerScience.java
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -221,9 +280,14 @@ export const OOPStrengths = () => {
                 {/* Imports */}
                 <div className="mb-4">
                   <span className="text-[#c586c0]">import</span>
-                  <span className="text-[#d4d4d4]"> java.util.*;</span><br />
+                  <span className="text-[#d4d4d4]"> java.util.*;</span>
+                  <br />
                   <span className="text-[#c586c0]">import</span>
-                  <span className="text-[#d4d4d4]"> java.util.concurrent.*;</span><br />
+                  <span className="text-[#d4d4d4]">
+                    {" "}
+                    java.util.concurrent.*;
+                  </span>
+                  <br />
                   <span className="text-[#c586c0]">import</span>
                   <span className="text-[#d4d4d4]"> java.util.stream.*;</span>
                 </div>
@@ -235,13 +299,19 @@ export const OOPStrengths = () => {
                   {currentClass.extends && (
                     <>
                       <span className="text-[#569cd6]"> extends</span>
-                      <span className="text-[#4ec9b0]"> {currentClass.extends}</span>
+                      <span className="text-[#4ec9b0]">
+                        {" "}
+                        {currentClass.extends}
+                      </span>
                     </>
                   )}
                   {currentClass.implements.length > 0 && (
                     <>
                       <span className="text-[#569cd6]"> implements</span>
-                      <span className="text-[#4ec9b0]"> {currentClass.implements.join(", ")}</span>
+                      <span className="text-[#4ec9b0]">
+                        {" "}
+                        {currentClass.implements.join(", ")}
+                      </span>
                     </>
                   )}
                   <span className="text-[#d4d4d4]"> {`{`}</span>
@@ -278,12 +348,19 @@ export const OOPStrengths = () => {
                   >
                     <span className="text-[#569cd6]">public</span>
                     <span className="text-[#dcdcaa]"> {currentClass.name}</span>
-                    <span className="text-[#d4d4d4]">() {`{`}</span><br />
-                    <span className="ml-4 text-[#6a9955]">// Initialize with passion for technology</span><br />
+                    <span className="text-[#d4d4d4]">() {`{`}</span>
+                    <br />
+                    <span className="ml-4 text-[#6a9955]">
+                      // Initialize with passion for technology
+                    </span>
+                    <br />
                     <span className="ml-4 text-[#569cd6]">this</span>
                     <span className="text-[#d4d4d4]">.passion = </span>
-                    <span className="text-[#ce9178]">"Continuous Learning"</span>
-                    <span className="text-[#d4d4d4]">;</span><br />
+                    <span className="text-[#ce9178]">
+                      "Continuous Learning"
+                    </span>
+                    <span className="text-[#d4d4d4]">;</span>
+                    <br />
                     <span className="text-[#d4d4d4]">{`}`}</span>
                   </motion.div>
                 </div>
@@ -304,16 +381,28 @@ export const OOPStrengths = () => {
                       </div>
                       <div>
                         <span className="text-[#569cd6]">{method.access}</span>
-                        <span className="text-[#4ec9b0]"> {method.returnType}</span>
+                        <span className="text-[#4ec9b0]">
+                          {" "}
+                          {method.returnType}
+                        </span>
                         <span className="text-[#dcdcaa]"> {method.name}</span>
                         <span className="text-[#d4d4d4]">(</span>
-                        <span className="text-[#9cdcfe]">{method.params.join(", ")}</span>
-                        <span className="text-[#d4d4d4]">) {`{`}</span><br />
-                        <span className="ml-4 text-[#6a9955]">// Implementation details...</span><br />
+                        <span className="text-[#9cdcfe]">
+                          {method.params.join(", ")}
+                        </span>
+                        <span className="text-[#d4d4d4]">) {`{`}</span>
+                        <br />
+                        <span className="ml-4 text-[#6a9955]">
+                          // Implementation details...
+                        </span>
+                        <br />
                         <span className="ml-4 text-[#c586c0]">return</span>
                         <span className="text-[#d4d4d4]"> new </span>
-                        <span className="text-[#4ec9b0]">{method.returnType}</span>
-                        <span className="text-[#d4d4d4]">();</span><br />
+                        <span className="text-[#4ec9b0]">
+                          {method.returnType}
+                        </span>
+                        <span className="text-[#d4d4d4]">();</span>
+                        <br />
                         <span className="text-[#d4d4d4]">{`}`}</span>
                       </div>
                     </motion.div>
@@ -326,28 +415,32 @@ export const OOPStrengths = () => {
                 </div>
 
                 {/* Interfaces */}
-                {Object.entries(currentClass.interfaces).map(([interfaceName, methods], index) => (
-                  <motion.div
-                    key={interfaceName}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.2 }}
-                    className="mt-8"
-                  >
-                    <div className="text-[#6a9955] mb-2">// Interface Definition</div>
-                    <div className="mb-2">
-                      <span className="text-[#569cd6]">interface</span>
-                      <span className="text-[#4ec9b0]"> {interfaceName}</span>
-                      <span className="text-[#d4d4d4]"> {`{`}</span>
-                    </div>
-                    {methods.map((method, methodIndex) => (
-                      <div key={methodIndex} className="ml-4 text-[#dcdcaa]">
-                        {method};
+                {Object.entries(currentClass.interfaces).map(
+                  ([interfaceName, methods], index) => (
+                    <motion.div
+                      key={interfaceName}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8 + index * 0.2 }}
+                      className="mt-8"
+                    >
+                      <div className="text-[#6a9955] mb-2">
+                        // Interface Definition
                       </div>
-                    ))}
-                    <div className="text-[#d4d4d4]">{`}`}</div>
-                  </motion.div>
-                ))}
+                      <div className="mb-2">
+                        <span className="text-[#569cd6]">interface</span>
+                        <span className="text-[#4ec9b0]"> {interfaceName}</span>
+                        <span className="text-[#d4d4d4]"> {`{`}</span>
+                      </div>
+                      {methods.map((method, methodIndex) => (
+                        <div key={methodIndex} className="ml-4 text-[#dcdcaa]">
+                          {method};
+                        </div>
+                      ))}
+                      <div className="text-[#d4d4d4]">{`}`}</div>
+                    </motion.div>
+                  ),
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -362,14 +455,23 @@ export const OOPStrengths = () => {
             >
               <div className="flex items-center gap-2 mb-2">
                 <Terminal className="w-4 h-4 text-[#007acc]" />
-                <span className="text-[#d4d4d4] text-sm font-mono">Console Output</span>
+                <span className="text-[#d4d4d4] text-sm font-mono">
+                  Console Output
+                </span>
               </div>
               <div className="font-mono text-sm text-[#d4d4d4]">
-                <div className="text-[#92c5f7]">Running {currentClass.name}...</div>
-                <div className="text-[#b5cea8]">✓ Object instantiated successfully</div>
+                <div className="text-[#92c5f7]">
+                  Running {currentClass.name}...
+                </div>
+                <div className="text-[#b5cea8]">
+                  ✓ Object instantiated successfully
+                </div>
                 <div className="text-[#b5cea8]">✓ All methods compiled</div>
                 <div className="text-[#b5cea8]">✓ Ready to solve problems!</div>
-                <div className="text-[#dcdcaa]">Output: "Passionate Computer Science Student Ready for Innovation!"</div>
+                <div className="text-[#dcdcaa]">
+                  Output: "Passionate Computer Science Student Ready for
+                  Innovation!"
+                </div>
               </div>
             </motion.div>
           )}

@@ -18,7 +18,11 @@ import {
   CheckCircle,
   Circle,
 } from "lucide-react";
-import { personalInfo, skills, academicHighlights } from "../data/portfolioData";
+import {
+  personalInfo,
+  skills,
+  academicHighlights,
+} from "../data/portfolioData";
 
 export const ReadmeAbout = () => {
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
@@ -45,11 +49,21 @@ export const ReadmeAbout = () => {
               <FileText className="w-5 h-5 text-[#7d8590]" />
               <span className="text-[#e6edf3] font-medium">README.md</span>
               <div className="flex items-center gap-2 ml-auto">
-                <button 
-                  onClick={() => handleCopy(document.getElementById('readme-content')?.innerText || '', 'full')}
+                <button
+                  onClick={() =>
+                    handleCopy(
+                      document.getElementById("readme-content")?.innerText ||
+                        "",
+                      "full",
+                    )
+                  }
                   className="flex items-center gap-1 px-2 py-1 text-xs text-[#7d8590] hover:text-[#e6edf3] hover:bg-[#21262d] rounded"
                 >
-                  {copiedSection === 'full' ? <CheckCircle className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                  {copiedSection === "full" ? (
+                    <CheckCircle className="w-3 h-3" />
+                  ) : (
+                    <Copy className="w-3 h-3" />
+                  )}
                   Copy
                 </button>
                 <div className="flex items-center gap-1 text-[#7d8590] text-sm">
@@ -65,7 +79,10 @@ export const ReadmeAbout = () => {
           </div>
 
           {/* README Content */}
-          <div id="readme-content" className="p-6 text-[#e6edf3] font-mono text-sm leading-relaxed">
+          <div
+            id="readme-content"
+            className="p-6 text-[#e6edf3] font-mono text-sm leading-relaxed"
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +116,9 @@ export const ReadmeAbout = () => {
 
               {/* Quick Stats */}
               <div className="bg-[#161b22] border border-[#30363d] rounded p-4 mb-6">
-                <h3 className="text-[#58a6ff] font-bold mb-3">## 📊 Quick Stats</h3>
+                <h3 className="text-[#58a6ff] font-bold mb-3">
+                  ## 📊 Quick Stats
+                </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center">
                     <div className="text-xl font-bold text-[#238636]">250+</div>
@@ -127,27 +146,44 @@ export const ReadmeAbout = () => {
                 transition={{ delay: 0.4 }}
                 className="mb-6"
               >
-                <h3 className="text-[#58a6ff] font-bold mb-3">## 🛠️ Tech Stack</h3>
+                <h3 className="text-[#58a6ff] font-bold mb-3">
+                  ## 🛠️ Tech Stack
+                </h3>
                 <div className="space-y-3">
                   <div>
                     <span className="text-[#f85149]">**Frontend:**</span>
-                    <span className="text-[#7d8590]"> React, TypeScript, Next.js, Tailwind CSS, HTML5, CSS3</span>
+                    <span className="text-[#7d8590]">
+                      {" "}
+                      React, TypeScript, Next.js, Tailwind CSS, HTML5, CSS3
+                    </span>
                   </div>
                   <div>
                     <span className="text-[#f85149]">**Backend:**</span>
-                    <span className="text-[#7d8590]"> Node.js, Express.js, RESTful APIs, GraphQL</span>
+                    <span className="text-[#7d8590]">
+                      {" "}
+                      Node.js, Express.js, RESTful APIs, GraphQL
+                    </span>
                   </div>
                   <div>
                     <span className="text-[#f85149]">**Languages:**</span>
-                    <span className="text-[#7d8590]"> JavaScript, TypeScript, Python, Java, C++</span>
+                    <span className="text-[#7d8590]">
+                      {" "}
+                      JavaScript, TypeScript, Python, Java, C++
+                    </span>
                   </div>
                   <div>
                     <span className="text-[#f85149]">**Database:**</span>
-                    <span className="text-[#7d8590]"> MongoDB, MySQL, PostgreSQL, Redis</span>
+                    <span className="text-[#7d8590]">
+                      {" "}
+                      MongoDB, MySQL, PostgreSQL, Redis
+                    </span>
                   </div>
                   <div>
                     <span className="text-[#f85149]">**DevOps:**</span>
-                    <span className="text-[#7d8590]"> Docker, AWS, Git, GitHub Actions, Vercel</span>
+                    <span className="text-[#7d8590]">
+                      {" "}
+                      Docker, AWS, Git, GitHub Actions, Vercel
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -159,7 +195,9 @@ export const ReadmeAbout = () => {
                 transition={{ delay: 0.6 }}
                 className="mb-6"
               >
-                <h3 className="text-[#58a6ff] font-bold mb-3">## 🎓 Academic Highlights</h3>
+                <h3 className="text-[#58a6ff] font-bold mb-3">
+                  ## 🎓 Academic Highlights
+                </h3>
                 <ul className="space-y-2">
                   {academicHighlights.map((highlight, index) => (
                     <li key={index} className="flex items-start gap-2">
@@ -179,23 +217,33 @@ export const ReadmeAbout = () => {
                 transition={{ delay: 0.8 }}
                 className="mb-6"
               >
-                <h3 className="text-[#58a6ff] font-bold mb-3">## 🎯 Current Focus</h3>
+                <h3 className="text-[#58a6ff] font-bold mb-3">
+                  ## 🎯 Current Focus
+                </h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-[#238636]" />
-                    <span className="text-[#7d8590]">Mastering System Design & Scalable Architecture</span>
+                    <span className="text-[#7d8590]">
+                      Mastering System Design & Scalable Architecture
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-[#1f6feb]" />
-                    <span className="text-[#7d8590]">Building Full-Stack Applications with Modern Tech</span>
+                    <span className="text-[#7d8590]">
+                      Building Full-Stack Applications with Modern Tech
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-[#8b5cf6]" />
-                    <span className="text-[#7d8590]">Solving Advanced Data Structures & Algorithms</span>
+                    <span className="text-[#7d8590]">
+                      Solving Advanced Data Structures & Algorithms
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-[#f85149]" />
-                    <span className="text-[#7d8590]">Exploring Machine Learning & AI Applications</span>
+                    <span className="text-[#7d8590]">
+                      Exploring Machine Learning & AI Applications
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -207,7 +255,9 @@ export const ReadmeAbout = () => {
                 transition={{ delay: 1.0 }}
                 className="mb-6"
               >
-                <h3 className="text-[#58a6ff] font-bold mb-3">## 📫 Get In Touch</h3>
+                <h3 className="text-[#58a6ff] font-bold mb-3">
+                  ## 📫 Get In Touch
+                </h3>
                 <div className="flex flex-wrap gap-4">
                   <a
                     href={`mailto:${personalInfo.email}`}
@@ -240,7 +290,7 @@ export const ReadmeAbout = () => {
               {/* Footer */}
               <div className="border-t border-[#30363d] pt-4 text-center">
                 <p className="text-[#7d8590] text-xs">
-                  ⭐ Star this repository if you find it interesting! 
+                  ⭐ Star this repository if you find it interesting!
                   <br />
                   💡 Feel free to reach out for collaboration opportunities.
                 </p>

@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  Download, 
-  Mail, 
-  Github, 
-  Linkedin, 
-  Code2, 
+import {
+  Download,
+  Mail,
+  Github,
+  Linkedin,
+  Code2,
   Trophy,
   Terminal,
-  Brain
+  Brain,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
 import { personalInfo, socialLinks } from "../data/portfolioData";
 
 // Simple typing effect
-const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+const TypewriterText = ({
+  text,
+  delay = 0,
+}: {
+  text: string;
+  delay?: number;
+}) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayText(text.slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }
-    }, delay + currentIndex * 100);
+    const timer = setTimeout(
+      () => {
+        if (currentIndex < text.length) {
+          setDisplayText(text.slice(0, currentIndex + 1));
+          setCurrentIndex(currentIndex + 1);
+        }
+      },
+      delay + currentIndex * 100,
+    );
 
     return () => clearTimeout(timer);
   }, [currentIndex, text, delay]);
@@ -47,7 +56,7 @@ const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) =
 // Minimal floating elements
 const FloatingTechIcons = () => {
   const icons = ["⚛️", "🟢", "🐍", "☕", "💻", "🚀"];
-  
+
   return (
     <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
       {icons.map((icon, i) => (
@@ -55,7 +64,7 @@ const FloatingTechIcons = () => {
           key={i}
           className="absolute text-2xl"
           style={{
-            left: `${20 + (i * 15)}%`,
+            left: `${20 + i * 15}%`,
             top: `${30 + (i % 3) * 20}%`,
           }}
           animate={{
@@ -91,7 +100,7 @@ export const LightweightHero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
       {/* Background elements */}
       <FloatingTechIcons />
-      
+
       {/* Main content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         {showContent && (
@@ -118,8 +127,8 @@ export const LightweightHero = () => {
               transition={{ delay: 0.5 }}
               className="text-xl md:text-2xl text-gray-300 mb-8"
             >
-              <TypewriterText 
-                text="Computer Science Student & Full Stack Developer" 
+              <TypewriterText
+                text="Computer Science Student & Full Stack Developer"
                 delay={1000}
               />
             </motion.div>
@@ -133,15 +142,21 @@ export const LightweightHero = () => {
             >
               <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full">
                 <Brain className="w-4 h-4 text-blue-400" />
-                <span className="text-blue-400 text-sm font-semibold">Problem Solver</span>
+                <span className="text-blue-400 text-sm font-semibold">
+                  Problem Solver
+                </span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
                 <Code2 className="w-4 h-4 text-purple-400" />
-                <span className="text-purple-400 text-sm font-semibold">Full Stack Dev</span>
+                <span className="text-purple-400 text-sm font-semibold">
+                  Full Stack Dev
+                </span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full">
                 <Terminal className="w-4 h-4 text-cyan-400" />
-                <span className="text-cyan-400 text-sm font-semibold">CS Student</span>
+                <span className="text-cyan-400 text-sm font-semibold">
+                  CS Student
+                </span>
               </div>
             </motion.div>
 
@@ -164,7 +179,9 @@ export const LightweightHero = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-2xl font-bold text-white mb-1">
+                    {stat.value}
+                  </div>
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               ))}
@@ -222,7 +239,9 @@ export const LightweightHero = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <div className={`${link.color} p-4 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300`}>
+                    <div
+                      className={`${link.color} p-4 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300`}
+                    >
                       <Icon className="h-6 w-6" />
                     </div>
                   </motion.a>

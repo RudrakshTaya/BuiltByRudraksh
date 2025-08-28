@@ -28,12 +28,20 @@ export const GitHubProjects = () => {
   const [filter, setFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const categories = ["All", "Full Stack", "Backend", "Frontend", "Java/C++", "Python/CLI"];
+  const categories = [
+    "All",
+    "Full Stack",
+    "Backend",
+    "Frontend",
+    "Java/C++",
+    "Python/CLI",
+  ];
 
-  const filteredProjects = projects.filter(project => {
+  const filteredProjects = projects.filter((project) => {
     const matchesFilter = filter === "All" || project.category === filter;
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -54,12 +62,18 @@ export const GitHubProjects = () => {
 
   const getRepoIcon = (type: string) => {
     switch (type) {
-      case "Full Stack": return Globe;
-      case "Backend": return Server;
-      case "Frontend": return Smartphone;
-      case "Java/C++": return Code2;
-      case "Python/CLI": return Terminal;
-      default: return Folder;
+      case "Full Stack":
+        return Globe;
+      case "Backend":
+        return Server;
+      case "Frontend":
+        return Smartphone;
+      case "Java/C++":
+        return Code2;
+      case "Python/CLI":
+        return Terminal;
+      default:
+        return Folder;
     }
   };
 
@@ -118,8 +132,10 @@ export const GitHubProjects = () => {
                   onChange={(e) => setFilter(e.target.value)}
                   className="bg-[#21262d] border border-[#30363d] rounded-md text-[#e6edf3] text-sm px-3 py-2 focus:border-[#58a6ff] focus:outline-none"
                 >
-                  {categories.map(category => (
-                    <option key={category} value={category}>{category}</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -143,7 +159,9 @@ export const GitHubProjects = () => {
                     className={`p-6 hover:bg-[#161b22] transition-colors cursor-pointer ${
                       isSelected ? "bg-[#161b22]" : ""
                     }`}
-                    onClick={() => setSelectedRepo(isSelected ? null : project.id)}
+                    onClick={() =>
+                      setSelectedRepo(isSelected ? null : project.id)
+                    }
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -190,7 +208,11 @@ export const GitHubProjects = () => {
                           <div className="flex items-center gap-2">
                             <div
                               className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: getLanguageColor(project.tech[0]) }}
+                              style={{
+                                backgroundColor: getLanguageColor(
+                                  project.tech[0],
+                                ),
+                              }}
                             />
                             <span>{project.tech[0]}</span>
                           </div>
@@ -210,7 +232,10 @@ export const GitHubProjects = () => {
                           {/* Updated */}
                           <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
-                            <span>Updated {Math.floor(Math.random() * 30) + 1} days ago</span>
+                            <span>
+                              Updated {Math.floor(Math.random() * 30) + 1} days
+                              ago
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -259,7 +284,9 @@ export const GitHubProjects = () => {
                             <div className="bg-[#161b22] border-b border-[#30363d] px-4 py-2">
                               <div className="flex items-center gap-2">
                                 <FileText className="w-4 h-4 text-[#7d8590]" />
-                                <span className="text-[#e6edf3] text-sm font-medium">README.md</span>
+                                <span className="text-[#e6edf3] text-sm font-medium">
+                                  README.md
+                                </span>
                               </div>
                             </div>
                             <div className="p-4">
@@ -277,12 +304,19 @@ export const GitHubProjects = () => {
                                     ✨ Key Features
                                   </h5>
                                   <ul className="space-y-1">
-                                    {project.highlights.slice(0, 3).map((feature, featureIndex) => (
-                                      <li key={featureIndex} className="text-[#7d8590] text-sm flex items-start gap-2">
-                                        <span className="text-[#238636] mt-0.5">•</span>
-                                        <span>{feature}</span>
-                                      </li>
-                                    ))}
+                                    {project.highlights
+                                      .slice(0, 3)
+                                      .map((feature, featureIndex) => (
+                                        <li
+                                          key={featureIndex}
+                                          className="text-[#7d8590] text-sm flex items-start gap-2"
+                                        >
+                                          <span className="text-[#238636] mt-0.5">
+                                            •
+                                          </span>
+                                          <span>{feature}</span>
+                                        </li>
+                                      ))}
                                   </ul>
                                 </div>
                               )}
@@ -318,7 +352,8 @@ export const GitHubProjects = () => {
           <div className="bg-[#161b22] border-t border-[#30363d] px-6 py-4">
             <div className="flex items-center justify-between text-sm text-[#7d8590]">
               <div>
-                Showing {filteredProjects.length} of {projects.length} repositories
+                Showing {filteredProjects.length} of {projects.length}{" "}
+                repositories
               </div>
               <div className="flex items-center gap-4">
                 <span>👨‍💻 Built with passion</span>

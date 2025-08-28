@@ -27,10 +27,34 @@ export const VSCodeNavbar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   const tabs = [
-    { id: "home", name: "portfolio.tsx", icon: FileText, href: "#home", modified: false },
-    { id: "about", name: "README.md", icon: FileText, href: "#about", modified: false },
-    { id: "projects", name: "projects/", icon: Folder, href: "#projects", modified: true },
-    { id: "contact", name: "api.ts", icon: Code2, href: "#contact", modified: false },
+    {
+      id: "home",
+      name: "portfolio.tsx",
+      icon: FileText,
+      href: "#home",
+      modified: false,
+    },
+    {
+      id: "about",
+      name: "README.md",
+      icon: FileText,
+      href: "#about",
+      modified: false,
+    },
+    {
+      id: "projects",
+      name: "projects/",
+      icon: Folder,
+      href: "#projects",
+      modified: true,
+    },
+    {
+      id: "contact",
+      name: "api.ts",
+      icon: Code2,
+      href: "#contact",
+      modified: false,
+    },
   ];
 
   const sidebarItems = [
@@ -43,9 +67,9 @@ export const VSCodeNavbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active tab based on scroll position
-      const sections = tabs.map(tab => tab.href.replace("#", ""));
+      const sections = tabs.map((tab) => tab.href.replace("#", ""));
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -104,7 +128,7 @@ export const VSCodeNavbar = () => {
 
         {/* Menu Bar */}
         <div className="flex items-center h-8 bg-[#2d2d2d] px-2 text-sm text-[#cccccc]">
-          <button 
+          <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs mr-4"
           >
@@ -128,7 +152,7 @@ export const VSCodeNavbar = () => {
           <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
             Help
           </button>
-          
+
           {/* Actions on the right */}
           <div className="ml-auto flex items-center gap-2">
             <Button
@@ -157,7 +181,7 @@ export const VSCodeNavbar = () => {
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
-            
+
             return (
               <button
                 key={tab.id}
@@ -192,7 +216,7 @@ export const VSCodeNavbar = () => {
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
-            
+
             return (
               <button
                 key={tab.id}
@@ -205,7 +229,9 @@ export const VSCodeNavbar = () => {
               >
                 <Icon className="w-3 h-3" />
                 <span>{tab.name}</span>
-                {tab.modified && <div className="w-1.5 h-1.5 bg-[#cccccc] rounded-full" />}
+                {tab.modified && (
+                  <div className="w-1.5 h-1.5 bg-[#cccccc] rounded-full" />
+                )}
               </button>
             );
           })}
@@ -224,12 +250,12 @@ export const VSCodeNavbar = () => {
             <Folder className="w-4 h-4" />
             <span>PORTFOLIO</span>
           </div>
-          
+
           <div className="space-y-1">
             {sidebarItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
-              
+
               return (
                 <button
                   key={item.id}
@@ -248,7 +274,9 @@ export const VSCodeNavbar = () => {
           </div>
 
           <div className="mt-6 pt-4 border-t border-[#2d2d2d]">
-            <div className="text-[#cccccc] text-xs font-medium mb-2">QUICK ACTIONS</div>
+            <div className="text-[#cccccc] text-xs font-medium mb-2">
+              QUICK ACTIONS
+            </div>
             <div className="space-y-1">
               <Button
                 variant="ghost"
@@ -275,7 +303,7 @@ export const VSCodeNavbar = () => {
 
       {/* Overlay for mobile */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-35 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />

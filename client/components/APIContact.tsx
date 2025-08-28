@@ -37,9 +37,24 @@ export const APIContact = () => {
       path: "/api/contact",
       description: "Send a message to Rudraksh",
       parameters: [
-        { name: "name", type: "string", required: true, description: "Your full name" },
-        { name: "email", type: "string", required: true, description: "Your email address" },
-        { name: "message", type: "string", required: true, description: "Your message content" },
+        {
+          name: "name",
+          type: "string",
+          required: true,
+          description: "Your full name",
+        },
+        {
+          name: "email",
+          type: "string",
+          required: true,
+          description: "Your email address",
+        },
+        {
+          name: "message",
+          type: "string",
+          required: true,
+          description: "Your message content",
+        },
       ],
       example: {
         curl: `curl -X POST https://rudrakshtaya.dev/api/contact \\
@@ -96,8 +111,18 @@ print(response.json())`,
       path: "/api/projects",
       description: "Retrieve list of projects",
       parameters: [
-        { name: "category", type: "string", required: false, description: "Filter by project category" },
-        { name: "limit", type: "number", required: false, description: "Number of projects to return" },
+        {
+          name: "category",
+          type: "string",
+          required: false,
+          description: "Filter by project category",
+        },
+        {
+          name: "limit",
+          type: "number",
+          required: false,
+          description: "Number of projects to return",
+        },
       ],
       example: {
         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
@@ -133,7 +158,8 @@ print(response.json())`,
     setTimeout(() => setCopiedCode(null), 2000);
   };
 
-  const currentEndpoint = endpoints.find(ep => ep.method === activeEndpoint) || endpoints[0];
+  const currentEndpoint =
+    endpoints.find((ep) => ep.method === activeEndpoint) || endpoints[0];
 
   return (
     <motion.section
@@ -176,13 +202,20 @@ print(response.json())`,
                           : "bg-[#21262d] text-[#7d8590] hover:text-[#e6edf3] hover:bg-[#30363d]"
                       }`}
                     >
-                      <span className={`font-bold ${
-                        endpoint.method === "POST" ? "text-[#f85149]" : 
-                        endpoint.method === "GET" ? "text-[#3fb950]" : "text-[#58a6ff]"
-                      }`}>
+                      <span
+                        className={`font-bold ${
+                          endpoint.method === "POST"
+                            ? "text-[#f85149]"
+                            : endpoint.method === "GET"
+                              ? "text-[#3fb950]"
+                              : "text-[#58a6ff]"
+                        }`}
+                      >
                         {endpoint.method}
                       </span>
-                      <span className="ml-2 text-[#e6edf3]">{endpoint.path}</span>
+                      <span className="ml-2 text-[#e6edf3]">
+                        {endpoint.path}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -206,20 +239,31 @@ print(response.json())`,
                   {/* Parameters */}
                   {currentEndpoint.parameters.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="text-[#e6edf3] font-medium mb-3">Parameters</h4>
+                      <h4 className="text-[#e6edf3] font-medium mb-3">
+                        Parameters
+                      </h4>
                       <div className="space-y-3">
                         {currentEndpoint.parameters.map((param, index) => (
-                          <div key={index} className="bg-[#161b22] border border-[#30363d] rounded p-3">
+                          <div
+                            key={index}
+                            className="bg-[#161b22] border border-[#30363d] rounded p-3"
+                          >
                             <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[#79c0ff] font-mono">{param.name}</span>
-                              <span className="text-[#f85149] text-sm">{param.type}</span>
+                              <span className="text-[#79c0ff] font-mono">
+                                {param.name}
+                              </span>
+                              <span className="text-[#f85149] text-sm">
+                                {param.type}
+                              </span>
                               {param.required && (
                                 <span className="bg-[#f85149] text-white text-xs px-1 rounded">
                                   required
                                 </span>
                               )}
                             </div>
-                            <p className="text-[#7d8590] text-sm">{param.description}</p>
+                            <p className="text-[#7d8590] text-sm">
+                              {param.description}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -228,26 +272,35 @@ print(response.json())`,
 
                   {/* Response Example */}
                   <div className="mb-6">
-                    <h4 className="text-[#e6edf3] font-medium mb-3">Response Example</h4>
+                    <h4 className="text-[#e6edf3] font-medium mb-3">
+                      Response Example
+                    </h4>
                     <div className="bg-[#0d1117] border border-[#30363d] rounded overflow-hidden">
                       <div className="bg-[#161b22] border-b border-[#30363d] px-4 py-2">
-                        <span className="text-[#e6edf3] text-sm font-mono">200 OK</span>
+                        <span className="text-[#e6edf3] text-sm font-mono">
+                          200 OK
+                        </span>
                       </div>
                       <div className="p-4 font-mono text-sm">
                         <pre className="text-[#e6edf3]">
-{currentEndpoint.method === "POST" ? `{
+                          {currentEndpoint.method === "POST"
+                            ? `{
   "success": true,
   "message": "Message sent successfully",
   "timestamp": "2024-01-15T10:30:00Z",
   "id": "msg_12345"
-}` : currentEndpoint.method === "GET" && currentEndpoint.path === "/api/profile" ? `{
+}`
+                            : currentEndpoint.method === "GET" &&
+                                currentEndpoint.path === "/api/profile"
+                              ? `{
   "name": "Rudraksh Taya",
   "title": "Computer Science Student",
   "email": "${personalInfo.email}",
   "skills": ["React", "Node.js", "Python", "Java"],
   "experience": "3+ years",
   "available": true
-}` : `{
+}`
+                              : `{
   "projects": [
     {
       "id": 1,
@@ -267,7 +320,9 @@ print(response.json())`,
                   {/* Code Examples */}
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-[#e6edf3] font-medium">Code Examples</h4>
+                      <h4 className="text-[#e6edf3] font-medium">
+                        Code Examples
+                      </h4>
                       <div className="flex border border-[#30363d] rounded overflow-hidden">
                         {Object.keys(currentEndpoint.example).map((lang) => (
                           <button
@@ -287,25 +342,40 @@ print(response.json())`,
                     <div className="bg-[#0d1117] border border-[#30363d] rounded overflow-hidden">
                       <div className="bg-[#161b22] border-b border-[#30363d] px-4 py-2 flex items-center justify-between">
                         <span className="text-[#e6edf3] text-sm font-mono">
-                          {activeLanguage}.{activeLanguage === "curl" ? "sh" : activeLanguage === "javascript" ? "js" : "py"}
+                          {activeLanguage}.
+                          {activeLanguage === "curl"
+                            ? "sh"
+                            : activeLanguage === "javascript"
+                              ? "js"
+                              : "py"}
                         </span>
                         <button
-                          onClick={() => copyCode(
-                            currentEndpoint.example[activeLanguage as keyof typeof currentEndpoint.example],
-                            `${activeEndpoint}-${activeLanguage}`
-                          )}
+                          onClick={() =>
+                            copyCode(
+                              currentEndpoint.example[
+                                activeLanguage as keyof typeof currentEndpoint.example
+                              ],
+                              `${activeEndpoint}-${activeLanguage}`,
+                            )
+                          }
                           className="flex items-center gap-1 text-[#7d8590] hover:text-[#e6edf3] text-sm"
                         >
-                          {copiedCode === `${activeEndpoint}-${activeLanguage}` ? 
-                            <CheckCircle className="w-4 h-4" /> : 
+                          {copiedCode ===
+                          `${activeEndpoint}-${activeLanguage}` ? (
+                            <CheckCircle className="w-4 h-4" />
+                          ) : (
                             <Copy className="w-4 h-4" />
-                          }
+                          )}
                           Copy
                         </button>
                       </div>
                       <div className="p-4 font-mono text-sm overflow-x-auto">
                         <pre className="text-[#e6edf3]">
-                          {currentEndpoint.example[activeLanguage as keyof typeof currentEndpoint.example]}
+                          {
+                            currentEndpoint.example[
+                              activeLanguage as keyof typeof currentEndpoint.example
+                            ]
+                          }
                         </pre>
                       </div>
                     </div>
@@ -332,7 +402,9 @@ print(response.json())`,
                         type="text"
                         required
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
                         className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded text-[#e6edf3] text-sm focus:border-[#58a6ff] focus:outline-none"
                         placeholder="Your full name"
                       />
@@ -346,7 +418,9 @@ print(response.json())`,
                         type="email"
                         required
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                         className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded text-[#e6edf3] text-sm focus:border-[#58a6ff] focus:outline-none"
                         placeholder="your.email@example.com"
                       />
@@ -360,7 +434,9 @@ print(response.json())`,
                         required
                         rows={4}
                         value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
                         className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded text-[#e6edf3] text-sm focus:border-[#58a6ff] focus:outline-none resize-none"
                         placeholder="Let's collaborate on something amazing!"
                       />
@@ -388,7 +464,9 @@ print(response.json())`,
 
                 {/* Alternative Contact Methods */}
                 <div className="mt-8 pt-6 border-t border-[#30363d]">
-                  <h4 className="text-[#e6edf3] font-medium mb-4">Alternative Endpoints</h4>
+                  <h4 className="text-[#e6edf3] font-medium mb-4">
+                    Alternative Endpoints
+                  </h4>
                   <div className="space-y-3">
                     <a
                       href={`mailto:${personalInfo.email}`}
@@ -396,8 +474,12 @@ print(response.json())`,
                     >
                       <Mail className="w-5 h-5 text-[#58a6ff]" />
                       <div>
-                        <div className="text-[#e6edf3] text-sm font-medium">Direct Email</div>
-                        <div className="text-[#7d8590] text-xs">{personalInfo.email}</div>
+                        <div className="text-[#e6edf3] text-sm font-medium">
+                          Direct Email
+                        </div>
+                        <div className="text-[#7d8590] text-xs">
+                          {personalInfo.email}
+                        </div>
                       </div>
                       <ExternalLink className="w-4 h-4 text-[#7d8590] group-hover:text-[#58a6ff] ml-auto" />
                     </a>
@@ -410,8 +492,12 @@ print(response.json())`,
                     >
                       <Github className="w-5 h-5 text-[#58a6ff]" />
                       <div>
-                        <div className="text-[#e6edf3] text-sm font-medium">GitHub</div>
-                        <div className="text-[#7d8590] text-xs">@rudrakshtaya</div>
+                        <div className="text-[#e6edf3] text-sm font-medium">
+                          GitHub
+                        </div>
+                        <div className="text-[#7d8590] text-xs">
+                          @rudrakshtaya
+                        </div>
                       </div>
                       <ExternalLink className="w-4 h-4 text-[#7d8590] group-hover:text-[#58a6ff] ml-auto" />
                     </a>
@@ -424,8 +510,12 @@ print(response.json())`,
                     >
                       <Linkedin className="w-5 h-5 text-[#58a6ff]" />
                       <div>
-                        <div className="text-[#e6edf3] text-sm font-medium">LinkedIn</div>
-                        <div className="text-[#7d8590] text-xs">Connect professionally</div>
+                        <div className="text-[#e6edf3] text-sm font-medium">
+                          LinkedIn
+                        </div>
+                        <div className="text-[#7d8590] text-xs">
+                          Connect professionally
+                        </div>
                       </div>
                       <ExternalLink className="w-4 h-4 text-[#7d8590] group-hover:text-[#58a6ff] ml-auto" />
                     </a>

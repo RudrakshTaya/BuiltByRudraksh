@@ -12,7 +12,6 @@ import { DatabaseStats } from "../components/DatabaseStats";
 import { APIContact } from "../components/APIContact";
 import { SystemFooter } from "../components/SystemFooter";
 
-
 export default function Index() {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -37,11 +36,15 @@ export default function Index() {
                 <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                 <div className="w-3 h-3 rounded-full bg-[#28ca42]"></div>
               </div>
-              <span className="text-[#d4d4d4] text-sm font-mono ml-2">Terminal</span>
+              <span className="text-[#d4d4d4] text-sm font-mono ml-2">
+                Terminal
+              </span>
             </div>
             <div className="text-left font-mono text-sm space-y-2">
               <div className="text-[#d4d4d4]">$ npm start</div>
-              <div className="text-[#6a9955]">Starting development server...</div>
+              <div className="text-[#6a9955]">
+                Starting development server...
+              </div>
               <div className="text-[#6a9955]">Compiling components...</div>
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 border-2 border-[#4fc3f7] border-t-transparent rounded-full animate-spin" />

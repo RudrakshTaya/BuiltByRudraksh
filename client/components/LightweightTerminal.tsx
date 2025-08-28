@@ -4,12 +4,24 @@ import { Terminal, Code, Database, Cloud } from "lucide-react";
 
 const SimpleTerminal = () => {
   const [currentLine, setCurrentLine] = useState(0);
-  
+
   const commands = [
     { prompt: "~$ ", command: "whoami", output: "computer_science_student" },
-    { prompt: "~$ ", command: "cat skills.txt", output: "React • Node.js • Python • Java • DSA" },
-    { prompt: "~$ ", command: "git log --oneline", output: "250+ problems solved ✓" },
-    { prompt: "~$ ", command: "npm run career", output: "Building amazing projects..." },
+    {
+      prompt: "~$ ",
+      command: "cat skills.txt",
+      output: "React • Node.js • Python • Java • DSA",
+    },
+    {
+      prompt: "~$ ",
+      command: "git log --oneline",
+      output: "250+ problems solved ✓",
+    },
+    {
+      prompt: "~$ ",
+      command: "npm run career",
+      output: "Building amazing projects...",
+    },
   ];
 
   useEffect(() => {
@@ -50,7 +62,7 @@ const SimpleTerminal = () => {
             <div className="text-cyan-400 text-xs pl-3">{cmd.output}</div>
           </motion.div>
         ))}
-        
+
         {/* Cursor */}
         <motion.div
           className="flex items-center"
@@ -87,7 +99,11 @@ const TechStackShowcase = () => {
           className="flex flex-col items-center p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-gray-600 transition-all"
         >
           <div className="text-2xl mb-2">
-            {typeof tech.icon === 'string' ? tech.icon : <tech.icon className="w-6 h-6" />}
+            {typeof tech.icon === "string" ? (
+              tech.icon
+            ) : (
+              <tech.icon className="w-6 h-6" />
+            )}
           </div>
           <span className={`text-xs font-mono ${tech.color}`}>{tech.name}</span>
         </motion.div>
@@ -113,7 +129,8 @@ export const LightweightTerminal = () => {
         >
           <h2 className="text-4xl font-bold gradient-text mb-4">Tech Stack</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Passionate about building scalable applications with modern technologies
+            Passionate about building scalable applications with modern
+            technologies
           </p>
         </motion.div>
 
@@ -149,7 +166,9 @@ export const LightweightTerminal = () => {
             { label: "CGPA", value: "8.7" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-2xl font-bold text-white mb-1">
+                {stat.value}
+              </div>
               <div className="text-sm text-gray-400">{stat.label}</div>
             </div>
           ))}

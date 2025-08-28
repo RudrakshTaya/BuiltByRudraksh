@@ -36,9 +36,9 @@ export const SystemFooter = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-      
+
       // Simulate system stats updates
-      setSystemStats(prev => ({
+      setSystemStats((prev) => ({
         ...prev,
         cpu: Math.floor(Math.random() * 30) + 10,
         memory: Math.floor(Math.random() * 40) + 30,
@@ -51,9 +51,17 @@ export const SystemFooter = () => {
 
   const getStatusColor = (value: number, type: string) => {
     if (type === "network") {
-      return value > 90 ? "text-green-400" : value > 70 ? "text-yellow-400" : "text-red-400";
+      return value > 90
+        ? "text-green-400"
+        : value > 70
+          ? "text-yellow-400"
+          : "text-red-400";
     }
-    return value < 50 ? "text-green-400" : value < 80 ? "text-yellow-400" : "text-red-400";
+    return value < 50
+      ? "text-green-400"
+      : value < 80
+        ? "text-yellow-400"
+        : "text-red-400";
   };
 
   const services = [
@@ -71,7 +79,14 @@ export const SystemFooter = () => {
   ];
 
   const techStack = [
-    "React", "TypeScript", "Node.js", "Python", "Java", "MongoDB", "AWS", "Docker"
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Java",
+    "MongoDB",
+    "AWS",
+    "Docker",
   ];
 
   return (
@@ -85,7 +100,9 @@ export const SystemFooter = () => {
               <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
               <div className="w-3 h-3 rounded-full bg-[#28ca42]"></div>
             </div>
-            <span className="text-[#e6edf3] text-sm font-mono">portfolio@rudraksh:~$</span>
+            <span className="text-[#e6edf3] text-sm font-mono">
+              portfolio@rudraksh:~$
+            </span>
           </div>
           <div className="flex items-center gap-4 text-sm text-[#7d8590]">
             <div className="flex items-center gap-1">
@@ -115,14 +132,18 @@ export const SystemFooter = () => {
             <span className="text-[#e6edf3] font-semibold">System Monitor</span>
             <div className="ml-auto flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-[#7d8590] text-sm">All systems operational</span>
+              <span className="text-[#7d8590] text-sm">
+                All systems operational
+              </span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* CPU Usage */}
             <div className="flex items-center gap-3">
-              <Cpu className={`w-5 h-5 ${getStatusColor(systemStats.cpu, "cpu")}`} />
+              <Cpu
+                className={`w-5 h-5 ${getStatusColor(systemStats.cpu, "cpu")}`}
+              />
               <div>
                 <div className="text-[#e6edf3] text-sm font-medium">CPU</div>
                 <div className="text-[#7d8590] text-xs">{systemStats.cpu}%</div>
@@ -131,28 +152,42 @@ export const SystemFooter = () => {
 
             {/* Memory Usage */}
             <div className="flex items-center gap-3">
-              <HardDrive className={`w-5 h-5 ${getStatusColor(systemStats.memory, "memory")}`} />
+              <HardDrive
+                className={`w-5 h-5 ${getStatusColor(systemStats.memory, "memory")}`}
+              />
               <div>
                 <div className="text-[#e6edf3] text-sm font-medium">Memory</div>
-                <div className="text-[#7d8590] text-xs">{systemStats.memory}%</div>
+                <div className="text-[#7d8590] text-xs">
+                  {systemStats.memory}%
+                </div>
               </div>
             </div>
 
             {/* Disk Usage */}
             <div className="flex items-center gap-3">
-              <Database className={`w-5 h-5 ${getStatusColor(systemStats.disk, "disk")}`} />
+              <Database
+                className={`w-5 h-5 ${getStatusColor(systemStats.disk, "disk")}`}
+              />
               <div>
                 <div className="text-[#e6edf3] text-sm font-medium">Disk</div>
-                <div className="text-[#7d8590] text-xs">{systemStats.disk}%</div>
+                <div className="text-[#7d8590] text-xs">
+                  {systemStats.disk}%
+                </div>
               </div>
             </div>
 
             {/* Network */}
             <div className="flex items-center gap-3">
-              <Wifi className={`w-5 h-5 ${getStatusColor(systemStats.network, "network")}`} />
+              <Wifi
+                className={`w-5 h-5 ${getStatusColor(systemStats.network, "network")}`}
+              />
               <div>
-                <div className="text-[#e6edf3] text-sm font-medium">Network</div>
-                <div className="text-[#7d8590] text-xs">{systemStats.network}%</div>
+                <div className="text-[#e6edf3] text-sm font-medium">
+                  Network
+                </div>
+                <div className="text-[#7d8590] text-xs">
+                  {systemStats.network}%
+                </div>
               </div>
             </div>
           </div>
@@ -162,7 +197,9 @@ export const SystemFooter = () => {
             <div className="flex items-center gap-2 text-sm">
               <Zap className="w-4 h-4 text-yellow-400" />
               <span className="text-[#e6edf3]">Uptime:</span>
-              <span className="text-[#7d8590] font-mono">{systemStats.uptime}</span>
+              <span className="text-[#7d8590] font-mono">
+                {systemStats.uptime}
+              </span>
             </div>
             <div className="flex items-center gap-4 text-xs text-[#7d8590]">
               <span>Load avg: 0.12, 0.18, 0.15</span>
@@ -182,17 +219,26 @@ export const SystemFooter = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div key={index} className="bg-[#161b22] border border-[#30363d] rounded-lg p-4">
+              <div
+                key={index}
+                className="bg-[#161b22] border border-[#30363d] rounded-lg p-4"
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <Icon className="w-4 h-4 text-[#58a6ff]" />
-                  <span className="text-[#e6edf3] text-sm font-medium">{service.name}</span>
+                  <span className="text-[#e6edf3] text-sm font-medium">
+                    {service.name}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span className="text-green-400 text-xs">{service.status}</span>
+                    <span className="text-green-400 text-xs">
+                      {service.status}
+                    </span>
                   </div>
-                  <span className="text-[#7d8590] text-xs">{service.uptime}</span>
+                  <span className="text-[#7d8590] text-xs">
+                    {service.uptime}
+                  </span>
                 </div>
               </div>
             );
@@ -208,21 +254,24 @@ export const SystemFooter = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h3 className="text-[#e6edf3] font-semibold mb-4 flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-[#58a6ff]" />
-              $ whoami
+              <Terminal className="w-5 h-5 text-[#58a6ff]" />$ whoami
             </h3>
             <div className="space-y-2 text-sm">
               <div className="text-[#7d8590]">
-                <span className="text-[#e6edf3]">Name:</span> {personalInfo.name}
+                <span className="text-[#e6edf3]">Name:</span>{" "}
+                {personalInfo.name}
               </div>
               <div className="text-[#7d8590]">
-                <span className="text-[#e6edf3]">Role:</span> {personalInfo.title}
+                <span className="text-[#e6edf3]">Role:</span>{" "}
+                {personalInfo.title}
               </div>
               <div className="text-[#7d8590]">
-                <span className="text-[#e6edf3]">Location:</span> {personalInfo.location}
+                <span className="text-[#e6edf3]">Location:</span>{" "}
+                {personalInfo.location}
               </div>
               <div className="text-[#7d8590]">
-                <span className="text-[#e6edf3]">Status:</span> Available for opportunities
+                <span className="text-[#e6edf3]">Status:</span> Available for
+                opportunities
               </div>
             </div>
           </motion.div>
@@ -234,8 +283,7 @@ export const SystemFooter = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <h3 className="text-[#e6edf3] font-semibold mb-4 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-[#58a6ff]" />
-              $ ls -la
+              <Globe className="w-5 h-5 text-[#58a6ff]" />$ ls -la
             </h3>
             <div className="space-y-2">
               {quickLinks.map((link, index) => (
@@ -257,8 +305,7 @@ export const SystemFooter = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <h3 className="text-[#e6edf3] font-semibold mb-4 flex items-center gap-2">
-              <Code2 className="w-5 h-5 text-[#58a6ff]" />
-              $ tech --list
+              <Code2 className="w-5 h-5 text-[#58a6ff]" />$ tech --list
             </h3>
             <div className="flex flex-wrap gap-1">
               {techStack.map((tech, index) => (
@@ -279,8 +326,7 @@ export const SystemFooter = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <h3 className="text-[#e6edf3] font-semibold mb-4 flex items-center gap-2">
-              <Wifi className="w-5 h-5 text-[#58a6ff]" />
-              $ connect
+              <Wifi className="w-5 h-5 text-[#58a6ff]" />$ connect
             </h3>
             <div className="space-y-3">
               {socialLinks.map((link, index) => {
@@ -290,8 +336,9 @@ export const SystemFooter = () => {
                   Mail: Mail,
                   Code2: Code2,
                 };
-                const Icon = iconMap[link.icon as keyof typeof iconMap] || Code2;
-                
+                const Icon =
+                  iconMap[link.icon as keyof typeof iconMap] || Code2;
+
                 return (
                   <a
                     key={index}
@@ -318,19 +365,16 @@ export const SystemFooter = () => {
         >
           <div className="font-mono text-sm space-y-1">
             <div className="text-[#7d8590]"># System Information</div>
-            <div className="text-[#e6edf3]">
-              portfolio@rudraksh:~$ uname -a
-            </div>
+            <div className="text-[#e6edf3]">portfolio@rudraksh:~$ uname -a</div>
             <div className="text-[#7d8590]">
-              Portfolio 5.4.0-portfolio #1 SMP Web Fri Jan 15 10:30:00 UTC 2024 x86_64 GNU/Career
+              Portfolio 5.4.0-portfolio #1 SMP Web Fri Jan 15 10:30:00 UTC 2024
+              x86_64 GNU/Career
             </div>
             <div className="text-[#e6edf3] mt-2">
               portfolio@rudraksh:~$ echo "Ready for new opportunities!"
             </div>
             <div className="text-[#7d8590]">Ready for new opportunities!</div>
-            <div className="text-[#e6edf3]">
-              portfolio@rudraksh:~$ █
-            </div>
+            <div className="text-[#e6edf3]">portfolio@rudraksh:~$ █</div>
           </div>
         </motion.div>
 
