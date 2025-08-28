@@ -14,29 +14,6 @@ import { GitHubStats } from "../components/GitHubStats";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 
-const ScrollProgressBar = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / scrollHeight) * 100;
-      setScrollProgress(scrolled);
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-cyan z-50 origin-left"
-      style={{ scaleX: scrollProgress / 100 }}
-      initial={{ scaleX: 0 }}
-    />
-  );
-};
 
 export default function Index() {
   const [isLoaded, setIsLoaded] = useState(false);
