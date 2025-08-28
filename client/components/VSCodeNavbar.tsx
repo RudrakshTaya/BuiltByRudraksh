@@ -110,18 +110,21 @@ export const VSCodeNavbar = () => {
               <div className="w-3 h-3 rounded-full bg-[#28ca42] hover:bg-[#28ca42]/80 cursor-pointer"></div>
             </div>
           </div>
-          <div className="text-[#cccccc] text-sm font-medium">
+          <div className="text-[#cccccc] text-sm font-medium hidden md:block">
             Portfolio - Visual Studio Code
           </div>
+          <div className="text-[#cccccc] text-xs font-medium md:hidden">
+            Portfolio
+          </div>
           <div className="flex items-center gap-1">
-            <button className="w-8 h-6 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
-              <Minus className="w-4 h-4" />
+            <button className="w-6 h-6 md:w-8 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
+              <Minus className="w-3 h-3 md:w-4 md:h-4" />
             </button>
-            <button className="w-8 h-6 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
-              <Square className="w-3 h-3" />
+            <button className="w-6 h-6 md:w-8 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
+              <Square className="w-2 h-2 md:w-3 md:h-3" />
             </button>
-            <button className="w-8 h-6 hover:bg-[#e81123] hover:text-white flex items-center justify-center text-[#cccccc]">
-              <X className="w-4 h-4" />
+            <button className="w-6 h-6 md:w-8 hover:bg-[#e81123] hover:text-white flex items-center justify-center text-[#cccccc]">
+              <X className="w-3 h-3 md:w-4 md:h-4" />
             </button>
           </div>
         </div>
@@ -130,54 +133,57 @@ export const VSCodeNavbar = () => {
         <div className="flex items-center h-8 bg-[#2d2d2d] px-2 text-sm text-[#cccccc]">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs mr-4"
+            className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs mr-2 md:mr-4 flex items-center gap-1"
           >
-            File
+            <Menu className="w-3 h-3 md:hidden" />
+            <span>File</span>
           </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            Edit
-          </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            View
-          </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            Go
-          </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            Run
-          </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            Terminal
-          </button>
-          <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
-            Help
-          </button>
+          <div className="hidden md:flex items-center gap-0">
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              Edit
+            </button>
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              View
+            </button>
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              Go
+            </button>
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              Run
+            </button>
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              Terminal
+            </button>
+            <button className="px-2 py-1 hover:bg-[#3c3c3c] rounded text-xs">
+              Help
+            </button>
+          </div>
 
           {/* Actions on the right */}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-1 md:gap-2">
             <Button
               variant="ghost"
               size="sm"
               onClick={scrollToContact}
-              className="text-[#cccccc] hover:bg-[#3c3c3c] hover:text-white text-xs h-6 px-2"
+              className="text-[#cccccc] hover:bg-[#3c3c3c] hover:text-white text-xs h-6 px-1 md:px-2"
             >
-              <Mail className="mr-1 h-3 w-3" />
-              Contact
+              <Mail className="w-3 h-3 md:mr-1" />
+              <span className="hidden md:inline">Contact</span>
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={downloadResume}
-              className="text-[#cccccc] hover:bg-[#3c3c3c] hover:text-white text-xs h-6 px-2"
+              className="text-[#cccccc] hover:bg-[#3c3c3c] hover:text-white text-xs h-6 px-1 md:px-2"
             >
-              <Download className="mr-1 h-3 w-3" />
-              Resume
+              <Download className="w-3 h-3 md:mr-1" />
+              <span className="hidden md:inline">Resume</span>
             </Button>
           </div>
         </div>
 
-        {/* Tab Bar */}
-        <div className="flex bg-[#1e1e1e] border-b border-[#2d2d2d]">
+        {/* Tab Bar - Desktop Only */}
+        <div className="hidden md:flex bg-[#1e1e1e] border-b border-[#2d2d2d] overflow-x-auto">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -186,14 +192,14 @@ export const VSCodeNavbar = () => {
               <button
                 key={tab.id}
                 onClick={() => handleNavClick(tab.href, tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 text-sm border-r border-[#2d2d2d] transition-colors min-w-[150px] relative group ${
+                className={`flex items-center gap-2 px-3 lg:px-4 py-2 text-sm border-r border-[#2d2d2d] transition-colors min-w-[120px] lg:min-w-[150px] relative group ${
                   isActive
                     ? "bg-[#1e1e1e] text-[#ffffff] border-t-2 border-t-[#007acc]"
                     : "bg-[#2d2d2d] text-[#cccccc] hover:bg-[#1e1e1e]"
                 }`}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                <span className="truncate">{tab.name}</span>
+                <span className="truncate text-xs lg:text-sm">{tab.name}</span>
                 {tab.modified && (
                   <div className="w-2 h-2 bg-[#cccccc] rounded-full flex-shrink-0" />
                 )}
@@ -212,7 +218,7 @@ export const VSCodeNavbar = () => {
 
       {/* Mobile Tab Bar (below main navbar) */}
       <div className="fixed top-16 left-0 right-0 z-50 bg-[#1e1e1e] border-b border-[#2d2d2d] md:hidden">
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto scrollbar-none">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -221,16 +227,16 @@ export const VSCodeNavbar = () => {
               <button
                 key={tab.id}
                 onClick={() => handleNavClick(tab.href, tab.id)}
-                className={`flex items-center gap-2 px-3 py-2 text-xs whitespace-nowrap transition-colors ${
+                className={`flex items-center gap-1.5 px-2.5 py-2 text-xs whitespace-nowrap transition-colors min-w-[80px] flex-shrink-0 ${
                   isActive
                     ? "bg-[#1e1e1e] text-[#ffffff] border-b-2 border-b-[#007acc]"
                     : "bg-[#2d2d2d] text-[#cccccc]"
                 }`}
               >
-                <Icon className="w-3 h-3" />
-                <span>{tab.name}</span>
+                <Icon className="w-3 h-3 flex-shrink-0" />
+                <span className="truncate text-[10px]">{tab.name}</span>
                 {tab.modified && (
-                  <div className="w-1.5 h-1.5 bg-[#cccccc] rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-[#cccccc] rounded-full flex-shrink-0" />
                 )}
               </button>
             );
@@ -243,7 +249,7 @@ export const VSCodeNavbar = () => {
         initial={{ x: -280 }}
         animate={{ x: isSidebarOpen ? 0 : -280 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-16 left-0 w-70 h-full bg-[#252526] border-r border-[#2d2d2d] z-40 overflow-hidden"
+        className="fixed top-16 md:top-16 left-0 w-64 md:w-70 h-[calc(100vh-4rem)] md:h-full bg-[#252526] border-r border-[#2d2d2d] z-40 overflow-y-auto"
       >
         <div className="p-3">
           <div className="flex items-center gap-2 mb-4 text-[#cccccc] text-sm font-medium">
