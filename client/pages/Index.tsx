@@ -82,7 +82,12 @@ export default function Index() {
       >
         {/* Hero Section */}
         <section id="home" className="relative z-40">
-          <MacBookPortfolio />
+          <LightweightHero />
+        </section>
+
+        {/* Tech Terminal Section */}
+        <section id="tech-demo" className="relative z-30">
+          <LightweightTerminal />
         </section>
 
         {/* About Section */}
