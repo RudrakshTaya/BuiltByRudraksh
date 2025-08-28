@@ -59,7 +59,7 @@ const VSCodeTypewriter = ({
 // VS Code Interface Component
 const VSCodeInterface = () => {
   const [activeTab, setActiveTab] = useState(0);
-  
+
   const files = [
     { name: "portfolio.tsx", icon: FileText, active: true },
     { name: "skills.json", icon: FileText, active: false },
@@ -98,7 +98,7 @@ const VSCodeInterface = () => {
 ## Portfolio Website
 - **Tech Stack**: React, TypeScript, Framer Motion
 - **Features**: Responsive design, Interactive animations
-- **Status**: ✅ Live`
+- **Status**: ✅ Live`,
   ];
 
   return (
@@ -146,13 +146,13 @@ const VSCodeInterface = () => {
         <div className="flex gap-4">
           {/* Line Numbers */}
           <div className="text-[#858585] select-none">
-            {codeContent[activeTab].split('\n').map((_, i) => (
+            {codeContent[activeTab].split("\n").map((_, i) => (
               <div key={i} className="leading-6">
                 {i + 1}
               </div>
             ))}
           </div>
-          
+
           {/* Code */}
           <div className="flex-1">
             <pre className="text-[#d4d4d4] leading-6 whitespace-pre-wrap">
@@ -250,16 +250,18 @@ export const LightweightHero = () => {
             >
               <div className="inline-flex items-center gap-2 bg-[#007acc]/10 border border-[#007acc]/30 rounded-full px-4 py-2 mb-4">
                 <Terminal className="w-4 h-4 text-[#007acc]" />
-                <span className="text-[#007acc] text-sm font-medium">Welcome to my portfolio</span>
+                <span className="text-[#007acc] text-sm font-medium">
+                  Welcome to my portfolio
+                </span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4">
                 <span className="text-[#569cd6]">const</span>{" "}
                 <span className="text-[#9cdcfe]">developer</span>{" "}
                 <span className="text-white">=</span>{" "}
                 <span className="text-[#ce9178]">"{personalInfo.name}"</span>
               </h1>
-              
+
               <div className="text-lg sm:text-xl text-[#d4d4d4] font-mono">
                 <span className="text-[#c586c0]">// </span>
                 <VSCodeTypewriter
@@ -288,15 +290,17 @@ export const LightweightHero = () => {
             >
               <div className="flex items-center gap-2 mb-4 pb-2 border-b border-gray-700/50">
                 <Terminal className="w-4 h-4 text-green-400" />
-                <span className="text-green-400 font-mono text-sm">Quick Actions Terminal</span>
+                <span className="text-green-400 font-mono text-sm">
+                  Quick Actions Terminal
+                </span>
               </div>
-              
+
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-green-400">$</span>
                   <span className="text-gray-300">Available commands:</span>
                 </div>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 ml-4">
                   <Button
                     size="sm"
@@ -307,7 +311,7 @@ export const LightweightHero = () => {
                     <Mail className="mr-2 h-4 w-4" />
                     ./contact
                   </Button>
-                  
+
                   <Button
                     size="sm"
                     onClick={downloadResume}
@@ -348,7 +352,9 @@ export const LightweightHero = () => {
                   >
                     <div className="flex items-center gap-2 bg-[#21262d] border border-[#30363d] rounded-lg px-4 py-3 hover:border-[#58a6ff] transition-all duration-300">
                       <Icon className="h-5 w-5 text-[#f0f6fc]" />
-                      <span className="text-[#f0f6fc] text-sm font-medium">{link.name}</span>
+                      <span className="text-[#f0f6fc] text-sm font-medium">
+                        {link.name}
+                      </span>
                     </div>
                   </motion.a>
                 );

@@ -19,7 +19,7 @@ export default function Index() {
     setIsLoaded(true);
 
     // Enable smooth scrolling
-    document.documentElement.style.scrollBehavior = 'smooth';
+    document.documentElement.style.scrollBehavior = "smooth";
 
     // Optimize scroll performance
     const handleScroll = () => {
@@ -28,11 +28,11 @@ export default function Index() {
       });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.documentElement.style.scrollBehavior = 'auto';
+      window.removeEventListener("scroll", handleScroll);
+      document.documentElement.style.scrollBehavior = "auto";
     };
   }, []);
 

@@ -61,7 +61,9 @@ const FixedSizeTerminal = () => {
                 <span className="text-green-400">{cmd.prompt}</span>
                 <span className="text-white">{cmd.command}</span>
               </div>
-              <div className="text-cyan-400 text-xs pl-3 min-h-[16px]">{cmd.output}</div>
+              <div className="text-cyan-400 text-xs pl-3 min-h-[16px]">
+                {cmd.output}
+              </div>
             </motion.div>
           ))}
 
@@ -82,11 +84,36 @@ const FixedSizeTerminal = () => {
 
 const TechStackGrid = () => {
   const techs = [
-    { name: "React", icon: "⚛️", color: "text-blue-400", desc: "Frontend Framework" },
-    { name: "Node.js", icon: "🟢", color: "text-green-400", desc: "Backend Runtime" },
-    { name: "Python", icon: "🐍", color: "text-yellow-400", desc: "Programming Language" },
-    { name: "Database", icon: Database, color: "text-purple-400", desc: "Data Management" },
-    { name: "Git", icon: GitBranch, color: "text-orange-400", desc: "Version Control" },
+    {
+      name: "React",
+      icon: "⚛️",
+      color: "text-blue-400",
+      desc: "Frontend Framework",
+    },
+    {
+      name: "Node.js",
+      icon: "🟢",
+      color: "text-green-400",
+      desc: "Backend Runtime",
+    },
+    {
+      name: "Python",
+      icon: "🐍",
+      color: "text-yellow-400",
+      desc: "Programming Language",
+    },
+    {
+      name: "Database",
+      icon: Database,
+      color: "text-purple-400",
+      desc: "Data Management",
+    },
+    {
+      name: "Git",
+      icon: GitBranch,
+      color: "text-orange-400",
+      desc: "Version Control",
+    },
     { name: "Cloud", icon: Cloud, color: "text-cyan-400", desc: "Deployment" },
   ];
 
@@ -125,7 +152,7 @@ const CodeExecution = () => {
   const executeCode = () => {
     setIsRunning(true);
     setOutput("");
-    
+
     setTimeout(() => {
       setOutput("✓ Portfolio compiled successfully!");
       setIsRunning(false);
@@ -147,12 +174,14 @@ const CodeExecution = () => {
           {isRunning ? "Running..." : "▶ Run"}
         </button>
       </div>
-      
+
       <div className="bg-black/50 rounded p-3 font-mono text-xs min-h-[60px]">
         {isRunning ? (
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 border border-green-400 border-t-transparent rounded-full animate-spin" />
-            <span className="text-yellow-400">Executing portfolio.build()...</span>
+            <span className="text-yellow-400">
+              Executing portfolio.build()...
+            </span>
           </div>
         ) : output ? (
           <div className="text-green-400">{output}</div>
@@ -184,7 +213,8 @@ export const LightweightTerminal = () => {
             Tech Stack & Skills
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-            Passionate about building scalable applications with modern technologies
+            Passionate about building scalable applications with modern
+            technologies
           </p>
         </motion.div>
 
@@ -230,9 +260,21 @@ export const LightweightTerminal = () => {
               transition={{ delay: 0.7 }}
             >
               {[
-                { label: "Problems Solved", value: "250+", color: "text-green-400" },
-                { label: "Projects Built", value: "15+", color: "text-blue-400" },
-                { label: "Years Learning", value: "3+", color: "text-purple-400" },
+                {
+                  label: "Problems Solved",
+                  value: "250+",
+                  color: "text-green-400",
+                },
+                {
+                  label: "Projects Built",
+                  value: "15+",
+                  color: "text-blue-400",
+                },
+                {
+                  label: "Years Learning",
+                  value: "3+",
+                  color: "text-purple-400",
+                },
                 { label: "CGPA", value: "8.7", color: "text-yellow-400" },
               ].map((stat, index) => (
                 <motion.div
