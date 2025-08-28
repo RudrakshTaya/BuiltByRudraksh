@@ -117,7 +117,7 @@ export const VSCodeNavbar = () => {
             Portfolio
           </div>
           <div className="flex items-center gap-1">
-            <button className="w-6 h-6 md:w-8 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
+            {/* <button className="w-6 h-6 md:w-8 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
               <Minus className="w-3 h-3 md:w-4 md:h-4" />
             </button>
             <button className="w-6 h-6 md:w-8 hover:bg-[#3c3c3c] flex items-center justify-center text-[#cccccc]">
@@ -125,7 +125,7 @@ export const VSCodeNavbar = () => {
             </button>
             <button className="w-6 h-6 md:w-8 hover:bg-[#e81123] hover:text-white flex items-center justify-center text-[#cccccc]">
               <X className="w-3 h-3 md:w-4 md:h-4" />
-            </button>
+            </button> */}
           </div>
         </div>
 

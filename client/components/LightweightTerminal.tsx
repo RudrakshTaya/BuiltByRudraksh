@@ -275,7 +275,7 @@ export const LightweightTerminal = () => {
                   value: "3+",
                   color: "text-purple-400",
                 },
-                { label: "CGPA", value: "8.7", color: "text-yellow-400" },
+                { label: "CGPA", value: "8.2", color: "text-yellow-400" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}

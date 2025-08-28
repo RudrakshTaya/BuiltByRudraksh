@@ -129,7 +129,7 @@ export const ReadmeAbout = () => {
                     <div className="text-xs text-[#7d8590]">Projects</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-xl font-bold text-[#8b5cf6]">8.7</div>
+                    <div className="text-xl font-bold text-[#8b5cf6]">8.2</div>
                     <div className="text-xs text-[#7d8590]">CGPA</div>
                   </div>
                   <div className="text-center">
@@ -175,7 +175,7 @@ export const ReadmeAbout = () => {
                     <span className="text-[#f85149]">**Database:**</span>
                     <span className="text-[#7d8590]">
                       {" "}
-                      MongoDB, MySQL, PostgreSQL, Redis
+                      MongoDB, MySQL, PostgreSQL
                     </span>
                   </div>
                   <div>

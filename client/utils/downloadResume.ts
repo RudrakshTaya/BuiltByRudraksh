@@ -2,7 +2,7 @@
 export const downloadResume = () => {
   // Create a dummy PDF download - in a real app, this would be your actual resume file
   const link = document.createElement('a');
-  link.href = '/resume-rudraksh-taya.pdf'; // Path to your resume file in the public folder
+  link.href = '/rudrakshsde.pdf'; // Path to your resume file in the public folder
   link.download = 'Rudraksh_Taya_Resume.pdf';
   link.target = '_blank';
   

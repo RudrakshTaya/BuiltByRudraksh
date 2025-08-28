@@ -384,7 +384,7 @@ const ExplosiveStats = () => {
     { label: "250+ Problems", color: "neon-blue" },
     { label: "15+ Projects", color: "neon-purple" },
     { label: "3+ Years", color: "neon-cyan" },
-    { label: "8.7 CGPA", color: "neon-green" },
+    { label: "8.2 CGPA", color: "neon-green" },
   ];
 
   // Enhanced validation for stats

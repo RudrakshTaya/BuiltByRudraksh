@@ -106,36 +106,36 @@ response = requests.get("https://rudrakshtaya.dev/api/profile")
 print(response.json())`,
       },
     },
-    {
-      method: "GET",
-      path: "/api/projects",
-      description: "Retrieve list of projects",
-      parameters: [
-        {
-          name: "category",
-          type: "string",
-          required: false,
-          description: "Filter by project category",
-        },
-        {
-          name: "limit",
-          type: "number",
-          required: false,
-          description: "Number of projects to return",
-        },
-      ],
-      example: {
-        curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
-        javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
-  .then(response => response.json())
-  .then(data => console.log(data));`,
-        python: `import requests
+//     {
+//       method: "GET",
+//       path: "/api/projects",
+//       description: "Retrieve list of projects",
+//       parameters: [
+//         {
+//           name: "category",
+//           type: "string",
+//           required: false,
+//           description: "Filter by project category",
+//         },
+//         {
+//           name: "limit",
+//           type: "number",
+//           required: false,
+//           description: "Number of projects to return",
+//         },
+//       ],
+//       example: {
+//         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
+//         javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
+//   .then(response => response.json())
+//   .then(data => console.log(data));`,
+//         python: `import requests
 
-params = {"category": "fullstack", "limit": 5}
-response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
-print(response.json())`,
-      },
-    },
+// params = {"category": "fullstack", "limit": 5}
+// response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
+// print(response.json())`,
+//       },
+//     },
   ];
 
   const [activeLanguage, setActiveLanguage] = useState("javascript");

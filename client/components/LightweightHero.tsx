@@ -20,27 +20,27 @@ import { personalInfo, socialLinks } from "../data/portfolioData";
 // VS Code style typing effect
 const VSCodeTypewriter = ({
   text,
-  delay = 0,
+  delay = 30,         // base delay between batches
+  batchSize = 1,       // how many characters to type per tick
 }: {
   text: string;
   delay?: number;
+  batchSize?: number;
 }) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(
-      () => {
-        if (currentIndex < text.length) {
-          setDisplayText(text.slice(0, currentIndex + 1));
-          setCurrentIndex(currentIndex + 1);
-        }
-      },
-      delay + currentIndex * 30,
-    );
+    if (currentIndex < text.length) {
+      const timer = setTimeout(() => {
+        const nextIndex = Math.min(currentIndex + batchSize, text.length);
+        setDisplayText(text.slice(0, nextIndex));
+        setCurrentIndex(nextIndex);
+      }, delay);
 
-    return () => clearTimeout(timer);
-  }, [currentIndex, text, delay]);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, text, delay, batchSize]);
 
   return (
     <span className="font-mono">
@@ -56,14 +56,15 @@ const VSCodeTypewriter = ({
   );
 };
 
+
 // VS Code Interface Component
 const VSCodeInterface = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const files = [
     { name: "portfolio.tsx", icon: FileText, active: true },
-    { name: "skills.json", icon: FileText, active: false },
-    { name: "projects.md", icon: FileText, active: false },
+    // { name: "skills.json", icon: FileText, active: false },
+    // { name: "projects.md", icon: FileText, active: false },
   ];
 
   const codeContent = [
@@ -156,7 +157,7 @@ const VSCodeInterface = () => {
           {/* Code */}
           <div className="flex-1">
             <pre className="text-[#d4d4d4] leading-6 whitespace-pre-wrap">
-              <VSCodeTypewriter text={codeContent[activeTab]} delay={200} />
+              <VSCodeTypewriter text={codeContent[activeTab]} delay={100} batchSize={3} />
             </pre>
           </div>
         </div>
@@ -306,7 +307,7 @@ export const LightweightHero = () => {
                     size="sm"
                     variant="outline"
                     onClick={scrollToContact}
-                    className="justify-start border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 font-mono text-xs"
+                    className="justify-start border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/40 font-mono text-xs"
                   >
                     <Mail className="mr-2 h-4 w-4" />
                     ./contact
