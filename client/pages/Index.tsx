@@ -17,6 +17,23 @@ export default function Index() {
 
   useEffect(() => {
     setIsLoaded(true);
+
+    // Enable smooth scrolling
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // Optimize scroll performance
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
+        // Any scroll-based animations can be optimized here
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.documentElement.style.scrollBehavior = "auto";
+    };
   }, []);
 
   if (!isLoaded) {
@@ -72,22 +89,22 @@ export default function Index() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-24 relative z-30"
+        className="pt-20 md:pt-24 relative z-30"
       >
         {/* Hero Section */}
-        <section id="home" className="relative z-40">
+        <section id="home" className="relative z-40 px-2 md:px-4">
           <LightweightHero />
         </section>
 
         {/* Tech Terminal Section */}
-        <section id="tech-demo" className="relative z-30">
+        <section id="tech-demo" className="relative z-30 px-2 md:px-4">
           <LightweightTerminal />
         </section>
 
         {/* About Section - README.md Theme */}
         <section
           id="about"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
+          className="relative z-20 bg-background/10 backdrop-blur-sm px-2 md:px-4"
         >
           <ReadmeAbout />
         </section>
@@ -95,7 +112,7 @@ export default function Index() {
         {/* Computer Science Strengths - OOP Theme */}
         <section
           id="cs-strengths"
-          className="relative z-20 bg-background/5 backdrop-blur-sm"
+          className="relative z-20 bg-background/5 backdrop-blur-sm px-2 md:px-4"
         >
           <OOPStrengths />
         </section>
@@ -103,7 +120,7 @@ export default function Index() {
         {/* Projects Section - GitHub Theme */}
         <section
           id="projects"
-          className="relative z-20 bg-background/5 backdrop-blur-sm"
+          className="relative z-20 bg-background/5 backdrop-blur-sm px-2 md:px-4"
         >
           <GitHubProjects />
         </section>
@@ -111,7 +128,7 @@ export default function Index() {
         {/* Database Stats & Analytics */}
         <section
           id="stats"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
+          className="relative z-20 bg-background/10 backdrop-blur-sm px-2 md:px-4"
         >
           <DatabaseStats />
         </section>
@@ -119,7 +136,7 @@ export default function Index() {
         {/* Contact Section - API Documentation Theme */}
         <section
           id="contact"
-          className="relative z-20 bg-background/10 backdrop-blur-sm"
+          className="relative z-20 bg-background/10 backdrop-blur-sm px-2 md:px-4"
         >
           <APIContact />
         </section>

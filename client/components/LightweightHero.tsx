@@ -9,13 +9,16 @@ import {
   Trophy,
   Terminal,
   Brain,
+  Play,
+  Folder,
+  FileText,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { downloadResume } from "../utils/downloadResume";
 import { personalInfo, socialLinks } from "../data/portfolioData";
 
-// Simple typing effect
-const TypewriterText = ({
+// VS Code style typing effect
+const VSCodeTypewriter = ({
   text,
   delay = 0,
 }: {
@@ -33,7 +36,7 @@ const TypewriterText = ({
           setCurrentIndex(currentIndex + 1);
         }
       },
-      delay + currentIndex * 100,
+      delay + currentIndex * 30,
     );
 
     return () => clearTimeout(timer);
@@ -45,7 +48,7 @@ const TypewriterText = ({
       <motion.span
         animate={{ opacity: [1, 0, 1] }}
         transition={{ duration: 1, repeat: Infinity }}
-        className="text-cyan-400"
+        className="text-[#007acc]"
       >
         |
       </motion.span>
@@ -53,32 +56,160 @@ const TypewriterText = ({
   );
 };
 
-// Minimal floating elements
-const FloatingTechIcons = () => {
-  const icons = ["⚛️", "🟢", "🐍", "☕", "💻", "🚀"];
+// VS Code Interface Component
+const VSCodeInterface = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const files = [
+    { name: "portfolio.tsx", icon: FileText, active: true },
+    { name: "skills.json", icon: FileText, active: false },
+    { name: "projects.md", icon: FileText, active: false },
+  ];
+
+  const codeContent = [
+    `const developer = {
+  name: "${personalInfo.name}",
+  role: "Full Stack Developer",
+  education: "Computer Science Student",
+  skills: ["React", "Node.js", "Python", "Java"],
+  problemsSolved: "250+",
+  currentFocus: "Building amazing projects",
+  status: "Available for opportunities"
+};`,
+    `{
+  "frontend": ["React", "TypeScript", "Tailwind CSS"],
+  "backend": ["Node.js", "Python", "Java", "Express"],
+  "database": ["MongoDB", "PostgreSQL", "Firebase"],
+  "tools": ["Git", "Docker", "VS Code", "Figma"],
+  "learning": ["Next.js", "GraphQL", "AWS", "Kubernetes"]
+}`,
+    `# 🚀 Featured Projects
+
+## E-Commerce Platform
+- **Tech Stack**: React, Node.js, MongoDB
+- **Features**: Full CRUD, Payment Integration, Admin Dashboard
+- **Status**: ✅ Completed
+
+## Task Management System  
+- **Tech Stack**: MERN Stack
+- **Features**: Real-time updates, Team collaboration
+- **Status**: 🔄 In Progress
+
+## Portfolio Website
+- **Tech Stack**: React, TypeScript, Framer Motion
+- **Features**: Responsive design, Interactive animations
+- **Status**: ✅ Live`,
+  ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
-      {icons.map((icon, i) => (
+    <div className="w-full max-w-4xl mx-auto bg-[#1e1e1e] border border-[#3c3c3c] rounded-lg overflow-hidden shadow-2xl">
+      {/* VS Code Title Bar */}
+      <div className="bg-[#323233] px-4 py-2 flex items-center justify-between border-b border-[#3c3c3c]">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#28ca42]"></div>
+          </div>
+          <span className="text-[#cccccc] text-sm font-medium ml-3">
+            Visual Studio Code
+          </span>
+        </div>
+        <div className="text-[#cccccc] text-sm">
+          {personalInfo.name} - Portfolio
+        </div>
+      </div>
+
+      {/* File Tabs */}
+      <div className="bg-[#252526] border-b border-[#3c3c3c] flex">
+        {files.map((file, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveTab(index)}
+            className={`flex items-center gap-2 px-4 py-3 text-sm border-r border-[#3c3c3c] transition-colors ${
+              activeTab === index
+                ? "bg-[#1e1e1e] text-[#ffffff]"
+                : "bg-[#2d2d30] text-[#cccccc] hover:bg-[#1e1e1e]"
+            }`}
+          >
+            <file.icon className="w-4 h-4" />
+            {file.name}
+            {activeTab === index && (
+              <div className="w-2 h-2 rounded-full bg-[#007acc] ml-1"></div>
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Code Content */}
+      <div className="bg-[#1e1e1e] p-6 font-mono text-sm min-h-[400px]">
+        <div className="flex gap-4">
+          {/* Line Numbers */}
+          <div className="text-[#858585] select-none">
+            {codeContent[activeTab].split("\n").map((_, i) => (
+              <div key={i} className="leading-6">
+                {i + 1}
+              </div>
+            ))}
+          </div>
+
+          {/* Code */}
+          <div className="flex-1">
+            <pre className="text-[#d4d4d4] leading-6 whitespace-pre-wrap">
+              <VSCodeTypewriter text={codeContent[activeTab]} delay={200} />
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      {/* Status Bar */}
+      <div className="bg-[#007acc] px-4 py-1 text-white text-xs flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <span>◯ Connected to Portfolio Server</span>
+          <span>UTF-8</span>
+          <span>TypeScript React</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span>Ln 1, Col 1</span>
+          <span>🚀 Ready</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Floating Terminal Commands
+const TerminalCommands = () => {
+  const commands = [
+    "git commit -m 'Add new feature'",
+    "npm run build",
+    "docker compose up",
+    "python manage.py migrate",
+    "yarn test --coverage",
+  ];
+
+  return (
+    <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+      {commands.map((cmd, i) => (
         <motion.div
           key={i}
-          className="absolute text-2xl"
+          className="absolute font-mono text-green-400 text-sm bg-black/20 px-2 py-1 rounded border border-green-400/30"
           style={{
-            left: `${20 + i * 15}%`,
-            top: `${30 + (i % 3) * 20}%`,
+            left: `${10 + i * 18}%`,
+            top: `${20 + (i % 3) * 25}%`,
           }}
           animate={{
-            y: [0, -20, 0],
-            rotate: [0, 10, 0],
+            y: [0, -30, 0],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
-            duration: 6 + i,
+            duration: 8 + i,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.5,
+            delay: i * 1.2,
           }}
         >
-          {icon}
+          $ {cmd}
         </motion.div>
       ))}
     </div>
@@ -97,12 +228,12 @@ export const LightweightHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-12 px-4">
       {/* Background elements */}
-      <FloatingTechIcons />
+      <TerminalCommands />
 
       {/* Main content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
         {showContent && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -110,115 +241,95 @@ export const LightweightHero = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Name */}
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold gradient-text mb-6"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {personalInfo.name}
-            </motion.h1>
-
-            {/* Typing subtitle */}
+            {/* Welcome Header */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-xl md:text-2xl text-gray-300 mb-8"
+              className="text-center mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
             >
-              <TypewriterText
-                text="Computer Science Student & Full Stack Developer"
-                delay={1000}
-              />
+              <div className="inline-flex items-center gap-2 bg-[#007acc]/10 border border-[#007acc]/30 rounded-full px-4 py-2 mb-4">
+                <Terminal className="w-4 h-4 text-[#007acc]" />
+                <span className="text-[#007acc] text-sm font-medium">
+                  Welcome to my portfolio
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4">
+                <span className="text-[#569cd6]">const</span>{" "}
+                <span className="text-[#9cdcfe]">developer</span>{" "}
+                <span className="text-white">=</span>{" "}
+                <span className="text-[#ce9178]">"{personalInfo.name}"</span>
+              </h1>
+
+              <div className="text-lg sm:text-xl text-[#d4d4d4] font-mono">
+                <span className="text-[#c586c0]">// </span>
+                <VSCodeTypewriter
+                  text="Full Stack Developer & Computer Science Student"
+                  delay={400}
+                />
+              </div>
             </motion.div>
 
-            {/* Simple role display */}
+            {/* VS Code Interface */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mb-12"
+            >
+              <VSCodeInterface />
+            </motion.div>
+
+            {/* Quick Actions Terminal Style */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
+              className="bg-black/40 backdrop-blur-sm rounded-lg border border-gray-700/50 p-6 max-w-2xl mx-auto"
+            >
+              <div className="flex items-center gap-2 mb-4 pb-2 border-b border-gray-700/50">
+                <Terminal className="w-4 h-4 text-green-400" />
+                <span className="text-green-400 font-mono text-sm">
+                  Quick Actions Terminal
+                </span>
+              </div>
+
+              <div className="space-y-3 font-mono text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">$</span>
+                  <span className="text-gray-300">Available commands:</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 ml-4">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={scrollToContact}
+                    className="justify-start border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 font-mono text-xs"
+                  >
+                    <Mail className="mr-2 h-4 w-4" />
+                    ./contact
+                  </Button>
+
+                  <Button
+                    size="sm"
+                    onClick={downloadResume}
+                    className="justify-start bg-[#007acc] hover:bg-[#005a9e] text-white font-mono text-xs"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    ./download-resume
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Social links - GitHub style */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
-              className="flex flex-wrap justify-center gap-4 mb-8"
-            >
-              <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full">
-                <Brain className="w-4 h-4 text-blue-400" />
-                <span className="text-blue-400 text-sm font-semibold">
-                  Problem Solver
-                </span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
-                <Code2 className="w-4 h-4 text-purple-400" />
-                <span className="text-purple-400 text-sm font-semibold">
-                  Full Stack Dev
-                </span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full">
-                <Terminal className="w-4 h-4 text-cyan-400" />
-                <span className="text-cyan-400 text-sm font-semibold">
-                  CS Student
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Quick stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-8"
-            >
-              {[
-                { label: "Problems Solved", value: "250+" },
-                { label: "Projects Built", value: "15+" },
-                { label: "Years Learning", value: "3+" },
-                { label: "CGPA", value: "8.7" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-2xl font-bold text-white mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Action buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={scrollToContact}
-                className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 px-8 py-3 rounded-xl"
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Get In Touch
-              </Button>
-              <Button
-                size="lg"
-                onClick={downloadResume}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 px-8 py-3 rounded-xl"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </Button>
-            </motion.div>
-
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3 }}
-              className="flex justify-center gap-6"
+              className="flex justify-center gap-4 flex-wrap"
             >
               {socialLinks.map((link, index) => {
                 const iconMap = {
@@ -236,13 +347,14 @@ export const LightweightHero = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group"
-                    whileHover={{ scale: 1.1, y: -5 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <div
-                      className={`${link.color} p-4 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300`}
-                    >
-                      <Icon className="h-6 w-6" />
+                    <div className="flex items-center gap-2 bg-[#21262d] border border-[#30363d] rounded-lg px-4 py-3 hover:border-[#58a6ff] transition-all duration-300">
+                      <Icon className="h-5 w-5 text-[#f0f6fc]" />
+                      <span className="text-[#f0f6fc] text-sm font-medium">
+                        {link.name}
+                      </span>
                     </div>
                   </motion.a>
                 );
