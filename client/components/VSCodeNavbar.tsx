@@ -173,12 +173,12 @@ export const VSCodeNavbar = () => {
                 {tab.modified && (
                   <div className="w-2 h-2 bg-[#cccccc] rounded-full flex-shrink-0" />
                 )}
-                <button 
-                  className="ml-auto opacity-0 group-hover:opacity-100 hover:bg-[#3c3c3c] p-1 rounded"
+                <div
+                  className="ml-auto opacity-0 group-hover:opacity-100 hover:bg-[#3c3c3c] p-1 rounded cursor-pointer"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <X className="w-3 h-3" />
-                </button>
+                </div>
               </button>
             );
           })}
