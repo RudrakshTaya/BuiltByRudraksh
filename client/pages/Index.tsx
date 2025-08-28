@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { LightweightTechBackground } from "../components/LightweightTechBackground";
-import { LightweightNavbar } from "../components/LightweightNavbar";
+import { VSCodeNavbar } from "../components/VSCodeNavbar";
 import { LightweightHero } from "../components/LightweightHero";
 import { LightweightTerminal } from "../components/LightweightTerminal";
-import { About } from "../components/About";
-import { CSStrengths } from "../components/CSStrengths";
-import { HighTechCSE } from "../components/HighTechCSE";
-import { Projects } from "../components/Projects";
+import { ReadmeAbout } from "../components/ReadmeAbout";
+import { OOPStrengths } from "../components/OOPStrengths";
+import { GitHubProjects } from "../components/GitHubProjects";
 import { ProjectExperience } from "../components/ProjectExperience";
-import { GitHubStats } from "../components/GitHubStats";
-//import { Certifications } from "../components/Certifications";
-import { Contact } from "../components/Contact";
-import { Footer } from "../components/Footer";
+import { DatabaseStats } from "../components/DatabaseStats";
+import { APIContact } from "../components/APIContact";
+import { SystemFooter } from "../components/SystemFooter";
 
 
 export default function Index() {
