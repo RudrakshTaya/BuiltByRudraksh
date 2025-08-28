@@ -271,13 +271,13 @@ export const GitHubProjects = () => {
                               </p>
 
                               {/* Key Features */}
-                              {project.keyFeatures && (
+                              {project.highlights && (
                                 <div className="mb-3">
                                   <h5 className="text-[#e6edf3] text-sm font-medium mb-2">
                                     ✨ Key Features
                                   </h5>
                                   <ul className="space-y-1">
-                                    {project.keyFeatures.slice(0, 3).map((feature, featureIndex) => (
+                                    {project.highlights.slice(0, 3).map((feature, featureIndex) => (
                                       <li key={featureIndex} className="text-[#7d8590] text-sm flex items-start gap-2">
                                         <span className="text-[#238636] mt-0.5">•</span>
                                         <span>{feature}</span>
@@ -293,7 +293,7 @@ export const GitHubProjects = () => {
                                   🛠️ Technologies Used
                                 </h5>
                                 <div className="flex flex-wrap gap-1">
-                                  {project.technologies.map((tech, techIndex) => (
+                                  {project.tech.map((tech, techIndex) => (
                                     <span
                                       key={techIndex}
                                       className="bg-[#21262d] border border-[#30363d] text-[#e6edf3] text-xs px-2 py-1 rounded"
