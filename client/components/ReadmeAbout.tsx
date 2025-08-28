@@ -164,7 +164,9 @@ export const ReadmeAbout = () => {
                   {academicHighlights.map((highlight, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <span className="text-[#238636] mt-1">•</span>
-                      <span className="text-[#7d8590]">{highlight}</span>
+                      <span className="text-[#7d8590]">
+                        <strong>{highlight.title}:</strong> {highlight.detail}
+                      </span>
                     </li>
                   ))}
                 </ul>
