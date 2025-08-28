@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { LightweightTechBackground } from "../components/LightweightTechBackground";
-import { Navbar } from "../components/Navbar";
+import { LightweightNavbar } from "../components/LightweightNavbar";
 import { LightweightHero } from "../components/LightweightHero";
 import { LightweightTerminal } from "../components/LightweightTerminal";
 import { About } from "../components/About";
