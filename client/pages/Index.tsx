@@ -22,15 +22,33 @@ export default function Index() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-[#0d1117] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="w-16 h-16 border-4 border-neon-blue border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading portfolio...</p>
+          {/* Terminal Loading */}
+          <div className="bg-[#1e1e1e] border border-[#3c3c3c] rounded-lg p-6 max-w-md">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex gap-1">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#28ca42]"></div>
+              </div>
+              <span className="text-[#d4d4d4] text-sm font-mono ml-2">Terminal</span>
+            </div>
+            <div className="text-left font-mono text-sm space-y-2">
+              <div className="text-[#d4d4d4]">$ npm start</div>
+              <div className="text-[#6a9955]">Starting development server...</div>
+              <div className="text-[#6a9955]">Compiling components...</div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-[#4fc3f7] border-t-transparent rounded-full animate-spin" />
+                <span className="text-[#4fc3f7]">Loading portfolio...</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     );
