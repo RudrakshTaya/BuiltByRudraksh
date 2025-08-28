@@ -36,7 +36,7 @@ const VSCodeTypewriter = ({
           setCurrentIndex(currentIndex + 1);
         }
       },
-      delay + currentIndex * 80,
+      delay + currentIndex * 30,
     );
 
     return () => clearTimeout(timer);
@@ -156,7 +156,7 @@ const VSCodeInterface = () => {
           {/* Code */}
           <div className="flex-1">
             <pre className="text-[#d4d4d4] leading-6 whitespace-pre-wrap">
-              <VSCodeTypewriter text={codeContent[activeTab]} delay={500} />
+              <VSCodeTypewriter text={codeContent[activeTab]} delay={200} />
             </pre>
           </div>
         </div>
@@ -266,7 +266,7 @@ export const LightweightHero = () => {
                 <span className="text-[#c586c0]">// </span>
                 <VSCodeTypewriter
                   text="Full Stack Developer & Computer Science Student"
-                  delay={1000}
+                  delay={400}
                 />
               </div>
             </motion.div>
