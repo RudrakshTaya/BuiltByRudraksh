@@ -111,7 +111,7 @@ export const ReadmeAbout = () => {
 
               {/* Description */}
               <p className="text-[#7d8590] mb-6 leading-relaxed">
-                {personalInfo.bio.long}
+                {personalInfo.bio.detailed}
               </p>
 
               {/* Quick Stats */}
