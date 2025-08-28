@@ -169,7 +169,7 @@ export const GitHubProjects = () => {
 
                         {/* Tech Stack Tags */}
                         <div className="flex flex-wrap gap-2 mb-3">
-                          {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                          {project.tech.slice(0, 4).map((tech, techIndex) => (
                             <span
                               key={techIndex}
                               className="bg-[#21262d] border border-[#30363d] text-[#e6edf3] text-xs px-2 py-1 rounded"
@@ -177,9 +177,9 @@ export const GitHubProjects = () => {
                               {tech}
                             </span>
                           ))}
-                          {project.technologies.length > 4 && (
+                          {project.tech.length > 4 && (
                             <span className="text-[#7d8590] text-xs">
-                              +{project.technologies.length - 4} more
+                              +{project.tech.length - 4} more
                             </span>
                           )}
                         </div>
@@ -190,9 +190,9 @@ export const GitHubProjects = () => {
                           <div className="flex items-center gap-2">
                             <div
                               className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: getLanguageColor(project.technologies[0]) }}
+                              style={{ backgroundColor: getLanguageColor(project.tech[0]) }}
                             />
-                            <span>{project.technologies[0]}</span>
+                            <span>{project.tech[0]}</span>
                           </div>
 
                           {/* Stars */}
@@ -217,9 +217,9 @@ export const GitHubProjects = () => {
 
                       {/* Action Buttons */}
                       <div className="flex items-center gap-2 ml-4">
-                        {project.github && (
+                        {project.githubUrl && (
                           <a
-                            href={project.github}
+                            href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -229,9 +229,9 @@ export const GitHubProjects = () => {
                             <span className="hidden sm:inline">Code</span>
                           </a>
                         )}
-                        {project.live && (
+                        {project.liveUrl && (
                           <a
-                            href={project.live}
+                            href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
