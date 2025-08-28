@@ -64,9 +64,9 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Enhanced 3D Background with Strong Parallax */}
+      {/* Lightweight Tech Background */}
       <div className="fixed inset-0 z-0">
-        <Enhanced3DBackground />
+        <LightweightTechBackground />
       </div>
 
       {/* Performance Optimizer */}
