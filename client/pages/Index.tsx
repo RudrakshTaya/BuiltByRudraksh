@@ -104,8 +104,8 @@ export default function Index() {
         </section>
       </motion.main>
 
-      {/* Footer */}
-      <Footer />
+      {/* System Status Footer */}
+      <SystemFooter />
     </div>
   );
 }
