@@ -181,7 +181,7 @@ export const GitHubProjects = () => {
                           )}
                         </div>
 
-                        <p className="text-[#7d8590] text-sm mb-3 leading-relaxed">
+                        <p className="text-[#7d8590] text-sm mb-3 leading-relaxed break-words">
                           {project.description}
                         </p>
 
