@@ -164,7 +164,7 @@ export const GitHubProjects = () => {
                     }
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         {/* Repository Name and Description */}
                         <div className="flex items-center gap-3 mb-2">
                           <Icon className="w-5 h-5 text-[#7d8590]" />
