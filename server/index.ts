@@ -1,9 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { handleDemo } from "./routes/demo";
 import { handleContact } from "./routes/contact";
-import { handleProfile } from "./routes/profile";
 
 export async function createServer() {
   const app = express();
