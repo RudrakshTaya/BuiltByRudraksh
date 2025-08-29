@@ -52,9 +52,10 @@ export const handleContact: RequestHandler = async (req, res) => {
 
     await storeRecord({ id, name, email, message, timestamp });
 
-    const emailHtml = `<h2>New Contact</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${
-      message.replace(/\n/g, "<br/>")
-    }</p><p><small>${timestamp}</small></p>`;
+    const emailHtml = `<h2>New Contact</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message.replace(
+      /\n/g,
+      "<br/>",
+    )}</p><p><small>${timestamp}</small></p>`;
     const mail = await sendContactEmail({ html: emailHtml });
 
     const smsText = `New contact from ${name} <${email}>: ${
@@ -73,6 +74,8 @@ export const handleContact: RequestHandler = async (req, res) => {
     };
     return res.status(200).json(response);
   } catch (err: any) {
-    return res.status(500).json({ success: false, error: err?.message || "Server error" });
+    return res
+      .status(500)
+      .json({ success: false, error: err?.message || "Server error" });
   }
 };

@@ -17,8 +17,12 @@ export async function getDb(): Promise<Db> {
 }
 
 async function ensureIndexes(database: Db) {
-  await database.collection("contacts").createIndex({ email: 1, timestamp: -1 });
-  await database.collection("contact_intents").createIndex({ type: 1, timestamp: -1 });
+  await database
+    .collection("contacts")
+    .createIndex({ email: 1, timestamp: -1 });
+  await database
+    .collection("contact_intents")
+    .createIndex({ type: 1, timestamp: -1 });
 }
 
 export async function closeMongo() {
