@@ -200,7 +200,7 @@ print(response.json())`,
 
           <div className="grid lg:grid-cols-2 gap-0">
             {/* API Documentation */}
-            <div className="border-r border-[#30363d]">
+            <div className="lg:border-r border-[#30363d]">
               <div className="p-6">
                 {/* Endpoint Tabs */}
                 <div className="flex flex-wrap border border-[#30363d] rounded-lg overflow-hidden mb-6">
@@ -208,7 +208,7 @@ print(response.json())`,
                     <button
                       key={endpoint.method + endpoint.path}
                       onClick={() => setActiveEndpoint(endpoint.method)}
-                      className={`flex-1 px-4 py-3 text-sm font-mono transition-colors ${
+                      className={`flex-1 px-3 py-2 text-xs sm:text-sm font-mono transition-colors ${
                         activeEndpoint === endpoint.method
                           ? "bg-[#238636] text-white"
                           : "bg-[#21262d] text-[#7d8590] hover:text-[#e6edf3] hover:bg-[#30363d]"
@@ -293,7 +293,7 @@ print(response.json())`,
                           200 OK
                         </span>
                       </div>
-                      <div className="p-4 font-mono text-sm">
+                      <div className="p-4 font-mono text-sm overflow-x-auto">
                         <pre className="text-[#e6edf3]">
                           {currentEndpoint.method === "POST"
                             ? `{
