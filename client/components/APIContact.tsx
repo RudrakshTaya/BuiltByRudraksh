@@ -34,7 +34,11 @@ export const APIContact = () => {
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const [health, setHealth] = useState<{ mongo?: boolean; smtp?: boolean; sms?: boolean } | null>(null);
+  const [health, setHealth] = useState<{
+    mongo?: boolean;
+    smtp?: boolean;
+    sms?: boolean;
+  } | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -426,13 +430,25 @@ print(response.json())`,
               <div className="p-6">
                 {health && (
                   <div className="mb-4 flex flex-wrap gap-3 text-xs">
-                    <span className={health.mongo ? "text-green-400" : "text-red-400"}>
+                    <span
+                      className={
+                        health.mongo ? "text-green-400" : "text-red-400"
+                      }
+                    >
                       MongoDB: {health.mongo ? "Connected" : "Not connected"}
                     </span>
-                    <span className={health.smtp ? "text-green-400" : "text-yellow-400"}>
+                    <span
+                      className={
+                        health.smtp ? "text-green-400" : "text-yellow-400"
+                      }
+                    >
                       SMTP: {health.smtp ? "Configured" : "Not configured"}
                     </span>
-                    <span className={health.sms ? "text-green-400" : "text-yellow-400"}>
+                    <span
+                      className={
+                        health.sms ? "text-green-400" : "text-yellow-400"
+                      }
+                    >
                       SMS: {health.sms ? "Configured" : "Not configured"}
                     </span>
                   </div>

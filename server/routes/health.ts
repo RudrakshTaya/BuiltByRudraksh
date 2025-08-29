@@ -13,7 +13,10 @@ export const handleHealth: RequestHandler = async (_req, res) => {
   } = {
     ok: true,
     services: {
-      mongo: { configured: !!(process.env.MONGODB_URI && process.env.MONGODB_DB), connected: false },
+      mongo: {
+        configured: !!(process.env.MONGODB_URI && process.env.MONGODB_DB),
+        connected: false,
+      },
       smtp: {
         configured: !!(
           process.env.SMTP_HOST &&
