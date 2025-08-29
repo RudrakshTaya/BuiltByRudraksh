@@ -11,17 +11,8 @@ export async function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Example API routes
-  app.get("/api/ping", (_req, res) => {
-    const ping = process.env.PING_MESSAGE ?? "ping";
-    res.json({ message: ping });
-  });
-
-  app.get("/api/demo", handleDemo);
-
-  // Contact & profile routes
+  // Contact-only backend
   app.post("/api/contact", handleContact);
-  app.get("/api/profile", handleProfile);
   app.post(
     "/api/contact/intent",
     (await import("./routes/contact-intent")).handleContactIntent,
