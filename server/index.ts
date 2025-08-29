@@ -29,5 +29,7 @@ export async function createServer() {
     (await import("./routes/contact-intent")).handleContactIntent,
   );
 
+  app.get("/api/health", (await import("./routes/health")).handleHealth);
+
   return app;
 }
