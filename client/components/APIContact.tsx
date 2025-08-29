@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Send,
@@ -34,6 +34,25 @@ export const APIContact = () => {
     type: "success" | "error";
     message: string;
   } | null>(null);
+  const [health, setHealth] = useState<{ mongo?: boolean; smtp?: boolean; sms?: boolean } | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch("/api/health")
+      .then((r) => r.json())
+      .then((data) => {
+        if (!mounted) return;
+        setHealth({
+          mongo: Boolean(data?.services?.mongo?.connected),
+          smtp: Boolean(data?.services?.smtp?.configured),
+          sms: Boolean(data?.services?.sms?.configured),
+        });
+      })
+      .catch(() => setHealth(null));
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const endpoints = [
     {
@@ -405,6 +424,19 @@ print(response.json())`,
             {/* Interactive Form */}
             <div className="bg-[#161b22] min-w-0">
               <div className="p-6">
+                {health && (
+                  <div className="mb-4 flex flex-wrap gap-3 text-xs">
+                    <span className={health.mongo ? "text-green-400" : "text-red-400"}>
+                      MongoDB: {health.mongo ? "Connected" : "Not connected"}
+                    </span>
+                    <span className={health.smtp ? "text-green-400" : "text-yellow-400"}>
+                      SMTP: {health.smtp ? "Configured" : "Not configured"}
+                    </span>
+                    <span className={health.sms ? "text-green-400" : "text-yellow-400"}>
+                      SMS: {health.sms ? "Configured" : "Not configured"}
+                    </span>
+                  </div>
+                )}
                 <h3 className="text-[#e6edf3] font-semibold text-lg mb-6 flex items-center gap-2">
                   <Play className="w-5 h-5 text-[#58a6ff]" />
                   Try it out
