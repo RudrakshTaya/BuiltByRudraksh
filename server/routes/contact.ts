@@ -68,10 +68,7 @@ export const handleContact: RequestHandler = async (req, res) => {
     // Fire-and-forget notifications
     const subject = `New portfolio contact from ${name}`;
     const text = `Time: ${timestamp}\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    void Promise.allSettled([
-      sendEmailSMTP({ subject, text }),
-      sendSMS(text),
-    ]);
+    void Promise.allSettled([sendEmailSMTP({ subject, text }), sendSMS(text)]);
 
     const response: ContactResponse = {
       success: true,
