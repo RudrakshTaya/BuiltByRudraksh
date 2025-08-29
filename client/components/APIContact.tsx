@@ -206,7 +206,7 @@ print(response.json())`,
 
           <div className="grid lg:grid-cols-2 gap-0">
             {/* API Documentation */}
-            <div className="lg:border-r border-[#30363d]">
+            <div className="lg:border-r border-[#30363d] min-w-0">
               <div className="p-6">
                 {/* Endpoint Tabs */}
                 <div className="flex flex-wrap border border-[#30363d] rounded-lg overflow-hidden mb-6">
