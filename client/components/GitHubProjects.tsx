@@ -168,7 +168,7 @@ export const GitHubProjects = () => {
                         {/* Repository Name and Description */}
                         <div className="flex items-center gap-3 mb-2">
                           <Icon className="w-5 h-5 text-[#7d8590]" />
-                          <h3 className="text-[#58a6ff] font-semibold hover:underline">
+                          <h3 className="text-[#58a6ff] font-semibold hover:underline break-words">
                             {project.title}
                           </h3>
                           <span className="bg-[#21262d] border border-[#30363d] text-[#7d8590] text-xs px-2 py-0.5 rounded-full">
