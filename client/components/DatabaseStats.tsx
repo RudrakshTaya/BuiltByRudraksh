@@ -362,7 +362,7 @@ export const DatabaseStats = () => {
             </div>
 
             {/* Middle Panel - Schema */}
-            <div className="bg-[#1e1e1e] border-r border-[#3c3c3c]">
+            <div className="bg-[#1e1e1e] border-r border-[#3c3c3c] min-w-0">
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[#d4d4d4] font-medium">
