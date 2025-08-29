@@ -448,7 +448,7 @@ export const DatabaseStats = () => {
             </div>
 
             {/* Right Panel - Query & Results */}
-            <div className="bg-[#1e1e1e]">
+            <div className="bg-[#1e1e1e] min-w-0">
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[#d4d4d4] font-medium">Query Editor</h3>
