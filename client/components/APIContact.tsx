@@ -442,6 +442,19 @@ print(response.json())`,
                       />
                     </div>
 
+                    {status && (
+                      <div
+                        className={`rounded p-3 text-sm ${
+                          status.type === "success"
+                            ? "bg-green-900/40 border border-green-700 text-green-300"
+                            : "bg-red-900/40 border border-red-700 text-red-300"
+                        }`}
+                        role="status"
+                        aria-live="polite"
+                      >
+                        {status.message}
+                      </div>
+                    )}
                     <Button
                       type="submit"
                       disabled={isSubmitting}
