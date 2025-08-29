@@ -30,6 +30,7 @@ export const APIContact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
   const endpoints = [
     {
