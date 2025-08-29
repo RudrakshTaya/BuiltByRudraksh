@@ -158,7 +158,11 @@ print(response.json())`,
       if (!res.ok || !data?.success) {
         throw new Error(data?.error || "Failed to send message");
       }
-      setStatus({ type: "success", message: "Message sent successfully" });
+      const parts: string[] = [];
+      if (data.stored) parts.push("stored");
+      if (data.emailSent) parts.push("email sent");
+      if (data.smsSent) parts.push("sms sent");
+      setStatus({ type: "success", message: `Success: ${parts.join(", ")}` });
       setFormData({ name: "", email: "", message: "" });
     } catch (err: any) {
       setStatus({
