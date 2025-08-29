@@ -2,8 +2,9 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleContact } from "./routes/contact";
+import { handleContactIntent } from "./routes/contact-intent";
 
-export async function createServer() {
+export function createServer() {
   const app = express();
 
   // Middleware
@@ -13,10 +14,7 @@ export async function createServer() {
 
   // Contact-only backend
   app.post("/api/contact", handleContact);
-  app.post(
-    "/api/contact/intent",
-    (await import("./routes/contact-intent")).handleContactIntent,
-  );
+  app.post("/api/contact/intent", handleContactIntent);
 
   return app;
 }
