@@ -191,7 +191,7 @@ print(response.json())`,
             <div className="border-r border-[#30363d]">
               <div className="p-6">
                 {/* Endpoint Tabs */}
-                <div className="flex border border-[#30363d] rounded-lg overflow-hidden mb-6">
+                <div className="flex flex-wrap border border-[#30363d] rounded-lg overflow-hidden mb-6">
                   {endpoints.map((endpoint) => (
                     <button
                       key={endpoint.method + endpoint.path}
