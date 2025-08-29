@@ -320,7 +320,7 @@ export const DatabaseStats = () => {
 
           <div className="grid lg:grid-cols-3 gap-0">
             {/* Left Panel - Tables */}
-            <div className="bg-[#252526] border-r border-[#3c3c3c]">
+            <div className="bg-[#252526] border-r border-[#3c3c3c] min-w-0">
               <div className="p-4">
                 <div className="flex items-center gap-2 mb-4 text-[#d4d4d4] font-medium">
                   <Server className="w-4 h-4" />
@@ -362,7 +362,7 @@ export const DatabaseStats = () => {
             </div>
 
             {/* Middle Panel - Schema */}
-            <div className="bg-[#1e1e1e] border-r border-[#3c3c3c]">
+            <div className="bg-[#1e1e1e] border-r border-[#3c3c3c] min-w-0">
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[#d4d4d4] font-medium">
@@ -448,7 +448,7 @@ export const DatabaseStats = () => {
             </div>
 
             {/* Right Panel - Query & Results */}
-            <div className="bg-[#1e1e1e]">
+            <div className="bg-[#1e1e1e] min-w-0">
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[#d4d4d4] font-medium">Query Editor</h3>

@@ -75,7 +75,7 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
       {/* Lightweight Tech Background */}
       <div className="fixed inset-0 z-0">
         <LightweightTechBackground />
@@ -89,7 +89,7 @@ export default function Index() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-20 md:pt-24 relative z-30"
+        className="pt-20 md:pt-24 relative z-30 overflow-x-hidden"
       >
         {/* Hero Section */}
         <section id="home" className="relative z-40 px-2 md:px-4">

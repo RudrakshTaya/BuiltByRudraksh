@@ -164,11 +164,11 @@ export const GitHubProjects = () => {
                     }
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         {/* Repository Name and Description */}
                         <div className="flex items-center gap-3 mb-2">
                           <Icon className="w-5 h-5 text-[#7d8590]" />
-                          <h3 className="text-[#58a6ff] font-semibold hover:underline">
+                          <h3 className="text-[#58a6ff] font-semibold hover:underline break-words">
                             {project.title}
                           </h3>
                           <span className="bg-[#21262d] border border-[#30363d] text-[#7d8590] text-xs px-2 py-0.5 rounded-full">
@@ -181,7 +181,7 @@ export const GitHubProjects = () => {
                           )}
                         </div>
 
-                        <p className="text-[#7d8590] text-sm mb-3 leading-relaxed">
+                        <p className="text-[#7d8590] text-sm mb-3 leading-relaxed break-words">
                           {project.description}
                         </p>
 
@@ -293,7 +293,7 @@ export const GitHubProjects = () => {
                               <h4 className="text-[#e6edf3] font-semibold mb-2">
                                 📋 Project Overview
                               </h4>
-                              <p className="text-[#7d8590] text-sm mb-3 leading-relaxed">
+                              <p className="text-[#7d8590] text-sm mb-3 leading-relaxed break-words">
                                 {project.longDescription || project.description}
                               </p>
 

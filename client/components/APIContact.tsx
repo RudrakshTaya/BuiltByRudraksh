@@ -206,7 +206,7 @@ print(response.json())`,
 
           <div className="grid lg:grid-cols-2 gap-0">
             {/* API Documentation */}
-            <div className="lg:border-r border-[#30363d]">
+            <div className="lg:border-r border-[#30363d] min-w-0">
               <div className="p-6">
                 {/* Endpoint Tabs */}
                 <div className="flex flex-wrap border border-[#30363d] rounded-lg overflow-hidden mb-6">
@@ -403,7 +403,7 @@ print(response.json())`,
             </div>
 
             {/* Interactive Form */}
-            <div className="bg-[#161b22]">
+            <div className="bg-[#161b22] min-w-0">
               <div className="p-6">
                 <h3 className="text-[#e6edf3] font-semibold text-lg mb-6 flex items-center gap-2">
                   <Play className="w-5 h-5 text-[#58a6ff]" />
