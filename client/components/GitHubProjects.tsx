@@ -293,7 +293,7 @@ export const GitHubProjects = () => {
                               <h4 className="text-[#e6edf3] font-semibold mb-2">
                                 📋 Project Overview
                               </h4>
-                              <p className="text-[#7d8590] text-sm mb-3 leading-relaxed">
+                              <p className="text-[#7d8590] text-sm mb-3 leading-relaxed break-words">
                                 {project.longDescription || project.description}
                               </p>
 
