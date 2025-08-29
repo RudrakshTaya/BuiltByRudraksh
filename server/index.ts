@@ -24,7 +24,10 @@ export function createServer() {
   // Contact & profile routes
   app.post("/api/contact", handleContact);
   app.get("/api/profile", handleProfile);
-  app.post("/api/contact/intent", (await import("./routes/contact-intent")).handleContactIntent);
+  app.post(
+    "/api/contact/intent",
+    (await import("./routes/contact-intent")).handleContactIntent,
+  );
 
   return app;
 }

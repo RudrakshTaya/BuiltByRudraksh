@@ -30,7 +30,10 @@ export const APIContact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const endpoints = [
     {
@@ -107,36 +110,36 @@ response = requests.get("https://rudrakshtaya.dev/api/profile")
 print(response.json())`,
       },
     },
-//     {
-//       method: "GET",
-//       path: "/api/projects",
-//       description: "Retrieve list of projects",
-//       parameters: [
-//         {
-//           name: "category",
-//           type: "string",
-//           required: false,
-//           description: "Filter by project category",
-//         },
-//         {
-//           name: "limit",
-//           type: "number",
-//           required: false,
-//           description: "Number of projects to return",
-//         },
-//       ],
-//       example: {
-//         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
-//         javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
-//   .then(response => response.json())
-//   .then(data => console.log(data));`,
-//         python: `import requests
+    //     {
+    //       method: "GET",
+    //       path: "/api/projects",
+    //       description: "Retrieve list of projects",
+    //       parameters: [
+    //         {
+    //           name: "category",
+    //           type: "string",
+    //           required: false,
+    //           description: "Filter by project category",
+    //         },
+    //         {
+    //           name: "limit",
+    //           type: "number",
+    //           required: false,
+    //           description: "Number of projects to return",
+    //         },
+    //       ],
+    //       example: {
+    //         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
+    //         javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
+    //   .then(response => response.json())
+    //   .then(data => console.log(data));`,
+    //         python: `import requests
 
-// params = {"category": "fullstack", "limit": 5}
-// response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
-// print(response.json())`,
-//       },
-//     },
+    // params = {"category": "fullstack", "limit": 5}
+    // response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
+    // print(response.json())`,
+    //       },
+    //     },
   ];
 
   const [activeLanguage, setActiveLanguage] = useState("javascript");
@@ -158,7 +161,10 @@ print(response.json())`,
       setStatus({ type: "success", message: "Message sent successfully" });
       setFormData({ name: "", email: "", message: "" });
     } catch (err: any) {
-      setStatus({ type: "error", message: err?.message || "Something went wrong" });
+      setStatus({
+        type: "error",
+        message: err?.message || "Something went wrong",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -496,8 +502,13 @@ print(response.json())`,
                     <a
                       href={`mailto:${personalInfo.email}`}
                       onClick={() => {
-                        const payload = { type: "email", value: personalInfo.email };
-                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        const payload = {
+                          type: "email",
+                          value: personalInfo.email,
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
                         navigator.sendBeacon("/api/contact/intent", blob);
                       }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
@@ -519,8 +530,13 @@ print(response.json())`,
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => {
-                        const payload = { type: "github", value: "https://github.com/rudrakshtaya" };
-                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        const payload = {
+                          type: "github",
+                          value: "https://github.com/rudrakshtaya",
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
                         navigator.sendBeacon("/api/contact/intent", blob);
                       }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
@@ -542,8 +558,13 @@ print(response.json())`,
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => {
-                        const payload = { type: "linkedin", value: "https://linkedin.com/in/rudrakshtaya" };
-                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        const payload = {
+                          type: "linkedin",
+                          value: "https://linkedin.com/in/rudrakshtaya",
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
                         navigator.sendBeacon("/api/contact/intent", blob);
                       }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"

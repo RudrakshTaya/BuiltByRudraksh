@@ -29,4 +29,4 @@ export const handleContactIntent: RequestHandler = async (req, res) => {
   existing.push(record);
   await fs.writeFile(filePath, JSON.stringify(existing, null, 2), "utf8");
   return res.json({ success: true });
-}
+};
