@@ -495,6 +495,11 @@ print(response.json())`,
                   <div className="space-y-3">
                     <a
                       href={`mailto:${personalInfo.email}`}
+                      onClick={() => {
+                        const payload = { type: "email", value: personalInfo.email };
+                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Mail className="w-5 h-5 text-[#58a6ff]" />
@@ -513,6 +518,11 @@ print(response.json())`,
                       href="https://github.com"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        const payload = { type: "github", value: "https://github.com/rudrakshtaya" };
+                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Github className="w-5 h-5 text-[#58a6ff]" />
@@ -531,6 +541,11 @@ print(response.json())`,
                       href="https://linkedin.com"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        const payload = { type: "linkedin", value: "https://linkedin.com/in/rudrakshtaya" };
+                        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Linkedin className="w-5 h-5 text-[#58a6ff]" />
