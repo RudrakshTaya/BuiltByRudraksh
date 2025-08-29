@@ -143,13 +143,24 @@ print(response.json())`,
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Message sent successfully! (Demo mode)");
+    setStatus(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || "Failed to send message");
+      }
+      setStatus({ type: "success", message: "Message sent successfully" });
       setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+    } catch (err: any) {
+      setStatus({ type: "error", message: err?.message || "Something went wrong" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyCode = (code: string, codeId: string) => {
