@@ -533,7 +533,25 @@ export const csTopics = [
 
 // PROJECTS DATA
 // =============================================================================
-export const projects = [
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  category: string;
+  type: string;
+  tech: string[];
+  languages: string[];
+  liveUrl: string | null;
+  githubUrl: string | null;
+  featured: boolean;
+  stats: { stars: number; forks: number; views: number };
+  highlights?: string[];
+  complexity: string;
+  duration: string;
+  longDescription?: string;
+};
+export const projects: Project[] = [
   // Full Stack / Major Projects
   {
     id: 1,
