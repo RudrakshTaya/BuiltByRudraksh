@@ -533,7 +533,25 @@ export const csTopics = [
 
 // PROJECTS DATA
 // =============================================================================
-export const projects = [
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  category: string;
+  type: string;
+  tech: string[];
+  languages: string[];
+  liveUrl: string | null;
+  githubUrl: string | null;
+  featured: boolean;
+  stats: { stars: number; forks: number; views: number };
+  highlights?: string[];
+  complexity: string;
+  duration: string;
+  longDescription?: string;
+};
+export const projects: Project[] = [
   // Full Stack / Major Projects
   {
     id: 1,
@@ -753,7 +771,6 @@ export const projects = [
   },
 ];
 
-
 // PROJECT EXPERIENCE DATA
 // =============================================================================
 export const projectExperience = [
@@ -874,7 +891,8 @@ export const githubStats = {
   pinnedRepos: [
     {
       name: "Ecommerce-sellerDashboard",
-      description: "Seller dashboard with inventory, orders, and analytics built with TypeScript and MERN stack.",
+      description:
+        "Seller dashboard with inventory, orders, and analytics built with TypeScript and MERN stack.",
       language: "TypeScript",
       stars: 1,
       forks: 0,
@@ -883,7 +901,8 @@ export const githubStats = {
     },
     {
       name: "BuiltByRudraksh",
-      description: "Personal portfolio website showcasing projects and skills using React + TypeScript.",
+      description:
+        "Personal portfolio website showcasing projects and skills using React + TypeScript.",
       language: "TypeScript",
       stars: 0,
       forks: 0,
@@ -892,7 +911,8 @@ export const githubStats = {
     },
     {
       name: "flex-it-out-backend",
-      description: "Backend for AI-powered fitness platform with real-time activity recognition and JWT auth.",
+      description:
+        "Backend for AI-powered fitness platform with real-time activity recognition and JWT auth.",
       language: "JavaScript",
       stars: 1,
       forks: 0,
@@ -901,7 +921,8 @@ export const githubStats = {
     },
     {
       name: "Face-Recognition-Sytem",
-      description: "Face detection and recognition system using Python and OpenCV.",
+      description:
+        "Face detection and recognition system using Python and OpenCV.",
       language: "Python",
       stars: 1,
       forks: 0,
@@ -910,7 +931,8 @@ export const githubStats = {
     },
     {
       name: "Ecommerce-Website",
-      description: "Frontend e-commerce website built using JavaScript, HTML, and CSS.",
+      description:
+        "Frontend e-commerce website built using JavaScript, HTML, and CSS.",
       language: "JavaScript",
       stars: 1,
       forks: 0,
@@ -919,7 +941,8 @@ export const githubStats = {
     },
     {
       name: "Voice_Assistance-using-PYTHON",
-      description: "Voice assistant with speech recognition and task automation.",
+      description:
+        "Voice assistant with speech recognition and task automation.",
       language: "Python",
       stars: 1,
       forks: 0,
@@ -927,7 +950,6 @@ export const githubStats = {
       url: "https://github.com/RudrakshTaya/Voice_Assistance-using-PYTHON",
     },
   ],
-  
 };
 
 // LEETCODE STATS DATA

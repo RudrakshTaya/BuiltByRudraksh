@@ -24,7 +24,7 @@ import {
 import { projects } from "../data/portfolioData";
 
 export const GitHubProjects = () => {
-  const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
+  const [selectedRepo, setSelectedRepo] = useState<number | null>(null);
   const [filter, setFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
