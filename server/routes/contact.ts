@@ -1,6 +1,8 @@
 import type { RequestHandler } from "express";
 import { z } from "zod";
 import crypto from "crypto";
+import path from "path";
+import { promises as fs } from "fs";
 import type { ContactRequest, ContactResponse } from "@shared/api";
 import { getDb } from "../lib/mongo";
 import { sendContactEmail } from "../services/mailer";
@@ -11,6 +13,27 @@ const contactSchema = z.object({
   email: z.string().email().max(320),
   message: z.string().min(1).max(5000),
 });
+
+async function storeRecord(record: any): Promise<void> {
+  if (process.env.MONGODB_URI) {
+    const db = await getDb();
+    await db.collection("contacts").insertOne({ _id: record.id, ...record });
+    return;
+  }
+  const dataDir = path.join(process.cwd(), "server", "data");
+  const filePath = path.join(dataDir, "contacts.json");
+  await fs.mkdir(dataDir, { recursive: true });
+  let existing: any[] = [];
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    existing = JSON.parse(raw);
+    if (!Array.isArray(existing)) existing = [];
+  } catch {
+    existing = [];
+  }
+  existing.push(record);
+  await fs.writeFile(filePath, JSON.stringify(existing, null, 2), "utf8");
+}
 
 export const handleContact: RequestHandler = async (req, res) => {
   try {
@@ -27,9 +50,7 @@ export const handleContact: RequestHandler = async (req, res) => {
     const id = `msg_${crypto.randomUUID()}`;
     const timestamp = new Date().toISOString();
 
-    const db = await getDb();
-    const doc = { _id: id, name, email, message, timestamp };
-    await db.collection("contacts").insertOne(doc);
+    await storeRecord({ id, name, email, message, timestamp });
 
     const emailHtml = `<h2>New Contact</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${
       message.replace(/\n/g, "<br/>")
