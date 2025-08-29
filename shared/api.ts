@@ -25,6 +25,9 @@ export interface ContactResponse {
   timestamp?: string;
   error?: string;
   issues?: unknown;
+  stored?: boolean;
+  emailSent?: boolean;
+  smsSent?: boolean;
 }
 
 // Profile API
