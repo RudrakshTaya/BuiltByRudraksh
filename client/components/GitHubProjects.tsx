@@ -163,7 +163,7 @@ export const GitHubProjects = () => {
                       setSelectedRepo(isSelected ? null : project.id)
                     }
                   >
-                    <div className="flex items-start justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                       <div className="flex-1">
                         {/* Repository Name and Description */}
                         <div className="flex items-center gap-3 mb-2">
@@ -203,7 +203,7 @@ export const GitHubProjects = () => {
                         </div>
 
                         {/* Repository Stats */}
-                        <div className="flex items-center gap-6 text-sm text-[#7d8590]">
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#7d8590]">
                           {/* Primary Language */}
                           <div className="flex items-center gap-2">
                             <div
@@ -241,7 +241,7 @@ export const GitHubProjects = () => {
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="flex items-center gap-2 ml-4">
+                      <div className="flex items-center gap-2 ml-0 sm:ml-4 shrink-0">
                         {project.githubUrl && (
                           <a
                             href={project.githubUrl}

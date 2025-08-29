@@ -10,3 +10,29 @@
 export interface DemoResponse {
   message: string;
 }
+
+// Contact API
+export interface ContactRequest {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface ContactResponse {
+  success: boolean;
+  message?: string;
+  id?: string;
+  timestamp?: string;
+  error?: string;
+  issues?: unknown;
+}
+
+// Profile API
+export interface ProfileResponse {
+  name: string;
+  title: string;
+  email: string;
+  skills: string[];
+  experience: string;
+  available: boolean;
+}

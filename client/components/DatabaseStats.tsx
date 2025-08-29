@@ -383,48 +383,50 @@ export const DatabaseStats = () => {
                 </div>
 
                 {/* Schema Table */}
-                <div className="bg-[#0c0c0c] border border-[#3c3c3c] rounded overflow-hidden">
-                  <table className="w-full text-xs">
-                    <thead className="bg-[#2d2d2d]">
-                      <tr>
-                        <th className="px-3 py-2 text-left text-[#d4d4d4] font-medium">
-                          Column
-                        </th>
-                        <th className="px-3 py-2 text-left text-[#d4d4d4] font-medium">
-                          Type
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {currentTable.schema.map((column, index) => (
-                        <motion.tr
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                          className="border-t border-[#3c3c3c] hover:bg-[#252526]"
-                        >
-                          <td className="px-3 py-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-[#dcdcaa]">
-                                {column.column}
-                              </span>
-                              {column.constraint.includes("PRIMARY KEY") && (
-                                <span className="bg-[#f9c23c] text-black text-xs px-1 rounded">
-                                  PK
+                <div className="overflow-x-auto">
+                  <div className="min-w-[480px] bg-[#0c0c0c] border border-[#3c3c3c] rounded overflow-hidden">
+                    <table className="w-full text-xs">
+                      <thead className="bg-[#2d2d2d]">
+                        <tr>
+                          <th className="px-3 py-2 text-left text-[#d4d4d4] font-medium">
+                            Column
+                          </th>
+                          <th className="px-3 py-2 text-left text-[#d4d4d4] font-medium">
+                            Type
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {currentTable.schema.map((column, index) => (
+                          <motion.tr
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                            className="border-t border-[#3c3c3c] hover:bg-[#252526]"
+                          >
+                            <td className="px-3 py-2">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[#dcdcaa]">
+                                  {column.column}
                                 </span>
-                              )}
-                            </div>
-                          </td>
-                          <td className="px-3 py-2">
-                            <span className={getTypeColor(column.type)}>
-                              {column.type}
-                            </span>
-                          </td>
-                        </motion.tr>
-                      ))}
-                    </tbody>
-                  </table>
+                                {column.constraint.includes("PRIMARY KEY") && (
+                                  <span className="bg-[#f9c23c] text-black text-xs px-1 rounded">
+                                    PK
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className="px-3 py-2">
+                              <span className={getTypeColor(column.type)}>
+                                {column.type}
+                              </span>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
                 {/* Quick Stats */}
@@ -514,46 +516,50 @@ export const DatabaseStats = () => {
                         </div>
                       </div>
                     ) : queryResult.length > 0 ? (
-                      <table className="w-full text-xs">
-                        <thead className="bg-[#252526] sticky top-0">
-                          <tr>
-                            {Object.keys(queryResult[0]).map((key) => (
-                              <th
-                                key={key}
-                                className="px-3 py-2 text-left text-[#d4d4d4] font-medium"
-                              >
-                                {key}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {queryResult.map((row, index) => (
-                            <motion.tr
-                              key={index}
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: index * 0.05 }}
-                              className="border-t border-[#3c3c3c] hover:bg-[#252526]"
-                            >
-                              {Object.values(row).map(
-                                (value: any, cellIndex) => (
-                                  <td
-                                    key={cellIndex}
-                                    className="px-3 py-2 text-[#cccccc]"
+                      <div className="overflow-x-auto">
+                        <div className="min-w-[480px]">
+                          <table className="w-full text-xs">
+                            <thead className="bg-[#252526] sticky top-0">
+                              <tr>
+                                {Object.keys(queryResult[0]).map((key) => (
+                                  <th
+                                    key={key}
+                                    className="px-3 py-2 text-left text-[#d4d4d4] font-medium"
                                   >
-                                    {typeof value === "boolean"
-                                      ? value
-                                        ? "✓"
-                                        : "✗"
-                                      : String(value)}
-                                  </td>
-                                ),
-                              )}
-                            </motion.tr>
-                          ))}
-                        </tbody>
-                      </table>
+                                    {key}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {queryResult.map((row, index) => (
+                                <motion.tr
+                                  key={index}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: index * 0.05 }}
+                                  className="border-t border-[#3c3c3c] hover:bg-[#252526]"
+                                >
+                                  {Object.values(row).map(
+                                    (value: any, cellIndex) => (
+                                      <td
+                                        key={cellIndex}
+                                        className="px-3 py-2 text-[#cccccc]"
+                                      >
+                                        {typeof value === "boolean"
+                                          ? value
+                                            ? "✓"
+                                            : "✗"
+                                          : String(value)}
+                                      </td>
+                                    ),
+                                  )}
+                                </motion.tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     ) : (
                       <div className="p-8 text-center text-[#969696] text-sm">
                         No results to display

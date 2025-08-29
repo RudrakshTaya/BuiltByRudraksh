@@ -30,6 +30,10 @@ export const APIContact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const endpoints = [
     {
@@ -106,36 +110,36 @@ response = requests.get("https://rudrakshtaya.dev/api/profile")
 print(response.json())`,
       },
     },
-//     {
-//       method: "GET",
-//       path: "/api/projects",
-//       description: "Retrieve list of projects",
-//       parameters: [
-//         {
-//           name: "category",
-//           type: "string",
-//           required: false,
-//           description: "Filter by project category",
-//         },
-//         {
-//           name: "limit",
-//           type: "number",
-//           required: false,
-//           description: "Number of projects to return",
-//         },
-//       ],
-//       example: {
-//         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
-//         javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
-//   .then(response => response.json())
-//   .then(data => console.log(data));`,
-//         python: `import requests
+    //     {
+    //       method: "GET",
+    //       path: "/api/projects",
+    //       description: "Retrieve list of projects",
+    //       parameters: [
+    //         {
+    //           name: "category",
+    //           type: "string",
+    //           required: false,
+    //           description: "Filter by project category",
+    //         },
+    //         {
+    //           name: "limit",
+    //           type: "number",
+    //           required: false,
+    //           description: "Number of projects to return",
+    //         },
+    //       ],
+    //       example: {
+    //         curl: `curl -X GET "https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5"`,
+    //         javascript: `fetch('https://rudrakshtaya.dev/api/projects?category=fullstack&limit=5')
+    //   .then(response => response.json())
+    //   .then(data => console.log(data));`,
+    //         python: `import requests
 
-// params = {"category": "fullstack", "limit": 5}
-// response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
-// print(response.json())`,
-//       },
-//     },
+    // params = {"category": "fullstack", "limit": 5}
+    // response = requests.get("https://rudrakshtaya.dev/api/projects", params=params)
+    // print(response.json())`,
+    //       },
+    //     },
   ];
 
   const [activeLanguage, setActiveLanguage] = useState("javascript");
@@ -143,13 +147,27 @@ print(response.json())`,
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Message sent successfully! (Demo mode)");
+    setStatus(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || "Failed to send message");
+      }
+      setStatus({ type: "success", message: "Message sent successfully" });
       setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+    } catch (err: any) {
+      setStatus({
+        type: "error",
+        message: err?.message || "Something went wrong",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyCode = (code: string, codeId: string) => {
@@ -188,15 +206,15 @@ print(response.json())`,
 
           <div className="grid lg:grid-cols-2 gap-0">
             {/* API Documentation */}
-            <div className="border-r border-[#30363d]">
+            <div className="lg:border-r border-[#30363d]">
               <div className="p-6">
                 {/* Endpoint Tabs */}
-                <div className="flex border border-[#30363d] rounded-lg overflow-hidden mb-6">
+                <div className="flex flex-wrap border border-[#30363d] rounded-lg overflow-hidden mb-6">
                   {endpoints.map((endpoint) => (
                     <button
                       key={endpoint.method + endpoint.path}
                       onClick={() => setActiveEndpoint(endpoint.method)}
-                      className={`flex-1 px-4 py-3 text-sm font-mono transition-colors ${
+                      className={`flex-1 px-3 py-2 text-xs sm:text-sm font-mono transition-colors ${
                         activeEndpoint === endpoint.method
                           ? "bg-[#238636] text-white"
                           : "bg-[#21262d] text-[#7d8590] hover:text-[#e6edf3] hover:bg-[#30363d]"
@@ -281,7 +299,7 @@ print(response.json())`,
                           200 OK
                         </span>
                       </div>
-                      <div className="p-4 font-mono text-sm">
+                      <div className="p-4 font-mono text-sm overflow-x-auto">
                         <pre className="text-[#e6edf3]">
                           {currentEndpoint.method === "POST"
                             ? `{
@@ -442,6 +460,19 @@ print(response.json())`,
                       />
                     </div>
 
+                    {status && (
+                      <div
+                        className={`rounded p-3 text-sm ${
+                          status.type === "success"
+                            ? "bg-green-900/40 border border-green-700 text-green-300"
+                            : "bg-red-900/40 border border-red-700 text-red-300"
+                        }`}
+                        role="status"
+                        aria-live="polite"
+                      >
+                        {status.message}
+                      </div>
+                    )}
                     <Button
                       type="submit"
                       disabled={isSubmitting}
@@ -470,6 +501,16 @@ print(response.json())`,
                   <div className="space-y-3">
                     <a
                       href={`mailto:${personalInfo.email}`}
+                      onClick={() => {
+                        const payload = {
+                          type: "email",
+                          value: personalInfo.email,
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Mail className="w-5 h-5 text-[#58a6ff]" />
@@ -488,6 +529,16 @@ print(response.json())`,
                       href="https://github.com"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        const payload = {
+                          type: "github",
+                          value: "https://github.com/rudrakshtaya",
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Github className="w-5 h-5 text-[#58a6ff]" />
@@ -506,6 +557,16 @@ print(response.json())`,
                       href="https://linkedin.com"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        const payload = {
+                          type: "linkedin",
+                          value: "https://linkedin.com/in/rudrakshtaya",
+                        };
+                        const blob = new Blob([JSON.stringify(payload)], {
+                          type: "application/json",
+                        });
+                        navigator.sendBeacon("/api/contact/intent", blob);
+                      }}
                       className="flex items-center gap-3 p-3 bg-[#0d1117] border border-[#30363d] rounded hover:border-[#58a6ff] transition-colors group"
                     >
                       <Linkedin className="w-5 h-5 text-[#58a6ff]" />
