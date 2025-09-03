@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { personalInfo } from "../data/portfolioData";
+import { apiUrl } from "@/lib/api";
 
 export const APIContact = () => {
   const [activeEndpoint, setActiveEndpoint] = useState("POST");
@@ -42,7 +43,7 @@ export const APIContact = () => {
 
   useEffect(() => {
     let mounted = true;
-    fetch("/api/health")
+    fetch(apiUrl("/api/health"))
       .then((r) => r.json())
       .then((data) => {
         if (!mounted) return;
@@ -172,7 +173,7 @@ print(response.json())`,
     setIsSubmitting(true);
     setStatus(null);
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -1,26 +1,32 @@
 import path from "path";
 import { createServer } from "./index";
-import  express from "express";
+import express from "express";
+import fs from "fs";
 
 const app = await createServer();
 const port = process.env.PORT || 3000;
 
-// In production, serve the built SPA files
+// In production, serve the built SPA files if present; otherwise run API-only
 const __dirname = import.meta.dirname;
 const distPath = path.join(__dirname, "../spa");
+const spaExists = fs.existsSync(distPath);
 
-// Serve static files
-await app.use(express.static(distPath));
+if (spaExists) {
+  // Serve static files
+  await app.use(express.static(distPath));
 
-// Handle React Router - serve index.html for all non-API routes
-await app.get("*", (req, res) => {
-  // Don't serve index.html for API routes
-  if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
-    return res.status(404).json({ error: "API endpoint not found" });
-  }
+  // Handle React Router - serve index.html for all non-API routes
+  await app.get("*", (req, res) => {
+    // Don't serve index.html for API routes
+    if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
+      return res.status(404).json({ error: "API endpoint not found" });
+    }
 
-  res.sendFile(path.join(distPath, "index.html"));
-});
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+} else {
+  console.log("SPA build not found; running API-only mode");
+}
 
 await app.listen(port, () => {
   console.log(`🚀 Fusion Starter server running on port ${port}`);
