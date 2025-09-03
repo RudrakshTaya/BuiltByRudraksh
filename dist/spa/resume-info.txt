@@ -1,0 +1,15 @@
+This is a placeholder for the resume file.
+
+In a real implementation, you would:
+1. Place your actual PDF resume file in this public folder
+2. Name it "resume-rudraksh-taya.pdf"
+3. The download functionality will automatically serve this file
+
+For now, the download button will attempt to download this file, but since it doesn't exist, 
+it will open a new tab instead (fallback behavior).
+
+To add your real resume:
+1. Export your resume as a PDF
+2. Name it "resume-rudraksh-taya.pdf"
+3. Place it in the public/ folder
+4. The download functionality will work automatically
