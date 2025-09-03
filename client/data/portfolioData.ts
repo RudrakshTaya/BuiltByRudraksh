@@ -597,12 +597,70 @@ export const projects: Project[] = [
     stats: { stars: 0, forks: 0, views: 210 },
     highlights: ["Responsive Design", "Projects Showcase", "Custom Animations"],
     complexity: "Medium",
-    duration: "3 weeks",
+    duration: "2 weeks",
   },
 
-  // Backend Projects
+  // Full Stack Project (CraftAura + Art-P merged)
   {
     id: 3,
+    title: "CraftAura E-Commerce Platform",
+    description:
+      "Full-stack e-commerce website where sellers can list products across multiple categories with built-in customization features for buyers.",
+    images: [
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400",
+    ],
+    category: "Full Stack",
+    type: "Major",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    languages: ["JavaScript"],
+    liveUrl: null,
+    githubUrl: "https://github.com/RudrakshTaya/CraftAura-Backend",
+    featured: true,
+    stats: { stars: 1, forks: 0, views: 190 },
+    highlights: [
+      "Multi-Category Product Selling",
+      "Customizable Products",
+      "User Authentication & Authorization",
+      "CRUD APIs with MongoDB",
+      "Interactive UI with Canvas Customization",
+    ],
+    complexity: "High",
+    duration: "1.5 months",
+  },
+
+  // Hackathon Project
+  {
+    id: 4,
+    title: "Flex-It-Out (Bajaj Hackathon Project)",
+    description:
+      "AI-powered fitness platform built during Bajaj Finserv Health Hackathon. Tracks workout reps, supports multiplayer challenges, and provides community features with chat and video integration.",
+    images: [
+      "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&h=400",
+    ],
+    category: "Full Stack",
+    type: "Major",
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "WebRTC", "Cloudinary"],
+    languages: ["JavaScript"],
+    liveUrl: null,
+    githubUrl: "https://github.com/RudrakshTaya/flex-it-out-backend",
+    featured: true,
+    stats: { stars: 1, forks: 0, views: 200 },
+    highlights: [
+      "Workout Repetition Tracking (AI-powered)",
+      "JWT Authentication",
+      "Community Groups",
+      "Real-time Chat & Video Chat (WebRTC)",
+      "Multiplayer Challenges",
+      "Cloudinary File Upload",
+    ],
+    complexity: "Very High",
+    duration: "2 months (Hackathon)",
+  },
+
+  // Backend Projects (other)
+  {
+    id: 5,
     title: "BFHL API",
     description:
       "REST API built for data classification and processing tasks with POST request handling and JSON response.",
@@ -618,52 +676,8 @@ export const projects: Project[] = [
     featured: false,
     stats: { stars: 0, forks: 0, views: 95 },
     highlights: ["POST Request Handling", "JSON Responses", "Error Handling"],
-    complexity: "Medium",
-    duration: "2 weeks",
-  },
-  {
-    id: 4,
-    title: "CraftAura Backend",
-    description:
-      "Backend service for CraftAura project with API endpoints, authentication, and database integration.",
-    images: [
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400",
-    ],
-    category: "Backend",
-    type: "Major",
-    tech: ["Node.js", "Express", "MongoDB"],
-    languages: ["JavaScript"],
-    liveUrl: null,
-    githubUrl: "https://github.com/RudrakshTaya/CraftAura-Backend",
-    featured: true,
-    stats: { stars: 1, forks: 0, views: 120 },
-    highlights: ["User Authentication", "CRUD APIs", "MongoDB Integration"],
-    complexity: "High",
-    duration: "1 month",
-  },
-  {
-    id: 5,
-    title: "Flex-It-Out Backend",
-    description:
-      "Backend for AI-powered fitness platform with real-time activity recognition, multiplayer challenges, and authentication.",
-    images: [
-      "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&h=400",
-    ],
-    category: "Backend",
-    type: "Major",
-    tech: ["Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
-    languages: ["JavaScript"],
-    liveUrl: null,
-    githubUrl: "https://github.com/RudrakshTaya/flex-it-out-backend",
-    featured: true,
-    stats: { stars: 1, forks: 0, views: 160 },
-    highlights: [
-      "JWT Authentication",
-      "Real-time Multiplayer API",
-      "Cloudinary File Upload",
-    ],
-    complexity: "High",
-    duration: "2 months",
+    complexity: "Easy",
+    duration: "24 hours",
   },
 
   // Frontend / Learning Projects
@@ -687,30 +701,10 @@ export const projects: Project[] = [
     complexity: "Low",
     duration: "2 weeks",
   },
-  {
-    id: 7,
-    title: "Art-P",
-    description:
-      "Creative art project built using JavaScript with interactive UI.",
-    images: [
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400",
-    ],
-    category: "Frontend",
-    type: "Minor",
-    tech: ["JavaScript", "HTML", "CSS"],
-    languages: ["JavaScript"],
-    liveUrl: null,
-    githubUrl: "https://github.com/RudrakshTaya/Art-P",
-    featured: false,
-    stats: { stars: 1, forks: 0, views: 70 },
-    highlights: ["Canvas Drawing", "Interactive Features"],
-    complexity: "Low",
-    duration: "1 week",
-  },
 
   // Python Projects
   {
-    id: 8,
+    id: 7,
     title: "Face Recognition System",
     description:
       "Python-based system for detecting and recognizing faces using OpenCV.",
@@ -730,7 +724,7 @@ export const projects: Project[] = [
     duration: "3 weeks",
   },
   {
-    id: 9,
+    id: 8,
     title: "Desktop Notifier",
     description:
       "Python application to display desktop notifications with customizable messages.",
@@ -750,7 +744,7 @@ export const projects: Project[] = [
     duration: "1 week",
   },
   {
-    id: 10,
+    id: 9,
     title: "Voice Assistance using Python",
     description:
       "Voice assistant capable of executing basic commands like opening apps, browsing, and searching.",
@@ -770,6 +764,7 @@ export const projects: Project[] = [
     duration: "2 weeks",
   },
 ];
+
 
 // PROJECT EXPERIENCE DATA
 // =============================================================================
