@@ -1,6 +1,6 @@
 import path from "path";
 import { createServer } from "./index";
-import  express from "express";
+import express from "express";
 import fs from "fs";
 
 const app = await createServer();
