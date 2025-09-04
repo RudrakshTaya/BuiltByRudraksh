@@ -41,6 +41,10 @@ export const APIContact = () => {
     sms?: boolean;
   } | null>(null);
 
+  const [profileResult, setProfileResult] = useState<any | null>(null);
+  const [profileLoading, setProfileLoading] = useState(false);
+  const [profileError, setProfileError] = useState<string | null>(null);
+
   useEffect(() => {
     let mounted = true;
     fetch(apiUrl("/api/health"))
@@ -58,6 +62,22 @@ export const APIContact = () => {
       mounted = false;
     };
   }, []);
+
+  const testProfile = async () => {
+    setProfileLoading(true);
+    setProfileError(null);
+    setProfileResult(null);
+    try {
+      const res = await fetch(apiUrl("/api/profile"));
+      const data = await res.json();
+      if (!res.ok) throw new Error("Request failed");
+      setProfileResult(data);
+    } catch (e: any) {
+      setProfileError(e?.message || "Failed to fetch profile");
+    } finally {
+      setProfileLoading(false);
+    }
+  };
 
   const endpoints = [
     {
@@ -85,14 +105,14 @@ export const APIContact = () => {
         },
       ],
       example: {
-        curl: `curl -X POST https://rudrakshtaya.dev/api/contact \\
+        curl: `curl -X POST https://builtbyrudrakshbackend.onrender.com/api/contact \\
   -H "Content-Type: application/json" \\
   -d '{
     "name": "John Doe",
     "email": "john@example.com",
     "message": "Hello! Let's collaborate on a project."
   }'`,
-        javascript: `fetch('https://rudrakshtaya.dev/api/contact', {
+        javascript: `fetch('https://builtbyrudrakshbackend.onrender.com/api/contact', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -107,7 +127,7 @@ export const APIContact = () => {
 .then(data => console.log(data));`,
         python: `import requests
 
-url = "https://rudrakshtaya.dev/api/contact"
+url = "https://builtbyrudrakshbackend.onrender.com/api/contact"
 data = {
     "name": "John Doe",
     "email": "john@example.com",
@@ -116,6 +136,16 @@ data = {
 
 response = requests.post(url, json=data)
 print(response.json())`,
+        postman: `Method: POST
+URL: https://builtbyrudrakshbackend.onrender.com/api/contact
+Headers:
+  Content-Type: application/json
+Body (raw, JSON):
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello! Let's collaborate on a project."
+}`,
       },
     },
     {
@@ -124,14 +154,16 @@ print(response.json())`,
       description: "Get Rudraksh's public profile information",
       parameters: [],
       example: {
-        curl: `curl -X GET https://rudrakshtaya.dev/api/profile`,
-        javascript: `fetch('https://rudrakshtaya.dev/api/profile')
+        curl: `curl -X GET https://builtbyrudrakshbackend.onrender.com/api/profile`,
+        javascript: `fetch('https://builtbyrudrakshbackend.onrender.com/api/profile')
   .then(response => response.json())
   .then(data => console.log(data));`,
         python: `import requests
 
-response = requests.get("https://rudrakshtaya.dev/api/profile")
+response = requests.get("https://builtbyrudrakshbackend.onrender.com/api/profile")
 print(response.json())`,
+        postman: `Method: GET
+URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
       },
     },
     //     {
@@ -276,6 +308,49 @@ print(response.json())`,
                     <p className="text-[#7d8590] text-sm">
                       {currentEndpoint.description}
                     </p>
+                    <div className="mt-3 text-xs text-[#c9d1d9] bg-[#0d1117] border border-[#30363d] rounded p-3">
+                      <div className="font-semibold mb-1">What it does</div>
+                      {currentEndpoint.method === "POST" ? (
+                        <ul className="list-disc ml-5 space-y-1">
+                          <li>Validates your name, email, and message.</li>
+                          <li>Saves the message securely to the database.</li>
+                          <li>
+                            Sends me both an email and an SMS notification.
+                          </li>
+                        </ul>
+                      ) : (
+                        <ul className="list-disc ml-5 space-y-1">
+                          <li>
+                            Returns my public profile as easy-to-use JSON.
+                          </li>
+                          <li>
+                            Great for integrations that need basic info quickly.
+                          </li>
+                        </ul>
+                      )}
+                      <div className="font-semibold mt-3 mb-1">How to use</div>
+                      {currentEndpoint.method === "POST" ? (
+                        <ul className="list-disc ml-5 space-y-1">
+                          <li>
+                            Use the form on the right to send a real message.
+                          </li>
+                          <li>
+                            Or copy the code example below and call the
+                            endpoint.
+                          </li>
+                        </ul>
+                      ) : (
+                        <ul className="list-disc ml-5 space-y-1">
+                          <li>
+                            Click "Run GET /api/profile" below to see a live
+                            response.
+                          </li>
+                          <li>
+                            Or copy a code example and use it in your app.
+                          </li>
+                        </ul>
+                      )}
+                    </div>
                   </div>
 
                   {/* Parameters */}
@@ -358,6 +433,36 @@ print(response.json())`,
                       </div>
                     </div>
                   </div>
+
+                  {currentEndpoint.method === "GET" &&
+                    currentEndpoint.path === "/api/profile" && (
+                      <div className="mb-6">
+                        <h4 className="text-[#e6edf3] font-medium mb-3">
+                          Try it
+                        </h4>
+                        <div className="bg-[#0d1117] border border-[#30363d] rounded p-4">
+                          <Button
+                            onClick={testProfile}
+                            disabled={profileLoading}
+                            className="bg-[#3fb950] hover:bg-[#2ea043] text-white"
+                          >
+                            {profileLoading
+                              ? "Loading..."
+                              : "Run GET /api/profile"}
+                          </Button>
+                          {profileError && (
+                            <div className="mt-3 text-sm text-red-400">
+                              {profileError}
+                            </div>
+                          )}
+                          {profileResult && (
+                            <pre className="mt-3 text-xs text-[#e6edf3] overflow-x-auto">
+                              {JSON.stringify(profileResult, null, 2)}
+                            </pre>
+                          )}
+                        </div>
+                      </div>
+                    )}
 
                   {/* Code Examples */}
                   <div>

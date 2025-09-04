@@ -18,12 +18,19 @@ export async function sendEmailSMTP(opts: {
   ) {
     return; // silently skip if SMTP not configured
   }
+
+  const isSendGrid = /sendgrid/i.test(SMTP_HOST);
+  const resolvedUser =
+    isSendGrid && SMTP_PASS?.startsWith("SG.") ? "apikey" : SMTP_USER;
+
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: Number(SMTP_PORT),
     secure: Number(SMTP_PORT) === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
+    auth: { user: resolvedUser, pass: SMTP_PASS },
+    requireTLS: Number(SMTP_PORT) === 587,
   });
+
   await transporter.sendMail({
     from: EMAIL_FROM,
     to: EMAIL_TO,
