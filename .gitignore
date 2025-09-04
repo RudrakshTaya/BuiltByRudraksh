@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-client/data
+
 *.local
 
 # Editor directories and files
@@ -28,3 +28,4 @@ client/data
 .env.local
 .env.*.local
 
+/server/data
