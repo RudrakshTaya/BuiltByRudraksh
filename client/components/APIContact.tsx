@@ -314,24 +314,40 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
                         <ul className="list-disc ml-5 space-y-1">
                           <li>Validates your name, email, and message.</li>
                           <li>Saves the message securely to the database.</li>
-                          <li>Sends me both an email and an SMS notification.</li>
+                          <li>
+                            Sends me both an email and an SMS notification.
+                          </li>
                         </ul>
                       ) : (
                         <ul className="list-disc ml-5 space-y-1">
-                          <li>Returns my public profile as easy-to-use JSON.</li>
-                          <li>Great for integrations that need basic info quickly.</li>
+                          <li>
+                            Returns my public profile as easy-to-use JSON.
+                          </li>
+                          <li>
+                            Great for integrations that need basic info quickly.
+                          </li>
                         </ul>
                       )}
                       <div className="font-semibold mt-3 mb-1">How to use</div>
                       {currentEndpoint.method === "POST" ? (
                         <ul className="list-disc ml-5 space-y-1">
-                          <li>Use the form on the right to send a real message.</li>
-                          <li>Or copy the code example below and call the endpoint.</li>
+                          <li>
+                            Use the form on the right to send a real message.
+                          </li>
+                          <li>
+                            Or copy the code example below and call the
+                            endpoint.
+                          </li>
                         </ul>
                       ) : (
                         <ul className="list-disc ml-5 space-y-1">
-                          <li>Click "Run GET /api/profile" below to see a live response.</li>
-                          <li>Or copy a code example and use it in your app.</li>
+                          <li>
+                            Click "Run GET /api/profile" below to see a live
+                            response.
+                          </li>
+                          <li>
+                            Or copy a code example and use it in your app.
+                          </li>
                         </ul>
                       )}
                     </div>
@@ -418,22 +434,35 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
                     </div>
                   </div>
 
-                  {currentEndpoint.method === "GET" && currentEndpoint.path === "/api/profile" && (
-                    <div className="mb-6">
-                      <h4 className="text-[#e6edf3] font-medium mb-3">Try it</h4>
-                      <div className="bg-[#0d1117] border border-[#30363d] rounded p-4">
-                        <Button onClick={testProfile} disabled={profileLoading} className="bg-[#3fb950] hover:bg-[#2ea043] text-white">
-                          {profileLoading ? "Loading..." : "Run GET /api/profile"}
-                        </Button>
-                        {profileError && (
-                          <div className="mt-3 text-sm text-red-400">{profileError}</div>
-                        )}
-                        {profileResult && (
-                          <pre className="mt-3 text-xs text-[#e6edf3] overflow-x-auto">{JSON.stringify(profileResult, null, 2)}</pre>
-                        )}
+                  {currentEndpoint.method === "GET" &&
+                    currentEndpoint.path === "/api/profile" && (
+                      <div className="mb-6">
+                        <h4 className="text-[#e6edf3] font-medium mb-3">
+                          Try it
+                        </h4>
+                        <div className="bg-[#0d1117] border border-[#30363d] rounded p-4">
+                          <Button
+                            onClick={testProfile}
+                            disabled={profileLoading}
+                            className="bg-[#3fb950] hover:bg-[#2ea043] text-white"
+                          >
+                            {profileLoading
+                              ? "Loading..."
+                              : "Run GET /api/profile"}
+                          </Button>
+                          {profileError && (
+                            <div className="mt-3 text-sm text-red-400">
+                              {profileError}
+                            </div>
+                          )}
+                          {profileResult && (
+                            <pre className="mt-3 text-xs text-[#e6edf3] overflow-x-auto">
+                              {JSON.stringify(profileResult, null, 2)}
+                            </pre>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
 
                   {/* Code Examples */}
                   <div>

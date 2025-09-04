@@ -20,7 +20,8 @@ export async function sendEmailSMTP(opts: {
   }
 
   const isSendGrid = /sendgrid/i.test(SMTP_HOST);
-  const resolvedUser = isSendGrid && SMTP_PASS?.startsWith("SG.") ? "apikey" : SMTP_USER;
+  const resolvedUser =
+    isSendGrid && SMTP_PASS?.startsWith("SG.") ? "apikey" : SMTP_USER;
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
