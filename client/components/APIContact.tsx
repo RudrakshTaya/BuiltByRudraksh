@@ -105,14 +105,14 @@ export const APIContact = () => {
         },
       ],
       example: {
-        curl: `curl -X POST https://rudrakshtaya.dev/api/contact \\
+        curl: `curl -X POST https://builtbyrudrakshbackend.onrender.com/api/contact \\
   -H "Content-Type: application/json" \\
   -d '{
     "name": "John Doe",
     "email": "john@example.com",
     "message": "Hello! Let's collaborate on a project."
   }'`,
-        javascript: `fetch('https://rudrakshtaya.dev/api/contact', {
+        javascript: `fetch('https://builtbyrudrakshbackend.onrender.com/api/contact', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export const APIContact = () => {
 .then(data => console.log(data));`,
         python: `import requests
 
-url = "https://rudrakshtaya.dev/api/contact"
+url = "https://builtbyrudrakshbackend.onrender.com/api/contact"
 data = {
     "name": "John Doe",
     "email": "john@example.com",
@@ -136,6 +136,16 @@ data = {
 
 response = requests.post(url, json=data)
 print(response.json())`,
+        postman: `Method: POST
+URL: https://builtbyrudrakshbackend.onrender.com/api/contact
+Headers:
+  Content-Type: application/json
+Body (raw, JSON):
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello! Let's collaborate on a project."
+}`,
       },
     },
     {
@@ -144,14 +154,16 @@ print(response.json())`,
       description: "Get Rudraksh's public profile information",
       parameters: [],
       example: {
-        curl: `curl -X GET https://rudrakshtaya.dev/api/profile`,
-        javascript: `fetch('https://rudrakshtaya.dev/api/profile')
+        curl: `curl -X GET https://builtbyrudrakshbackend.onrender.com/api/profile`,
+        javascript: `fetch('https://builtbyrudrakshbackend.onrender.com/api/profile')
   .then(response => response.json())
   .then(data => console.log(data));`,
         python: `import requests
 
-response = requests.get("https://rudrakshtaya.dev/api/profile")
+response = requests.get("https://builtbyrudrakshbackend.onrender.com/api/profile")
 print(response.json())`,
+        postman: `Method: GET
+URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
       },
     },
     //     {
