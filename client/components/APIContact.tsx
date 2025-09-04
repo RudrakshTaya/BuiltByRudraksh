@@ -534,7 +534,7 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
             {/* Interactive Form */}
             <div className="bg-[#161b22] min-w-0">
               <div className="p-6">
-                {health && (
+                {/* {health && (
                   <div className="mb-4 flex flex-wrap gap-3 text-xs">
                     <span
                       className={
@@ -558,7 +558,7 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
                       SMS: {health.sms ? "Configured" : "Not configured"}
                     </span>
                   </div>
-                )}
+                )} */}
                 <h3 className="text-[#e6edf3] font-semibold text-lg mb-6 flex items-center gap-2">
                   <Play className="w-5 h-5 text-[#58a6ff]" />
                   Try it out
