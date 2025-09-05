@@ -680,7 +680,7 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
                     </a>
 
                     <a
-                      href="https://github.com"
+                      href="https://github.com/rudrakshtaya"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => {
@@ -708,13 +708,13 @@ URL: https://builtbyrudrakshbackend.onrender.com/api/profile`,
                     </a>
 
                     <a
-                      href="https://linkedin.com"
+                      href="https://linkedin.com/in/rudraksh-taya-71aba3295"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => {
                         const payload = {
                           type: "linkedin",
-                          value: "https://linkedin.com/in/rudrakshtaya",
+                          value: "https://linkedin.com/in/rudraksh-taya-71aba3295",
                         };
                         const blob = new Blob([JSON.stringify(payload)], {
                           type: "application/json",
