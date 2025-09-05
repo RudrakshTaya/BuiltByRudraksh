@@ -1,24 +1,22 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { z } from "zod";
-import { promises } from "fs";
+import fs, { promises } from "fs";
 import crypto from "crypto";
 import { MongoClient } from "mongodb";
 import nodemailer from "nodemailer";
 import twilio from "twilio";
-
 const handleDemo = (req, res) => {
   const response = {
-    message: "Hello from Express server",
+    message: "Hello from Express server"
   };
   res.status(200).json(response);
 };
-
 let client = null;
 let db = null;
-
 async function getDb() {
   const uri = process.env.MONGODB_URI;
   const dbName = process.env.MONGODB_DB;
@@ -31,73 +29,55 @@ async function getDb() {
   db = client.db(dbName);
   return db;
 }
-
 async function getCollection(name) {
   const database = await getDb();
   return database.collection(name);
 }
-
 async function sendEmailSMTP(opts) {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_FROM, EMAIL_TO } =
-    process.env;
-  if (
-    !SMTP_HOST ||
-    !SMTP_PORT ||
-    !SMTP_USER ||
-    !SMTP_PASS ||
-    !EMAIL_FROM ||
-    !EMAIL_TO
-  ) {
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_FROM, EMAIL_TO } = process.env;
+  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !EMAIL_FROM || !EMAIL_TO) {
     return;
   }
+  const isSendGrid = /sendgrid/i.test(SMTP_HOST);
+  const resolvedUser = isSendGrid && SMTP_PASS?.startsWith("SG.") ? "apikey" : SMTP_USER;
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: Number(SMTP_PORT),
     secure: Number(SMTP_PORT) === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
+    auth: { user: resolvedUser, pass: SMTP_PASS },
+    requireTLS: Number(SMTP_PORT) === 587
   });
   await transporter.sendMail({
     from: EMAIL_FROM,
     to: EMAIL_TO,
     subject: opts.subject,
     text: opts.text,
-    html: opts.html,
+    html: opts.html
   });
 }
-
 async function sendSMS(message) {
-  const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER, SMS_TO } =
-    process.env;
-  if (
-    !TWILIO_ACCOUNT_SID ||
-    !TWILIO_AUTH_TOKEN ||
-    !TWILIO_FROM_NUMBER ||
-    !SMS_TO
-  ) {
+  const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER, SMS_TO } = process.env;
+  if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_FROM_NUMBER || !SMS_TO) {
     return;
   }
   const client2 = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
   await client2.messages.create({
     body: message,
     from: TWILIO_FROM_NUMBER,
-    to: SMS_TO,
+    to: SMS_TO
   });
 }
-
 const contactSchema = z.object({
   name: z.string().min(1).max(200),
   email: z.string().email().max(320),
-  message: z.string().min(1).max(5e3),
+  message: z.string().min(1).max(5e3)
 });
-
 const ensureDataDir = async (dirPath) => {
   try {
     await promises.mkdir(dirPath, { recursive: true });
   } catch {
-    // ignore
   }
 };
-
 const handleContact = async (req, res) => {
   try {
     const parsed = contactSchema.safeParse(req.body);
@@ -105,14 +85,13 @@ const handleContact = async (req, res) => {
       return res.status(400).json({
         success: false,
         error: "Invalid request payload",
-        issues: parsed.error.issues,
+        issues: parsed.error.issues
       });
     }
     const { name, email, message } = parsed.data;
     const id = `msg_${crypto.randomUUID()}`;
-    const timestamp = new Date().toISOString();
+    const timestamp = (/* @__PURE__ */ new Date()).toISOString();
     const record = { id, name, email, message, timestamp };
-
     let savedTo = "file";
     try {
       if (process.env.MONGODB_URI && process.env.MONGODB_DB) {
@@ -136,13 +115,8 @@ const handleContact = async (req, res) => {
         existing = [];
       }
       existing.push(record);
-      await promises.writeFile(
-        filePath,
-        JSON.stringify(existing, null, 2),
-        "utf8"
-      );
+      await promises.writeFile(filePath, JSON.stringify(existing, null, 2), "utf8");
     }
-
     const subject = `New portfolio contact from ${name}`;
     const text = `Time: ${timestamp}
 Name: ${name}
@@ -150,21 +124,18 @@ Email: ${email}
 
 Message:
 ${message}`;
-
     void Promise.allSettled([sendEmailSMTP({ subject, text }), sendSMS(text)]);
-
     const response = {
       success: true,
       message: `Message received and saved to ${savedTo}`,
       id,
-      timestamp,
+      timestamp
     };
     return res.status(200).json(response);
   } catch (err) {
     return res.status(500).json({ success: false, error: "Server error" });
   }
 };
-
 const handleProfile = (_req, res) => {
   const profile = {
     name: "Rudraksh Taya",
@@ -172,72 +143,63 @@ const handleProfile = (_req, res) => {
     email: "rudrakshstaya@gmail.com",
     skills: ["React", "Node.js", "Python", "Java"],
     experience: "3+ years",
-    available: true,
+    available: true
   };
   res.json(profile);
 };
-
 async function createServer() {
-  const app2 = express();
-  app2.use(cors());
-  app2.use(express.json());
-  app2.use(express.urlencoded({ extended: true }));
-
-  app2.get("/api/ping", (_req, res) => {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
   });
-  app2.get("/api/demo", handleDemo);
-  app2.post("/api/contact", handleContact);
-  app2.get("/api/profile", handleProfile);
-
-  app2.post(
+  app.get("/api/demo", handleDemo);
+  app.post("/api/contact", handleContact);
+  app.get("/api/profile", handleProfile);
+  app.post(
     "/api/contact/intent",
     (await import("./contact-intent-xyA8U_lR.js")).handleContactIntent
   );
-  app2.get("/api/health", (await import("./health-DML2iGzm.js")).handleHealth);
-
-  return app2;
+  app.get("/api/health", (await import("./health-DML2iGzm.js")).handleHealth);
+  return app;
 }
-
-// ✅ Bootstrap function (no top-level await)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 async function bootstrap() {
-  try {
-    const app = await createServer();
-    const port = process.env.PORT || 3000;
-    const __dirname = import.meta.dirname;
-    const distPath = path.join(__dirname, "../spa");
-
+  const app = await createServer();
+  const port = process.env.PORT || 3e3;
+  const distPath = path.join(__dirname, "../spa");
+  const spaExists = fs.existsSync(distPath);
+  if (spaExists) {
     app.use(express.static(distPath));
-
     app.get("*", (req, res) => {
       if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
         return res.status(404).json({ error: "API endpoint not found" });
       }
       res.sendFile(path.join(distPath, "index.html"));
     });
-
-    app.listen(port, () => {
-      console.log(`🚀 Fusion Starter server running on port ${port}`);
-      console.log(`📱 Frontend: http://localhost:${port}`);
-      console.log(`🔧 API: http://localhost:${port}/api`);
-    });
-
-    process.on("SIGTERM", () => {
-      console.log("🛑 Received SIGTERM, shutting down gracefully");
-      process.exit(0);
-    });
-    process.on("SIGINT", () => {
-      console.log("🛑 Received SIGINT, shutting down gracefully");
-      process.exit(0);
-    });
-  } catch (err) {
-    console.error("❌ Server failed to start:", err);
-    process.exit(1);
+  } else {
+    console.log("SPA build not found; running API-only mode");
   }
+  app.listen(port, () => {
+    console.log(`🚀 Fusion Starter server running on port ${port}`);
+    console.log(`📱 Frontend: http://localhost:${port}`);
+    console.log(`🔧 API: http://localhost:${port}/api`);
+  });
+  process.on("SIGTERM", () => {
+    console.log("🛑 Received SIGTERM, shutting down gracefully");
+    process.exit(0);
+  });
+  process.on("SIGINT", () => {
+    console.log("🛑 Received SIGINT, shutting down gracefully");
+    process.exit(0);
+  });
 }
-
 bootstrap();
-
-// Export for external use
-export { getDb as g };
+export {
+  getDb as g
+};
+//# sourceMappingURL=node-build.mjs.map

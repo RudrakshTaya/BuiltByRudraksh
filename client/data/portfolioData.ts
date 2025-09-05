@@ -55,13 +55,13 @@ export const socialLinks = [
   {
     name: "LinkedIn",
     icon: "Linkedin",
-    url: "https://linkedin.com/in/rudrakshtaya",
+    url: "https://linkedin.com/in/rudraksh-taya-71aba3295",
     color: "text-neon-blue",
   },
   {
     name: "LeetCode",
     icon: "Code2",
-    url: "https://leetcode.com/rudrakshtaya",
+    url: "https://leetcode.com/u/Rudraksh_Taya",
     color: "text-neon-cyan",
   },
   // {
