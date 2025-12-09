@@ -10,8 +10,8 @@ import { Code2, Zap, Target, GraduationCap } from "lucide-react";
 // PERSONAL INFORMATION
 // =============================================================================
 export const personalInfo = {
-  name: "Rudraksh Taya",
-  shortName: "Rudraksh",
+  name: "AutoCode Studio",
+  shortName: "AutoCode",
   title: "Software Engineer",
   subtitle: "Full Stack Developer",
   tagline: "Building Scalable Systems & Solving Real-World Problems with Code.",
@@ -38,9 +38,9 @@ export const personalInfo = {
     duration: "2022–2026",
     cgpa: "8.7",
   },
-  location: "Haryana, India",
-  email: "rudrakshtaya8777@gmail.com",
-  phone: "+91 9050832038",
+  location: "India",
+  email: " ",
+  phone: "+91 ",
 };
 
 // SOCIAL LINKS
@@ -96,18 +96,18 @@ export const navigation = {
 // =============================================================================
 export const stats = {
   hero: [
-    { label: "250+ DSA Problems", color: "neon-green" },
+   // { label: "250+ DSA Problems", color: "neon-green" },
     { label: "10+ Full Stack Projects", color: "neon-blue" },
     { label: "Strong CS Fundamentals", color: "neon-purple" },
   ],
   about: [
-    {
-      icon: Code2,
-      label: "DSA Problems",
-      value: "250+",
-      color: "text-neon-purple",
-      bgColor: "bg-neon-purple",
-    },
+    // {
+    //   icon: Code2,
+    //   label: "DSA Problems",
+    //   value: "250+",
+    //   color: "text-neon-purple",
+    //   bgColor: "bg-neon-purple",
+    // },
     {
       icon: Zap,
       label: "Full Stack Projects",
@@ -122,16 +122,16 @@ export const stats = {
       color: "text-neon-cyan",
       bgColor: "bg-neon-cyan",
     },
-    {
-      icon: GraduationCap,
-      label: "Current CGPA",
-      value: "8.2",
-      color: "text-neon-green",
-      bgColor: "bg-neon-green",
-    },
+    // {
+    //   icon: GraduationCap,
+    //   label: "Current CGPA",
+    //   value: "8.2",
+    //   color: "text-neon-green",
+    //   bgColor: "bg-neon-green",
+    // },
   ],
   csStrengths: [
-    { label: "DSA Problems", value: "250+", color: "neon-purple" },
+   // { label: "DSA Problems", value: "250+", color: "neon-purple" },
     { label: "CS Projects", value: "25+", color: "neon-blue" },
     { label: "Core Subjects", value: "6+", color: "neon-cyan" },
     { label: "Average Grade", value: "A+", color: "neon-green" },
@@ -983,32 +983,7 @@ export const leetcodeStats = {
 
 // BLOG POSTS DATA
 // =============================================================================
-export const blogs = [
-  {
-    title: "Building Scalable APIs with Node.js and Express",
-    platform: "Dev.to",
-    date: "Dec 2024",
-    likes: 45,
-    comments: 12,
-    url: "https://dev.to/rudraksh/building-scalable-apis",
-  },
-  {
-    title: "React Performance Optimization Techniques",
-    platform: "Medium",
-    date: "Nov 2024",
-    likes: 67,
-    comments: 23,
-    url: "https://medium.com/@rudraksh/react-optimization",
-  },
-  {
-    title: "Database Design Patterns for Web Applications",
-    platform: "Dev.to",
-    date: "Oct 2024",
-    likes: 34,
-    comments: 8,
-    url: "https://dev.to/rudraksh/database-patterns",
-  },
-];
+
 
 // CERTIFICATIONS DATA
 // =============================================================================
